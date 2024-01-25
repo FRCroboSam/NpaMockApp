@@ -24,7 +24,7 @@ struct PostCardBody: View {
             
             HStack {
                 HStack(spacing: 3) {
-                    Image(systemName: "heart")
+                    ToggleButton(color: Color.red, imageName: "heart")
                     Text("\(like_count.formattedString())")
                 }
                 Spacer()

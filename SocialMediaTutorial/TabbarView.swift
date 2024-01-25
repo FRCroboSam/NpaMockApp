@@ -12,7 +12,7 @@ struct TabbarView: View {
         TabView {
             HomeView()
                 .tabItem {
-                    Image(systemName: "square.stack.fill") // Tab icon for HomeView
+                    Image(systemName: "house") // Tab icon for HomeView
                 }
             Text("Search View")
                 .tabItem {

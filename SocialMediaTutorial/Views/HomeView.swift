@@ -14,7 +14,7 @@ struct HomeView: View {
                 StoryListView() // Display the list of stories
                 PostListView() // Display the list of posts
             }
-            .navigationTitle("CodeLab") // Set the navigation title
+            .navigationTitle("NPA+") // Set the navigation title
             .navigationBarItems(leading: Image(systemName: "pencil.and.outline"), trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
         }
     }
