@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */; };
 		3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */; };
+		3618B6412B62CF8D00BD3D2F /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B6402B62CF8D00BD3D2F /* Post.swift */; };
+		3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */; };
+		365D385A2B63CE4D0013689A /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 365D38592B63CE4D0013689A /* YouTubePlayerKit */; };
 		E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */; };
 		E55B36232A6181EC00CB859B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36222A6181EC00CB859B /* ContentView.swift */; };
 		E55B36252A6181EE00CB859B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55B36242A6181EE00CB859B /* Assets.xcassets */; };
@@ -30,6 +33,8 @@
 /* Begin PBXFileReference section */
 		3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		3618B6402B62CF8D00BD3D2F /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
 		E55B361D2A6181EC00CB859B /* SocialMediaTutorial.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialMediaTutorial.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaTutorialApp.swift; sourceTree = "<group>"; };
 		E55B36222A6181EC00CB859B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				365D385A2B63CE4D0013689A /* YouTubePlayerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +73,14 @@
 				3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */,
 			);
 			path = Buttons;
+			sourceTree = "<group>";
+		};
+		3618B6422B62D48600BD3D2F /* Video */ = {
+			isa = PBXGroup;
+			children = (
+				3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */,
+			);
+			path = Video;
 			sourceTree = "<group>";
 		};
 		E55B36142A6181EC00CB859B = {
@@ -129,6 +143,7 @@
 		E55B36362A61849500CB859B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				3618B6422B62D48600BD3D2F /* Video */,
 				3618B63B2B62C9AC00BD3D2F /* Buttons */,
 				E55B36452A618D0900CB859B /* StoryCard */,
 				E55B36392A61850200CB859B /* PostCard */,
@@ -144,6 +159,7 @@
 				E55B363A2A61851200CB859B /* PostCard.swift */,
 				E55B363C2A61851A00CB859B /* PostCardHeader.swift */,
 				E55B363F2A61852C00CB859B /* PostCardBody.swift */,
+				3618B6402B62CF8D00BD3D2F /* Post.swift */,
 			);
 			path = PostCard;
 			sourceTree = "<group>";
@@ -173,6 +189,9 @@
 			dependencies = (
 			);
 			name = SocialMediaTutorial;
+			packageProductDependencies = (
+				365D38592B63CE4D0013689A /* YouTubePlayerKit */,
+			);
 			productName = SocialMediaTutorial;
 			productReference = E55B361D2A6181EC00CB859B /* SocialMediaTutorial.app */;
 			productType = "com.apple.product-type.application";
@@ -189,6 +208,7 @@
 				TargetAttributes = {
 					E55B361C2A6181EC00CB859B = {
 						CreatedOnToolsVersion = 14.3.1;
+						LastSwiftMigration = 1520;
 					};
 				};
 			};
@@ -201,6 +221,9 @@
 				Base,
 			);
 			mainGroup = E55B36142A6181EC00CB859B;
+			packageReferences = (
+				365D38582B63CE4D0013689A /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
+			);
 			productRefGroup = E55B361E2A6181EC00CB859B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,6 +254,7 @@
 				E55B36322A61829A00CB859B /* FetchDataJson.swift in Sources */,
 				3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */,
 				E55B36472A618D1D00CB859B /* StoryCard.swift in Sources */,
+				3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */,
 				E55B36422A61858B00CB859B /* Extensions.swift in Sources */,
 				E55B36442A618D0700CB859B /* StoryListView.swift in Sources */,
 				E55B363B2A61851200CB859B /* PostCard.swift in Sources */,
@@ -239,6 +263,7 @@
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
 				E55B36402A61852C00CB859B /* PostCardBody.swift in Sources */,
 				E55B36352A61848900CB859B /* HomeView.swift in Sources */,
+				3618B6412B62CF8D00BD3D2F /* Post.swift in Sources */,
 				E55B36232A6181EC00CB859B /* ContentView.swift in Sources */,
 				E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */,
 				E55B36382A6184AB00CB859B /* PostListView.swift in Sources */,
@@ -368,6 +393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SocialMediaTutorial/Preview Content\"";
@@ -387,6 +413,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = codeLab.App.SocialMediaTutorial;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -397,6 +424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SocialMediaTutorial/Preview Content\"";
@@ -443,6 +471,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		365D38582B63CE4D0013689A /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		365D38592B63CE4D0013689A /* YouTubePlayerKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 365D38582B63CE4D0013689A /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
+			productName = YouTubePlayerKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E55B36152A6181EC00CB859B /* Project object */;
 }

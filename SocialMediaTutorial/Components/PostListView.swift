@@ -9,10 +9,10 @@ import SwiftUI
 
 struct PostListView: View {
     @ObservedObject var postData = ReadJsonData() // Observed object for reading JSON data
-    
+    let showCommentSection: Bool
     var body: some View {
         VStack {
-            ForEach(postData.posts) { post in // Iterate over each post in the data
+            ForEach(postData.posts.prefix(postData.posts.count)) { post in //you can reintroduce the showCommentSection logic 
                 PostCard(
                     profile_img: post.profile_img,
                     profile_name: post.profile_name,
@@ -25,16 +25,15 @@ struct PostListView: View {
                 )
                 .padding(.top)
             }
-            
         }
         .listStyle(.plain) // Set the list style to plain
         .padding() // Apply padding to the VStack
     }
 }
 
-struct PostListView_Previews: PreviewProvider {
-    static var previews: some View {
-        PostListView()
-    }
-}
+//struct PostListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        PostListView()
+//    }
+//}
 

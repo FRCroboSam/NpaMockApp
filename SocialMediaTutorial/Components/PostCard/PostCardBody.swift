@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import YouTubePlayerKit
 struct PostCardBody: View {
     
     let image: String
@@ -17,11 +17,11 @@ struct PostCardBody: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
-            Image(image)
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .roundedCorner(20, corners: [.bottomLeft, .topRight, .bottomRight])
-            
+            CustomVideoPlayer(YoutubePlayer: YouTubePlayer(stringLiteral: "VIDEO"))
+//            Image(image)
+//                .resizable()
+//                .aspectRatio(contentMode: .fit)
+//                .roundedCorner(20, corners: [.bottomLeft, .topRight, .bottomRight])
             HStack {
                 HStack(spacing: 3) {
                     ToggleButton(color: Color.red, imageName: "heart")
