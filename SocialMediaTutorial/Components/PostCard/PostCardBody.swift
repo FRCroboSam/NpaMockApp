@@ -15,6 +15,8 @@ struct PostCardBody: View {
     let view_count: Int
     let description: String
     
+    var onCommentTapped: () -> Void // Closure to handle comment button tap
+
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
             CustomVideoPlayer(YoutubePlayer: YouTubePlayer(stringLiteral: "VIDEO"))
@@ -29,8 +31,15 @@ struct PostCardBody: View {
                 }
                 Spacer()
                 HStack {
-                    Image(systemName: "text.bubble")
-                    Text("\(comment_count.formattedString())")
+                    Button(action: {
+                        onCommentTapped()
+                    },
+                   label: {
+                        Image(systemName: "text.bubble")
+                        Text("\(comment_count.formattedString())")
+                       
+                    })
+
                 }
                 Spacer()
                 HStack {

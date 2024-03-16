@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct SocialMediaTutorialApp: App {
+    @StateObject private var modelData = ReadJsonData()
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(modelData)
+                .onAppear{
+                    modelData.loadData()
+                }
         }
     }
 }

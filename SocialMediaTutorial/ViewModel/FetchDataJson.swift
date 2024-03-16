@@ -34,17 +34,21 @@ struct Post: Codable, Identifiable {
 // Class for reading JSON data
 class ReadJsonData: ObservableObject {
     @Published var posts = [Post]() // Array of posts
-    
-    init() {
-        loadData() // Load the JSON data upon initialization
-    }
+//    
+//    init() {
+//        print("POST LENGTH: " + String(posts.count))
+//        loadData() // Load the JSON data upon initialization
+//        print("POST LENGTH: " + String(posts.count))
+//
+//
+//    }
     
     func loadData() {
         guard let url = Bundle.main.url(forResource: "posts", withExtension: "json") else {
             print("json file not found")
             return
         }
-        
+        print("LOADING DATA")
         let data = try? Data(contentsOf: url)
         let posts = try? JSONDecoder().decode([Post].self, from: data!)
         

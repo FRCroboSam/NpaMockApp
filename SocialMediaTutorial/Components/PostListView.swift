@@ -8,8 +8,11 @@
 import SwiftUI
 
 struct PostListView: View {
-    @ObservedObject var postData = ReadJsonData() // Observed object for reading JSON data
+    @EnvironmentObject var postData: ReadJsonData// Observed object for reading JSON data
     let showCommentSection: Bool
+    
+    var onCommentTapped: () -> Void // Closure to handle comment button tap
+
     var body: some View {
         VStack {
             ForEach(postData.posts.prefix(postData.posts.count)) { post in //you can reintroduce the showCommentSection logic 
@@ -21,7 +24,8 @@ struct PostListView: View {
                     like_count: post.like_count,
                     comment_count: post.comment_count,
                     view_count: post.view_count,
-                    description: post.description
+                    description: post.description,
+                    onCommentTapped: onCommentTapped
                 )
                 .padding(.top)
             }

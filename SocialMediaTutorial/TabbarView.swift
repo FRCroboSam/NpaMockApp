@@ -9,25 +9,25 @@ import SwiftUI
 
 struct TabbarView: View {
     var body: some View {
-        TabView {
+//        TabView {
             HomeView()
-                .tabItem {
-                    Image(systemName: "house") // Tab icon for HomeView
-                }
-            Text("Search View")
-                .tabItem {
-                    Image(systemName: "magnifyingglass") // Tab icon for Search View
-                }
-            Text("New Post")
-                .tabItem {
-                    Image(systemName: "square.and.pencil") // Tab icon for New Post
-                }
-            Text("Profile View")
-                .tabItem {
-                    Image(systemName:  "person") // Tab icon for Profile View
-                }
-        }
-        .accentColor(.brown) // Accent color for the TabView
+//                .tabItem {
+//                    Image(systemName: "house") // Tab icon for HomeView
+//                }
+//            Text("Search View")
+//                .tabItem {
+//                    Image(systemName: "magnifyingglass") // Tab icon for Search View
+//                }
+//            Text("New Post")
+//                .tabItem {
+//                    Image(systemName: "square.and.pencil") // Tab icon for New Post
+//                }
+//            Text("Profile View")
+//                .tabItem {
+//                    Image(systemName:  "person") // Tab icon for Profile View
+//                }
+//        }
+//        .accentColor(.brown) // Accent color for the TabView
     }
 }
 
