@@ -71,21 +71,24 @@ struct HomeView: View {
                         .offset(
                             y: lastTranslation.height
                         )
-                        GeometryReader { geometry in
+
                             VStack {
-                                ScrollView {
-                                    ForEach(0..<items.count, id: \.self) { index in
-                                        Text("\(index + 1). \(items[index])")
-                                            .foregroundColor(.red) // Adjust text color as needed
-                                            .padding() // Add padding around each text item
+                                GeometryReader { geometry in
+                                    
+                                    ScrollView {
+                                        ForEach(0..<items.count, id: \.self) { index in
+                                            Text("\(index + 1). \(items[index])")
+                                                .foregroundColor(.red) // Adjust text color as needed
+                                                .padding() // Add padding around each text item
+                                        }
                                     }
+                                    .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
+                                    .background(Color.orange)
+                                    .zIndex(12)
                                 }
-                                .frame(height: scrollViewHeight(for: geometry))
-                                .background(Color.orange)
-                                .zIndex(12)
                             }
                             .offset(y: self.lastTranslation.height)
-                        }
+                        
                         
                     }
                     
@@ -95,15 +98,16 @@ struct HomeView: View {
         }
     }
         func scrollViewHeight(for geometry: GeometryProxy) -> CGFloat {
-            let deviceHeight = geometry.size.height
-            let maxScrollViewHeight = max(1/4 * deviceHeight, 1/2 * deviceHeight - self.lastTranslation.height)
-            let bottomPadding: CGFloat = 50 // Adjust as needed
+            let vStackFrame = geometry.frame(in: .global)
+            let vStackTop = vStackFrame.minY
+            let maxScrollViewHeight = 1/2 * deviceHeight - self.lastTranslation.height
             
             // Calculate the remaining space from the bottom of the device to the bottom of the ScrollView
-            let remainingSpace = deviceHeight - maxScrollViewHeight - bottomPadding
+            let remainingSpace = deviceHeight - maxScrollViewHeight
             
             // Adjust the ScrollView height by adding the remaining space to its maximum height
-            return maxScrollViewHeight + max(0, min(self.lastTranslation.height, remainingSpace))
+            print(deviceHeight - vStackTop)
+            return max(deviceHeight - vStackTop, 1/4 * deviceHeight)
         }
         var dragGesture: some Gesture {
             DragGesture()
@@ -114,7 +118,6 @@ struct HomeView: View {
                     }
                     self.current = newValue   // store curr !!
                     lastTranslation.height += value.translation.height
-                    print(lastTranslation.height)
                 }
                 .onEnded { value in
                     self.current = nil
