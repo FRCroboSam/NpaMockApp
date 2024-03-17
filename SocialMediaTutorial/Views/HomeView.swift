@@ -48,14 +48,17 @@ struct HomeView: View {
             //                    .frame(maxHeight: showCommentSection ? 0.25 * deviceHeight : deviceHeight)
             if(showCommentSection){
                 ZStack{
+                    ScrollView{
+                        StoryListView() // Display the list of stories
+                        PostListView(showCommentSection: false, onCommentTapped: {
+                            showCommentSection = true
+                        }) // Display the list of posts
+                    }
+                    .scrollDisabled(showCommentSection)
+                    .zIndex(0)
                     VStack{
-                        ScrollView{
-                            StoryListView() // Display the list of stories
-                            PostListView(showCommentSection: false, onCommentTapped: {
-                                showCommentSection = true
-                            }) // Display the list of posts
-                        }
-                        .zIndex(0)
+                        Spacer()
+                            .frame(height: 200)
                         VStack{
                             Spacer()
                                 .frame(height: 10)
@@ -69,7 +72,7 @@ struct HomeView: View {
                         .contentShape(Rectangle())
                         .highPriorityGesture(dragGesture)
                         .offset(
-                            y: lastTranslation.height
+                            y: lastTranslation.height + 20
                         )
 
                             VStack {

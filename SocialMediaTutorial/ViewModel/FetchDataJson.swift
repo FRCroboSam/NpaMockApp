@@ -35,13 +35,13 @@ struct Post: Codable, Identifiable {
 class ReadJsonData: ObservableObject {
     @Published var posts = [Post]() // Array of posts
 //    
-//    init() {
+    init() {
 //        print("POST LENGTH: " + String(posts.count))
 //        loadData() // Load the JSON data upon initialization
 //        print("POST LENGTH: " + String(posts.count))
-//
-//
-//    }
+
+
+    }
     
     func loadData() {
         guard let url = Bundle.main.url(forResource: "posts", withExtension: "json") else {

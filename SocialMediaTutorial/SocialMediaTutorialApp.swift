@@ -16,6 +16,7 @@ struct SocialMediaTutorialApp: App {
                 .environmentObject(modelData)
                 .onAppear{
                     modelData.loadData()
+                    modelData.loadData()
                 }
         }
     }
