@@ -109,7 +109,6 @@ struct HomeView: View {
             let remainingSpace = deviceHeight - maxScrollViewHeight
             
             // Adjust the ScrollView height by adding the remaining space to its maximum height
-            print(deviceHeight - vStackTop)
             return max(deviceHeight - vStackTop, 1/4 * deviceHeight)
         }
         var dragGesture: some Gesture {
@@ -120,7 +119,9 @@ struct HomeView: View {
                         self.isUp = prev > newValue   // << here !!
                     }
                     self.current = newValue   // store curr !!
+                    print(lastTranslation.height)
                     lastTranslation.height += value.translation.height
+                    lastTranslation.height = max(-220, min(lastTranslation.height, 500)) //dont go too far off bottom of the screen 
                 }
                 .onEnded { value in
                     self.current = nil
