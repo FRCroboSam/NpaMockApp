@@ -26,8 +26,8 @@ struct Post2: View {
             PostCardHeader(profile_img: profile_img, profile_name: profile_name, profile_id: profile_id)
             // Display the header section of the post card, including profile image, name, and ID
             
-            PostCardBody(image: image, like_count: like_count, comment_count: comment_count, view_count: view_count, description: description,
-                         onCommentTapped: onCommentTapped)
+//            PostCardBody(image: image, like_count: like_count, comment_count: comment_count, view_count: view_count, description: description,
+//                         onCommentTapped: onCommentTapped)
             // Display the body section of the post card, including image, counts, and description
         }
     }

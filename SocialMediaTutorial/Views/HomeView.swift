@@ -8,8 +8,8 @@
 import SwiftUI
 import YouTubePlayerKit
 struct HomeView: View {
-    @State var showCommentSection = true
-    
+    @State var showCommentSection = false
+//    @ObservedObject var postData: ReadJsonData
     var deviceHeight: CGFloat {
         UIScreen.main.bounds.height
     }
@@ -19,7 +19,14 @@ struct HomeView: View {
     @State var current: CGFloat? = nil // << any initial
     @State var isUp = false
     @State private var translation = CGSize.zero
+    @State private var prevTranslation = CGSize.zero
     @State private var lastTranslation = CGSize.zero
+    @State var lastNonZeroTranslation = CGSize.zero
+    @State private var peakVelocity = 0.0
+    
+    @State private var lastStateWasTop = false
+    
+//    @State private var currentPost: Post
     
     var body: some View {
         
@@ -46,38 +53,46 @@ struct HomeView: View {
             //                    .navigationTitle("NPA+") // Set the navigation title
             //                    .navigationBarItems(leading: Image(systemName: "pencil.and.outline"), trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
             //                    .frame(maxHeight: showCommentSection ? 0.25 * deviceHeight : deviceHeight)
-            if(showCommentSection){
                 ZStack{
                     ScrollView{
                         StoryListView() // Display the list of stories
                         PostListView(showCommentSection: false, onCommentTapped: {
-                            showCommentSection = true
+                            withAnimation(.easeIn){
+                                showCommentSection = true
+                            }
                         }) // Display the list of posts
                     }
+                    .brightness(showCommentSection ? -0.3 : 0.0)
                     .scrollDisabled(showCommentSection)
                     .zIndex(0)
-                    VStack{
-                        Spacer()
-                            .frame(height: 200)
+                    if(showCommentSection){
                         VStack{
                             Spacer()
-                                .frame(height: 10)
-                            Text("Comments")
-                            Divider()
-                        }
-                        .background{
-                            Color.orange
-                        }
-                        .cornerRadius(20)
-                        .contentShape(Rectangle())
-                        .highPriorityGesture(dragGesture)
-                        .offset(
-                            y: lastTranslation.height + 20
-                        )
-
+                                .frame(height: 200)
+                            VStack{
+                                Spacer()
+                                    .frame(height: 10)
+                                Text("Comments")
+                                Spacer()
+                                    .frame(height: 10)
+                                Divider()
+                                    .background(Color.gray)
+                                Spacer()
+                                    .frame(height: 10)
+                            }
+                            .background{
+                                Color.white
+                            }
+                            .cornerRadius(40)
+                            .contentShape(Rectangle())
+                            .highPriorityGesture(dragGesture)
+                            .offset(
+                                y: lastTranslation.height + 10
+                            )
+                            
                             VStack {
                                 GeometryReader { geometry in
-                                    
+//                                    PostDetailView(vm: PostDetailVM(post: currentPost))
                                     ScrollView {
                                         ForEach(0..<items.count, id: \.self) { index in
                                             Text("\(index + 1). \(items[index])")
@@ -86,18 +101,18 @@ struct HomeView: View {
                                         }
                                     }
                                     .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
-                                    .background(Color.orange)
+                                    .background(Color.white)
                                     .zIndex(12)
                                 }
                             }
                             .offset(y: self.lastTranslation.height)
-                        
-                        
+                            
+                            
+                        }
                     }
                     
                     
                 }
-            }
         }
     }
         func scrollViewHeight(for geometry: GeometryProxy) -> CGFloat {
@@ -114,18 +129,56 @@ struct HomeView: View {
         var dragGesture: some Gesture {
             DragGesture()
                 .onChanged { value in
-                    let newValue = value.location.y   // fetch prev !!
-                    if let prev = self.current {
-                        self.isUp = prev > newValue   // << here !!
-                    }
-                    self.current = newValue   // store curr !!
-                    print(lastTranslation.height)
+                    
+                    peakVelocity = max(abs(peakVelocity), abs(value.velocity.height))
+                    prevTranslation = translation
+                    translation.height = value.translation.height
                     lastTranslation.height += value.translation.height
-                    lastTranslation.height = max(-220, min(lastTranslation.height, 500)) //dont go too far off bottom of the screen 
+                    if(abs(value.translation.height) >= 0.01){
+                        lastNonZeroTranslation.height = value.translation.height
+                    }
+                
+                    lastTranslation.height = max(-220, min(lastTranslation.height, 500)) //dont go too far off bottom of the screen
+
                 }
                 .onEnded { value in
-                    self.current = nil
-                    translation = .zero
+                    
+                    let velocity = value.velocity.height
+//                    print("LAST TRANSLATION HEIGHT: " + String(Double(lastTranslation.height)))
+//                    print("LAST TRANSLATION: " + String(Double(translation.height)))
+//                    print("LAST (NON ZERO) TRANSLATION: " + String(Double(lastNonZeroTranslation.height)))
+//                    print("Average Velocity: " + String(Double(velocity)))
+                    print("Peak Velocity: " + String(Double(peakVelocity)))
+                    let isSwipe = lastNonZeroTranslation.height == translation.height
+                    var isUp = true;
+                    isUp = prevTranslation.height < 0 && translation.height < 0
+                    print(isUp ? "UP" : "DOWN")
+                    print(isSwipe ? "Swipe" : "")
+                    withAnimation(.easeIn){
+                        if(!isUp && isSwipe && abs(peakVelocity) > 700 && lastTranslation.height < 0){
+                            lastTranslation.height = 0
+                        }
+                        else if(!isUp && isSwipe && abs(peakVelocity) > 900) {
+                            lastTranslation.height = 500
+                            withAnimation(.easeOut) {
+                                showCommentSection = false
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
+                                    lastTranslation.height = 0
+                                }
+                            }
+
+                        }
+                        else if (lastTranslation.height < -92 || isUp && isSwipe) {
+                            lastTranslation.height = -220
+                        }
+
+                        else{
+                            lastTranslation.height = 0
+                        }
+                    }
+                    peakVelocity = 0
+
+
                     
                 }
         }

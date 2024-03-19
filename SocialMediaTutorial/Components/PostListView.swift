@@ -17,7 +17,7 @@ struct PostListView: View {
         VStack {
             ForEach(postData.posts.prefix(postData.posts.count)) { post in //you can reintroduce the showCommentSection logic 
                 PostCard(
-                    profile_img: post.profile_img,
+                    post: post, profile_img: post.profile_img,
                     profile_name: post.profile_name,
                     profile_id: post.profile_id,
                     image: post.image,

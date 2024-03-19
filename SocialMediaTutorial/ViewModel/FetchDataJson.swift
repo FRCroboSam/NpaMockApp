@@ -18,6 +18,7 @@ struct Post: Codable, Identifiable {
         case profile_img
         case profile_name
         case profile_id
+        case post_id
     }
     
     var id = UUID() // Unique identifier for the post
@@ -29,6 +30,7 @@ struct Post: Codable, Identifiable {
     var profile_img: String // Profile image name or URL
     var profile_name: String // Profile name
     var profile_id: String // Profile ID
+    var post_id: Int
 }
 
 // Class for reading JSON data

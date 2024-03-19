@@ -7,7 +7,8 @@
     "description": "Learn the basics of Python programming!",
     "profile_img": "cat2",
     "profile_name": "Gabrial Micheal",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 1
   },
   {
     "image": "post2",
@@ -17,7 +18,9 @@
     "description": "Discover the latest JavaScript frameworks!",
     "profile_img": "cat",
     "profile_name": "Micheal Gabrial",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 2
+
   },
   {
     "image": "post3",
@@ -27,7 +30,9 @@
     "description": "Explore machine learning algorithms in R!",
     "profile_img": "bear",
     "profile_name": "David Adem",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 3
+
   },
   {
     "image": "post4",
@@ -37,7 +42,9 @@
     "description": "Tips for optimizing your SQL queries!",
     "profile_img": "deer",
     "profile_name": "Adem David",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 4
+
   },
   {
     "image": "post5",
@@ -47,7 +54,8 @@
     "description": "Tips for optimizing your SQL queries!",
     "profile_img": "cat2",
     "profile_name": "Mohammad Gabrial",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 5
   },
   {
     "image": "post6",
@@ -57,7 +65,8 @@
     "description": "Introduction to data structures in C++!",
     "profile_img": "cat",
     "profile_name": "Gabrial David",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 6
   },
   {
     "image": "post7",
@@ -67,7 +76,8 @@
     "description": "Build a RESTful API using Node.js and Express!",
     "profile_img": "bear",
     "profile_name": "Adam Mohammad",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 7
   },
   {
     "image": "post8",
@@ -77,7 +87,8 @@
     "description": "Introduction to object-oriented programming concepts!",
     "profile_img": "deer",
     "profile_name": "David Micheal",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 8
   },
   {
     "image": "post9",
@@ -87,7 +98,8 @@
     "description": "Exploring the world of front-end web development!",
     "profile_img": "cat2",
     "profile_name": "Adam Adam",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 9
   },
   {
     "image": "post10",
@@ -97,6 +109,7 @@
     "description": "Mastering algorithms and data structures in Java!",
     "profile_img": "cat",
     "profile_name": "Gabrial Adam",
-    "profile_id": "gabrial_micheal"
+    "profile_id": "gabrial_micheal",
+    "post_id": 10
   }
 ]

@@ -8,11 +8,12 @@
 import SwiftUI
 import YouTubePlayerKit
 struct PostCardBody: View {
-    
+    @EnvironmentObject var postData: ReadJsonData
     let image: String
     let like_count: Int
     let comment_count: Int
     let view_count: Int
+    let post: Post
     let description: String
     
     var onCommentTapped: () -> Void // Closure to handle comment button tap
@@ -33,6 +34,7 @@ struct PostCardBody: View {
                 HStack {
                     Button(action: {
                         onCommentTapped()
+//                        postData.selectedPost = post 
                     },
                    label: {
                         Image(systemName: "text.bubble")
