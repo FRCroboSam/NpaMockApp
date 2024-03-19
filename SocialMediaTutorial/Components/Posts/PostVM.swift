@@ -24,7 +24,6 @@ class PostVM: ObservableObject {
     init(post: Post){
         self.post = post 
         self.loading = true
-        print("NUM LIKES: " + String(post.like_count))
     }
     
     

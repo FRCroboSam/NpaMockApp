@@ -46,14 +46,13 @@ struct FeedView: View {
                         StoryListView() // Display the list of stories
                         PostListView(showCommentSection: false, onCommentTapped: {
                             withAnimation(.easeIn){
-                                showCommentSection = true
                             }
                         }) // Display the list of posts
                     }
-                    .brightness(showCommentSection ? -0.3 : 0.0)
-                    .scrollDisabled(showCommentSection)
+                    .brightness(vm.showCommentSection ? -0.3 : 0.0)
+                    .scrollDisabled(vm.showCommentSection)
                     .zIndex(0)
-                    if(showCommentSection){
+                    if(vm.showCommentSection){
                         VStack{
                             Spacer()
                                 .frame(height: 200)
@@ -81,13 +80,13 @@ struct FeedView: View {
                             VStack {
                                 GeometryReader { geometry in
                                     CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
-                                    ScrollView {
-                                        ForEach(0..<items.count, id: \.self) { index in
-                                            Text("\(index + 1). \(items[index])")
-                                                .foregroundColor(.red) // Adjust text color as needed
-                                                .padding() // Add padding around each text item
-                                        }
-                                    }
+//                                    ScrollView {
+//                                        ForEach(0..<items.count, id: \.self) { index in
+//                                            Text("\(index + 1). \(items[index])")
+//                                                .foregroundColor(.red) // Adjust text color as needed
+//                                                .padding() // Add padding around each text item
+//                                        }
+//                                    }
                                     .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
                                     .background(Color.white)
                                     .zIndex(12)
@@ -144,7 +143,7 @@ struct FeedView: View {
                         else if(!isUp && isSwipe && abs(peakVelocity) > 900) {
                             lastTranslation.height = 500
                             withAnimation(.easeOut) {
-                                showCommentSection = false
+                                vm.showCommentSection = false
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
                                     lastTranslation.height = 0
                                 }

@@ -26,7 +26,8 @@ struct PostListView: View {
                     view_count: post.view_count,
                     description: post.description,
                     onCommentTapped: {
-                        print("COMMENT WAS TAPPED")
+                        feedVM.selected_post_vm = PostVM(post: post) 
+                        feedVM.showCommentSection = true
                     }
                 )
                 .padding(.top)

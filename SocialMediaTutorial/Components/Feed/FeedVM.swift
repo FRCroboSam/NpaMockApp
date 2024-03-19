@@ -12,6 +12,7 @@ import Foundation
 // FeedVM is the model for collecting all of the posts 
 class FeedVM: ObservableObject {
     @Published var posts = [Post]() // Array of posts
+    @Published var showCommentSection = false 
     @Published var selected_post_vm: PostVM?
     
     init() {
