@@ -10,7 +10,7 @@ import SwiftUI
 struct TabbarView: View {
     var body: some View {
 //        TabView {
-            HomeView()
+            FeedView()
 //                .tabItem {
 //                    Image(systemName: "house") // Tab icon for HomeView
 //                }

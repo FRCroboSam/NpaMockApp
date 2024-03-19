@@ -9,14 +9,14 @@ import SwiftUI
 
 @main
 struct SocialMediaTutorialApp: App {
-    @StateObject private var modelData = ReadJsonData()
+    @StateObject private var feedVM = FeedVM()
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(modelData)
+                .environmentObject(feedVM)
                 .onAppear{
-                    modelData.loadData()
-                    modelData.loadData()
+//                    modelData.loadData()
+//                    modelData.loadData()
                 }
         }
     }

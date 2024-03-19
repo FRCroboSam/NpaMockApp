@@ -7,7 +7,8 @@
 
 import SwiftUI
 import YouTubePlayerKit
-struct HomeView: View {
+struct FeedView: View {
+    @EnvironmentObject var vm: FeedVM
     @State var showCommentSection = false
 //    @ObservedObject var postData: ReadJsonData
     var deviceHeight: CGFloat {
@@ -29,7 +30,7 @@ struct HomeView: View {
 //    @State private var currentPost: Post
     
     var body: some View {
-        
+        let blankPost = vm.posts[0]
         let items = ["This is the first comment hello my name is samuel tlkjlkjklsdjlkfjll lksj", "What a great catch!", "That was an insane clip!",
                      "This is the first comment", "What a great catch!", "That was an insane clip!",
                      "This is the first comment", "What a great catch!", "That was an insane clip!",
@@ -39,20 +40,7 @@ struct HomeView: View {
                      "This is the first comment", "What a great catch!", "That was an insane clip!",
                      "This is the first comment", "What a great catch!", "That was an insane clip!"
         ]
-        //todo - figured out how to stop scrolling when comment is clicked, now implement the comment section showing up
         NavigationStack {
-            //                    ScrollView{
-            //                        StoryListView() // Display the list of stories
-            //                        PostListView(showCommentSection: false, onCommentTapped: {
-            //                            print("COMMENT SECTION SHOWN ")
-            //                            showCommentSection = true
-            //
-            //                        }) // Display the list of posts
-            //                    }
-            //                    .scrollDisabled(showCommentSection)
-            //                    .navigationTitle("NPA+") // Set the navigation title
-            //                    .navigationBarItems(leading: Image(systemName: "pencil.and.outline"), trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
-            //                    .frame(maxHeight: showCommentSection ? 0.25 * deviceHeight : deviceHeight)
                 ZStack{
                     ScrollView{
                         StoryListView() // Display the list of stories
@@ -92,7 +80,7 @@ struct HomeView: View {
                             
                             VStack {
                                 GeometryReader { geometry in
-//                                    PostDetailView(vm: PostDetailVM(post: currentPost))
+                                    CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
                                     ScrollView {
                                         ForEach(0..<items.count, id: \.self) { index in
                                             Text("\(index + 1). \(items[index])")
@@ -106,7 +94,6 @@ struct HomeView: View {
                                 }
                             }
                             .offset(y: self.lastTranslation.height)
-                            
                             
                         }
                     }
@@ -144,10 +131,6 @@ struct HomeView: View {
                 .onEnded { value in
                     
                     let velocity = value.velocity.height
-//                    print("LAST TRANSLATION HEIGHT: " + String(Double(lastTranslation.height)))
-//                    print("LAST TRANSLATION: " + String(Double(translation.height)))
-//                    print("LAST (NON ZERO) TRANSLATION: " + String(Double(lastNonZeroTranslation.height)))
-//                    print("Average Velocity: " + String(Double(velocity)))
                     print("Peak Velocity: " + String(Double(peakVelocity)))
                     let isSwipe = lastNonZeroTranslation.height == translation.height
                     var isUp = true;
@@ -171,7 +154,6 @@ struct HomeView: View {
                         else if (lastTranslation.height < -92 || isUp && isSwipe) {
                             lastTranslation.height = -220
                         }
-
                         else{
                             lastTranslation.height = 0
                         }

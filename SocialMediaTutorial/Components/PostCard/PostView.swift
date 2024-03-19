@@ -1,14 +1,16 @@
 //
-//  Post.swift
+//  PostCard.swift
 //  SocialMediaTutorial
 //
-//  Created by Samuel Wang on 1/25/24.
+//  Created by Eymen on 14.07.2023.
 //
+
 import SwiftUI
 
-import Foundation
-struct Post2: View {
+struct PostView: View {
     // Properties for the post card
+    let post: Post
+    let postVM: PostVM 
     let profile_img: String
     let profile_name: String
     let profile_id: String
@@ -18,7 +20,6 @@ struct Post2: View {
     let comment_count: Int
     let view_count: Int
     let description: String
-    
     var onCommentTapped: () -> Void // Closure to handle comment button tap
 
     var body: some View {
@@ -26,9 +27,11 @@ struct Post2: View {
             PostCardHeader(profile_img: profile_img, profile_name: profile_name, profile_id: profile_id)
             // Display the header section of the post card, including profile image, name, and ID
             
-//            PostCardBody(image: image, like_count: like_count, comment_count: comment_count, view_count: view_count, description: description,
-//                         onCommentTapped: onCommentTapped)
-            // Display the body section of the post card, including image, counts, and description
+            PostCardBody(image: image, like_count: like_count, comment_count: comment_count, view_count: view_count, post: post, description: description,
+                         onCommentTapped: onCommentTapped)
+                         
+            
         }
     }
 }
+

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StoryListView: View {
-    @EnvironmentObject var postData: ReadJsonData // Observed object for reading JSON data
+    @EnvironmentObject var postData: FeedVM // Observed object for reading JSON data
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) { // Horizontal scroll view for displaying story cards

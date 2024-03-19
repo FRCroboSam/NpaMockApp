@@ -8,7 +8,6 @@
 import SwiftUI
 import YouTubePlayerKit
 struct PostCardBody: View {
-    @EnvironmentObject var postData: ReadJsonData
     let image: String
     let like_count: Int
     let comment_count: Int
