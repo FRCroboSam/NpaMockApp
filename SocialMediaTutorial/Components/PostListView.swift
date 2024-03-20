@@ -27,7 +27,9 @@ struct PostListView: View {
                     description: post.description,
                     onCommentTapped: {
                         feedVM.selected_post_vm = PostVM(post: post) 
-                        feedVM.showCommentSection = true
+                        withAnimation(.easeIn){
+                            feedVM.showCommentSection = true
+                        }
                     }
                 )
                 .padding(.top)

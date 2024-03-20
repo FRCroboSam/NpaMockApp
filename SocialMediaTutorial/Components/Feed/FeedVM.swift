@@ -24,14 +24,19 @@ class FeedVM: ObservableObject {
     }
     
     func loadData() {
-        guard let url = Bundle.main.url(forResource: "posts", withExtension: "json") else {
-            print("json file not found")
-            return
+
+        if let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+//            let url = documentDirectoryURL.appendingPathComponent("posts.json")
+            guard let url = Bundle.main.url(forResource: "posts", withExtension: "json") else {
+                print("json file not found")
+                return
+            }
+            print(url)
+            let data = try? Data(contentsOf: url)
+            let posts = try? JSONDecoder().decode([Post].self, from: data!)
+            
+            self.posts = posts! // Update the posts array with the decoded data
+            print(String(self.posts.count))
         }
-        let data = try? Data(contentsOf: url)
-        let posts = try? JSONDecoder().decode([Post].self, from: data!)
-        
-        self.posts = posts! // Update the posts array with the decoded data
-        print(String(self.posts.count))
     }
 }

@@ -10,6 +10,7 @@ import SwiftUI
 struct CommentSectionView: View {
     @ObservedObject var vm: PostVM
     @State var comment: String = ""
+    @FocusState var isCommentFocused: Bool
     
     var body: some View {
         VStack(spacing: 0){
@@ -41,30 +42,62 @@ struct CommentSectionView: View {
                         .font(.footnote)
                 }
                 HStack {
-                    ZStack{
-                        TextEditor(text: $comment)
-                        Text(comment).opacity(0).padding()
-                    }.shadow(radius: 1)
-                        .buttonBorderShape(ButtonBorderShape.capsule)
-                        .cornerRadius(10)
-                        .ignoresSafeArea(.keyboard,edges: .bottom)
-                        .shadow(radius: 2)
-                        .frame(height: 60)
-                    Button("Send"){
-                        self.vm.sendReply(commentText: comment)
+                    CircularProfileImage(size: 40)
+                    HStack{
+                        TextField("Add a comment for " + vm.post.profile_name, text: $comment)
+                            .focused($isCommentFocused)
+                        //Text(comment).opacity(0).padding()
+                        Button(action: {
+                            self.vm.sendReply(commentText: comment)
                         self.comment = ""
+                        }, label: {
+                            Image(systemName: "arrow.up.circle")
+                                .font(.system(size: 20))
+                        })
                     }
+                    .modifier(customViewModifier(roundedCornes: 20, startColor: .orange, endColor: .orange, textColor: .white))
+                        .padding(5)
+                    .onChange(of:isCommentFocused){ value in
+                        print(value)
+                    }
+                    
+//                    Button("Send"){
+//                        self.vm.sendReply(commentText: comment)
+//                        self.comment = ""
+//                    }
                 }.padding()
                 
-            }.background(Color.primary.opacity(0.1))
+            }
             
         }
         .navigationTitle(Text("Post Detail"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear{vm.fetchComments(postId: "")}
     }
+    
+    
 }
+struct customViewModifier: ViewModifier {
+    var deviceWidth: CGFloat {
+        UIScreen.main.bounds.width
+    }
+    var roundedCornes: CGFloat
+    var startColor: Color
+    var endColor: Color
+    var textColor: Color
+    var ratio: Double = 5/6
 
+    func body(content: Content) -> some View {
+        content
+            .padding()
+            .background(LinearGradient(gradient: Gradient(colors: [startColor, endColor]), startPoint: .topLeading, endPoint: .bottomTrailing))
+            .cornerRadius(roundedCornes)
+            .frame(maxWidth: ratio * deviceWidth)
+            .padding(3)
+            .font(.custom("Open Sans", size: 18))
+
+    }
+}
 //struct PostDetailView_Previews: PreviewProvider {
 //    static var previews: some View {
 ////        CommentSectionView(vm: PostVM(post: Post(image: <#T##String#>, like_count: <#T##Int#>, comment_count: <#T##Int#>, view_count: <#T##Int#>, description: <#T##String#>, profile_img: <#T##String#>, profile_name: <#T##String#>, profile_id: <#T##String#>, post_id: <#T##Int#>))
