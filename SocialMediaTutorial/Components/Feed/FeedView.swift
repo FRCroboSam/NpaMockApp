@@ -31,15 +31,6 @@ struct FeedView: View {
     
     var body: some View {
         let blankPost = vm.posts[0]
-        let items = ["This is the first comment hello my name is samuel tlkjlkjklsdjlkfjll lksj", "What a great catch!", "That was an insane clip!",
-                     "This is the first comment", "What a great catch!", "That was an insane clip!",
-                     "This is the first comment", "What a great catch!", "That was an insane clip!",
-                     "This is the first comment", "What a great catch!", "That was an insane clip!",
-                     "This is the first comment", "What a great catch!", "That was an insane clip!",
-                     "This is the first comment", "What a great catch!", "That was an insane clip!",
-                     "This is the first comment", "What a great catch!", "That was an insane clip!",
-                     "This is the first comment", "What a great catch!", "That was an insane clip!"
-        ]
         NavigationStack {
                 ZStack{
                     ScrollView{
@@ -80,16 +71,9 @@ struct FeedView: View {
                             VStack {
                                 GeometryReader { geometry in
                                     CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
-//                                    ScrollView {
-//                                        ForEach(0..<items.count, id: \.self) { index in
-//                                            Text("\(index + 1). \(items[index])")
-//                                                .foregroundColor(.red) // Adjust text color as needed
-//                                                .padding() // Add padding around each text item
-//                                        }
-//                                    }
-                                    .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
-                                    .background(Color.white)
-                                    .zIndex(12)
+                                        .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
+                                        .background(Color.white)
+                                        .zIndex(12)
                                 }
                             }
                             .offset(y: self.lastTranslation.height)

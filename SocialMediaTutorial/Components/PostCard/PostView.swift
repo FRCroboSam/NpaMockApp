@@ -15,7 +15,7 @@ struct PostView: View {
     let profile_name: String
     let profile_id: String
     
-    let image: String
+    let image_or_video: String
     let like_count: Int
     let comment_count: Int
     let view_count: Int
@@ -27,7 +27,7 @@ struct PostView: View {
             PostCardHeader(profile_img: profile_img, profile_name: profile_name, profile_id: profile_id)
             // Display the header section of the post card, including profile image, name, and ID
             
-            PostCardBody(image: image, like_count: like_count, comment_count: comment_count, view_count: view_count, post: post, description: description,
+            PostCardBody(image_or_video: image_or_video, like_count: like_count, comment_count: comment_count, view_count: view_count, post: post, description: description,
                          onCommentTapped: onCommentTapped)
                          
             

@@ -47,15 +47,53 @@ class CommentVM: ObservableObject, Identifiable {
     func fetchReplies(vm: PostVM) {
         self.loading = true
         //Todo: provide parent id to fetch replies
-        let replies = Bundle.main.decode(type: [Comment].self, from: "replies.json")
-        print("PARENT ID: " + self.comment.parentId)
-        let filteredReplies = replies.filter { $0.parentId == self.comment.parentId && $0.commentId != self.comment.commentId }
-        addAllChildren(children: filteredReplies.map{CommentVM(comment: $0)})
-        if let index = self.getCommentIndex(from: vm.commentSection, comment: self) {
-            withAnimation{vm.commentSection.insert(contentsOf: self.children, at: index+1)}
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+//        copyFileFromBundleToDocumentsFolder(sourceFile: "replies.json") //-> when you need to reset comments
+        
+        if let documentsURL{
+            do {
+                let fileURL = documentsURL.appendingPathComponent("replies.json")
+                  print(fileURL)
+                if let replies = try? Data(contentsOf: fileURL) {
+                    let replies2 = try! JSONDecoder().decode([Comment].self, from: replies)
+                    let filteredReplies = replies2.filter { $0.parentId == self.comment.commentId && $0.commentId != self.comment.commentId }
+                    print(self.comment.commentId)
+                    addAllChildren(children: filteredReplies.map{CommentVM(comment: $0)})
+                    if let index = self.getCommentIndex(from: vm.commentSection, comment: self) {
+                        withAnimation{vm.commentSection.insert(contentsOf: self.children, at: index+1)}
+                    }
+                    self.areChildrenShown = true
+                    self.loading = false
+                } else {
+                }
+            }
         }
-        self.areChildrenShown = true
-        self.loading = false
+
+    }
+    
+    func copyFileFromBundleToDocumentsFolder(sourceFile: String, destinationFile: String = "") {
+        let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
+
+        if let documentsURL = documentsURL {
+            let sourceURL = Bundle.main.bundleURL.appendingPathComponent(sourceFile)
+
+            // Use the same filename if destination filename is not specified
+            let destURL = documentsURL.appendingPathComponent(!destinationFile.isEmpty ? destinationFile : sourceFile)
+
+            do {
+                try FileManager.default.removeItem(at: destURL)
+                print("Removed existing file at destination")
+            } catch (let error) {
+                print(error)
+            }
+
+            do {
+                try FileManager.default.copyItem(at: sourceURL, to: destURL)
+                print("\(sourceFile) was copied successfully.")
+            } catch (let error) {
+                print(error)
+            }
+        }
     }
     
     public func addChild(_ node: CommentVM) {

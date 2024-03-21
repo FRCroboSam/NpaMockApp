@@ -20,7 +20,7 @@ struct PostListView: View {
                     post: post, postVM: PostVM(post: post), profile_img: post.profile_img,
                     profile_name: post.profile_name,
                     profile_id: post.profile_id,
-                    image: post.image,
+                    image_or_video: post.image_or_video,
                     like_count: post.like_count,
                     comment_count: post.comment_count,
                     view_count: post.view_count,

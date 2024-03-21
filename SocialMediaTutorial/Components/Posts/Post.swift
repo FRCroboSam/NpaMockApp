@@ -2,7 +2,7 @@ import Foundation
 
 struct Post: Codable, Identifiable {
     enum CodingKeys: CodingKey {
-        case image
+        case image_or_video
         case like_count
         case comment_count
         case view_count
@@ -14,7 +14,7 @@ struct Post: Codable, Identifiable {
     }
     
     var id = UUID() // Unique identifier for the post
-    var image: String // Image name or URL
+    var image_or_video: String // Image name or URL
     var like_count: Int // Number of likes
     var comment_count: Int // Number of comments
     var view_count: Int // Number of views
@@ -22,5 +22,5 @@ struct Post: Codable, Identifiable {
     var profile_img: String // Profile image name or URL
     var profile_name: String // Profile name
     var profile_id: String // Profile ID
-    var post_id: Int
+    var post_id: String
 }

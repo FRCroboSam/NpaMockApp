@@ -12,6 +12,9 @@ struct CommentSectionView: View {
     @State var comment: String = ""
     @FocusState var isCommentFocused: Bool
     
+    @State var replyingToId: String = ""
+    @State var replyingToPost: Bool = true // replying to the post by default
+    
     var body: some View {
         VStack(spacing: 0){
             ScrollView {
@@ -48,8 +51,16 @@ struct CommentSectionView: View {
                             .focused($isCommentFocused)
                         //Text(comment).opacity(0).padding()
                         Button(action: {
-                            self.vm.sendReply(commentText: comment)
-                        self.comment = ""
+                            if(self.vm.currentParentReply != nil ){
+                                self.vm.replyToComment(commentText: comment, parentId: (self.vm.currentParentReply?.comment.commentId)!)
+                                self.comment = ""
+                                self.vm.currentParentReply = nil
+                            }
+                            else{
+                                self.vm.replyToPost(commentText: comment, postId: vm.post.post_id)
+                                self.comment = ""
+                                
+                            }
                         }, label: {
                             Image(systemName: "arrow.up.circle")
                                 .font(.system(size: 20))
@@ -72,7 +83,7 @@ struct CommentSectionView: View {
         }
         .navigationTitle(Text("Post Detail"))
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear{vm.fetchComments(postId: "")}
+        .onAppear{vm.fetchComments(postId: vm.post.post_id)}
     }
     
     

@@ -54,11 +54,11 @@ class PostVM: ObservableObject {
         //TODO: fetch comments using post id
         
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-        
+        print("POST ID: " + postId)
         if let documentsURL{
             do {
                 let fileURL = documentsURL.appendingPathComponent("comments.json")
-               // copyFileFromBundleToDocumentsFolder(sourceFile: "comments.json") //-> when you need to reset comments
+//                copyFileFromBundleToDocumentsFolder(sourceFile: "comments.json") //-> when you need to reset comments
 //                let contents = try FileManager.default.contentsOfDirectory(atPath: url.path)
 //                print("\(contents.count) files inside the document directory:")
 //                for file in contents {
@@ -67,7 +67,8 @@ class PostVM: ObservableObject {
                   print(fileURL)
                 if let commentsData = try? Data(contentsOf: fileURL) {
                     self.comments = try! JSONDecoder().decode([Comment].self, from: commentsData)
-                    self.comments = comments
+                    self.comments = comments.filter { $0.parentId == postId } //makes sure the comment is for the specific post
+
                     self.root.addAllChildren(children: comments.map{CommentVM(comment: $0)})
 
                 } else {
@@ -87,8 +88,18 @@ class PostVM: ObservableObject {
         self.commentSection.removeFirst()
     }
     
-    public func sendReply(commentText: String){
-        let comment_obj = Comment(commentId: UUID().uuidString, parentId: "", content: commentText, displayName: "Admin", created: Date().ISO8601Format().description, likes: 0)
+    public func replyToPost(commentText: String, postId: String){
+        let comment_obj = Comment(commentId: UUID().uuidString, parentId: postId, content: commentText, displayName: "Admin", created: Date().ISO8601Format().description, likes: 0)
+        let comment = CommentVM(comment: comment_obj)
+        comment.depth = 1
+        comment.padding = 1
+        withAnimation{commentSection.insert(comment, at: 0)}
+        writeToComments(comment: comment_obj )
+        withAnimation{ self.currentParentReply = nil }
+    }
+    
+    public func replyToComment(commentText: String, parentId: String ){
+        let comment_obj = Comment(commentId: UUID().uuidString, parentId: parentId, content: commentText, displayName: "Admin", created: Date().ISO8601Format().description, likes: 0)
         let comment = CommentVM(comment: comment_obj)
         
         //It's a reply
@@ -98,19 +109,51 @@ class PostVM: ObservableObject {
             comment.comment.parentId = parent.comment.commentId //remove when using Api
             comment.depth = parent.depth! + 1
             comment.padding = parent.padding + 1
-
+            
             if let index = parent.getCommentIndex(from: commentSection, comment: parent) {
                 withAnimation{commentSection.insert(comment, at: index+1)}
             }
-        }else{
-            //It's a comment
-            comment.depth = 1
-            comment.padding = 1
-            withAnimation{commentSection.insert(comment, at: 0)}
         }
-        writeToComments(comment: comment_obj )
+        writeToReplies(comment: comment_obj )
         withAnimation{ self.currentParentReply = nil }
 
+    }
+    public func writeToReplies(comment: Comment){
+        if let commentData = try? JSONEncoder().encode(comment) {
+            // Get the file URL of your comments.json file
+            // Assuming 'comment' is an instance of your Comment struct or class
+            // Get the document directory URL
+            if let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
+                let fileURL = documentDirectoryURL.appendingPathComponent("replies.json")
+                
+                // Read existing comments from the file if it exists
+                if var commentsData = try? Data(contentsOf: fileURL) {
+                    // Find the index of the last occurrence of '}'
+                    if let lastIndex = commentsData.lastIndex(of: UInt8(ascii: "}")) {
+                        commentsData.insert(contentsOf: ",".data(using: .utf8)!, at: lastIndex + 1)
+                        if let newLastIndex = commentsData.lastIndex(of: UInt8(ascii: ",")){
+                            if let commentData = try? JSONEncoder().encode(comment) {
+                                // Insert the new comment data right after the last '}'
+                                commentsData.insert(contentsOf: commentData, at: newLastIndex + 1)
+                                
+                                // Write the modified data back to the file
+                                do {
+                                    try commentsData.write(to: fileURL)
+                                } catch {
+                                    print("Error writing to file:", error)
+                                }
+                            }
+                        }
+
+                    }
+                } else {
+                    // Handle if the file does not exist or cannot be read
+                }
+            }
+
+        } else {
+            print("Error encoding comment to JSON data.")
+        }
     }
     public func writeToComments(comment: Comment){
         if let commentData = try? JSONEncoder().encode(comment) {

@@ -8,7 +8,7 @@
 import SwiftUI
 import YouTubePlayerKit
 struct PostCardBody: View {
-    let image: String
+    let image_or_video: String
     let like_count: Int
     let comment_count: Int
     let view_count: Int
@@ -19,11 +19,16 @@ struct PostCardBody: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
-            CustomVideoPlayer(YoutubePlayer: YouTubePlayer(stringLiteral: "VIDEO"))
-//            Image(image)
-//                .resizable()
-//                .aspectRatio(contentMode: .fit)
-//                .roundedCorner(20, corners: [.bottomLeft, .topRight, .bottomRight])
+            if(image_or_video.contains("youtube")){
+                CustomVideoPlayer(YoutubePlayer: YouTubePlayer(stringLiteral: "VIDEO"), url: image_or_video)
+            }
+            else{
+                Image(image_or_video)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .roundedCorner(20, corners: [.bottomLeft, .topRight, .bottomRight])
+            }
+
             HStack {
                 HStack(spacing: 3) {
                     ToggleButton(color: Color.red, imageName: "heart")

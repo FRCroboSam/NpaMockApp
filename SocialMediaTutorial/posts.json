@@ -1,6 +1,6 @@
 [
   {
-    "image": "post1",
+    "image_or_video": "https://www.youtube.com/watch?v=7dEMr0u2xL0",
     "like_count": 50,
     "comment_count": 12,
     "view_count": 1200,
@@ -8,10 +8,10 @@
     "profile_img": "cat2",
     "profile_name": "Gabrial Micheal",
     "profile_id": "gabrial_micheal",
-    "post_id": 1
+    "post_id": "D9D87D7F-EEE4-4EBB-BED1-7B9F1F14DAB2"
   },
   {
-    "image": "post2",
+    "image_or_video": "post2",
     "like_count": 80,
     "comment_count": 15,
     "view_count": 1500,
@@ -19,11 +19,11 @@
     "profile_img": "cat",
     "profile_name": "Micheal Gabrial",
     "profile_id": "gabrial_micheal",
-    "post_id": 2
+    "post_id": "86804218-8D47-4FB0-9785-3621A1BEE604"
 
   },
   {
-    "image": "post3",
+    "image_or_video": "https://www.youtube.com/watch?v=dunFJ9U-TQI",
     "like_count": 120,
     "comment_count": 25,
     "view_count": 2000,
@@ -31,11 +31,11 @@
     "profile_img": "bear",
     "profile_name": "David Adem",
     "profile_id": "gabrial_micheal",
-    "post_id": 3
+    "post_id": "82145027-602A-4C47-8283-035BEAD26156"
 
   },
   {
-    "image": "post4",
+    "image_or_video": "post4",
     "like_count": 70,
     "comment_count": 18,
     "view_count": 1400,
@@ -43,11 +43,11 @@
     "profile_img": "deer",
     "profile_name": "Adem David",
     "profile_id": "gabrial_micheal",
-    "post_id": 4
+    "post_id": "960A0184-9720-4E8F-9C1D-8F5BF52F706D"
 
   },
   {
-    "image": "post5",
+    "image_or_video": "https://www.youtube.com/watch?v=0U-_oC-nWAQ",
     "like_count": 70,
     "comment_count": 18,
     "view_count": 1400,
@@ -55,10 +55,10 @@
     "profile_img": "cat2",
     "profile_name": "Mohammad Gabrial",
     "profile_id": "gabrial_micheal",
-    "post_id": 5
+    "post_id": "960A0184-9720-4E8F-9C1D-8F5BF52F706D"
   },
   {
-    "image": "post6",
+    "image_or_video": "post6",
     "like_count": 90,
     "comment_count": 20,
     "view_count": 1800,
@@ -66,10 +66,10 @@
     "profile_img": "cat",
     "profile_name": "Gabrial David",
     "profile_id": "gabrial_micheal",
-    "post_id": 6
+    "post_id": "F5398675-B200-4ACA-827D-CEF93506E4BF"
   },
   {
-    "image": "post7",
+    "image_or_video": "post7",
     "like_count": 60,
     "comment_count": 14,
     "view_count": 1300,
@@ -77,10 +77,10 @@
     "profile_img": "bear",
     "profile_name": "Adam Mohammad",
     "profile_id": "gabrial_micheal",
-    "post_id": 7
+    "post_id": "0A88E102-EE69-4A50-ADDC-E84740455D6B"
   },
   {
-    "image": "post8",
+    "image_or_video": "post8",
     "like_count": 100,
     "comment_count": 22,
     "view_count": 2200,
@@ -88,10 +88,10 @@
     "profile_img": "deer",
     "profile_name": "David Micheal",
     "profile_id": "gabrial_micheal",
-    "post_id": 8
+    "post_id": "7335AD91-B78A-4C0B-9C4D-352A47E236A9"
   },
   {
-    "image": "post9",
+    "image_or_video": "https://www.youtube.com/watch?v=tJsdb72cdEM",
     "like_count": 75,
     "comment_count": 16,
     "view_count": 1600,
@@ -99,10 +99,10 @@
     "profile_img": "cat2",
     "profile_name": "Adam Adam",
     "profile_id": "gabrial_micheal",
-    "post_id": 9
+    "post_id": "797BEE2C-5AA0-4E3E-B6DA-B41A478DFF85"
   },
   {
-    "image": "post10",
+    "image_or_video": "post10",
     "like_count": 110,
     "comment_count": 30,
     "view_count": 2400,
@@ -110,6 +110,6 @@
     "profile_img": "cat",
     "profile_name": "Gabrial Adam",
     "profile_id": "gabrial_micheal",
-    "post_id": 10
+    "post_id": "E82D9B65-130B-480A-9200-068644CC80B8"
   }
 ]

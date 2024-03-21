@@ -11,10 +11,11 @@ import AVKit
 import YouTubePlayerKit
 struct CustomVideoPlayer: View {
     let YoutubePlayer: YouTubePlayer
+    let url: String
     var body: some View {
         YouTubePlayerView(
             YouTubePlayer(
-                source: .url("https://youtube.com/watch?v=psL_5RIBqnY")
+                source: .url(url )
             ),
             placeholderOverlay: {
                     ProgressView()
