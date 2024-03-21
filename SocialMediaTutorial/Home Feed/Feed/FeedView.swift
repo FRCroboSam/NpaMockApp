@@ -40,6 +40,8 @@ struct FeedView: View {
                             }
                         }) // Display the list of posts
                     }
+                    .navigationTitle("NPA") // Set the navigation title
+                    .navigationBarItems(leading: Image(systemName: "pencil.and.outline"), trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
                     .brightness(vm.showCommentSection ? -0.3 : 0.0)
                     .scrollDisabled(vm.showCommentSection)
                     .zIndex(0)

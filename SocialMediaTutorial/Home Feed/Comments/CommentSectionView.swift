@@ -45,6 +45,7 @@ struct CommentSectionView: View {
                         .font(.footnote)
                 }
                 HStack {
+                    //TODO: ADD Dismiss keyboard when the user sends it
                     CircularProfileImage(size: 40)
                     HStack{
                         TextField("Add a comment for " + vm.post.profile_name, text: $comment)
@@ -77,7 +78,10 @@ struct CommentSectionView: View {
 //                        self.comment = ""
 //                    }
                 }.padding()
-                
+                if(isCommentFocused){
+                    Spacer()
+                        .frame(height: 400)
+                }
             }
             
         }

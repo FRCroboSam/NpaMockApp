@@ -58,7 +58,11 @@ class PostVM: ObservableObject {
         if let documentsURL{
             do {
                 let fileURL = documentsURL.appendingPathComponent("comments.json")
-//                copyFileFromBundleToDocumentsFolder(sourceFile: "comments.json") //-> when you need to reset comments
+                print("FILE EXISTS: " + String(FileManager.default.fileExists(atPath: fileURL.path)))
+                if(!FileManager.default.fileExists(atPath: fileURL.path)){
+                    copyFileFromBundleToDocumentsFolder(sourceFile: "comments.json") //-> when you need to reset comments
+
+                }
 //                let contents = try FileManager.default.contentsOfDirectory(atPath: url.path)
 //                print("\(contents.count) files inside the document directory:")
 //                for file in contents {

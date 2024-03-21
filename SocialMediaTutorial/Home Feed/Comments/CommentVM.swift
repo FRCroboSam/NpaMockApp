@@ -48,12 +48,14 @@ class CommentVM: ObservableObject, Identifiable {
         self.loading = true
         //Todo: provide parent id to fetch replies
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
-//        copyFileFromBundleToDocumentsFolder(sourceFile: "replies.json") //-> when you need to reset comments
+
         
         if let documentsURL{
             do {
                 let fileURL = documentsURL.appendingPathComponent("replies.json")
-                  print(fileURL)
+                if(!FileManager.default.fileExists(atPath: fileURL.path)){
+                    copyFileFromBundleToDocumentsFolder(sourceFile: "replies.json") //-> when you need to reset comments
+                }
                 if let replies = try? Data(contentsOf: fileURL) {
                     let replies2 = try! JSONDecoder().decode([Comment].self, from: replies)
                     let filteredReplies = replies2.filter { $0.parentId == self.comment.commentId && $0.commentId != self.comment.commentId }

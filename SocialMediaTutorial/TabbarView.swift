@@ -8,12 +8,16 @@
 import SwiftUI
 
 struct TabbarView: View {
+    @EnvironmentObject var vm: FeedVM
     var body: some View {
         TabView {
             FeedView()
                 .tabItem {
                     Image(systemName: "house") // Tab icon for HomeView
                 }
+                
+                .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
+                
             Text("Search View")
                 .tabItem {
                     Image(systemName: "magnifyingglass") // Tab icon for Search View
@@ -27,7 +31,7 @@ struct TabbarView: View {
                     Image(systemName:  "person") // Tab icon for Profile View
                 }
         }
-        .padding(-10)
+        
         .accentColor(.brown) // Accent color for the TabView
     }
 }
