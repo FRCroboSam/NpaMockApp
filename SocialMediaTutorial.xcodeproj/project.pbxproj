@@ -154,16 +154,16 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
-				E55B36362A61849500CB859B /* Components */,
+				E55B36362A61849500CB859B /* Home Feed */,
 				E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */,
 				E55B36222A6181EC00CB859B /* ContentView.swift */,
+				E55B364C2A619B5300CB859B /* TabbarView.swift */,
 				E55B362E2A61827600CB859B /* posts.json */,
 				3679F2702BA9690E00DAC43E /* comments.json */,
 				3679F2722BA9693000DAC43E /* replies.json */,
 				E55B36242A6181EE00CB859B /* Assets.xcassets */,
 				E55B36262A6181EE00CB859B /* Preview Content */,
 				E55B36412A61858B00CB859B /* Extensions.swift */,
-				E55B364C2A619B5300CB859B /* TabbarView.swift */,
 				3679F29C2BAA20A900DAC43E /* Utils.swift */,
 			);
 			path = SocialMediaTutorial;
@@ -177,7 +177,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		E55B36362A61849500CB859B /* Components */ = {
+		E55B36362A61849500CB859B /* Home Feed */ = {
 			isa = PBXGroup;
 			children = (
 				3679F2992BAA1F5600DAC43E /* Posts */,
@@ -191,7 +191,7 @@
 				E55B36372A6184AB00CB859B /* PostListView.swift */,
 				E55B36432A618D0700CB859B /* StoryListView.swift */,
 			);
-			path = Components;
+			path = "Home Feed";
 			sourceTree = "<group>";
 		};
 		E55B36392A61850200CB859B /* PostCard */ = {
