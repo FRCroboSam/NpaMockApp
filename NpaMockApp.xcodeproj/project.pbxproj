@@ -28,6 +28,7 @@
 		3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2B12BAD49C800DAC43E /* DiscoverView.swift */; };
 		3679F2B42BAD4B0900DAC43E /* AthleteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2B32BAD4B0900DAC43E /* AthleteListView.swift */; };
 		3679F2B52BAD5D1E00DAC43E /* athletes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3679F2A82BAD431F00DAC43E /* athletes.json */; };
+		3679F2B72BAE184E00DAC43E /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2B62BAE184E00DAC43E /* FilterView.swift */; };
 		E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */; };
 		E55B36232A6181EC00CB859B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36222A6181EC00CB859B /* ContentView.swift */; };
 		E55B36252A6181EE00CB859B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55B36242A6181EE00CB859B /* Assets.xcassets */; };
@@ -64,6 +65,7 @@
 		3679F2AE2BAD47A500DAC43E /* AthleteVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteVM.swift; sourceTree = "<group>"; };
 		3679F2B12BAD49C800DAC43E /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		3679F2B32BAD4B0900DAC43E /* AthleteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteListView.swift; sourceTree = "<group>"; };
+		3679F2B62BAE184E00DAC43E /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
 		E55B361D2A6181EC00CB859B /* NpaMockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NpaMockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaTutorialApp.swift; sourceTree = "<group>"; };
 		E55B36222A6181EC00CB859B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				3679F2B02BAD499800DAC43E /* Discover */,
 				3679F2AB2BAD453F00DAC43E /* Athlete */,
+				3679F2B62BAE184E00DAC43E /* FilterView.swift */,
 			);
 			path = "Athlete Section";
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3679F2B72BAE184E00DAC43E /* FilterView.swift in Sources */,
 				3679F2952BAA1E2600DAC43E /* CommentVM.swift in Sources */,
 				3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */,
 				3679F29B2BAA205900DAC43E /* FeedVM.swift in Sources */,

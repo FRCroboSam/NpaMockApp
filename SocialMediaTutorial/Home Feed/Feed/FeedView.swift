@@ -33,6 +33,7 @@ struct FeedView: View {
         let blankPost = vm.posts[0]
         NavigationStack {
                 ZStack{
+                    
                     ScrollView{
                         StoryListView() // Display the list of stories
                             .padding(.leading, 15) 

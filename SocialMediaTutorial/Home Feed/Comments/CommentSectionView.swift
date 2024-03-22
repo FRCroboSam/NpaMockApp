@@ -14,7 +14,9 @@ struct CommentSectionView: View {
     
     @State var replyingToId: String = ""
     @State var replyingToPost: Bool = true // replying to the post by default
-    
+    var deviceWidth: CGFloat {
+        UIScreen.main.bounds.width
+    }
     var body: some View {
         VStack(spacing: 0){
             ScrollView {
@@ -28,6 +30,9 @@ struct CommentSectionView: View {
                     }.listRowInsets(EdgeInsets())
                 }
             }.listStyle(PlainListStyle())
+                .frame(width: deviceWidth)
+                .background(Color.white)
+                .offset(x: 20)
             
             VStack(spacing: 0){
                 Divider()
@@ -47,6 +52,7 @@ struct CommentSectionView: View {
                 HStack {
                     //TODO: ADD Dismiss keyboard when the user sends it
                     CircularProfileImage(size: 40)
+                        .padding(.leading, 20)
                     HStack{
                         TextField("Add a comment for " + vm.post.profile_name, text: $comment)
                             .focused($isCommentFocused)
@@ -67,17 +73,23 @@ struct CommentSectionView: View {
                                 .font(.system(size: 20))
                         })
                     }
+                    
                     .modifier(customViewModifier(roundedCornes: 20, startColor: .orange, endColor: .orange, textColor: .white))
                         .padding(5)
+                        .padding(.trailing, 20)
+
                     .onChange(of:isCommentFocused){ value in
                         print(value)
                     }
-                    
 //                    Button("Send"){
 //                        self.vm.sendReply(commentText: comment)
 //                        self.comment = ""
 //                    }
                 }.padding()
+                .offset(x: 20)
+                .frame(width: deviceWidth + 50)
+                .background(Color.white)
+
                 if(isCommentFocused){
                     Spacer()
                         .frame(height: 400)
@@ -85,6 +97,7 @@ struct CommentSectionView: View {
             }
             
         }
+        
         .navigationTitle(Text("Post Detail"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear{vm.fetchComments(postId: vm.post.post_id)}
