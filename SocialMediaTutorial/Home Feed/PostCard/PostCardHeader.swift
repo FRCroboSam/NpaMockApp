@@ -29,6 +29,10 @@ struct PostCardHeader: View {
             }
             Spacer()
             Image(systemName: "ellipsis")
+                .padding(.horizontal, 15)
+                
         }
+        .padding(.leading, 15)
+
     }
 }

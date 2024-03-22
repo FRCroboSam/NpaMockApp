@@ -20,7 +20,6 @@ class FeedVM: ObservableObject {
         loadData() // Load the JSON data upon initialization
 //        print("POST LENGTH: " + String(posts.count))
 
-
     }
     
     func loadData() {
@@ -28,7 +27,7 @@ class FeedVM: ObservableObject {
         if let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
 //            let url = documentDirectoryURL.appendingPathComponent("posts.json")
             guard let url = Bundle.main.url(forResource: "posts", withExtension: "json") else {
-                print("json file not found")
+                print("json posts file not found")
                 return
             }
             print(url)

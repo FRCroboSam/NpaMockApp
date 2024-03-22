@@ -26,7 +26,7 @@ struct PostCardBody: View {
                 Image(image_or_video)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .roundedCorner(20, corners: [.bottomLeft, .topRight, .bottomRight])
+//                    .roundedCorner(20, corners: [.bottomLeft, .topRight, .bottomRight])
             }
 
             HStack {
@@ -56,7 +56,10 @@ struct PostCardBody: View {
                 HStack {
                     Image(systemName: "bookmark")
                 }
+                .padding(.horizontal, 10)
             }
+            .padding(.leading, 15)
+
             .font(.callout)
             
             Text(description)
@@ -64,8 +67,9 @@ struct PostCardBody: View {
                 .multilineTextAlignment(.leading)
                 .font(.callout)
                 .foregroundColor(.gray)
+                .padding(.leading, 15)
+
         }
-        .padding(.leading, 55)
     }
 }
 

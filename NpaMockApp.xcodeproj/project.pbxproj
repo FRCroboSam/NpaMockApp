@@ -23,6 +23,11 @@
 		3679F2A32BAA27D500DAC43E /* CommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2A22BAA27D500DAC43E /* CommentSectionView.swift */; };
 		3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2A42BAA455000DAC43E /* FeedView.swift */; };
 		3679F2A72BAA4A6600DAC43E /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2A62BAA4A6600DAC43E /* PostView.swift */; };
+		3679F2AD2BAD454D00DAC43E /* Athlete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2AC2BAD454D00DAC43E /* Athlete.swift */; };
+		3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2AE2BAD47A500DAC43E /* AthleteVM.swift */; };
+		3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2B12BAD49C800DAC43E /* DiscoverView.swift */; };
+		3679F2B42BAD4B0900DAC43E /* AthleteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2B32BAD4B0900DAC43E /* AthleteListView.swift */; };
+		3679F2B52BAD5D1E00DAC43E /* athletes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3679F2A82BAD431F00DAC43E /* athletes.json */; };
 		E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */; };
 		E55B36232A6181EC00CB859B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36222A6181EC00CB859B /* ContentView.swift */; };
 		E55B36252A6181EE00CB859B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55B36242A6181EE00CB859B /* Assets.xcassets */; };
@@ -54,6 +59,11 @@
 		3679F2A22BAA27D500DAC43E /* CommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentSectionView.swift; sourceTree = "<group>"; };
 		3679F2A42BAA455000DAC43E /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		3679F2A62BAA4A6600DAC43E /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		3679F2A82BAD431F00DAC43E /* athletes.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = athletes.json; sourceTree = "<group>"; };
+		3679F2AC2BAD454D00DAC43E /* Athlete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Athlete.swift; sourceTree = "<group>"; };
+		3679F2AE2BAD47A500DAC43E /* AthleteVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteVM.swift; sourceTree = "<group>"; };
+		3679F2B12BAD49C800DAC43E /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
+		3679F2B32BAD4B0900DAC43E /* AthleteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteListView.swift; sourceTree = "<group>"; };
 		E55B361D2A6181EC00CB859B /* NpaMockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NpaMockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaTutorialApp.swift; sourceTree = "<group>"; };
 		E55B36222A6181EC00CB859B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -135,6 +145,33 @@
 			path = Posts;
 			sourceTree = "<group>";
 		};
+		3679F2A92BAD451F00DAC43E /* Athlete Section */ = {
+			isa = PBXGroup;
+			children = (
+				3679F2B02BAD499800DAC43E /* Discover */,
+				3679F2AB2BAD453F00DAC43E /* Athlete */,
+			);
+			path = "Athlete Section";
+			sourceTree = "<group>";
+		};
+		3679F2AB2BAD453F00DAC43E /* Athlete */ = {
+			isa = PBXGroup;
+			children = (
+				3679F2AC2BAD454D00DAC43E /* Athlete.swift */,
+				3679F2AE2BAD47A500DAC43E /* AthleteVM.swift */,
+				3679F2B32BAD4B0900DAC43E /* AthleteListView.swift */,
+			);
+			path = Athlete;
+			sourceTree = "<group>";
+		};
+		3679F2B02BAD499800DAC43E /* Discover */ = {
+			isa = PBXGroup;
+			children = (
+				3679F2B12BAD49C800DAC43E /* DiscoverView.swift */,
+			);
+			path = Discover;
+			sourceTree = "<group>";
+		};
 		E55B36142A6181EC00CB859B = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +191,7 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				3679F2A92BAD451F00DAC43E /* Athlete Section */,
 				E55B36362A61849500CB859B /* Home Feed */,
 				E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */,
 				E55B36222A6181EC00CB859B /* ContentView.swift */,
@@ -161,6 +199,7 @@
 				E55B362E2A61827600CB859B /* posts.json */,
 				3679F2702BA9690E00DAC43E /* comments.json */,
 				3679F2722BA9693000DAC43E /* replies.json */,
+				3679F2A82BAD431F00DAC43E /* athletes.json */,
 				E55B36242A6181EE00CB859B /* Assets.xcassets */,
 				E55B36262A6181EE00CB859B /* Preview Content */,
 				E55B36412A61858B00CB859B /* Extensions.swift */,
@@ -283,6 +322,7 @@
 				E55B36252A6181EE00CB859B /* Assets.xcassets in Resources */,
 				3679F2732BA9693000DAC43E /* replies.json in Resources */,
 				3679F2712BA9690E00DAC43E /* comments.json in Resources */,
+				3679F2B52BAD5D1E00DAC43E /* athletes.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -300,18 +340,22 @@
 				3679F2932BAA1DC600DAC43E /* CommentView.swift in Sources */,
 				3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */,
 				E55B36422A61858B00CB859B /* Extensions.swift in Sources */,
+				3679F2AD2BAD454D00DAC43E /* Athlete.swift in Sources */,
 				E55B36442A618D0700CB859B /* StoryListView.swift in Sources */,
 				E55B36492A618D2A00CB859B /* AddStoryCard.swift in Sources */,
 				3679F2A72BAA4A6600DAC43E /* PostView.swift in Sources */,
 				3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */,
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
+				3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */,
 				E55B36402A61852C00CB859B /* PostCardBody.swift in Sources */,
 				3679F2A32BAA27D500DAC43E /* CommentSectionView.swift in Sources */,
 				E55B36232A6181EC00CB859B /* ContentView.swift in Sources */,
 				3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */,
+				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
 				3679F2A12BAA211200DAC43E /* Post.swift in Sources */,
 				E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */,
 				3679F2872BA96AAD00DAC43E /* ProfileImage.swift in Sources */,
+				3679F2B42BAD4B0900DAC43E /* AthleteListView.swift in Sources */,
 				E55B36382A6184AB00CB859B /* PostListView.swift in Sources */,
 				E55B364D2A619B5300CB859B /* TabbarView.swift in Sources */,
 				3679F29D2BAA20A900DAC43E /* Utils.swift in Sources */,
