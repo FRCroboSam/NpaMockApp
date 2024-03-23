@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
-
+import Combine
 struct CommentSectionView: View {
     @ObservedObject var vm: PostVM
     @State var comment: String = ""
     @FocusState var isCommentFocused: Bool
-    
+    @State private var keyboardHeight: CGFloat = 0
+
     @State var replyingToId: String = ""
     @State var replyingToPost: Bool = true // replying to the post by default
     var deviceWidth: CGFloat {
@@ -91,13 +92,22 @@ struct CommentSectionView: View {
                 .background(Color.white)
 
                 if(isCommentFocused){
-                    Spacer()
-                        .frame(height: 400)
+                    VStack{
+                        Spacer()
+                            .frame(width: deviceWidth * 2, height: self.keyboardHeight)
+                    }
+                    .contentShape(Rectangle())
+                    .frame(width: deviceWidth * 2)
+                    .background(Color.white)
+                        
                 }
+
+                
             }
             
         }
-        
+        .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
+
         .navigationTitle(Text("Post Detail"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear{vm.fetchComments(postId: vm.post.post_id)}
@@ -131,3 +141,24 @@ struct customViewModifier: ViewModifier {
 ////        CommentSectionView(vm: PostVM(post: Post(image: <#T##String#>, like_count: <#T##Int#>, comment_count: <#T##Int#>, view_count: <#T##Int#>, description: <#T##String#>, profile_img: <#T##String#>, profile_name: <#T##String#>, profile_id: <#T##String#>, post_id: <#T##Int#>))
 //    }
 //}
+
+extension Publishers {
+    // 1.
+    static var keyboardHeight: AnyPublisher<CGFloat, Never> {
+        // 2.
+        let willShow = NotificationCenter.default.publisher(for: UIApplication.keyboardWillShowNotification)
+            .map { $0.keyboardHeight }
+        
+        let willHide = NotificationCenter.default.publisher(for: UIApplication.keyboardWillHideNotification)
+            .map { _ in CGFloat(0) }
+        
+        // 3.
+        return MergeMany(willShow, willHide)
+            .eraseToAnyPublisher()
+    }
+}
+extension Notification {
+    var keyboardHeight: CGFloat {
+        return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
+    }
+}

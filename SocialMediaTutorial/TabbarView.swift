@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct TabbarView: View {
+    @EnvironmentObject var athleteVM: AthleteVM
+
     @EnvironmentObject var vm: FeedVM
     @State private var selected = 1
     var deviceHeight: CGFloat {
@@ -39,7 +41,7 @@ struct TabbarView: View {
             .zIndex(0)
             .accentColor(.brown) // Accent color for the TabView
             // tab-items cover - do anything needed, height, position, alignment, etc.
-            if(!vm.showCommentSection){
+            if(!vm.showCommentSection && !athleteVM.showingFilters){
                 HStack {
                     Spacer()
                     Button(action: { self.selected = 1 } ) {

@@ -10,47 +10,40 @@ import SwiftUI
 struct DiscoverView: View {
     @EnvironmentObject var athleteVM: AthleteVM
     @State private var searchTeacher = ""
-    @State private var showingFilters: Bool = false
     
     var body: some View {
         NavigationStack{
             ZStack{
                 VStack{
                     HStack{
-                        Text("Discover, recruit, and sponsor your favorite athletes!")
-                            .padding(.leading, 20)
-                        Spacer()
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.black)
+                            TextField("Discover, engage, and sponsor your favorite athletes!", text: $searchTeacher)
+                                .foregroundColor(.black)
+                                .textContentType(.newPassword)
+                                .keyboardType(.asciiCapable)
+                                .autocorrectionDisabled()
+                                .listRowSeparator(.hidden)
+                        }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.925))
+                            .padding(.top, 10)
+                            .offset(y: 20)
+                            .navigationBarItems(trailing: Image(systemName: "bell.badge.fill"))
                     }
-                    .padding(.bottom, -10)
-                    .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
-                    
-                    HStack {
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.black)
-                        TextField("Search for an athlete", text: $searchTeacher)
-                            .foregroundColor(.black)
-                            .textContentType(.newPassword)
-                            .keyboardType(.asciiCapable)
-                            .autocorrectionDisabled()
-                            .listRowSeparator(.hidden)
-                    }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.925))
-                        .padding(.top, 10)
-                        .offset(y: 20)
-                        .navigationTitle("NPA") // Set the navigation title
-                        .navigationBarItems(trailing: Image(systemName: "bell.badge.fill"))
+                    Button {
+                        withAnimation(.easeIn){
+                            athleteVM.showingFilters = !athleteVM.showingFilters
+                            print(athleteVM.showingFilters)
+                        }
+                    } label: {
+                        HStack{
+                            Image(systemName: "line.3.horizontal.decrease")
+                            Text("Apply Filters ")
+                        }
+                    }.buttonStyle(BigButtonStyle(height: 10))
                     Spacer()
                         .frame(height: 30)
                     ScrollView{
-                        Button {
-                            withAnimation(.easeIn){
-                                showingFilters = true
-                            }
-                        } label: {
-                            HStack{
-                                Image(systemName: "line.3.horizontal.decrease")
-                                Text("Apply Filters ")
-                            }
-                        }.buttonStyle(BigButtonStyle(height: 50))
                         Divider()
                         ForEach(athleteVM.athletes){ athlete in
                             AthleteListView(athlete: athlete)
@@ -66,10 +59,15 @@ struct DiscoverView: View {
                             athleteVM.athletes.count))
                     }
                 }
-                if(showingFilters){
-                   FilterView()
-                        .zIndex(5)
+            }
+            
+            if(athleteVM.showingFilters){
+                VStack{
+                    Spacer()
+                        .frame(height: 200)
+                    FilterView()
                 }
+
             }
 
         }
@@ -77,7 +75,7 @@ struct DiscoverView: View {
 }
 struct BigButtonStyle: ButtonStyle {
     let height: CGFloat
-    @State var percentWidth = 0.75
+//    @State var percentWidth = 0.75
     @State var color: Color = .blue
     @Environment(\.isEnabled) private var isEnabled: Bool
     var deviceWidth: CGFloat {
@@ -90,9 +88,8 @@ struct BigButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
             configuration.label
-            .font(.title.bold())
             .padding()
-            .frame(width: percentWidth * deviceWidth, height: height)
+            //.frame(width: percentWidth * deviceWidth)
             .foregroundColor(isEnabled ? .white : Color(UIColor.systemGray3))
             .background(isEnabled ? color : Color(UIColor.systemGray5))
             .cornerRadius(12)

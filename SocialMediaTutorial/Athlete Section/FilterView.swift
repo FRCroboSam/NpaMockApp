@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct FilterView: View {
+    @EnvironmentObject var vm: AthleteVM
     @State private var selectedSport: String = "Swimming"
     let sports = ["Swimming", "Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
                   "Basketball", "Pickleball", "Cross Country", "Track and Field"]
@@ -23,8 +24,23 @@ struct FilterView: View {
     
     var body: some View {
             VStack{
-                Text("Apply Filters")
-                    .font(.system(size: 40))
+                HStack{
+                    Button {
+                    } label: {
+                        Text("Cancel")
+                            .tint(Color.white)
+
+                    }
+
+                    Text("Athlete Filters")
+                    Button{
+                    } label: {
+                        Text("Clear")
+                            .tint(Color.red)
+                    }
+                }
+                Divider()
+
                 DropdownPicker(items: sports)
                     .zIndex(500)
                 
@@ -43,17 +59,15 @@ struct FilterView: View {
                     .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
                     
                 }
-                .frame(width: 3/4 * 3/4 * deviceWidth)
-                .padding()
-                .background(Color.orange)
+                .background(Color(UIColor.lightGray))
                 .cornerRadius(15)
                 Spacer()
                 
             }
-        .frame(width: 3/4 * deviceWidth, height: 1/2 * deviceHeight)
+            .zIndex(15)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color.gray) // Fill the RoundedRectangle with gray color
+                .fill(Color(UIColor.lightGray)) // Fill the RoundedRectangle with gray color
         )
     }
 }

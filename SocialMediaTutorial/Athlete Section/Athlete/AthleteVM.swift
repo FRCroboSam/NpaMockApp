@@ -9,6 +9,7 @@ import Foundation
 class AthleteVM: ObservableObject{
     @Published var athletes: [Athlete] = []
     @Published var selected_athlete: Athlete?
+    @Published var showingFilters: Bool = false
     init(){
         fetchAthletes() 
     }

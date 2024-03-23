@@ -15,7 +15,6 @@ struct DropdownPicker: View {
      var items: [String]
     var body: some View{
         VStack{
-            Text("HELLO")
                 VStack{
                     VStack(alignment: .leading){
 
