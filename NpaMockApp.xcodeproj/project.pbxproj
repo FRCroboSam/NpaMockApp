@@ -29,6 +29,7 @@
 		3679F2B42BAD4B0900DAC43E /* AthleteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2B32BAD4B0900DAC43E /* AthleteListView.swift */; };
 		3679F2B52BAD5D1E00DAC43E /* athletes.json in Resources */ = {isa = PBXBuildFile; fileRef = 3679F2A82BAD431F00DAC43E /* athletes.json */; };
 		3679F2B72BAE184E00DAC43E /* FilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2B62BAE184E00DAC43E /* FilterView.swift */; };
+		3679F2B92BAE617E00DAC43E /* DropdownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2B82BAE617E00DAC43E /* DropdownPicker.swift */; };
 		E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */; };
 		E55B36232A6181EC00CB859B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36222A6181EC00CB859B /* ContentView.swift */; };
 		E55B36252A6181EE00CB859B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55B36242A6181EE00CB859B /* Assets.xcassets */; };
@@ -66,6 +67,7 @@
 		3679F2B12BAD49C800DAC43E /* DiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverView.swift; sourceTree = "<group>"; };
 		3679F2B32BAD4B0900DAC43E /* AthleteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteListView.swift; sourceTree = "<group>"; };
 		3679F2B62BAE184E00DAC43E /* FilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterView.swift; sourceTree = "<group>"; };
+		3679F2B82BAE617E00DAC43E /* DropdownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownPicker.swift; sourceTree = "<group>"; };
 		E55B361D2A6181EC00CB859B /* NpaMockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NpaMockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaTutorialApp.swift; sourceTree = "<group>"; };
 		E55B36222A6181EC00CB859B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -153,6 +155,7 @@
 				3679F2B02BAD499800DAC43E /* Discover */,
 				3679F2AB2BAD453F00DAC43E /* Athlete */,
 				3679F2B62BAE184E00DAC43E /* FilterView.swift */,
+				3679F2B82BAE617E00DAC43E /* DropdownPicker.swift */,
 			);
 			path = "Athlete Section";
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 				3679F2AD2BAD454D00DAC43E /* Athlete.swift in Sources */,
 				E55B36442A618D0700CB859B /* StoryListView.swift in Sources */,
 				E55B36492A618D2A00CB859B /* AddStoryCard.swift in Sources */,
+				3679F2B92BAE617E00DAC43E /* DropdownPicker.swift in Sources */,
 				3679F2A72BAA4A6600DAC43E /* PostView.swift in Sources */,
 				3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */,
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
