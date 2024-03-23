@@ -10,9 +10,7 @@ import SwiftUI
 struct FilterView: View {
     @State private var selectedSport: String = "Swimming"
     let sports = ["Swimming", "Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
-                  "Basketball", "Pickleball", "Cross Country", "Track and Field"
-                  
-    ]
+                  "Basketball", "Pickleball", "Cross Country", "Track and Field"]
     var deviceWidth: CGFloat{
         UIScreen.main.bounds.width
     }
@@ -27,7 +25,7 @@ struct FilterView: View {
             VStack{
                 Text("Apply Filters")
                     .font(.system(size: 40))
-                DropdownPicker()
+                DropdownPicker(items: sports)
                     .zIndex(500)
                 
                 VStack(alignment: .leading){

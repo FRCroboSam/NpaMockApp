@@ -12,24 +12,28 @@ struct DropdownPicker: View {
     
     @State private var isExpanded: Bool = false
     //let items: [String]
-    let sports = ["Swimming", "Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
-                                   "Basketball", "Pickleball", "Cross Country", "Track and Field"]
+     var items: [String]
     var body: some View{
         VStack{
             Text("HELLO")
                 VStack{
                     VStack(alignment: .leading){
+
                         HStack{
                             Text("Select a Sport: ")
                                 .font(.system(size: 20))
                             Spacer()
+
                             Image(systemName: "chevron.down")
                                 .font(.subheadline)
                                 .foregroundStyle(.gray)
                                 .rotationEffect(.degrees(isExpanded ? -180 : 0))
                         }
+                        .contentShape(Rectangle())
                         .onTapGesture {
-                            isExpanded = !isExpanded
+                            withAnimation(.easeIn){
+                                isExpanded = !isExpanded
+                            }
                         }
                         .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
                         
@@ -55,7 +59,7 @@ struct DropdownPicker: View {
                             VStack{
                                 ScrollView{
                                     VStack(alignment: .leading){
-                                        ForEach(sports, id: \.self) {
+                                        ForEach(items, id: \.self) {
                                             Text($0)
                                                 .font(.system(size: 20))
                                                 .foregroundColor(.black)
@@ -92,6 +96,7 @@ struct DropdownPicker: View {
     }
     
 }
-#Preview {
-    DropdownPicker()
-}
+//#Preview {
+//    let sports = 
+//    DropdownPicker()
+//}

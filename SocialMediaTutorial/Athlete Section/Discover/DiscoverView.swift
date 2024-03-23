@@ -42,7 +42,9 @@ struct DiscoverView: View {
                         .frame(height: 30)
                     ScrollView{
                         Button {
-                            showingFilters = true
+                            withAnimation(.easeIn){
+                                showingFilters = true
+                            }
                         } label: {
                             HStack{
                                 Image(systemName: "line.3.horizontal.decrease")
@@ -102,6 +104,8 @@ struct BigButtonStyle: ButtonStyle {
             }
     }
 }
-#Preview {
-    DiscoverView()
-}
+//#Preview {
+//    let sports = ["Swimming", "Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
+//                  "Basketball", "Pickleball", "Cross Country", "Track and Field"]
+//    DiscoverView()
+//}
