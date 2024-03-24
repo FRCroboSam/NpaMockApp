@@ -9,19 +9,30 @@ import SwiftUI
 import PhotosUI
 struct CircleProfileImage: View {
     let size: CGFloat
+    let name: String
     var body: some View {
-        
-        Image(systemName: "person.fill")
-            .font(.system(size: size))
-            .foregroundColor(.white)
+        if(name.isEmpty){
+            Image(systemName: "person.fill")
+                .font(.system(size: size))
+                .foregroundColor(.white)
+        }
+        else{
+            Image(name)
+                .resizable()
+                .font(.system(size: size))
+                .foregroundColor(.white)
+
+        }
+
         
     }
 }
 
 struct CircularProfileImage: View {
     let size: CGFloat?
+    let name: String
     var body: some View {
-        CircleProfileImage(size: size ?? 30)
+        CircleProfileImage(size: size ?? 30, name: name)
             .scaledToFill()
             .clipShape(Circle())
             .frame(width: size ?? 10, height: size ?? 10)
@@ -44,7 +55,6 @@ struct ProfileImage: View{
             .font(.system(size: 40))
             .foregroundColor(.white)
             .scaledToFill()
-            .clipShape(Circle())
             .frame(width: size, height: size)
             .background {
                 Circle().fill(

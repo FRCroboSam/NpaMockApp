@@ -27,7 +27,7 @@ struct AthleteListView: View {
                 }
             
             HStack(){
-                CircularProfileImage(size: 40)
+                CircularProfileImage(size: 40, name: athlete.profile_img)
                     .padding(.leading, 20)
                 VStack(alignment: .leading){
                     Text(athlete_text)

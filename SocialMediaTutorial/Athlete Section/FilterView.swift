@@ -9,7 +9,7 @@ import SwiftUI
 
 struct FilterView: View {
     @EnvironmentObject var vm: AthleteVM
-    @State private var selectedSport: String = "Swimming"
+    @State private var selectedSport: String = ""
     let sports = ["Swimming", "Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
                   "Basketball", "Pickleball", "Cross Country", "Track and Field"]
     var deviceWidth: CGFloat{
@@ -23,7 +23,7 @@ struct FilterView: View {
     @State private var isExpanded: Bool = false
     
     var body: some View {
-            VStack{
+        VStack(alignment: .leading ){
                 HStack{
                     Button {
                     } label: {
@@ -31,8 +31,11 @@ struct FilterView: View {
                             .tint(Color.white)
 
                     }
-
+                    Spacer()
                     Text("Athlete Filters")
+                        .font(.system(size: 15))
+                        .bold()
+                    Spacer()
                     Button{
                     } label: {
                         Text("Clear")
@@ -40,34 +43,36 @@ struct FilterView: View {
                     }
                 }
                 Divider()
-
-                DropdownPicker(items: sports)
+                Text("Sport")
+            DropdownPicker(value: $selectedSport, text: "Select a sport: ", color: Color(UIColor.systemGray3), items: sports)
                     .zIndex(500)
-                
-                VStack(alignment: .leading){
-                    HStack{
-                        Text("Choose a year: ")
-                        Spacer()
-                        Image(systemName: "chevron.down")
-                            .font(.subheadline)
-                            .foregroundStyle(.gray)
-                            .rotationEffect(.degrees(isExpanded ? -180 : 0))
-                    }
-                    .onTapGesture {
-                        isExpanded = !isExpanded
-                    }
-                    .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
-                    
-                }
-                .background(Color(UIColor.lightGray))
-                .cornerRadius(15)
                 Spacer()
                 
+//                VStack(alignment: .leading){
+//                    HStack{
+//                        Text("Choose a year: ")
+//                        Spacer()
+//                        Image(systemName: "chevron.down")
+//                            .font(.subheadline)
+//                            .foregroundStyle(.gray)
+//                            .rotationEffect(.degrees(isExpanded ? -180 : 0))
+//                    }
+//                    .onTapGesture {
+//                        isExpanded = !isExpanded
+//                    }
+//                    .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
+//                    
+//                }
+//                .background(Color(UIColor.lightGray))
+//                .cornerRadius(15)
+//                Spacer()
+                
             }
-            .zIndex(15)
+        .padding(10)
+            .frame(width: 3/4 * deviceWidth, height: 300)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color(UIColor.lightGray)) // Fill the RoundedRectangle with gray color
+                .fill(Color(UIColor.systemBlue)) // Fill the RoundedRectangle with gray color
         )
     }
 }

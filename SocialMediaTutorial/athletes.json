@@ -13,7 +13,8 @@
         "GPA": 3.8,
         "ACT_OR_SAT": 1580,
         "about": "I am good at dunking.",
-        "athlete_id": "a823edwfgt-6ewrt-4190-b11b-7981df703060"
+        "athlete_id": "a823edwfgt-6ewrt-4190-b11b-7981df703060",
+        "profile_img" : "male_athlete1"
     },
     {
         "first_name": "Alyssa",
@@ -29,7 +30,8 @@
         "GPA": 3.9,
         "ACT_OR_SAT": 1550,
         "about": "I specialize in breaststroke.",
-        "athlete_id": "b837ekwrt-9jfhd-7253-c18a-9210gh495317"
+        "athlete_id": "b837ekwrt-9jfhd-7253-c18a-9210gh495317",
+        "profile_img" : "female_athlete1"
     },
     {
         "first_name": "Michael",
@@ -45,7 +47,8 @@
         "GPA": 3.6,
         "ACT_OR_SAT": 1500,
         "about": "I play as a quarterback.",
-        "athlete_id": "c941fghjkl-3qwer-6245-z19s-8462tyu31097"
+        "athlete_id": "c941fghjkl-3qwer-6245-z19s-8462tyu31097",
+        "profile_img": "male_athlete2"
     },
     {
         "first_name": "Sophia",
@@ -61,7 +64,8 @@
         "GPA": 3.7,
         "ACT_OR_SAT": 1560,
         "about": "I excel in backhand shots.",
-        "athlete_id": "d610jklmno-2bvcx-5309-y17d-7329uiop84523"
+        "athlete_id": "d610jklmno-2bvcx-5309-y17d-7329uiop84523",
+        "profile_img": "female_athlete2"
     },
     {
         "first_name": "Elijah",
@@ -77,7 +81,8 @@
         "GPA": 3.5,
         "ACT_OR_SAT": 1520,
         "about": "I am known for my agility on the field.",
-        "athlete_id": "e492mnopqr-5vcxz-8102-p13r-9420qwer54321"
+        "athlete_id": "e492mnopqr-5vcxz-8102-p13r-9420qwer54321",
+        "profile_img": "male_athlete3"
     },
     {
         "first_name": "Olivia",
@@ -93,7 +98,8 @@
         "GPA": 3.9,
         "ACT_OR_SAT": 1580,
         "about": "I am a vault specialist.",
-        "athlete_id": "f983pqrs-4dfgh-6201-x15t-1527vbnm74238"
+        "athlete_id": "f983pqrs-4dfgh-6201-x15t-1527vbnm74238",
+        "profile_img": "female_athlete2"
     },
     {
         "first_name": "Isaac",
@@ -109,7 +115,8 @@
         "GPA": 3.7,
         "ACT_OR_SAT": 1550,
         "about": "I specialize in long jump.",
-        "athlete_id": "g184rstuvw-1erty-9304-u12v-7318dfgh67190"
+        "athlete_id": "g184rstuvw-1erty-9304-u12v-7318dfgh67190",
+        "profile_img": "male_athlete3"
     },
     {
         "first_name": "Mia",
@@ -125,7 +132,8 @@
         "GPA": 3.8,
         "ACT_OR_SAT": 1570,
         "about": "I am a setter.",
-        "athlete_id": "h275stuvwx-8dfgh-2468-j10k-6312wert82564"
+        "athlete_id": "h275stuvwx-8dfgh-2468-j10k-6312wert82564",
+        "profile_img": "female_athlete1"
     },
     {
         "first_name": "Noah",
@@ -141,7 +149,8 @@
         "GPA": 3.6,
         "ACT_OR_SAT": 1540,
         "about": "I am a pitcher.",
-        "athlete_id": "i368tghjkl-0dfgh-8527-i15l-8205rtyu43981"
+        "athlete_id": "i368tghjkl-0dfgh-8527-i15l-8205rtyu43981",
+        "profile_img": "male_athlete2"
     },
     {
         "first_name": "Emma",
@@ -157,6 +166,7 @@
         "GPA": 3.9,
         "ACT_OR_SAT": 1575,
         "about": "I am a power hitter.",
-        "athlete_id": "j450uiojkl-9fghj-7312-o12p-9438dfgh58392"
+        "athlete_id": "j450uiojkl-9fghj-7312-o12p-9438dfgh58392",
+        "profile_img": "female_athlete1"
     }
 ]

@@ -15,6 +15,7 @@ struct Athlete: Codable, Identifiable {
         case GPA
         case ACT_OR_SAT
         case about
+        case profile_img
     }
     
     var id = UUID() // Unique identifier for the post
@@ -31,6 +32,7 @@ struct Athlete: Codable, Identifiable {
     var GPA: Double
     var ACT_OR_SAT: Int
     var about: String
+    var profile_img: String
     
     
 }

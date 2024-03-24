@@ -31,7 +31,7 @@ struct CommentView: View {
             
             VStack {
                 HStack(alignment: .top ) {
-                    CircularProfileImage(size: 30)
+                    CircularProfileImage(size: 30, name: "")
                     VStack(alignment: .leading) {
                         HStack{
                             Text(vm.comment.displayName)

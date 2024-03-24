@@ -10,7 +10,7 @@ import YouTubePlayerKit
 struct FeedView: View {
     @EnvironmentObject var vm: FeedVM
     @State var showCommentSection = false
-//    @ObservedObject var postData: ReadJsonData
+    //    @ObservedObject var postData: ReadJsonData
     var deviceHeight: CGFloat {
         UIScreen.main.bounds.height
     }
@@ -27,68 +27,78 @@ struct FeedView: View {
     
     @State private var lastStateWasTop = false
     
-//    @State private var currentPost: Post
+    //    @State private var currentPost: Post
     
     var body: some View {
         let blankPost = vm.posts[0]
-        NavigationStack {
-                ZStack{
-                    
-                    ScrollView{
-                        StoryListView() // Display the list of stories
-                            .padding(.leading, 15) 
-                        PostListView(showCommentSection: false, onCommentTapped: {
-                            withAnimation(.easeIn){
-                            }
-                        }) // Display the list of posts
-                    }
-                    .navigationTitle("NPA") // Set the navigation title
-                    .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
-                    .brightness(vm.showCommentSection ? -0.3 : 0.0)
-                    .scrollDisabled(vm.showCommentSection)
-                    .zIndex(0)
-                    if(vm.showCommentSection){
+        VStack(spacing: 0) {
+            NavBar()
+
+            ZStack{
+                ScrollView{
+                    Spacer()
+                        .frame(height: 10)
+                    StoryListView() // Display the list of stories
+                        .padding(.leading, 15)
+                    PostListView(showCommentSection: false, onCommentTapped: {
+                        withAnimation(.easeIn){
+                        }
+                    }) // Display the list of posts
+                }
+//                .navigationTitle("NPA") // Set the navigation title
+//                .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
+                .brightness(vm.showCommentSection ? -0.3 : 0.0)
+                .scrollDisabled(vm.showCommentSection)
+                .zIndex(0)
+                if(vm.showCommentSection){
+                    VStack{
+                        Spacer()
+                            .frame(height: 200)
                         VStack{
                             Spacer()
-                                .frame(height: 200)
-                            VStack{
-                                Spacer()
-                                    .frame(height: 10)
-                                Text("Comments")
-                                Spacer()
-                                    .frame(height: 10)
-                                Divider()
-                                    .background(Color.gray)
-                                Spacer()
-                                    .frame(height: 10)
-                            }
-                            .background{
-                                Color.white
-                            }
-                            .cornerRadius(40)
-                            .contentShape(Rectangle())
-                            .highPriorityGesture(dragGesture)
-                            .offset(
-                                y: lastTranslation.height + 10
-                            )
-                            
-                            VStack {
-                                GeometryReader { geometry in
-                                    CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
-                                        .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
-                                        .background(Color.white)
-                                        .zIndex(12)
-                                }
-                            }
-                            .offset(y: self.lastTranslation.height)
-                            
+                                .frame(height: 10)
+                            Text("Comments")
+                            Spacer()
+                                .frame(height: 10)
+                            Divider()
+                                .background(Color.gray)
+                            Spacer()
+                                .frame(height: 10)
                         }
+                        .background{
+                            Color.white
+                        }
+                        .cornerRadius(40)
+                        .contentShape(Rectangle())
+                        .highPriorityGesture(dragGesture)
+                        .offset(
+                            y: lastTranslation.height + 10
+                        )
+                        
+                        VStack {
+                            GeometryReader { geometry in
+                                CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
+                                    .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
+                                    .background(Color.white)
+                                    .zIndex(12)
+                            }
+                        }
+                        .offset(y: self.lastTranslation.height)
+                        
                     }
-                    
-                    
                 }
+                
+                
+            }
+            
+            
         }
+        .ignoresSafeArea(.all, edges: .top)
     }
+        
+        func dismissKeyboard(){
+            UIApplication.shared.dismissKeyboard()
+        }
         func scrollViewHeight(for geometry: GeometryProxy) -> CGFloat {
             let vStackFrame = geometry.frame(in: .global)
             let vStackTop = vStackFrame.minY
@@ -111,9 +121,9 @@ struct FeedView: View {
                     if(abs(value.translation.height) >= 0.01){
                         lastNonZeroTranslation.height = value.translation.height
                     }
-                
+                    
                     lastTranslation.height = max(-220, min(lastTranslation.height, 500)) //dont go too far off bottom of the screen
-
+                    
                 }
                 .onEnded { value in
                     
@@ -125,10 +135,13 @@ struct FeedView: View {
                     print(isUp ? "UP" : "DOWN")
                     print(isSwipe ? "Swipe" : "")
                     withAnimation(.easeIn){
+                        //swiping from the top
                         if(!isUp && isSwipe && abs(peakVelocity) > 700 && lastTranslation.height < 0){
+                            self.dismissKeyboard()
                             lastTranslation.height = 0
                         }
                         else if(!isUp && isSwipe && abs(peakVelocity) > 900) {
+                            self.dismissKeyboard()
                             lastTranslation.height = 500
                             withAnimation(.easeOut) {
                                 vm.showCommentSection = false
@@ -136,7 +149,7 @@ struct FeedView: View {
                                     lastTranslation.height = 0
                                 }
                             }
-
+                            
                         }
                         else if (lastTranslation.height < -92 || isUp && isSwipe) {
                             lastTranslation.height = -220
@@ -146,12 +159,13 @@ struct FeedView: View {
                         }
                     }
                     peakVelocity = 0
-
-
+                    
+                    
                     
                 }
         }
-    }
+}
+
 
 //struct HomeView_Previews: PreviewProvider {
 //    static var previews: some View {

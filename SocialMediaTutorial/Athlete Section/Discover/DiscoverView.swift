@@ -15,6 +15,13 @@ struct DiscoverView: View {
         NavigationStack{
             ZStack{
                 VStack{
+                    Text("DISCOVER")
+                        .bold()
+                        .font(.title)
+                    Divider()
+                    Text("Sponsor and interact with your favorite athletes!")
+                        .bold()
+                        .font(.subheadline)
                     HStack{
                         HStack {
                             Image(systemName: "magnifyingglass")
@@ -30,6 +37,8 @@ struct DiscoverView: View {
                             .offset(y: 20)
                             .navigationBarItems(trailing: Image(systemName: "bell.badge.fill"))
                     }
+                    Spacer()
+                        .frame(height: 30)
                     Button {
                         withAnimation(.easeIn){
                             athleteVM.showingFilters = !athleteVM.showingFilters
@@ -46,11 +55,12 @@ struct DiscoverView: View {
                     ScrollView{
                         Divider()
                         ForEach(athleteVM.athletes){ athlete in
-                            AthleteListView(athlete: athlete)
+                            AthleteBannerView(athlete: athlete)
                                 .onTapGesture{
                                     print("HELLO")
                                 }
-                            Divider()
+                                .background(Color.gray)
+//                            Divider()
                         }
                     }
                     
@@ -59,16 +69,13 @@ struct DiscoverView: View {
                             athleteVM.athletes.count))
                     }
                 }
-            }
-            
-            if(athleteVM.showingFilters){
-                VStack{
-                    Spacer()
-                        .frame(height: 200)
+                if(athleteVM.showingFilters){
                     FilterView()
+                    
                 }
-
             }
+
+
 
         }
     }

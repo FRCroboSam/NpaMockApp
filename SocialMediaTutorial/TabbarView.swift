@@ -18,30 +18,61 @@ struct TabbarView: View {
     var body: some View {
         ZStack{
             TabView(selection: $selected) {
-                FeedView()
-                    .tabItem {
-                        Text("")
-                    }.tag(1)
+                VStack{
+                    FeedView()
+                        .tabItem {
+                            Text("")
+                        }.tag(1)
+                        .toolbar {
+                            ToolbarItem(placement: .principal) {
+                                HStack {
+                                    Image(systemName: "sun.min.fill")
+                                    Text("NPA+").font(.headline)
+                                }
+                            }
+                        }
+                        .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
                     
-                    .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
+                }
+
                 
                 DiscoverView()
                     .tabItem {
                         Text("")
                     }.tag(2)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            HStack {
+                                Image(systemName: "sun.min.fill")
+                                Text("Title").font(.headline)
+                            }
+                        }
+                    }
                 Text("New Post")
                     .tabItem {
                         Text("")
                     }.tag(3)
+                    .navigationBarTitleDisplayMode(.inline)
+                    .toolbar {
+                        ToolbarItem(placement: .principal) {
+                            HStack {
+                                Image(systemName: "sun.min.fill")
+                                Text("Title").font(.headline)
+                            }
+                        }
+                    }
                 Text("Profile View")
                     .tabItem {
                         Text("")
                     }.tag(4)
             }
+            .navigationTitle("NPA")
+            .navigationBarTitleDisplayMode(.large)
             .zIndex(0)
             .accentColor(.brown) // Accent color for the TabView
             // tab-items cover - do anything needed, height, position, alignment, etc.
-            if(!vm.showCommentSection && !athleteVM.showingFilters){
+            if(!vm.showCommentSection){
                 HStack {
                     Spacer()
                     Button(action: { self.selected = 1 } ) {

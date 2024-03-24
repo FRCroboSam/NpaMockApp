@@ -52,13 +52,16 @@ struct CommentSectionView: View {
                 }
                 HStack {
                     //TODO: ADD Dismiss keyboard when the user sends it
-                    CircularProfileImage(size: 40)
+                    CircularProfileImage(size: 40, name: vm.post.profile_img)
                         .padding(.leading, 20)
                     HStack{
                         TextField("Add a comment for " + vm.post.profile_name, text: $comment)
                             .focused($isCommentFocused)
                         //Text(comment).opacity(0).padding()
                         Button(action: {
+                            withAnimation(.easeIn){
+                                self.dismissKeyboard()
+                            }
                             if(self.vm.currentParentReply != nil ){
                                 self.vm.replyToComment(commentText: comment, parentId: (self.vm.currentParentReply?.comment.commentId)!)
                                 self.comment = ""
@@ -113,6 +116,10 @@ struct CommentSectionView: View {
         .onAppear{vm.fetchComments(postId: vm.post.post_id)}
     }
     
+    private func dismissKeyboard() {
+      UIApplication.shared.dismissKeyboard()
+    }
+    
     
 }
 struct customViewModifier: ViewModifier {
@@ -162,3 +169,8 @@ extension Notification {
         return (userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect)?.height ?? 0
     }
 }
+
+extension UIApplication {
+  func dismissKeyboard() {
+    sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    } }

@@ -9,7 +9,9 @@ import Foundation
 import SwiftUI
 
 struct DropdownPicker: View {
-    
+    @Binding var value:String
+    let text: String
+    let color: Color
     @State private var isExpanded: Bool = false
     //let items: [String]
      var items: [String]
@@ -19,7 +21,7 @@ struct DropdownPicker: View {
                     VStack(alignment: .leading){
 
                         HStack{
-                            Text("Select a Sport: ")
+                            Text(value.isEmpty ? text : value)
                                 .font(.system(size: 20))
                             Spacer()
 
@@ -37,15 +39,15 @@ struct DropdownPicker: View {
                         .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
                         
                     }
-                    .frame(width: 3/4 * 3/4 * deviceWidth)
+                    .frame(width: 5/6 * 3/4 * deviceWidth)
                     .padding()
-                    .background(Color.orange)
+                    .background(color)
                     .clipShape(
                         .rect(
-                            topLeadingRadius: 20,
-                            bottomLeadingRadius: isExpanded ? 0 : 20,
-                            bottomTrailingRadius: isExpanded ? 0 : 20,
-                            topTrailingRadius: 20
+                            topLeadingRadius: 10,
+                            bottomLeadingRadius: isExpanded ? 0 : 10,
+                            bottomTrailingRadius: isExpanded ? 0 : 10,
+                            topTrailingRadius: 10
                         )
                     )
                 }
@@ -58,26 +60,44 @@ struct DropdownPicker: View {
                             VStack{
                                 ScrollView{
                                     VStack(alignment: .leading){
-                                        ForEach(items, id: \.self) {
-                                            Text($0)
-                                                .font(.system(size: 20))
-                                                .foregroundColor(.black)
-                                                .multilineTextAlignment(.leading) // Align text to the left
-                                                .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
-                                            Divider()
+                                        ForEach(items, id: \.self) {item in
+                                            VStack{
+                                                Text(item)
+                                                    .font(.system(size: 20))
+                                                    .foregroundColor(.black)
+                                                    .multilineTextAlignment(.leading) // Align text to the left
+                                                    .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
+
+                                                Divider()
+                                            }
+                                            .contentShape(Rectangle())
+                                            .onTapGesture {
+                                                withAnimation(.easeIn){
+                                                    value = item
+                                                    isExpanded = false
+                                                    
+                                                }
+                                                
+                                                
+                                            }
+                                            
+
+                                            
+                                            
+
                                             
                                         }
                                     }
                                 }
                             }
-                            .frame(width: 3/4 * 3/4 * deviceWidth, height: 200)
+                            .frame(width: 5/6 * 3/4 * deviceWidth, height: 200)
                             .padding()
-                            .background(Color.orange)
+                            .background(color)
                             .clipShape(
                                 .rect(
                                     topLeadingRadius: 0,
-                                    bottomLeadingRadius: 20,
-                                    bottomTrailingRadius: 20,
+                                    bottomLeadingRadius: 10,
+                                    bottomTrailingRadius: 10,
                                     topTrailingRadius: 0
                                 )
                             )
@@ -96,6 +116,6 @@ struct DropdownPicker: View {
     
 }
 //#Preview {
-//    let sports = 
-//    DropdownPicker()
+//    @State var value = ""
+//    DropdownPicker(value: $value, text: "hello", color: Color.blue, items: ["basketball"])
 //}
