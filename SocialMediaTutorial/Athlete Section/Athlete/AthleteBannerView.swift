@@ -28,20 +28,25 @@ struct AthleteBannerView: View {
                     .frame(width: 100, height: 100)
 
                     .clipped()
-                    .clipShape(Parallelogram())
+                    .clipShape(Parallelogram(angle: 30))
                 VStack(alignment: .leading){
                     Text(athlete.first_name.uppercased())
                         .font(.subheadline)
+                        .foregroundStyle(.white)
                     Text(athlete.last_name.uppercased())
                         .font(.headline)
+                        .foregroundStyle(.white)
+
                     Text(athlete.city + ", " + athlete.state)
+                        .foregroundStyle(.white)
+
                 }
                 Spacer()
                 Image(systemName: "chevron.down")
-                    .font(.subheadline)
+                    .font(.headline)
                     .foregroundStyle(.white)
                     .rotationEffect(.degrees(270))
-                Spacer()
+                    .padding(.trailing, 30)
                 
                 
             }
@@ -62,9 +67,10 @@ struct AthleteBannerView: View {
     return AthleteBannerView(athlete: athlete2)
 }
 struct Parallelogram: Shape {
+    let angle: CGFloat
     func path(in rect: CGRect) -> Path {
         var path = Path()
-        let angleAdjustment: CGFloat = 30 // Adjust this value to change the angle
+        let angleAdjustment: CGFloat = angle // Adjust this value to change the angle
         path.move(to: CGPoint(x: rect.minX + angleAdjustment, y: rect.minY)) // Top left
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))    // Top right
         path.addLine(to: CGPoint(x: rect.maxX - angleAdjustment, y: rect.maxY)) // Bottom right

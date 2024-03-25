@@ -34,5 +34,7 @@ struct Athlete: Codable, Identifiable {
     var about: String
     var profile_img: String
     
-    
+    static func defaultAthlete() -> Athlete{
+        return Athlete(first_name: "Bobby", last_name: "Williams", gender: "male", sport: "Basketball", height: "6'9", year: "Class of '25", city: "Omaha", state: "Nebraska", age: 12, weight: 110, GPA: 3.8, ACT_OR_SAT: 1400, about: "Passionate Player", profile_img: "male_athlete3")
+    }
 }

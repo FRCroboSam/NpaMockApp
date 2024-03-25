@@ -10,7 +10,8 @@ import SwiftUI
 struct DiscoverView: View {
     @EnvironmentObject var athleteVM: AthleteVM
     @State private var searchTeacher = ""
-    
+    @State private var selected_athlete: Athlete?
+    @State private var goToAthleteProfile = false
     var body: some View {
         NavigationStack{
             ZStack{
@@ -49,34 +50,38 @@ struct DiscoverView: View {
                             Image(systemName: "line.3.horizontal.decrease")
                             Text("Apply Filters ")
                         }
-                    }.buttonStyle(BigButtonStyle(height: 10))
+                    }.buttonStyle(BigButtonStyle(height: 10, padding: 20))
                     Spacer()
                         .frame(height: 30)
                     ScrollView{
                         Divider()
                         ForEach(athleteVM.athletes){ athlete in
-                            AthleteBannerView(athlete: athlete)
-                                .onTapGesture{
-                                    print("HELLO")
-                                }
-                                .background(Color.gray)
-//                            Divider()
+                            
+                            NavigationLink{
+                                AthleteProfileView(athlete: athlete)
+                            }label: {
+                                AthleteBannerView(athlete: athlete)
+
+                            }
+
+                        }
+                        
+                        
+                        .onAppear{
+                            goToAthleteProfile = false
+                            print(String(
+                                athleteVM.athletes.count))
                         }
                     }
-                    
-                    .onAppear{
-                        print(String(
-                            athleteVM.athletes.count))
+                    if(athleteVM.showingFilters){
+                        FilterView()
+                        
                     }
                 }
-                if(athleteVM.showingFilters){
-                    FilterView()
-                    
-                }
+                
+                
+                
             }
-
-
-
         }
     }
 }
@@ -84,6 +89,8 @@ struct BigButtonStyle: ButtonStyle {
     let height: CGFloat
 //    @State var percentWidth = 0.75
     @State var color: Color = .blue
+    
+    let padding: CGFloat?
     @Environment(\.isEnabled) private var isEnabled: Bool
     var deviceWidth: CGFloat {
         UIScreen.main.bounds.width
@@ -95,10 +102,11 @@ struct BigButtonStyle: ButtonStyle {
     
     func makeBody(configuration: Configuration) -> some View {
             configuration.label
-            .padding()
+            .padding(padding ?? 20)
             //.frame(width: percentWidth * deviceWidth)
             .foregroundColor(isEnabled ? .white : Color(UIColor.systemGray3))
             .background(isEnabled ? color : Color(UIColor.systemGray5))
+            .frame(height: height)
             .cornerRadius(12)
             .overlay {
                 if configuration.isPressed {
