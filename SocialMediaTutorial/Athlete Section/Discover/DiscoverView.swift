@@ -14,81 +14,86 @@ struct DiscoverView: View {
     @State private var goToAthleteProfile = false
     var body: some View {
         NavigationStack{
-            ZStack{
-                VStack{
-                    Text("DISCOVER")
-                        .bold()
-                        .font(.title)
-                    Divider()
-                    Text("Sponsor and interact with your favorite athletes!")
-                        .bold()
-                        .font(.subheadline)
-                    HStack{
-                        HStack {
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.black)
-                            TextField("Discover, engage, and sponsor your favorite athletes!", text: $searchTeacher)
-                                .foregroundColor(.black)
-                                .textContentType(.newPassword)
-                                .keyboardType(.asciiCapable)
-                                .autocorrectionDisabled()
-                                .listRowSeparator(.hidden)
-                        }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.925))
-                            .padding(.top, 10)
-                            .offset(y: 20)
-                            .navigationBarItems(trailing: Image(systemName: "bell.badge.fill"))
-                    }
-                    Spacer()
-                        .frame(height: 30)
-                    Button {
-                        withAnimation(.easeIn){
-                            athleteVM.showingFilters = !athleteVM.showingFilters
-                            print(athleteVM.showingFilters)
-                        }
-                    } label: {
+            VStack{
+                DiscoverNavBar()
+                ZStack{
+                    VStack{
                         HStack{
-                            Image(systemName: "line.3.horizontal.decrease")
-                            Text("Apply Filters ")
+                            HStack {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.black)
+                                TextField("Discover, sponsor your favorite athletes!", text: $searchTeacher)
+                                    .foregroundColor(.black)
+                                    .textContentType(.newPassword)
+                                    .keyboardType(.asciiCapable)
+                                    .autocorrectionDisabled()
+                                    .listRowSeparator(.hidden)
+                            }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.925))
+//                                .padding(.top, 10)
+//                                .offset(y: 20)
                         }
-                    }.buttonStyle(BigButtonStyle(height: 10, padding: 20))
-                    Spacer()
-                        .frame(height: 30)
-                    ScrollView{
+                        //                    Spacer()
+                        //                        .frame(height: 30)
+                        HStack(){
+//                            Text("Sponsor and interact with your favorite athletes!")
+//                                .bold()
+//                                .font(.subheadline)
+                            Spacer()
+                            Button {
+                                withAnimation(.easeIn){
+                                    athleteVM.showingFilters = !athleteVM.showingFilters
+                                    print(athleteVM.showingFilters)
+                                }
+                            } label: {
+                                HStack{
+                                    Image(systemName: "line.3.horizontal.decrease")
+                                    Text("Filter")
+                                }
+                            }.buttonStyle(BigButtonStyle(height: 40, color: Color(UIColor.systemGray2), padding: 30))
+                                .padding(.trailing, 30)
+                        }
+                        Spacer()
+                            .frame(height: 10)
                         Divider()
-                        ForEach(athleteVM.athletes){ athlete in
-                            
-                            NavigationLink{
-                                AthleteProfileView(athlete: athlete)
-                            }label: {
-                                AthleteBannerView(athlete: athlete)
-
+                        
+                        ScrollView{
+                            ForEach(athleteVM.athletes){ athlete in
+                                
+                                NavigationLink{
+                                    AthleteProfileView(athlete: athlete)
+                                }label: {
+                                    AthleteBannerView(athlete: athlete)
+                                    
+                                }
+                                
                             }
-
+                            
+                            
+                            .onAppear{
+                                goToAthleteProfile = false
+                                print(String(
+                                    athleteVM.athletes.count))
+                            }
                         }
-                        
-                        
-                        .onAppear{
-                            goToAthleteProfile = false
-                            print(String(
-                                athleteVM.athletes.count))
+                        if(athleteVM.showingFilters){
+                            FilterView()
+                            
                         }
                     }
-                    if(athleteVM.showingFilters){
-                        FilterView()
-                        
-                    }
+                    
+                    
+                    
                 }
-                
-                
-                
-            }
+            }        .ignoresSafeArea(.all, edges: .top)
+
         }
+
     }
 }
 struct BigButtonStyle: ButtonStyle {
     let height: CGFloat
 //    @State var percentWidth = 0.75
-    @State var color: Color = .blue
+    @State var color: Color = .orange
     
     let padding: CGFloat?
     @Environment(\.isEnabled) private var isEnabled: Bool
@@ -107,7 +112,7 @@ struct BigButtonStyle: ButtonStyle {
             .foregroundColor(isEnabled ? .white : Color(UIColor.systemGray3))
             .background(isEnabled ? color : Color(UIColor.systemGray5))
             .frame(height: height)
-            .cornerRadius(12)
+            .cornerRadius(20)
             .overlay {
                 if configuration.isPressed {
                     Color(white: 1.0, opacity: 0.2)

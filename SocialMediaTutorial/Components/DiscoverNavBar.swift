@@ -20,11 +20,13 @@ struct DiscoverNavBar: View{
                     .resizable()
                     .scaledToFit()
                     .frame(width: 50, height: 50)
-                Text("NPA+")
+                Text("Discover")
                     .foregroundStyle(Color.white)
                     .bold()
                     .font(.title)
                 Spacer()
+                Image(systemName: "bell.fill")
+                    .padding(.trailing, 30)
             }
         }
         .background{

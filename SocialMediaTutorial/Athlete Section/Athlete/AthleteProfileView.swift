@@ -57,6 +57,8 @@ struct AthleteProfileView: View {
                             Text("Follow")
                                 .font(.system(size: 12))
                         }.buttonStyle(BigButtonStyle(height: 30, padding: 10))
+                        Spacer()
+                            .frame(width: 20)
                         Button{
                             
                         }label:{
@@ -66,6 +68,8 @@ struct AthleteProfileView: View {
                                     .font(.system(size: 12))
                             }
                         }.buttonStyle(BigButtonStyle(height: 30, padding: 5))
+                        Spacer()
+                            .frame(width: 20)
                         Image(systemName: "ellipsis.message.fill")
                             .font(.system(size: 27))
                             .foregroundStyle(.blue)
@@ -84,6 +88,8 @@ struct AthleteProfileView: View {
                 
             }
             .frame(width: deviceWidth, height: 100)
+            Divider()
+            
             Spacer()
         }
         .navigationBarBackButtonHidden(true)
