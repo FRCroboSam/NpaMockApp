@@ -23,12 +23,16 @@ struct PostView: View {
     var onCommentTapped: () -> Void // Closure to handle comment button tap
 
     var body: some View {
-        VStack {
+        VStack(spacing: 0) {
             PostCardHeader(profile_img: profile_img, profile_name: profile_name, profile_id: profile_id)
+                .background{
+                    Color(hex: "0A66C2")
+                }
             // Display the header section of the post card, including profile image, name, and ID
             
             PostCardBody(image_or_video: image_or_video, like_count: like_count, comment_count: comment_count, view_count: view_count, post: post, description: description,
                          onCommentTapped: onCommentTapped)
+            .padding(.top, -10)
                          
             
         }

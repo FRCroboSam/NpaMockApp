@@ -13,9 +13,12 @@ struct AddStoryCard: View {
             Image(systemName: "plus.circle")
                 .font(.title)
                 .foregroundColor(.white)
-                .frame(width: 60, height: 60)
+                .frame(width: 80, height: 80)
                 .background(Color.blue)
                 .clipShape(Circle())
+            Text("Your Story")
+                .font(.footnote)
+                .tint(.gray)
         }
     }
 }

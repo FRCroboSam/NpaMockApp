@@ -23,14 +23,6 @@ struct TabbarView: View {
                         .tabItem {
                             Text("")
                         }.tag(1)
-                        .toolbar {
-                            ToolbarItem(placement: .principal) {
-                                HStack {
-                                    Image(systemName: "sun.min.fill")
-                                    Text("NPA+").font(.headline)
-                                }
-                            }
-                        }
                         .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
                     
                 }
@@ -41,14 +33,6 @@ struct TabbarView: View {
                         Text("")
                     }.tag(2)
                     .navigationBarTitleDisplayMode(.inline)
-                    .toolbar {
-                        ToolbarItem(placement: .principal) {
-                            HStack {
-                                Image(systemName: "sun.min.fill")
-                                Text("Title").font(.headline)
-                            }
-                        }
-                    }
                 Text("New Post")
                     .tabItem {
                         Text("")
@@ -76,22 +60,23 @@ struct TabbarView: View {
                 HStack {
                     Spacer()
                     Button(action: { self.selected = 1 } ) {
-                        Image(systemName: "house") // Tab icon for HomeView
+                        Image(systemName: self.selected == 1 ? "house.fill" : "house") // Tab icon for HomeView
                             .font(.system(size: 30))
-                            .tint(self.selected == 1 ? .brown : .gray)
+                            .tint(self.selected == 1 ? .blue : .gray)
                     }
                     Spacer()
                     Button(action: { self.selected = 2 } ) {
                         Image(systemName: "magnifyingglass") // Tab icon for Search View
                             .font(.system(size: 30))
-                            .tint(self.selected == 2 ? .brown : .gray)
+                            .bold(self.selected == 2)
+                            .tint(self.selected == 2 ? .blue : .gray)
                         
                     }
                     Spacer()
                     Button(action: { self.selected = 3 } ) {
                         Image(systemName: "square.and.pencil") // Tab icon for New Post
                             .font(.system(size: 30))
-                            .tint(self.selected == 3 ? .brown : .gray)
+                            .tint(self.selected == 3 ? .blue : .gray)
                         
                     }
                     Spacer()

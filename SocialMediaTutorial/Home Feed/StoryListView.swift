@@ -12,10 +12,17 @@ struct StoryListView: View {
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) { // Horizontal scroll view for displaying story cards
-            HStack {
+            Spacer()
+                .frame(height: 5)
+            HStack(spacing: 0) {
+                Spacer()
+                    .frame(width: 12)
                 AddStoryCard() // Display the "Add Story" card
                 ForEach(postData.posts) { post in // Iterate over each post in the data
-                    StoryCard(image: post.profile_img) // Display a story card with the post's profile image
+                    Spacer()
+                        .frame(width: 12)
+                    StoryCard(post: post)
+                        .frame(width: 85, height: 85)// Display a story card with the post's profile image
                 }
             }
         }

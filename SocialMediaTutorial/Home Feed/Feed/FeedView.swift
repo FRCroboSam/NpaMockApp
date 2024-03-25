@@ -39,11 +39,12 @@ struct FeedView: View {
                     Spacer()
                         .frame(height: 10)
                     StoryListView() // Display the list of stories
-                        .padding(.leading, 15)
+                    Divider()
                     PostListView(showCommentSection: false, onCommentTapped: {
                         withAnimation(.easeIn){
                         }
                     }) // Display the list of posts
+                    .padding(.top, -30)
                 }
 //                .navigationTitle("NPA") // Set the navigation title
 //                .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items

@@ -14,25 +14,34 @@ struct PostCardHeader: View {
     let profile_id: String
     
     var body: some View {
-        HStack {
-            Image(profile_img)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 40, height: 40)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
-            
-            VStack(alignment: .leading) {
-                Text(profile_name).bold()
-                Text(profile_id)
-                    .font(.footnote)
-                    .foregroundColor(.gray)
-            }
+        VStack{
             Spacer()
-            Image(systemName: "ellipsis")
-                .padding(.horizontal, 15)
+                .frame(height: 10)
+            HStack {
+                Image(profile_img)
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 40, height: 40)
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 
+                VStack(alignment: .leading) {
+                    Text(profile_name).bold()
+                        .foregroundStyle(.white)
+                    Text(profile_id)
+                        .font(.footnote)
+                        .foregroundStyle(.white)
+                }
+                Spacer()
+                Image(systemName: "ellipsis")
+                    .padding(.horizontal, 15)
+                    .foregroundStyle(.white)
+                
+                
+            }
+            .padding(.leading, 15)
+            Spacer()
+                .frame(height: 20)
         }
-        .padding(.leading, 15)
 
     }
 }

@@ -7,20 +7,21 @@
 
 import SwiftUI
 
-struct StoryCard: View {
-    let image: String // Image name or URL
-    
+    struct StoryCard: View {
+    let post: Post
     var body: some View {
         VStack {
-            Image(image) // Display the image
+            Image(post.profile_img) // Display the image
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 60, height: 60) // Set the size of the image
+                .frame(width: 80, height: 80) // Set the size of the image
                 .clipShape(Circle()) // Clip the image into a circle shape
                 .overlay(
                     Circle()
                         .stroke(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .leading, endPoint: .trailing), lineWidth: 2)
                 )
+            Text(post.profile_name)
+                .font(.footnote)
                 // Add an overlay circle stroke with a gradient color
         }
     }

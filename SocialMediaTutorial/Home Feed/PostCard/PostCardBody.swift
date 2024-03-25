@@ -18,7 +18,7 @@ struct PostCardBody: View {
     var onCommentTapped: () -> Void // Closure to handle comment button tap
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 15) {
+        VStack(alignment: .leading, spacing: 0) {
             if(image_or_video.contains("youtube")){
                 CustomVideoPlayer(YoutubePlayer: YouTubePlayer(stringLiteral: "VIDEO"), url: image_or_video)
             }
@@ -28,7 +28,8 @@ struct PostCardBody: View {
                     .aspectRatio(contentMode: .fit)
 //                    .roundedCorner(20, corners: [.bottomLeft, .topRight, .bottomRight])
             }
-
+            Spacer()
+                .frame(height: 15)
             HStack {
                 HStack(spacing: 3) {
                     ToggleButton(color: Color.red, imageName: "heart")
@@ -61,7 +62,8 @@ struct PostCardBody: View {
             .padding(.leading, 15)
 
             .font(.callout)
-            
+            Spacer()
+                .frame(height: 15)
             Text(description)
                 .lineLimit(2)
                 .multilineTextAlignment(.leading)
