@@ -16,6 +16,7 @@ struct TabbarView: View {
         UIScreen.main.bounds.height
     }
     var body: some View {
+        
         ZStack{
             TabView(selection: $selected) {
                 VStack{
@@ -23,7 +24,7 @@ struct TabbarView: View {
                         .tabItem {
                             Text("")
                         }.tag(1)
-                        .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
+                        .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
                     
                 }
 
@@ -33,6 +34,8 @@ struct TabbarView: View {
                         Text("")
                     }.tag(2)
                     .navigationBarTitleDisplayMode(.inline)
+                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
+
                 Text("New Post")
                     .tabItem {
                         Text("")
@@ -46,10 +49,14 @@ struct TabbarView: View {
                             }
                         }
                     }
+                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
+
                 Text("Profile View")
                     .tabItem {
                         Text("")
                     }.tag(4)
+                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
+
             }
             .navigationTitle("NPA")
             .navigationBarTitleDisplayMode(.large)
@@ -57,47 +64,84 @@ struct TabbarView: View {
             .accentColor(.brown) // Accent color for the TabView
             // tab-items cover - do anything needed, height, position, alignment, etc.
             if(!vm.showCommentSection){
-                HStack {
-                    Spacer()
-                    Button(action: { self.selected = 1 } ) {
-                        Image(systemName: self.selected == 1 ? "house.fill" : "house") // Tab icon for HomeView
-                            .font(.system(size: 30))
-                            .tint(self.selected == 1 ? .blue : .gray)
+                    HStack {
+                        Spacer()
+                        Button(action: { self.selected = 1 } ) {
+                            Image(systemName: self.selected == 1 ? "house.fill" : "house") // Tab icon for HomeView
+                                .font(.system(size: 30))
+                                .tint(self.selected == 1 ? .blue : .gray)
+                        }
+                        Spacer()
+                        Button(action: { self.selected = 2 } ) {
+                            Image(systemName: "magnifyingglass") // Tab icon for Search View
+                                .font(.system(size: 30))
+                                .bold(self.selected == 2)
+                                .tint(self.selected == 2 ? .blue : .gray)
+                            
+                        }
+                        Spacer()
+                        Button(action: { self.selected = 3 } ) {
+                            Image(systemName: "square.and.pencil") // Tab icon for New Post
+                                .font(.system(size: 30))
+                                .tint(self.selected == 3 ? .blue : .gray)
+                            
+                        }
+                        Spacer()
+                        Button(action: { self.selected = 4 } ) {
+                            Image(systemName:  "person") // Tab icon for Profile View
+                                .font(.system(size: 30))
+                                .tint(self.selected == 4 ? .brown : .gray)
+                            
+                        }
+                        Spacer()
                     }
-                    Spacer()
-                    Button(action: { self.selected = 2 } ) {
-                        Image(systemName: "magnifyingglass") // Tab icon for Search View
-                            .font(.system(size: 30))
-                            .bold(self.selected == 2)
-                            .tint(self.selected == 2 ? .blue : .gray)
-                        
+                    
+                    
+                    .padding(.bottom, 15)
+                    .zIndex(10)
+
+                    .frame(height: 100)
+                
+                    .background{
+                        Color.white
+                            .shadow(color: Color.blue, radius: 5, x: 0, y: 0)
                     }
-                    Spacer()
-                    Button(action: { self.selected = 3 } ) {
-                        Image(systemName: "square.and.pencil") // Tab icon for New Post
-                            .font(.system(size: 30))
-                            .tint(self.selected == 3 ? .blue : .gray)
-                        
-                    }
-                    Spacer()
-                    Button(action: { self.selected = 4 } ) {
-                        Image(systemName:  "person") // Tab icon for Profile View
-                            .font(.system(size: 30))
-                            .tint(self.selected == 4 ? .brown : .gray)
-                        
-                    }
-                    Spacer()
+                    .offset(y: 1/2 * deviceHeight - 50 )
+                    //                .frame(width: deviceWidth)
+                    
                 }
-                .padding(.bottom, 15)
-                .zIndex(10)
-                .offset(y: 1/2 * deviceHeight - 50 )
             }
             }
-    }
+
+
 }
 
 struct TabbarView_Previews: PreviewProvider {
     static var previews: some View {
         TabbarView()
+    }
+}
+
+struct NavigationBarAccessor: UIViewControllerRepresentable {
+    var callback: (UINavigationBar) -> (AnyView)
+    private let proxyViewController = ProxyViewController()
+
+    func makeUIViewController(context: UIViewControllerRepresentableContext<NavigationBarAccessor>) -> UIViewController {
+        self.proxyViewController.callback = callback
+        return proxyViewController
+    }
+
+    func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<NavigationBarAccessor>) {
+    }
+
+    private class ProxyViewController: UIViewController {
+        var callback: ((UINavigationBar) -> AnyView)?
+
+        override func viewWillAppear(_ animated: Bool) {
+            super.viewWillAppear(animated)
+            if let navigationBar = self.navigationController?.navigationBar {
+                _ = self.callback?(navigationBar)
+            }
+        }
     }
 }

@@ -92,6 +92,7 @@ struct DiscoverView: View {
 }
 struct BigButtonStyle: ButtonStyle {
     let height: CGFloat
+    @State var cornerRadius: CGFloat =  12
 //    @State var percentWidth = 0.75
     @State var color: Color = .orange
     
@@ -112,7 +113,7 @@ struct BigButtonStyle: ButtonStyle {
             .foregroundColor(isEnabled ? .white : Color(UIColor.systemGray3))
             .background(isEnabled ? color : Color(UIColor.systemGray5))
             .frame(height: height)
-            .cornerRadius(20)
+            .cornerRadius(cornerRadius)
             .overlay {
                 if configuration.isPressed {
                     Color(white: 1.0, opacity: 0.2)

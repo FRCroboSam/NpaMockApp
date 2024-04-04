@@ -19,78 +19,157 @@ struct AthleteProfileView: View {
     var deviceWidth: CGFloat {
         UIScreen.main.bounds.width
     }
+    
+    @State var current = "Posts"
+    @Namespace var animation
     var body: some View {
         VStack(spacing: 0){
             AthleteNavBar(athleteName: athlete.first_name.prefix(1) + ". " + athlete.last_name)
-            Spacer()
-                .frame(height: 40)
-            HStack(alignment: .top) {
+            VStack{
                 Spacer()
-                    .frame(width: 20)
-                
-                Image(athlete.profile_img)
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: 120, height: 150)
-                
-                    .clipped()
-                    .clipShape(.rect(cornerRadius: 20))
-                VStack(alignment: .leading){
+                    .frame(height: 20)
+                HStack(alignment: .top) {
                     Spacer()
-                        .frame(height: 10)
-                    HStack{
-                        Text(athlete.first_name.uppercased())
-                            .font(.subheadline)
-                        
-                    }
-                    Text(athlete.last_name.uppercased())
-                        .font(.headline)
-                    Spacer()
-                        .frame(height: 10)
-                    Text(athleteHeadline) //option-shift-9 for the dot
-                    Text(athlete.sport)
-                        .foregroundStyle(.gray)
-                    HStack{
-                        Button{
-                            
-                        }label:{
-                            Text("Follow")
-                                .font(.system(size: 12))
-                        }.buttonStyle(BigButtonStyle(height: 30, padding: 10))
-                        Spacer()
-                            .frame(width: 20)
-                        Button{
-                            
-                        }label:{
-                            HStack(spacing: 5){
-                                Image(systemName: "dollarsign.arrow.circlepath")
-                                Text("Support")
-                                    .font(.system(size: 12))
-                            }
-                        }.buttonStyle(BigButtonStyle(height: 30, padding: 5))
-                        Spacer()
-                            .frame(width: 20)
-                        Image(systemName: "ellipsis.message.fill")
-                            .font(.system(size: 27))
-                            .foregroundStyle(.blue)
-                    }
+                        .frame(width: 20)
                     
-                    Divider()
+                    Image(athlete.profile_img)
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: 80, height: 100)
+                    
+                        .clipped()
+//                        .clipShape(Circle())
+                        .clipShape(.rect(cornerRadius: 20))
+                    VStack(alignment: .leading){
+
+                        HStack(){
+                            
+                            VStack(alignment: .leading){
+                                Text(athlete.first_name.uppercased())
+                                    .font(.subheadline)
+                                
+                                
+                                Text(athlete.last_name.uppercased())
+                                    .font(.headline)
+                            }
+                            Spacer()
+                            HStack{
+                                Text("1.5k")
+                                Image(systemName: "person")
+                                    
+                            }
+                                .background{
+                                    RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
+                                        .fill(Color(UIColor.systemGray4))
+                                        .padding(.horizontal, -20)
+                                        .padding(.vertical, -10)
+
+                                }
+                            Spacer()
+                            Image(systemName: "ellipsis.message.fill")
+                                .font(.system(size: 27))
+                                .foregroundStyle(.blue)
+                                .padding(.trailing, 20)
+                            
+                            
+                        }
+                        Spacer()
+                            .frame(height: 8)
+                        HStack{
+                            Text(athlete.sport)
+                                .font(.system(size: 14))
+                                .foregroundStyle(.gray)
+                            Text("|")
+                            Text(athlete.gender)
+                                .foregroundStyle(.gray)
+                        }
+                        //                    AthleteStatView(athlete: athlete, numPosts: 13, followers: 900, following: 13)
+                        
+                        
+                        //                    Spacer()
+                        //                        .frame(height: 10)
+                        //
+                        AthleteHeadline(athlete: athlete)
+                            .font(.system(size: 14))
+
+                        HStack{
+                            Text(athlete.city + ", " + athlete.state)
+                                .font(.system(size: 13))
+                        }
+                        
+                        //                    Divider()
+                        
+                    }.padding(.leading, 5)
+                    Spacer()
+                    
+                    
                     
                 }
                 Spacer()
-                Image(systemName: "chevron.down")
-                    .font(.subheadline)
-                    .foregroundStyle(.white)
-                    .rotationEffect(.degrees(270))
-                Spacer()
+                    .frame(height: 10)
+                //AthleteStatView(athlete: athlete, numPosts: 13, followers: 900, following: 13)
                 
-                
+                HStack{
+                    Button{
+                        
+                    }label:{
+                        Text("Follow")
+                            .font(.system(size: 16))
+                    }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: .blue, padding: 60))
+                    
+                    Spacer()
+                        .frame(width: 10)
+                    Button{
+                        
+                    }label:{
+                        HStack(spacing: 5){
+                            Image(systemName: "dollarsign.arrow.circlepath")
+                                .font(.system(size: 20))
+                            Text("Support")
+                                .font(.system(size: 16))
+                        }
+                    }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: .orange, padding: 40))
+                    Spacer()
+                        .frame(width: 20)
+                    
+                    
+                }
+
+                //.frame(width: deviceWidth, height: 120)
             }
-            .frame(width: deviceWidth, height: 100)
-            Divider()
+            Spacer()
+                .frame(height: 20)
+            Spacer()
+                .frame(height: 8)
+            VStack(spacing: 0){
+                HStack(spacing: 0){
+                    CustomTabBarButton(current: $current, text: "Posts", animation: animation)
+                    CustomTabBarButton(current: $current, text: "Stats", animation: animation)
+                    CustomTabBarButton(current: $current, text: "Info", animation: animation)
+                    CustomTabBarButton(current: $current, text: "Feats", animation: animation)
+                }
+                Divider()
+                    .frame(height: 2)
+                    .overlay(Color(hex: "0A66C2"))
+            }
+//            .background{
+//                Rectangle()
+//                    .strokeBorder(Color(UIColor.systemGray5))
+//                    .clipShape(
+//                        .rect(
+//                            topLeadingRadius: 20,
+//                            bottomLeadingRadius: 0,
+//                            bottomTrailingRadius: 0,
+//                            topTrailingRadius: 20
+//                        )
+//                    )
+//            }
+
             
             Spacer()
+                .frame(height: 20)
+            Spacer()
+
         }
         .navigationBarBackButtonHidden(true)
         .toolbar {
@@ -106,13 +185,12 @@ struct AthleteProfileView: View {
 
 
         .onAppear{
-            athleteHeadline = String(athlete.height) + " | " + String(athlete.weight) + " | " +  String(athlete.year) + " | " + athlete.gender
+
         }
     }
 }
 
 #Preview {
-    var athlete2 = Athlete(first_name: "Bobby", last_name: "Williams", gender: "male", sport: "Basketball", height: "6'9", year: "Class of '25", city: "Omaha", state: "Nebraska", age: 12, weight: 110, GPA: 3.8, ACT_OR_SAT: 1400, about: "Passionate Player", profile_img: "male_athlete3")
-    let athlete_headline = athlete2.height + " · " + String(athlete2.weight) + " lbs" + " · " + athlete2.year
-    return AthleteProfileView(athlete: athlete2)
+    
+    return AthleteProfileView(athlete: Athlete.defaultAthlete())
 }

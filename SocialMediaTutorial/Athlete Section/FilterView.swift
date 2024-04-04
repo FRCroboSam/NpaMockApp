@@ -69,10 +69,10 @@ struct FilterView: View {
                 
             }
         .padding(10)
-            .frame(width: 3/4 * deviceWidth, height: 300)
+        .frame(width: deviceWidth, height: 300)///3/4 * deviceWidth, height: 300)
         .background(
             RoundedRectangle(cornerRadius: 10)
-                .fill(Color(UIColor.systemBlue)) // Fill the RoundedRectangle with gray color
+                .fill(Color(UIColor.gray)) // Fill the RoundedRectangle with gray color
         )
     }
 }

@@ -143,11 +143,11 @@ struct customViewModifier: ViewModifier {
 
     }
 }
-//struct PostDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        CommentSectionView(vm: PostVM(post: Post(image: <#T##String#>, like_count: <#T##Int#>, comment_count: <#T##Int#>, view_count: <#T##Int#>, description: <#T##String#>, profile_img: <#T##String#>, profile_name: <#T##String#>, profile_id: <#T##String#>, post_id: <#T##Int#>))
-//    }
-//}
+struct PostDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        CommentSectionView(vm: PostVM(post: Post(image_or_video: "lskdjf", like_count: 12, comment_count: 12, view_count: 12, description: "SDF", profile_img: "WEFS", profile_name: "Bobby", profile_id: "oiuwhjeklrfsdvoiuh4j", post_id:"IOWEJKSD")))
+    }
+}
 
 extension Publishers {
     // 1.

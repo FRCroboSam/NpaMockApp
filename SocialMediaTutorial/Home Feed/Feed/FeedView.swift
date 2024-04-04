@@ -69,11 +69,19 @@ struct FeedView: View {
                         .background{
                             Color.white
                         }
-                        .cornerRadius(40)
+                        .frame(width: deviceWidth)
+                        .clipShape(
+                            .rect(
+                                topLeadingRadius: 20,
+                                bottomLeadingRadius: 0,
+                                bottomTrailingRadius: 0,
+                                topTrailingRadius: 20
+                            )
+                        )
                         .contentShape(Rectangle())
                         .highPriorityGesture(dragGesture)
                         .offset(
-                            y: lastTranslation.height + 10
+                            y: lastTranslation.height
                         )
                         
                         VStack {

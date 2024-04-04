@@ -11,6 +11,7 @@ import SwiftUI
 struct SocialMediaTutorialApp: App {
     @StateObject private var feedVM = FeedVM()
     @StateObject private var athleteVM = AthleteVM()
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
