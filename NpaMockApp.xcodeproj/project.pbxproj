@@ -33,6 +33,7 @@
 		3679F2BB2BAF8D9300DAC43E /* AthleteBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2BA2BAF8D9300DAC43E /* AthleteBannerView.swift */; };
 		3679F2BE2BAFBB1A00DAC43E /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2BD2BAFBB1A00DAC43E /* NavBar.swift */; };
 		36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */; };
+		36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */; };
 		36F0D7432BB0AAF20044C3B1 /* DiscoverNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7422BB0AAF20044C3B1 /* DiscoverNavBar.swift */; };
 		36F0D7452BB12AF50044C3B1 /* AthleteProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7442BB12AF50044C3B1 /* AthleteProfileView.swift */; };
 		36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7462BB12B880044C3B1 /* AthleteNavBar.swift */; };
@@ -79,6 +80,7 @@
 		3679F2BA2BAF8D9300DAC43E /* AthleteBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteBannerView.swift; sourceTree = "<group>"; };
 		3679F2BD2BAFBB1A00DAC43E /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
+		36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentSectionView.swift; sourceTree = "<group>"; };
 		36F0D7422BB0AAF20044C3B1 /* DiscoverNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNavBar.swift; sourceTree = "<group>"; };
 		36F0D7442BB12AF50044C3B1 /* AthleteProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteProfileView.swift; sourceTree = "<group>"; };
 		36F0D7462BB12B880044C3B1 /* AthleteNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteNavBar.swift; sourceTree = "<group>"; };
@@ -140,9 +142,9 @@
 		3679F2912BAA1DB200DAC43E /* Comments */ = {
 			isa = PBXGroup;
 			children = (
-				3679F2922BAA1DC600DAC43E /* CommentView.swift */,
 				3679F2942BAA1E2600DAC43E /* CommentVM.swift */,
 				3679F2A22BAA27D500DAC43E /* CommentSectionView.swift */,
+				36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */,
 			);
 			path = Comments;
 			sourceTree = "<group>";
@@ -161,6 +163,7 @@
 			children = (
 				3679F29E2BAA20DE00DAC43E /* PostVM.swift */,
 				3679F2A02BAA211200DAC43E /* Post.swift */,
+				3679F2922BAA1DC600DAC43E /* CommentView.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";
@@ -380,6 +383,7 @@
 				3679F2932BAA1DC600DAC43E /* CommentView.swift in Sources */,
 				36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */,
 				3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */,
+				36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */,
 				36F0D7432BB0AAF20044C3B1 /* DiscoverNavBar.swift in Sources */,
 				E55B36422A61858B00CB859B /* Extensions.swift in Sources */,
 				3679F2AD2BAD454D00DAC43E /* Athlete.swift in Sources */,

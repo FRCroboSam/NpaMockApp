@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AthleteProfileView: View {
     @Environment(\.dismiss) var dismiss
-
+    @EnvironmentObject var feedVM: FeedVM
     var athlete: Athlete
     @State var athleteHeadline: String = ""
     @State var athlete_text: String = ""
@@ -53,18 +53,7 @@ struct AthleteProfileView: View {
                                     .font(.headline)
                             }
                             Spacer()
-                            HStack{
-                                Text("1.5k")
-                                Image(systemName: "person")
-                                    
-                            }
-                                .background{
-                                    RoundedRectangle(cornerSize: CGSize(width: 15, height: 15))
-                                        .fill(Color(UIColor.systemGray4))
-                                        .padding(.horizontal, -20)
-                                        .padding(.vertical, -10)
 
-                                }
                             Spacer()
                             Image(systemName: "ellipsis.message.fill")
                                 .font(.system(size: 27))
@@ -74,14 +63,22 @@ struct AthleteProfileView: View {
                             
                         }
                         Spacer()
-                            .frame(height: 8)
+                            .frame(height: 10)
                         HStack{
-                            Text(athlete.sport)
+                            
+                            Text("1.5K Fans ⋅ 32 Following") //⋅
                                 .font(.system(size: 14))
                                 .foregroundStyle(.gray)
-                            Text("|")
-                            Text(athlete.gender)
-                                .foregroundStyle(.gray)
+                        }
+
+                        HStack{
+                            HStack{
+                                Image(systemName: "basketball.fill")
+                                Text(athlete.sport )
+                                    .font(.system(size: 14))
+                                    .foregroundStyle(.gray)
+                            }
+
                         }
                         //                    AthleteStatView(athlete: athlete, numPosts: 13, followers: 900, following: 13)
                         
@@ -89,13 +86,9 @@ struct AthleteProfileView: View {
                         //                    Spacer()
                         //                        .frame(height: 10)
                         //
-                        AthleteHeadline(athlete: athlete)
-                            .font(.system(size: 14))
+//                        AthleteHeadline(athlete: athlete)
+//                            .font(.system(size: 14))
 
-                        HStack{
-                            Text(athlete.city + ", " + athlete.state)
-                                .font(.system(size: 13))
-                        }
                         
                         //                    Divider()
                         
@@ -128,7 +121,7 @@ struct AthleteProfileView: View {
                             Text("Support")
                                 .font(.system(size: 16))
                         }
-                    }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: .orange, padding: 40))
+                    }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: Color(UIColor.systemGray2), padding: 40))
                     Spacer()
                         .frame(width: 20)
                     
@@ -146,12 +139,27 @@ struct AthleteProfileView: View {
                     CustomTabBarButton(current: $current, text: "Posts", animation: animation)
                     CustomTabBarButton(current: $current, text: "Stats", animation: animation)
                     CustomTabBarButton(current: $current, text: "Info", animation: animation)
-                    CustomTabBarButton(current: $current, text: "Feats", animation: animation)
+                    CustomTabBarButton(current: $current, text: "Awards", animation: animation)
                 }
                 Divider()
                     .frame(height: 2)
                     .overlay(Color(hex: "0A66C2"))
             }
+            if(current == "Posts"){
+                ScrollView{
+                    PostListView(showCommentSection: false) {
+                        
+                    }
+                    .padding(.top, -20)
+
+                }
+                Spacer()
+
+            }
+            else{
+                Spacer()
+            }
+
 //            .background{
 //                Rectangle()
 //                    .strokeBorder(Color(UIColor.systemGray5))
@@ -165,10 +173,7 @@ struct AthleteProfileView: View {
 //                    )
 //            }
 
-            
-            Spacer()
-                .frame(height: 20)
-            Spacer()
+
 
         }
         .navigationBarBackButtonHidden(true)
@@ -193,4 +198,5 @@ struct AthleteProfileView: View {
 #Preview {
     
     return AthleteProfileView(athlete: Athlete.defaultAthlete())
+        .environmentObject(FeedVM())
 }
