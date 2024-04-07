@@ -36,7 +36,7 @@ struct TabbarView: View {
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
 
-                Text("New Post")
+                NpaContentView()
                     .tabItem {
                         Text("")
                     }.tag(3)
@@ -81,7 +81,7 @@ struct TabbarView: View {
                         }
                         Spacer()
                         Button(action: { self.selected = 3 } ) {
-                            Image(systemName: "square.and.pencil") // Tab icon for New Post
+                            Image(systemName: "network") // Tab icon for New Post
                                 .font(.system(size: 30))
                                 .tint(self.selected == 3 ? .blue : .gray)
                             
@@ -100,11 +100,11 @@ struct TabbarView: View {
                     .padding(.bottom, 15)
                     .zIndex(10)
 
-                    .frame(height: 100)
+                    .frame(height: 90)
                 
                     .background{
                         Color.white
-                            .shadow(color: Color.blue, radius: 5, x: 0, y: 0)
+                            .shadow(color: Color.gray.opacity(0.3), radius: 4, x: 0, y: 0)
                     }
                     .offset(y: 1/2 * deviceHeight - 50 )
                     //                .frame(width: deviceWidth)

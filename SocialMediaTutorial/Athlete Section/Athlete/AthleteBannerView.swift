@@ -18,42 +18,45 @@ struct AthleteBannerView: View {
         UIScreen.main.bounds.width
     }
     var body: some View {
-
+        VStack(spacing: 0){
             HStack {
                 Spacer()
                     .frame(width: 20)
                 Image(athlete.profile_img)
                     .resizable()
                     .scaledToFill()
-                    .frame(width: 100, height: 100)
-
+                    .frame(width: 80, height: 80)
+                
                     .clipped()
-                    .clipShape(Parallelogram(angle: 30))
+                    .clipShape(Circle())
+//                    .clipShape(Parallelogram(angle: 10))
                 VStack(alignment: .leading){
                     Text(athlete.first_name.uppercased())
                         .font(.subheadline)
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.blue)
                     Text(athlete.last_name.uppercased())
                         .font(.headline)
-                        .foregroundStyle(.white)
-
+                        .foregroundStyle(.blue)
+                    
                     Text(athlete.city + ", " + athlete.state)
-                        .foregroundStyle(.white)
-
+                        .foregroundStyle(.blue)
+                    
                 }
                 Spacer()
                 Image(systemName: "chevron.down")
                     .font(.headline)
-                    .foregroundStyle(.white)
+                    .foregroundStyle(.blue)
                     .rotationEffect(.degrees(270))
                     .padding(.trailing, 30)
                 
                 
             }
             .frame(width: deviceWidth, height: 100)
-            .background(Color.blue)
-            Spacer()
-        
+            .background(Color(.white))//UIColor.systemGray4))
+//            Spacer()
+            Divider()
+                .overlay(Color.gray)
+        }
 
 
 //        .onAppear{

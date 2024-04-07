@@ -39,6 +39,12 @@
 		36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7462BB12B880044C3B1 /* AthleteNavBar.swift */; };
 		36F0D7492BB695DC0044C3B1 /* AthleteStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7482BB695DC0044C3B1 /* AthleteStatView.swift */; };
 		36F0D74B2BBCC0E90044C3B1 /* AthleteHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D74A2BBCC0E90044C3B1 /* AthleteHeadline.swift */; };
+		36F7670C2BBFCFE6008D8968 /* NpaContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F7670B2BBFCFE6008D8968 /* NpaContentView.swift */; };
+		36F7670F2BBFD9D2008D8968 /* DotsIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F7670E2BBFD9D2008D8968 /* DotsIndexView.swift */; };
+		36F767122BC26B8C008D8968 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F767112BC26B8C008D8968 /* Podcast.swift */; };
+		36F767142BC270C1008D8968 /* PodcastVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F767132BC270C1008D8968 /* PodcastVM.swift */; };
+		36F767162BC27452008D8968 /* PodcastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F767152BC27452008D8968 /* PodcastView.swift */; };
+		36F767172BC27F96008D8968 /* podcasts.json in Resources */ = {isa = PBXBuildFile; fileRef = 36F7670D2BBFD11A008D8968 /* podcasts.json */; };
 		E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */; };
 		E55B36232A6181EC00CB859B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B36222A6181EC00CB859B /* ContentView.swift */; };
 		E55B36252A6181EE00CB859B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E55B36242A6181EE00CB859B /* Assets.xcassets */; };
@@ -86,6 +92,12 @@
 		36F0D7462BB12B880044C3B1 /* AthleteNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteNavBar.swift; sourceTree = "<group>"; };
 		36F0D7482BB695DC0044C3B1 /* AthleteStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteStatView.swift; sourceTree = "<group>"; };
 		36F0D74A2BBCC0E90044C3B1 /* AthleteHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteHeadline.swift; sourceTree = "<group>"; };
+		36F7670B2BBFCFE6008D8968 /* NpaContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpaContentView.swift; sourceTree = "<group>"; };
+		36F7670D2BBFD11A008D8968 /* podcasts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = podcasts.json; sourceTree = "<group>"; };
+		36F7670E2BBFD9D2008D8968 /* DotsIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsIndexView.swift; sourceTree = "<group>"; };
+		36F767112BC26B8C008D8968 /* Podcast.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Podcast.swift; sourceTree = "<group>"; };
+		36F767132BC270C1008D8968 /* PodcastVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastVM.swift; sourceTree = "<group>"; };
+		36F767152BC27452008D8968 /* PodcastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PodcastView.swift; sourceTree = "<group>"; };
 		E55B361D2A6181EC00CB859B /* NpaMockApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NpaMockApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E55B36202A6181EC00CB859B /* SocialMediaTutorialApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialMediaTutorialApp.swift; sourceTree = "<group>"; };
 		E55B36222A6181EC00CB859B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -208,8 +220,43 @@
 				36F0D7422BB0AAF20044C3B1 /* DiscoverNavBar.swift */,
 				36F0D7462BB12B880044C3B1 /* AthleteNavBar.swift */,
 				36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */,
+				36F7670E2BBFD9D2008D8968 /* DotsIndexView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		36F767082BBFCF63008D8968 /* Sports Worlds */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Sports Worlds";
+			sourceTree = "<group>";
+		};
+		36F767092BBFCF96008D8968 /* NPA Content */ = {
+			isa = PBXGroup;
+			children = (
+				36F767102BC26B76008D8968 /* Podcasts */,
+				36F7670A2BBFCFAB008D8968 /* Views */,
+			);
+			path = "NPA Content";
+			sourceTree = "<group>";
+		};
+		36F7670A2BBFCFAB008D8968 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				36F7670B2BBFCFE6008D8968 /* NpaContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		36F767102BC26B76008D8968 /* Podcasts */ = {
+			isa = PBXGroup;
+			children = (
+				36F767112BC26B8C008D8968 /* Podcast.swift */,
+				36F767132BC270C1008D8968 /* PodcastVM.swift */,
+				36F767152BC27452008D8968 /* PodcastView.swift */,
+			);
+			path = Podcasts;
 			sourceTree = "<group>";
 		};
 		E55B36142A6181EC00CB859B = {
@@ -231,6 +278,8 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				36F767092BBFCF96008D8968 /* NPA Content */,
+				36F767082BBFCF63008D8968 /* Sports Worlds */,
 				3679F2BC2BAFBB0A00DAC43E /* Components */,
 				3679F2A92BAD451F00DAC43E /* Athlete Section */,
 				E55B36362A61849500CB859B /* Home Feed */,
@@ -240,6 +289,7 @@
 				E55B362E2A61827600CB859B /* posts.json */,
 				3679F2702BA9690E00DAC43E /* comments.json */,
 				3679F2722BA9693000DAC43E /* replies.json */,
+				36F7670D2BBFD11A008D8968 /* podcasts.json */,
 				3679F2A82BAD431F00DAC43E /* athletes.json */,
 				E55B36242A6181EE00CB859B /* Assets.xcassets */,
 				E55B36262A6181EE00CB859B /* Preview Content */,
@@ -358,6 +408,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36F767172BC27F96008D8968 /* podcasts.json in Resources */,
 				E55B36282A6181EE00CB859B /* Preview Assets.xcassets in Resources */,
 				E55B362F2A61827600CB859B /* posts.json in Resources */,
 				E55B36252A6181EE00CB859B /* Assets.xcassets in Resources */,
@@ -376,8 +427,10 @@
 			files = (
 				3679F2B72BAE184E00DAC43E /* FilterView.swift in Sources */,
 				3679F2952BAA1E2600DAC43E /* CommentVM.swift in Sources */,
+				36F767122BC26B8C008D8968 /* Podcast.swift in Sources */,
 				3679F2BE2BAFBB1A00DAC43E /* NavBar.swift in Sources */,
 				3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */,
+				36F767142BC270C1008D8968 /* PodcastVM.swift in Sources */,
 				3679F29B2BAA205900DAC43E /* FeedVM.swift in Sources */,
 				E55B36472A618D1D00CB859B /* StoryCard.swift in Sources */,
 				3679F2932BAA1DC600DAC43E /* CommentView.swift in Sources */,
@@ -385,6 +438,7 @@
 				3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */,
 				36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */,
 				36F0D7432BB0AAF20044C3B1 /* DiscoverNavBar.swift in Sources */,
+				36F7670F2BBFD9D2008D8968 /* DotsIndexView.swift in Sources */,
 				E55B36422A61858B00CB859B /* Extensions.swift in Sources */,
 				3679F2AD2BAD454D00DAC43E /* Athlete.swift in Sources */,
 				E55B36442A618D0700CB859B /* StoryListView.swift in Sources */,
@@ -394,11 +448,13 @@
 				36F0D7492BB695DC0044C3B1 /* AthleteStatView.swift in Sources */,
 				3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */,
 				3679F2BB2BAF8D9300DAC43E /* AthleteBannerView.swift in Sources */,
+				36F7670C2BBFCFE6008D8968 /* NpaContentView.swift in Sources */,
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
 				3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */,
 				36F0D74B2BBCC0E90044C3B1 /* AthleteHeadline.swift in Sources */,
 				E55B36402A61852C00CB859B /* PostCardBody.swift in Sources */,
 				36F0D7452BB12AF50044C3B1 /* AthleteProfileView.swift in Sources */,
+				36F767162BC27452008D8968 /* PodcastView.swift in Sources */,
 				3679F2A32BAA27D500DAC43E /* CommentSectionView.swift in Sources */,
 				E55B36232A6181EC00CB859B /* ContentView.swift in Sources */,
 				3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */,

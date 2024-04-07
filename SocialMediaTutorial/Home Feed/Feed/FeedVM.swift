@@ -23,7 +23,7 @@ class FeedVM: ObservableObject {
     }
     
     func loadData() {
-
+        print("LOADING THE POSTS")
         if let documentDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first {
 //            let url = documentDirectoryURL.appendingPathComponent("posts.json")
             guard let url = Bundle.main.url(forResource: "posts", withExtension: "json") else {

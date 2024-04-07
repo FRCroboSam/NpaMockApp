@@ -1,6 +1,7 @@
 import Foundation
 
-struct Post: Codable, Identifiable {
+struct Post: Codable, Identifiable, Hashable{
+    
     enum CodingKeys: CodingKey {
         case image_or_video
         case like_count

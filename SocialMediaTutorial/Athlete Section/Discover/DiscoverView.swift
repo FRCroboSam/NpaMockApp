@@ -57,15 +57,22 @@ struct DiscoverView: View {
                         Divider()
                         
                         ScrollView{
-                            ForEach(athleteVM.athletes){ athlete in
-                                
-                                NavigationLink{
-                                    AthleteProfileView(athlete: athlete)
-                                }label: {
-                                    AthleteBannerView(athlete: athlete)
+                            VStack(spacing: 0){
+                                ForEach(athleteVM.athletes){ athlete in
                                     
+                                    NavigationLink{
+                                        AthleteProfileView(athlete: athlete)
+                                    }label: {
+                                        AthleteBannerView(athlete: athlete)
+                                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                        
+                                        Divider()
+                                        
+                                    
+                                    }
                                 }
-                                
+                                Spacer()
+                                    .frame(height: 50)
                             }
                             
                             

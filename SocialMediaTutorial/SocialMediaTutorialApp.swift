@@ -11,12 +11,14 @@ import SwiftUI
 struct SocialMediaTutorialApp: App {
     @StateObject private var feedVM = FeedVM()
     @StateObject private var athleteVM = AthleteVM()
-    
+    @StateObject private var podcastVM = PodcastVM()
+
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(feedVM)
                 .environmentObject(athleteVM)
+                .environmentObject(podcastVM)
                 .onAppear{
                       
 //                    modelData.loadData()

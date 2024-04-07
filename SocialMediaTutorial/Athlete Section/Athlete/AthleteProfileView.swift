@@ -70,7 +70,8 @@ struct AthleteProfileView: View {
                                 .font(.system(size: 14))
                                 .foregroundStyle(.gray)
                         }
-
+                        Spacer()
+                            .frame(height: 5)
                         HStack{
                             HStack{
                                 Image(systemName: "basketball.fill")
@@ -155,6 +156,17 @@ struct AthleteProfileView: View {
                 }
                 Spacer()
 
+            }
+            else if (current == "Stats"){
+                VStack{
+                    Spacer()
+                        .frame(height: 20)
+                    Text("2023-24 SEA")
+                    Spacer()
+                }
+                .background{
+                    
+                }
             }
             else{
                 Spacer()

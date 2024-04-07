@@ -41,6 +41,27 @@ struct CustomVideoPlayer: View {
     }
 }
 
+struct VideoPlayer: View {
+    let url: String
+    let width: CGFloat
+    let height: CGFloat
+
+    var body: some View {
+        YouTubePlayerView(
+            YouTubePlayer(
+                source: .url(url)
+            ),
+            placeholderOverlay: {
+                    ProgressView()
+                }
+            )
+        
+        .roundedCorner(10, corners: .allCorners)
+        .frame(width: width, height: height)
+
+    }
+}
+
 //struct VideoPlayer_previews: PreviewProvider {
 //    static var previews: some View {
 //        PostListView()
