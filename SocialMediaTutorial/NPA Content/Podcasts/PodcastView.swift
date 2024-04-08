@@ -10,24 +10,22 @@ struct PodcastView: View {
     let podcast: Podcast
     @State var height: CGFloat = 350
     var body: some View {
-            VStack(alignment: .center){
+            VStack(alignment: .leading){
                 Spacer()
-                    .frame(height: 10)
+                    .frame(height: 0)
                     Text(podcast.title)
-                        .font(.system(size: 22))
+                        .font(.system(size: 20))
                         .lineLimit(1)
                         .bold()
                         .frame(width: 7/8 * deviceWidth )
-                        .padding(8)
 
-                VideoPlayer(url: podcast.image_or_video, width: 7/8 * deviceWidth, height: 300)
-                Spacer()
+                VideoPlayer(url: podcast.image_or_video, width: 7/8 * deviceWidth, height: 200)
                 
                 
                 
             }
             
-            .frame(width: 11/12 * deviceWidth, height: 380)
+            .frame(width: 11/12 * deviceWidth, height: 260)
             .background{
                 RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                     .strokeBorder(Color(UIColor.systemGray4))

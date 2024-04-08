@@ -13,45 +13,53 @@ struct NpaContentView: View {
     @State private var currentIndex = 0
     @State private var maxPodcastViewHeight: CGFloat = 380
     var body: some View {
-        VStack(alignment: .center, spacing: 0){
-            DiscoverNavBar()
-            
-            VStack(alignment: .center){
-                Spacer()
-                    .frame(height: 10)
-                TabView(selection: $currentIndex.animation()) {
-                    ForEach(podcastVM.podcasts.indices, id: \.self) { index in
-                        let podcast = podcastVM.podcasts[index]
-                        PodcastView(podcast: podcast)
-                            .background(
-                                GeometryReader { innerGeometry in
-                                    Color.clear.onAppear {
-                                        maxPodcastViewHeight = 380
-                                        
+        VStack(alignment: .leading, spacing: 0){
+            DiscoverNavBar(text: "NPA Content")
+            Spacer()
+                .frame(height: 5)
+            ScrollView(){
+//                Text("Podcasts")
+//                    .font(.title)
+//                    .bold()
+//                    .padding(.leading, 10)
+                VStack(alignment: .center, spacing: 0){
+                    Spacer()
+                        .frame(height: 15)
+                    TabView(selection: $currentIndex.animation()) {
+                        ForEach(podcastVM.podcasts.indices, id: \.self) { index in
+                            let podcast = podcastVM.podcasts[index]
+                            PodcastView(podcast: podcast)
+                                .background(
+                                    GeometryReader { innerGeometry in
+                                        Color.clear.onAppear {
+                                            maxPodcastViewHeight = 280
+                                            
+                                        }
                                     }
-                                }
-                            )
+                                )
+                        }
                     }
+                    .frame(height: maxPodcastViewHeight)
+                    .tabViewStyle(.page(indexDisplayMode: .never))
+                    Spacer()
+                        .frame(height: 5)
+                    Fancy3DotsIndexView(numberOfPages: podcastVM.podcasts.count, currentIndex: currentIndex)
                 }
-                .frame(maxHeight: maxPodcastViewHeight)
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                Fancy3DotsIndexView(numberOfPages: podcastVM.podcasts.count, currentIndex: currentIndex)
-                    .padding()
-            }
-            Divider()
-            
-            ScrollView{
-                VStack(spacing: 0){
+                Spacer().frame(height: 15)
+                VStack(alignment: .center){
                     ForEach(blogVM.blogs){ blog in
                         
-                       BlogCardView(blog: blog)
+                        BlogCardView(blog: blog)
+//                            .padding(.leading, 20)
+                        Spacer()
+                            .frame(height: 10)
                     }
-
+                    
                 }
-            }
                 
-        }
-//
+            }
+        }.ignoresSafeArea(.all, edges: .top)
+            .scrollIndicators(.hidden)
     }
 //    var body: some View {
 //      TabView(selection: $currentIndex.animation()) { // 1
@@ -75,5 +83,6 @@ struct NpaContentView: View {
 #Preview {
     NpaContentView()
         .environmentObject(PodcastVM())
+        .environmentObject(BlogVM())
     
 }

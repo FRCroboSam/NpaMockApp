@@ -10,7 +10,7 @@ class BlogVM: ObservableObject{
     @Published var blogs: [Blog] = []
 //    @Published var selected_podcast: Athlete?
     init(){
-        fetchPodcasts()
+        fetchBlogs()
     }
     func copyFileFromBundleToDocumentsFolder(sourceFile: String, destinationFile: String = "") {
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -33,7 +33,7 @@ class BlogVM: ObservableObject{
         }
     }
     
-    func fetchPodcasts() {
+    func fetchBlogs() {
         //change this to match comment fetching logic when you add support for changing athlete data
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
         let sourceURL = Bundle.main.bundleURL.appendingPathComponent("blogs.json")
@@ -41,7 +41,7 @@ class BlogVM: ObservableObject{
             print("CAN'T FIND blogs.json in bundle")
 
         }
-//        copyFileFromBundleToDocumentsFolder(sourceFile: "blogs.json") //-> when you need to reset comments
+        copyFileFromBundleToDocumentsFolder(sourceFile: "blogs.json") //-> when you need to reset comments
 
         if let documentsURL{
             do {

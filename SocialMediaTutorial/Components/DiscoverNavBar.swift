@@ -10,6 +10,7 @@ import SwiftUI
 
 
 struct DiscoverNavBar: View{
+    @State var text: String = "Discover"
     var body: some View{
         VStack{
             Spacer()
@@ -20,7 +21,7 @@ struct DiscoverNavBar: View{
                     .resizable()
                     .scaledToFit()
                     .frame(width: 50, height: 50)
-                Text("Discover")
+                Text(text)
                     .foregroundStyle(Color.white)
                     .bold()
                     .font(.title)
