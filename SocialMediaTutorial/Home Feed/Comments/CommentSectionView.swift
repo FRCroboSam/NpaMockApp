@@ -33,6 +33,7 @@ struct CommentSectionView: View {
             }.listStyle(PlainListStyle())
                 .frame(width: deviceWidth)
                 .background(Color.white)
+//                .padding(.leading, 40)
                 .offset(x: 20)
             
             VStack(spacing: 0){

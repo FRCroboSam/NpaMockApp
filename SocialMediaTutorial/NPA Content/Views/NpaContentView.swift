@@ -9,6 +9,7 @@ import SwiftUI
 
 struct NpaContentView: View {
     @EnvironmentObject var podcastVM: PodcastVM
+    @EnvironmentObject var blogVM: BlogVM
     @State private var currentIndex = 0
     @State private var maxPodcastViewHeight: CGFloat = 380
     var body: some View {
@@ -39,11 +40,16 @@ struct NpaContentView: View {
             }
             Divider()
             
-              Spacer()
+            ScrollView{
+                VStack(spacing: 0){
+                    ForEach(blogVM.blogs){ blog in
+                        
+                       BlogCardView(blog: blog)
+                    }
+
+                }
+            }
                 
-        }
-        .onAppear{
-            podcastVM.fetchPodcasts()
         }
 //
     }

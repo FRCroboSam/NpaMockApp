@@ -10,6 +10,10 @@
 		3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */; };
 		3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */; };
 		3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */; };
+		36236A412BC294C800580B29 /* blogs.json in Resources */ = {isa = PBXBuildFile; fileRef = 36236A402BC294C800580B29 /* blogs.json */; };
+		36236A442BC2957100580B29 /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A432BC2957100580B29 /* Blog.swift */; };
+		36236A462BC295A400580B29 /* BlogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A452BC295A400580B29 /* BlogVM.swift */; };
+		36236A482BC295B600580B29 /* BlogCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A472BC295B600580B29 /* BlogCardView.swift */; };
 		365D385A2B63CE4D0013689A /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 365D38592B63CE4D0013689A /* YouTubePlayerKit */; };
 		3679F2712BA9690E00DAC43E /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = 3679F2702BA9690E00DAC43E /* comments.json */; };
 		3679F2732BA9693000DAC43E /* replies.json in Resources */ = {isa = PBXBuildFile; fileRef = 3679F2722BA9693000DAC43E /* replies.json */; };
@@ -64,6 +68,10 @@
 		3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		36236A402BC294C800580B29 /* blogs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blogs.json; sourceTree = "<group>"; };
+		36236A432BC2957100580B29 /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
+		36236A452BC295A400580B29 /* BlogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogVM.swift; sourceTree = "<group>"; };
+		36236A472BC295B600580B29 /* BlogCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCardView.swift; sourceTree = "<group>"; };
 		3679F2702BA9690E00DAC43E /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
 		3679F2722BA9693000DAC43E /* replies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = replies.json; sourceTree = "<group>"; };
 		3679F2852BA96AAD00DAC43E /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
@@ -141,6 +149,16 @@
 				3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */,
 			);
 			path = Video;
+			sourceTree = "<group>";
+		};
+		36236A422BC2955D00580B29 /* Blogs */ = {
+			isa = PBXGroup;
+			children = (
+				36236A432BC2957100580B29 /* Blog.swift */,
+				36236A452BC295A400580B29 /* BlogVM.swift */,
+				36236A472BC295B600580B29 /* BlogCardView.swift */,
+			);
+			path = Blogs;
 			sourceTree = "<group>";
 		};
 		3679F2902BAA1C7400DAC43E /* Profile */ = {
@@ -235,6 +253,7 @@
 		36F767092BBFCF96008D8968 /* NPA Content */ = {
 			isa = PBXGroup;
 			children = (
+				36236A422BC2955D00580B29 /* Blogs */,
 				36F767102BC26B76008D8968 /* Podcasts */,
 				36F7670A2BBFCFAB008D8968 /* Views */,
 			);
@@ -291,6 +310,7 @@
 				3679F2722BA9693000DAC43E /* replies.json */,
 				36F7670D2BBFD11A008D8968 /* podcasts.json */,
 				3679F2A82BAD431F00DAC43E /* athletes.json */,
+				36236A402BC294C800580B29 /* blogs.json */,
 				E55B36242A6181EE00CB859B /* Assets.xcassets */,
 				E55B36262A6181EE00CB859B /* Preview Content */,
 				E55B36412A61858B00CB859B /* Extensions.swift */,
@@ -409,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36F767172BC27F96008D8968 /* podcasts.json in Resources */,
+				36236A412BC294C800580B29 /* blogs.json in Resources */,
 				E55B36282A6181EE00CB859B /* Preview Assets.xcassets in Resources */,
 				E55B362F2A61827600CB859B /* posts.json in Resources */,
 				E55B36252A6181EE00CB859B /* Assets.xcassets in Resources */,
@@ -433,7 +454,9 @@
 				36F767142BC270C1008D8968 /* PodcastVM.swift in Sources */,
 				3679F29B2BAA205900DAC43E /* FeedVM.swift in Sources */,
 				E55B36472A618D1D00CB859B /* StoryCard.swift in Sources */,
+				36236A482BC295B600580B29 /* BlogCardView.swift in Sources */,
 				3679F2932BAA1DC600DAC43E /* CommentView.swift in Sources */,
+				36236A442BC2957100580B29 /* Blog.swift in Sources */,
 				36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */,
 				3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */,
 				36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */,
@@ -452,6 +475,7 @@
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
 				3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */,
 				36F0D74B2BBCC0E90044C3B1 /* AthleteHeadline.swift in Sources */,
+				36236A462BC295A400580B29 /* BlogVM.swift in Sources */,
 				E55B36402A61852C00CB859B /* PostCardBody.swift in Sources */,
 				36F0D7452BB12AF50044C3B1 /* AthleteProfileView.swift in Sources */,
 				36F767162BC27452008D8968 /* PodcastView.swift in Sources */,

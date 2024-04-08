@@ -31,7 +31,7 @@ struct CustomVideoPlayer: View {
                 }
             )
 
-        .frame(width: deviceWidth, height: 400)
+        .frame(width: 4/4 * deviceWidth, height: 400)
         .background(Color(.systemBackground))
         .shadow(
             color: .black.opacity(0.1),

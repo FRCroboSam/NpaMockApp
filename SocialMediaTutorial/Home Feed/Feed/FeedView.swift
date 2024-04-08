@@ -41,7 +41,7 @@ struct FeedView: View {
                     StoryListView() // Display the list of stories
                     Divider()
                     PostListView(showCommentSection: false, onCommentTapped: {
-                        withAnimation(.easeIn){
+                        withAnimation(.default){
                         }
                     }) // Display the list of posts
                     .padding(.top, -30)
@@ -83,6 +83,7 @@ struct FeedView: View {
                         .offset(
                             y: lastTranslation.height
                         )
+
                         
                         VStack {
                             GeometryReader { geometry in
@@ -94,6 +95,11 @@ struct FeedView: View {
                         }
                         .offset(y: self.lastTranslation.height)
                         
+                    }.onAppear{
+                        lastTranslation.height = 300
+                        withAnimation(.easeIn){
+                            lastTranslation.height = 0
+                        }
                     }
                 }
                 
