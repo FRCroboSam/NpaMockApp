@@ -27,6 +27,12 @@ struct CommentSectionView: View {
                     LazyVStack(spacing:0){
                         ForEach(vm.commentSection, id: \.id){ comment in
                             CommentView(postVM: vm, vm: comment)
+                                .background{
+                                    Color.white
+                                        .frame(width: 2 * deviceWidth)
+
+                                }
+
                         }
                     }.listRowInsets(EdgeInsets())
                 }
@@ -110,6 +116,7 @@ struct CommentSectionView: View {
             }
             
         }
+
         .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
 
         .navigationTitle(Text("Post Detail"))

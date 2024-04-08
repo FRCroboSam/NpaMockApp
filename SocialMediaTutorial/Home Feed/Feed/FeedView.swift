@@ -21,7 +21,7 @@ struct FeedView: View {
     @State var isUp = false
     @State private var translation = CGSize.zero
     @State private var prevTranslation = CGSize.zero
-    @State private var lastTranslation = CGSize.zero
+    @State private var lastTranslation: CGSize = CGSize(width: 0, height: 250)
     @State var lastNonZeroTranslation = CGSize.zero
     @State private var peakVelocity = 0.0
     
@@ -46,6 +46,9 @@ struct FeedView: View {
                     }) // Display the list of posts
                     .padding(.top, -30)
                 }
+                .onAppear{
+//                    lastTranslation.height = 500
+                }
 //                .navigationTitle("NPA") // Set the navigation title
 //                .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
                 .brightness(vm.showCommentSection ? -0.3 : 0.0)
@@ -55,49 +58,62 @@ struct FeedView: View {
                     VStack{
                         Spacer()
                             .frame(height: 200)
-                        VStack{
-                            Spacer()
-                                .frame(height: 10)
-                            Text("Comments")
-                            Spacer()
-                                .frame(height: 10)
-                            Divider()
-                                .background(Color.gray)
-                            Spacer()
-                                .frame(height: 10)
-                        }
-                        .background{
-                            Color.white
-                        }
-                        .frame(width: deviceWidth)
-                        .clipShape(
-                            .rect(
-                                topLeadingRadius: 20,
-                                bottomLeadingRadius: 0,
-                                bottomTrailingRadius: 0,
-                                topTrailingRadius: 20
+                        VStack(spacing: 0){
+                            VStack{
+                                Spacer()
+                                    .frame(height: 10)
+                                Text("Comments")
+                                Spacer()
+                                    .frame(height: 10)
+                                Divider()
+                                    .background(Color.gray)
+                                Spacer()
+                                    .frame(height: 10)
+                            }
+                            .background{
+                                Color.white
+                            }
+                            .frame(width: deviceWidth)
+                            .clipShape(
+                                .rect(
+                                    topLeadingRadius: 20,
+                                    bottomLeadingRadius: 0,
+                                    bottomTrailingRadius: 0,
+                                    topTrailingRadius: 20
+                                )
                             )
-                        )
-                        .contentShape(Rectangle())
-                        .highPriorityGesture(dragGesture)
-                        .offset(
-                            y: lastTranslation.height
-                        )
+                            .contentShape(Rectangle())
+                            .highPriorityGesture(dragGesture)
+                            .offset(
+                                y: lastTranslation.height
+                            )
+                            
+                            
+                            VStack {
+                                GeometryReader { geometry in
+                                    CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
+                                        .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
+                                        .background(Color.white)
+                                        .zIndex(12)
+                                }
+                            }
+                            .offset(y: self.lastTranslation.height)
+                            .background{
+                                Color.white
+                                    .frame(width: 2 * deviceWidth)
+                                    .offset(y: self.lastTranslation.height)
 
-                        
-                        VStack {
-                            GeometryReader { geometry in
-                                CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
-                                    .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
-                                    .background(Color.white)
-                                    .zIndex(12)
                             }
                         }
-                        .offset(y: self.lastTranslation.height)
+
+                    }
+
+
+                    .onAppear{
+
+
                         
-                    }.onAppear{
-                        lastTranslation.height = 300
-                        withAnimation(.easeIn){
+                        withAnimation(.easeIn.speed(2.0)){
                             lastTranslation.height = 0
                         }
                     }
@@ -162,6 +178,9 @@ struct FeedView: View {
                                 vm.showCommentSection = false
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
                                     lastTranslation.height = 0
+                                }
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                    lastTranslation.height =  250
                                 }
                             }
                             
