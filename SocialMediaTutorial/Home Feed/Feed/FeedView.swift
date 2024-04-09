@@ -62,7 +62,13 @@ struct FeedView: View {
                             VStack{
                                 Spacer()
                                     .frame(height: 10)
+                                RoundedRectangle(cornerRadius: 10)
+                                    .frame(width: 50, height: 7)
+                                    .foregroundStyle(Color(UIColor.systemGray4))
+                                Spacer()
+                                    .frame(height: 20)
                                 Text("Comments")
+                                    .bold()
                                 Spacer()
                                     .frame(height: 10)
                                 Divider()
@@ -173,16 +179,17 @@ struct FeedView: View {
                         }
                         else if(!isUp && isSwipe && abs(peakVelocity) > 900) {
                             self.dismissKeyboard()
-                            lastTranslation.height = 500
+//                            lastTranslation.height = 500
                             withAnimation(.easeOut) {
                                 vm.showCommentSection = false
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
-                                    lastTranslation.height = 0
+                                    lastTranslation.height = 500
                                 }
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                    lastTranslation.height =  250
-                                }
+
                             }
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                                lastTranslation.height =  250
+//                            }
                             
                         }
                         else if (lastTranslation.height < -92 || isUp && isSwipe) {
