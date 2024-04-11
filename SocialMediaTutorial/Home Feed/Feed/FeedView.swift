@@ -39,7 +39,7 @@ struct FeedView: View {
                     Spacer()
                         .frame(height: 10)
                     StoryListView() // Display the list of stories
-                    Divider()
+//                    Divider()
                     PostListView(showCommentSection: false, onCommentTapped: {
                         withAnimation(.default){
                         }
@@ -119,7 +119,7 @@ struct FeedView: View {
 
 
                         
-                        withAnimation(.easeIn.speed(2.0)){
+                        withAnimation(.easeIn.speed(1.6)){
                             lastTranslation.height = 0
                         }
                     }
@@ -181,9 +181,13 @@ struct FeedView: View {
                             self.dismissKeyboard()
 //                            lastTranslation.height = 500
                             withAnimation(.easeOut) {
-                                vm.showCommentSection = false
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.12) {
-                                    lastTranslation.height = 500
+
+                                lastTranslation.height = 500
+
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                withAnimation(.easeIn){
+                                    vm.showCommentSection = false
                                 }
 
                             }

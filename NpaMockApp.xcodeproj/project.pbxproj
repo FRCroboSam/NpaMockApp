@@ -14,6 +14,7 @@
 		36236A442BC2957100580B29 /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A432BC2957100580B29 /* Blog.swift */; };
 		36236A462BC295A400580B29 /* BlogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A452BC295A400580B29 /* BlogVM.swift */; };
 		36236A482BC295B600580B29 /* BlogCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A472BC295B600580B29 /* BlogCardView.swift */; };
+		36236A4B2BC66D9600580B29 /* MainMarketplaceUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A4A2BC66D9600580B29 /* MainMarketplaceUI.swift */; };
 		365D385A2B63CE4D0013689A /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 365D38592B63CE4D0013689A /* YouTubePlayerKit */; };
 		3679F2712BA9690E00DAC43E /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = 3679F2702BA9690E00DAC43E /* comments.json */; };
 		3679F2732BA9693000DAC43E /* replies.json in Resources */ = {isa = PBXBuildFile; fileRef = 3679F2722BA9693000DAC43E /* replies.json */; };
@@ -72,6 +73,7 @@
 		36236A432BC2957100580B29 /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
 		36236A452BC295A400580B29 /* BlogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogVM.swift; sourceTree = "<group>"; };
 		36236A472BC295B600580B29 /* BlogCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCardView.swift; sourceTree = "<group>"; };
+		36236A4A2BC66D9600580B29 /* MainMarketplaceUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMarketplaceUI.swift; sourceTree = "<group>"; };
 		3679F2702BA9690E00DAC43E /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
 		3679F2722BA9693000DAC43E /* replies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = replies.json; sourceTree = "<group>"; };
 		3679F2852BA96AAD00DAC43E /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
@@ -159,6 +161,14 @@
 				36236A472BC295B600580B29 /* BlogCardView.swift */,
 			);
 			path = Blogs;
+			sourceTree = "<group>";
+		};
+		36236A492BC66D2D00580B29 /* Marketplace */ = {
+			isa = PBXGroup;
+			children = (
+				36236A4A2BC66D9600580B29 /* MainMarketplaceUI.swift */,
+			);
+			path = Marketplace;
 			sourceTree = "<group>";
 		};
 		3679F2902BAA1C7400DAC43E /* Profile */ = {
@@ -297,6 +307,7 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				36236A492BC66D2D00580B29 /* Marketplace */,
 				36F767092BBFCF96008D8968 /* NPA Content */,
 				36F767082BBFCF63008D8968 /* Sports Worlds */,
 				3679F2BC2BAFBB0A00DAC43E /* Components */,
@@ -489,6 +500,7 @@
 				3679F2B42BAD4B0900DAC43E /* AthleteListView.swift in Sources */,
 				36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */,
 				E55B36382A6184AB00CB859B /* PostListView.swift in Sources */,
+				36236A4B2BC66D9600580B29 /* MainMarketplaceUI.swift in Sources */,
 				E55B364D2A619B5300CB859B /* TabbarView.swift in Sources */,
 				3679F29D2BAA20A900DAC43E /* Utils.swift in Sources */,
 				3679F29F2BAA20DE00DAC43E /* PostVM.swift in Sources */,

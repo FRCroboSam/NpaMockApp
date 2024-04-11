@@ -20,14 +20,16 @@ struct DropdownPicker: View {
                 VStack{
                     VStack(alignment: .leading){
 
-                        HStack{
+                        HStack(spacing: 5){
                             Text(value.isEmpty ? text : value)
-                                .font(.system(size: 20))
-                            Spacer()
+                                .font(.system(size: 30))
+                                .bold()
+                                .foregroundStyle(.black)
+//                            Spacer()
 
                             Image(systemName: "chevron.down")
                                 .font(.subheadline)
-                                .foregroundStyle(.gray)
+                                .foregroundStyle(.black)
                                 .rotationEffect(.degrees(isExpanded ? -180 : 0))
                         }
                         .contentShape(Rectangle())
@@ -39,17 +41,20 @@ struct DropdownPicker: View {
                         .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
                         
                     }
-                    .frame(width: 5/6 * 3/4 * deviceWidth)
-                    .padding()
+                    .frame(width: 1/3 * 3/4 * deviceWidth)
+                    .padding(10)
                     .background(color)
                     .clipShape(
                         .rect(
-                            topLeadingRadius: 10,
-                            bottomLeadingRadius: isExpanded ? 0 : 10,
-                            bottomTrailingRadius: isExpanded ? 0 : 10,
-                            topTrailingRadius: 10
+                            topLeadingRadius: 20,
+                            bottomLeadingRadius: isExpanded ? 0 : 20,
+                            bottomTrailingRadius: isExpanded ? 0 : 20,
+                            topTrailingRadius: 20
                         )
                     )
+                }
+                .onAppear{
+                    value = items[0]
                 }
                 .overlay{
                     
@@ -63,7 +68,7 @@ struct DropdownPicker: View {
                                         ForEach(items, id: \.self) {item in
                                             VStack{
                                                 Text(item)
-                                                    .font(.system(size: 20))
+                                                    .font(.system(size: 15))
                                                     .foregroundColor(.black)
                                                     .multilineTextAlignment(.leading) // Align text to the left
                                                     .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
@@ -90,8 +95,8 @@ struct DropdownPicker: View {
                                     }
                                 }
                             }
-                            .frame(width: 5/6 * 3/4 * deviceWidth, height: 200)
-                            .padding()
+                            .frame(width: 1/4 * 3/4 * deviceWidth, height: 200)
+                            .padding(10)
                             .background(color)
                             .clipShape(
                                 .rect(
@@ -106,7 +111,7 @@ struct DropdownPicker: View {
                         }
                     }
                     .layoutPriority(10)
-                    .offset(x: 0, y: 140)
+                    .offset(x: 0, y: 120)
                     .zIndex(200)
 
                 }

@@ -30,6 +30,7 @@ struct DiscoverNavBar: View{
                     .padding(.trailing, 30)
             }
         }
+        .offset(y: -10)
         .background{
             Color(hex: "0A66C2")
                 .zIndex(30)

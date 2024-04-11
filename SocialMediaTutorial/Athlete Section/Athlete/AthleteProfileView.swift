@@ -23,7 +23,7 @@ struct AthleteProfileView: View {
     @State var current = "Posts"
     @Namespace var animation
     var body: some View {
-        VStack(spacing: 0){
+        VStack(spacing: 5){
             AthleteNavBar(athleteName: athlete.first_name.prefix(1) + ". " + athlete.last_name)
             VStack{
                 Spacer()
@@ -194,8 +194,22 @@ struct AthleteProfileView: View {
                 Button(action: {
                     dismiss()
                 }) {
-                    Label("Back", systemImage: "arrow.left.circle")
+                    HStack{
+                        Spacer()
+                            .frame(width: 5)
+                        Image(systemName: "chevron.down")
+                            .font(.title2)
+                            .bold()
+                            .foregroundStyle(.white)
+                            .rotationEffect(.degrees(90))
+                            .padding(.bottom, 10)
+                    }
+                    .contentShape(Rectangle())
+                    
+                    //Label("Back", systemImage: "arrow.left.circle")
                 }
+                
+                .contentShape(Rectangle())
             }
         }
         .ignoresSafeArea(.all, edges: .top)
