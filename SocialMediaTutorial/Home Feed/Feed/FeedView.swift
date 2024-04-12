@@ -32,105 +32,127 @@ struct FeedView: View {
     var body: some View {
         let blankPost = vm.posts[0]
         VStack(spacing: 0) {
-            NavBar()
-
+            Spacer()
+                .frame(height: 5)
             ZStack{
-                ScrollView{
-                    Spacer()
-                        .frame(height: 10)
-                    StoryListView() // Display the list of stories
-//                    Divider()
-                    PostListView(showCommentSection: false, onCommentTapped: {
-                        withAnimation(.default){
+                VStack{
+
+                    ScrollView{
+                        HStack{
+                            
+                            Image("complete_logo")
+                            
+                                .resizable()
+                                .frame(width: 115, height: 50)
+
+                                .scaledToFill()
+                                .clipped()
+                                .padding(.leading, 30)
+
+
+                                
+
+//                                .padding(.leading, -30)
+//                            
+//                                .padding(.bottom, -20)
+                            
+                            Spacer()
                         }
-                    }) // Display the list of posts
-                    .padding(.top, -30)
-                }
-                .onAppear{
-//                    lastTranslation.height = 500
-                }
-//                .navigationTitle("NPA") // Set the navigation title
-//                .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
-                .brightness(vm.showCommentSection ? -0.3 : 0.0)
-                .scrollDisabled(vm.showCommentSection)
-                .zIndex(0)
-                if(vm.showCommentSection){
-                    VStack{
-                        Spacer()
-                            .frame(height: 200)
-                        VStack(spacing: 0){
-                            VStack{
-                                Spacer()
-                                    .frame(height: 10)
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 50, height: 7)
-                                    .foregroundStyle(Color(UIColor.systemGray4))
-                                Spacer()
-                                    .frame(height: 20)
-                                Text("Comments")
-                                    .bold()
-                                Spacer()
-                                    .frame(height: 10)
-                                Divider()
-                                    .background(Color.gray)
-                                Spacer()
-                                    .frame(height: 10)
+                        
+                        StoryListView() // Display the list of stories
+                        //                    Divider()
+                        PostListView(showCommentSection: false, onCommentTapped: {
+                            withAnimation(.default){
                             }
-                            .background{
-                                Color.white
-                            }
-                            .frame(width: deviceWidth)
-                            .clipShape(
-                                .rect(
-                                    topLeadingRadius: 20,
-                                    bottomLeadingRadius: 0,
-                                    bottomTrailingRadius: 0,
-                                    topTrailingRadius: 20
+                        }) // Display the list of posts
+                        .padding(.top, -30)
+                    }
+                    .onAppear{
+                        //                    lastTranslation.height = 500
+                    }
+                    //                .navigationTitle("NPA") // Set the navigation title
+                    //                .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
+                    .brightness(vm.showCommentSection ? -0.3 : 0.0)
+                    .scrollDisabled(vm.showCommentSection)
+                    .zIndex(0)
+                    if(vm.showCommentSection){
+                        VStack{
+                            Spacer()
+                                .frame(height: 200)
+                            VStack(spacing: 0){
+                                VStack{
+                                    Spacer()
+                                        .frame(height: 10)
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(width: 50, height: 7)
+                                        .foregroundStyle(Color(UIColor.systemGray4))
+                                    Spacer()
+                                        .frame(height: 20)
+                                    Text("Comments")
+                                        .bold()
+                                    Spacer()
+                                        .frame(height: 10)
+                                    Divider()
+                                        .background(Color.gray)
+                                    Spacer()
+                                        .frame(height: 10)
+                                }
+                                .background{
+                                    Color.white
+                                }
+                                .frame(width: deviceWidth)
+                                .clipShape(
+                                    .rect(
+                                        topLeadingRadius: 20,
+                                        bottomLeadingRadius: 0,
+                                        bottomTrailingRadius: 0,
+                                        topTrailingRadius: 20
+                                    )
                                 )
-                            )
-                            .contentShape(Rectangle())
-                            .highPriorityGesture(dragGesture)
-                            .offset(
-                                y: lastTranslation.height
-                            )
-                            
-                            
-                            VStack {
-                                GeometryReader { geometry in
-                                    CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
-                                        .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
-                                        .background(Color.white)
-                                        .zIndex(12)
+                                .contentShape(Rectangle())
+                                .highPriorityGesture(dragGesture)
+                                .offset(
+                                    y: lastTranslation.height
+                                )
+                                
+                                
+                                VStack {
+                                    GeometryReader { geometry in
+                                        CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
+                                            .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
+                                            .background(Color.white)
+                                            .zIndex(12)
+                                    }
+                                }
+                                .offset(y: self.lastTranslation.height)
+                                .background{
+                                    Color.white
+                                        .frame(width: 2 * deviceWidth)
+                                        .offset(y: self.lastTranslation.height)
+                                    
                                 }
                             }
-                            .offset(y: self.lastTranslation.height)
-                            .background{
-                                Color.white
-                                    .frame(width: 2 * deviceWidth)
-                                    .offset(y: self.lastTranslation.height)
-
+                            
+                        }
+                        
+                        
+                        .onAppear{
+                            
+                            
+                            
+                            withAnimation(.easeIn.speed(1.6)){
+                                lastTranslation.height = 0
                             }
                         }
-
                     }
-
-
-                    .onAppear{
-
-
-                        
-                        withAnimation(.easeIn.speed(1.6)){
-                            lastTranslation.height = 0
-                        }
-                    }
+                    
+                    
                 }
-                
-                
             }
             
             
         }
-        .ignoresSafeArea(.all, edges: .top)
+        //.ignoresSafeArea(.all, edges: .top)
     }
         
         func dismissKeyboard(){
@@ -212,9 +234,10 @@ struct FeedView: View {
 }
 
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView()
-//    }
-//}
+struct FeedView_Previews: PreviewProvider {
+    static var previews: some View {
+        FeedView()
+            .environmentObject(FeedVM())
+    }
+}
 

@@ -22,6 +22,8 @@ import SwiftUI
                 )
             Text(post.profile_name)
                 .font(.footnote)
+                .padding(.horizontal, -2)
+
                 // Add an overlay circle stroke with a gradient color
         }
     }

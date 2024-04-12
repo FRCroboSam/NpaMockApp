@@ -11,17 +11,33 @@ struct NpaContentView: View {
     @EnvironmentObject var podcastVM: PodcastVM
     @EnvironmentObject var blogVM: BlogVM
     @State private var currentIndex = 0
+    @State private var query = ""
     @State private var maxPodcastViewHeight: CGFloat = 380
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
-            DiscoverNavBar(text: "NPA Content")
+//            DiscoverNavBar(text: "NPA Content")
             Spacer()
                 .frame(height: 5)
             ScrollView(){
-//                Text("Podcasts")
-//                    .font(.title)
-//                    .bold()
-//                    .padding(.leading, 10)
+                HStack{
+                    Text("World of Sports")
+                        .font(.title)
+                        .bold()
+                        .foregroundStyle(Color(hex: "0A66C2"))
+                        .padding(.leading, 15)
+                    Spacer()
+                }
+                HStack{
+                    Image(systemName: "magnifyingglass")
+                        .foregroundColor(.black)
+                    TextField("Search news and broadcasts! ", text: $query)
+                        .foregroundColor(.black)
+                        .textContentType(.newPassword)
+                        .keyboardType(.asciiCapable)
+                        .autocorrectionDisabled()
+                        .listRowSeparator(.hidden)
+                }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.92))
+
                 VStack(alignment: .center, spacing: 0){
                     Spacer()
                         .frame(height: 15)
@@ -58,7 +74,7 @@ struct NpaContentView: View {
                 }
                 
             }
-        }.ignoresSafeArea(.all, edges: .top)
+        }//.ignoresSafeArea(.all, edges: .top)
             .scrollIndicators(.hidden)
     }
 //    var body: some View {

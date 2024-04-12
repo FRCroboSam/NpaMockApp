@@ -14,8 +14,13 @@
 		36236A442BC2957100580B29 /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A432BC2957100580B29 /* Blog.swift */; };
 		36236A462BC295A400580B29 /* BlogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A452BC295A400580B29 /* BlogVM.swift */; };
 		36236A482BC295B600580B29 /* BlogCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A472BC295B600580B29 /* BlogCardView.swift */; };
-		36236A4B2BC66D9600580B29 /* MainMarketplaceUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A4A2BC66D9600580B29 /* MainMarketplaceUI.swift */; };
+		36236A4B2BC66D9600580B29 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A4A2BC66D9600580B29 /* ExploreView.swift */; };
 		365D385A2B63CE4D0013689A /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 365D38592B63CE4D0013689A /* YouTubePlayerKit */; };
+		3671791B2BC90CF1004E380C /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671791A2BC90CF1004E380C /* CustomTabBarView.swift */; };
+		3671791E2BC90D59004E380C /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671791C2BC90D59004E380C /* TabBarItem.swift */; };
+		3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671791D2BC90D59004E380C /* TabBarItemsPreferenceKey.swift */; };
+		367179212BC90E4E004E380C /* CustomTabBarContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367179202BC90E4E004E380C /* CustomTabBarContainerView.swift */; };
+		367179232BC9124B004E380C /* AthleteScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367179222BC9124B004E380C /* AthleteScrollView.swift */; };
 		3679F2712BA9690E00DAC43E /* comments.json in Resources */ = {isa = PBXBuildFile; fileRef = 3679F2702BA9690E00DAC43E /* comments.json */; };
 		3679F2732BA9693000DAC43E /* replies.json in Resources */ = {isa = PBXBuildFile; fileRef = 3679F2722BA9693000DAC43E /* replies.json */; };
 		3679F2872BA96AAD00DAC43E /* ProfileImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2852BA96AAD00DAC43E /* ProfileImage.swift */; };
@@ -73,7 +78,12 @@
 		36236A432BC2957100580B29 /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
 		36236A452BC295A400580B29 /* BlogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogVM.swift; sourceTree = "<group>"; };
 		36236A472BC295B600580B29 /* BlogCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCardView.swift; sourceTree = "<group>"; };
-		36236A4A2BC66D9600580B29 /* MainMarketplaceUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMarketplaceUI.swift; sourceTree = "<group>"; };
+		36236A4A2BC66D9600580B29 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		3671791A2BC90CF1004E380C /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
+		3671791C2BC90D59004E380C /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
+		3671791D2BC90D59004E380C /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
+		367179202BC90E4E004E380C /* CustomTabBarContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomTabBarContainerView.swift; sourceTree = "<group>"; };
+		367179222BC9124B004E380C /* AthleteScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteScrollView.swift; sourceTree = "<group>"; };
 		3679F2702BA9690E00DAC43E /* comments.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = comments.json; sourceTree = "<group>"; };
 		3679F2722BA9693000DAC43E /* replies.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = replies.json; sourceTree = "<group>"; };
 		3679F2852BA96AAD00DAC43E /* ProfileImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImage.swift; sourceTree = "<group>"; };
@@ -163,12 +173,12 @@
 			path = Blogs;
 			sourceTree = "<group>";
 		};
-		36236A492BC66D2D00580B29 /* Marketplace */ = {
+		36236A492BC66D2D00580B29 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				36236A4A2BC66D9600580B29 /* MainMarketplaceUI.swift */,
+				36236A4A2BC66D9600580B29 /* ExploreView.swift */,
 			);
-			path = Marketplace;
+			path = Explore;
 			sourceTree = "<group>";
 		};
 		3679F2902BAA1C7400DAC43E /* Profile */ = {
@@ -229,6 +239,7 @@
 				36F0D7442BB12AF50044C3B1 /* AthleteProfileView.swift */,
 				36F0D7482BB695DC0044C3B1 /* AthleteStatView.swift */,
 				36F0D74A2BBCC0E90044C3B1 /* AthleteHeadline.swift */,
+				367179222BC9124B004E380C /* AthleteScrollView.swift */,
 			);
 			path = Athlete;
 			sourceTree = "<group>";
@@ -249,6 +260,10 @@
 				36F0D7462BB12B880044C3B1 /* AthleteNavBar.swift */,
 				36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */,
 				36F7670E2BBFD9D2008D8968 /* DotsIndexView.swift */,
+				3671791C2BC90D59004E380C /* TabBarItem.swift */,
+				3671791D2BC90D59004E380C /* TabBarItemsPreferenceKey.swift */,
+				367179202BC90E4E004E380C /* CustomTabBarContainerView.swift */,
+				3671791A2BC90CF1004E380C /* CustomTabBarView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -307,7 +322,7 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
-				36236A492BC66D2D00580B29 /* Marketplace */,
+				36236A492BC66D2D00580B29 /* Explore */,
 				36F767092BBFCF96008D8968 /* NPA Content */,
 				36F767082BBFCF63008D8968 /* Sports Worlds */,
 				3679F2BC2BAFBB0A00DAC43E /* Components */,
@@ -467,13 +482,16 @@
 				E55B36472A618D1D00CB859B /* StoryCard.swift in Sources */,
 				36236A482BC295B600580B29 /* BlogCardView.swift in Sources */,
 				3679F2932BAA1DC600DAC43E /* CommentView.swift in Sources */,
+				3671791B2BC90CF1004E380C /* CustomTabBarView.swift in Sources */,
 				36236A442BC2957100580B29 /* Blog.swift in Sources */,
 				36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */,
+				367179212BC90E4E004E380C /* CustomTabBarContainerView.swift in Sources */,
 				3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */,
 				36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */,
 				36F0D7432BB0AAF20044C3B1 /* DiscoverNavBar.swift in Sources */,
 				36F7670F2BBFD9D2008D8968 /* DotsIndexView.swift in Sources */,
 				E55B36422A61858B00CB859B /* Extensions.swift in Sources */,
+				3671791E2BC90D59004E380C /* TabBarItem.swift in Sources */,
 				3679F2AD2BAD454D00DAC43E /* Athlete.swift in Sources */,
 				E55B36442A618D0700CB859B /* StoryListView.swift in Sources */,
 				E55B36492A618D2A00CB859B /* AddStoryCard.swift in Sources */,
@@ -494,13 +512,15 @@
 				E55B36232A6181EC00CB859B /* ContentView.swift in Sources */,
 				3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */,
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
+				3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */,
 				3679F2A12BAA211200DAC43E /* Post.swift in Sources */,
 				E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */,
 				3679F2872BA96AAD00DAC43E /* ProfileImage.swift in Sources */,
 				3679F2B42BAD4B0900DAC43E /* AthleteListView.swift in Sources */,
 				36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */,
 				E55B36382A6184AB00CB859B /* PostListView.swift in Sources */,
-				36236A4B2BC66D9600580B29 /* MainMarketplaceUI.swift in Sources */,
+				367179232BC9124B004E380C /* AthleteScrollView.swift in Sources */,
+				36236A4B2BC66D9600580B29 /* ExploreView.swift in Sources */,
 				E55B364D2A619B5300CB859B /* TabbarView.swift in Sources */,
 				3679F29D2BAA20A900DAC43E /* Utils.swift in Sources */,
 				3679F29F2BAA20DE00DAC43E /* PostVM.swift in Sources */,

@@ -17,10 +17,10 @@ struct StoryListView: View {
             HStack(spacing: 0) {
                 Spacer()
                     .frame(width: 12)
-                AddStoryCard() // Display the "Add Story" card
+                AddStoryCard(imageName: "male_athlete2") // Display the "Add Story" card
                 ForEach(postData.posts) { post in // Iterate over each post in the data
                     Spacer()
-                        .frame(width: 12)
+                        .frame(width: 20)
                     StoryCard(post: post)
                         .frame(width: 85, height: 85)// Display a story card with the post's profile image
                 }

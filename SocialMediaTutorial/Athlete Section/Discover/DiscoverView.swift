@@ -14,10 +14,16 @@ struct DiscoverView: View {
     @State private var goToAthleteProfile = false
     var body: some View {
         NavigationStack{
-            VStack{
-                DiscoverNavBar()
+            VStack(alignment: .leading){
+                Spacer()
+                    .frame(height: 5)
+                Text("Athletes")
+                    .font(.title)
+                    .bold()
+                    .foregroundStyle(Color(hex: "0A66C2"))
+                    .padding(.leading, 20)
                 ZStack{
-                    VStack{
+                    VStack(spacing: 0){
                         HStack{
                             HStack {
                                 Image(systemName: "magnifyingglass")
@@ -91,7 +97,7 @@ struct DiscoverView: View {
                     
                     
                 }
-            }        .ignoresSafeArea(.all, edges: .top)
+            }
 
         }
 

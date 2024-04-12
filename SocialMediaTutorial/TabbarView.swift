@@ -21,6 +21,8 @@ struct TabbarView: View {
             TabView(selection: $selected) {
                 VStack{
                     FeedView()
+                        .transition(.slide)
+
                         .tabItem {
                             Text("")
                         }.tag(1)
@@ -29,7 +31,9 @@ struct TabbarView: View {
                 }
 
                 
-                DiscoverView()
+                ExploreView()
+                    .transition(.slide)
+
                     .tabItem {
                         Text("")
                     }.tag(2)
@@ -37,6 +41,7 @@ struct TabbarView: View {
                     .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
 
                 NpaContentView()
+                    .transition(.slide)
                     .tabItem {
                         Text("")
                     }.tag(3)
@@ -58,6 +63,7 @@ struct TabbarView: View {
                     .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
 
             }
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .navigationTitle("NPA")
             .navigationBarTitleDisplayMode(.large)
             .zIndex(0)
@@ -66,32 +72,80 @@ struct TabbarView: View {
             if(!vm.showCommentSection){
                     HStack {
                         Spacer()
-                        Button(action: { self.selected = 1 } ) {
-                            Image(systemName: self.selected == 1 ? "house.fill" : "house") // Tab icon for HomeView
-                                .font(.system(size: 30))
-                                .tint(self.selected == 1 ? .blue : .gray)
+                        VStack{
+                            Button(action: {
+                                withAnimation(.easeIn){
+                                    self.selected = 1
+
+                                }
+                            } ) {
+                                Image(systemName: self.selected == 1 ? "house.fill" : "house") // Tab icon for HomeView
+                                    .font(.system(size: 30))
+                                    .tint(self.selected == 1 ? .blue : .gray)
+                            }
+                            Text("Home")
+                                .foregroundStyle(self.selected == 1 ? .blue : .gray)
+                        }
+
+                        Spacer()
+                        VStack{
+                            Button(action: {                                 withAnimation(.easeIn){
+                                self.selected = 2
+
+                            } } ) {
+                                Image(systemName: "magnifyingglass") // Tab icon for Search View
+                                    .font(.system(size: 30))
+                                    .bold(self.selected == 2)
+                                    .tint(self.selected == 2 ? .blue : .gray)
+                                
+                            }
+                            Text("Explore")
+                                .foregroundStyle(self.selected == 2 ? .blue : .gray)
+
                         }
                         Spacer()
-                        Button(action: { self.selected = 2 } ) {
-                            Image(systemName: "magnifyingglass") // Tab icon for Search View
-                                .font(.system(size: 30))
-                                .bold(self.selected == 2)
-                                .tint(self.selected == 2 ? .blue : .gray)
-                            
+                        VStack{
+                            Button(action: {                                 withAnimation(.easeIn){
+                                self.selected = 3
+
+                            } } ) {
+                                Image(systemName: "plus") // Tab icon for New Post
+                                    .font(.system(size: 30))
+                                    .tint(self.selected == 3 ? .blue : .gray)
+                                
+                            }
+                            Text("Create")
+                                .foregroundStyle(self.selected == 3 ? .blue : .gray)
+                                .offset(y: 2)
                         }
                         Spacer()
-                        Button(action: { self.selected = 3 } ) {
-                            Image(systemName: "network") // Tab icon for New Post
-                                .font(.system(size: 30))
-                                .tint(self.selected == 3 ? .blue : .gray)
-                            
+                        VStack{
+                            Button(action: {                                 withAnimation(.easeIn){
+                                self.selected = 4
+
+                            } } ) {
+                                Image(systemName: "network") // Tab icon for New Post
+                                    .font(.system(size: 30))
+                                    .tint(self.selected == 4 ? .blue : .gray)
+                                
+                            }
+                            Text("Content")
+                                .foregroundStyle(self.selected == 4 ? .blue : .gray)
                         }
                         Spacer()
-                        Button(action: { self.selected = 4 } ) {
-                            Image(systemName:  "person") // Tab icon for Profile View
-                                .font(.system(size: 30))
-                                .tint(self.selected == 4 ? .brown : .gray)
-                            
+
+                        VStack{
+                            Button(action: {                                 withAnimation(.easeOut(duration: 0.1)){
+                                self.selected = 5
+
+                            } } ) {
+                                Image(systemName:  "envelope") // Tab icon for Profile View
+                                    .font(.system(size: 30))
+                                    .tint(self.selected == 5 ? .blue : .gray)
+                                
+                            }
+                            Text("Inbox")
+                                .foregroundStyle(self.selected == 5 ? .blue : .gray)
                         }
                         Spacer()
                     }
@@ -119,6 +173,8 @@ struct TabbarView: View {
 struct TabbarView_Previews: PreviewProvider {
     static var previews: some View {
         TabbarView()
+            .environmentObject(FeedVM())
+            .environmentObject(AthleteVM())
     }
 }
 
