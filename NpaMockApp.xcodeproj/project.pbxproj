@@ -42,6 +42,14 @@
 		3679F2B92BAE617E00DAC43E /* DropdownPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2B82BAE617E00DAC43E /* DropdownPicker.swift */; };
 		3679F2BB2BAF8D9300DAC43E /* AthleteBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2BA2BAF8D9300DAC43E /* AthleteBannerView.swift */; };
 		3679F2BE2BAFBB1A00DAC43E /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2BD2BAFBB1A00DAC43E /* NavBar.swift */; };
+		36920C532BC928A700CA9D8F /* FeaturedAthletes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C522BC928A700CA9D8F /* FeaturedAthletes.swift */; };
+		36920C552BC92EEE00CA9D8F /* ShopScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C542BC92EEE00CA9D8F /* ShopScrollView.swift */; };
+		36920C572BC92EF900CA9D8F /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C562BC92EF900CA9D8F /* ItemCard.swift */; };
+		36920C592BC935C100CA9D8F /* EventCardHorizontal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C582BC935C100CA9D8F /* EventCardHorizontal.swift */; };
+		36920C5B2BC93ADC00CA9D8F /* EventScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C5A2BC93ADC00CA9D8F /* EventScrollView.swift */; };
+		36920C5D2BC93BC200CA9D8F /* EventCardVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C5C2BC93BC200CA9D8F /* EventCardVertical.swift */; };
+		36920C602BC9463800CA9D8F /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C5F2BC9463800CA9D8F /* InboxView.swift */; };
+		36920C622BC946A300CA9D8F /* ChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C612BC946A300CA9D8F /* ChatListItemView.swift */; };
 		36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */; };
 		36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */; };
 		36F0D7432BB0AAF20044C3B1 /* DiscoverNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7422BB0AAF20044C3B1 /* DiscoverNavBar.swift */; };
@@ -105,6 +113,14 @@
 		3679F2B82BAE617E00DAC43E /* DropdownPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropdownPicker.swift; sourceTree = "<group>"; };
 		3679F2BA2BAF8D9300DAC43E /* AthleteBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteBannerView.swift; sourceTree = "<group>"; };
 		3679F2BD2BAFBB1A00DAC43E /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
+		36920C522BC928A700CA9D8F /* FeaturedAthletes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedAthletes.swift; sourceTree = "<group>"; };
+		36920C542BC92EEE00CA9D8F /* ShopScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScrollView.swift; sourceTree = "<group>"; };
+		36920C562BC92EF900CA9D8F /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
+		36920C582BC935C100CA9D8F /* EventCardHorizontal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardHorizontal.swift; sourceTree = "<group>"; };
+		36920C5A2BC93ADC00CA9D8F /* EventScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventScrollView.swift; sourceTree = "<group>"; };
+		36920C5C2BC93BC200CA9D8F /* EventCardVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardVertical.swift; sourceTree = "<group>"; };
+		36920C5F2BC9463800CA9D8F /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
+		36920C612BC946A300CA9D8F /* ChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItemView.swift; sourceTree = "<group>"; };
 		36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentSectionView.swift; sourceTree = "<group>"; };
 		36F0D7422BB0AAF20044C3B1 /* DiscoverNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNavBar.swift; sourceTree = "<group>"; };
@@ -177,6 +193,12 @@
 			isa = PBXGroup;
 			children = (
 				36236A4A2BC66D9600580B29 /* ExploreView.swift */,
+				36920C522BC928A700CA9D8F /* FeaturedAthletes.swift */,
+				36920C542BC92EEE00CA9D8F /* ShopScrollView.swift */,
+				36920C562BC92EF900CA9D8F /* ItemCard.swift */,
+				36920C582BC935C100CA9D8F /* EventCardHorizontal.swift */,
+				36920C5C2BC93BC200CA9D8F /* EventCardVertical.swift */,
+				36920C5A2BC93ADC00CA9D8F /* EventScrollView.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -268,6 +290,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		36920C5E2BC9461200CA9D8F /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				36920C5F2BC9463800CA9D8F /* InboxView.swift */,
+				36920C612BC946A300CA9D8F /* ChatListItemView.swift */,
+			);
+			path = Inbox;
+			sourceTree = "<group>";
+		};
 		36F767082BBFCF63008D8968 /* Sports Worlds */ = {
 			isa = PBXGroup;
 			children = (
@@ -322,6 +353,7 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				36920C5E2BC9461200CA9D8F /* Inbox */,
 				36236A492BC66D2D00580B29 /* Explore */,
 				36F767092BBFCF96008D8968 /* NPA Content */,
 				36F767082BBFCF63008D8968 /* Sports Worlds */,
@@ -495,13 +527,18 @@
 				3679F2AD2BAD454D00DAC43E /* Athlete.swift in Sources */,
 				E55B36442A618D0700CB859B /* StoryListView.swift in Sources */,
 				E55B36492A618D2A00CB859B /* AddStoryCard.swift in Sources */,
+				36920C622BC946A300CA9D8F /* ChatListItemView.swift in Sources */,
 				3679F2B92BAE617E00DAC43E /* DropdownPicker.swift in Sources */,
 				3679F2A72BAA4A6600DAC43E /* PostView.swift in Sources */,
 				36F0D7492BB695DC0044C3B1 /* AthleteStatView.swift in Sources */,
 				3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */,
+				36920C5B2BC93ADC00CA9D8F /* EventScrollView.swift in Sources */,
 				3679F2BB2BAF8D9300DAC43E /* AthleteBannerView.swift in Sources */,
+				36920C602BC9463800CA9D8F /* InboxView.swift in Sources */,
 				36F7670C2BBFCFE6008D8968 /* NpaContentView.swift in Sources */,
+				36920C5D2BC93BC200CA9D8F /* EventCardVertical.swift in Sources */,
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
+				36920C592BC935C100CA9D8F /* EventCardHorizontal.swift in Sources */,
 				3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */,
 				36F0D74B2BBCC0E90044C3B1 /* AthleteHeadline.swift in Sources */,
 				36236A462BC295A400580B29 /* BlogVM.swift in Sources */,
@@ -509,7 +546,9 @@
 				36F0D7452BB12AF50044C3B1 /* AthleteProfileView.swift in Sources */,
 				36F767162BC27452008D8968 /* PodcastView.swift in Sources */,
 				3679F2A32BAA27D500DAC43E /* CommentSectionView.swift in Sources */,
+				36920C532BC928A700CA9D8F /* FeaturedAthletes.swift in Sources */,
 				E55B36232A6181EC00CB859B /* ContentView.swift in Sources */,
+				36920C552BC92EEE00CA9D8F /* ShopScrollView.swift in Sources */,
 				3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */,
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
 				3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */,
@@ -524,6 +563,7 @@
 				E55B364D2A619B5300CB859B /* TabbarView.swift in Sources */,
 				3679F29D2BAA20A900DAC43E /* Utils.swift in Sources */,
 				3679F29F2BAA20DE00DAC43E /* PostVM.swift in Sources */,
+				36920C572BC92EF900CA9D8F /* ItemCard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -35,12 +35,12 @@ struct TabbarView: View {
                     .transition(.slide)
 
                     .tabItem {
-                        Text("")
+                        Text("Athletes")
                     }.tag(2)
                     .navigationBarTitleDisplayMode(.inline)
                     .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
 
-                NpaContentView()
+                DiscoverView()
                     .transition(.slide)
                     .tabItem {
                         Text("")
@@ -56,14 +56,23 @@ struct TabbarView: View {
                     }
                     .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
 
-                Text("Profile View")
+                NpaContentView()
                     .tabItem {
                         Text("")
                     }.tag(4)
                     .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
+                
+                InboxView(athletes: athleteVM.athletes)
+                    .tabItem {
+                        Text("")
+                    }.tag(5)
+                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
 
             }
-            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            .onAppear {
+                  UIScrollView.appearance().isScrollEnabled = false
+            }
+            //.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .navigationTitle("NPA")
             .navigationBarTitleDisplayMode(.large)
             .zIndex(0)
@@ -109,12 +118,12 @@ struct TabbarView: View {
                                 self.selected = 3
 
                             } } ) {
-                                Image(systemName: "plus") // Tab icon for New Post
+                                Image(systemName: "figure.run") // Tab icon for New Post
                                     .font(.system(size: 30))
                                     .tint(self.selected == 3 ? .blue : .gray)
                                 
                             }
-                            Text("Create")
+                            Text("Athletes")
                                 .foregroundStyle(self.selected == 3 ? .blue : .gray)
                                 .offset(y: 2)
                         }

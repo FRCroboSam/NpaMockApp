@@ -26,15 +26,13 @@ struct ExploreView: View {
     @Namespace var animation
     @Namespace var namespace
 
-    
+     
     var body: some View {
         NavigationStack{
-            VStack(alignment: .center, spacing: 0){
-                Spacer()
-                    .frame(height: 5)
-                
-                HStack{
+            ScrollView{
+                VStack(alignment: .leading, spacing: 0){
                     Spacer()
+                        .frame(height: 10)
                     HStack{
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(.black)
@@ -45,55 +43,109 @@ struct ExploreView: View {
                             .autocorrectionDisabled()
                             .listRowSeparator(.hidden)
                     }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.92))
+                        .padding(.leading, 10)
+//                    HStack{
+//                        Text("Your NPA Portal " )
+//                            .bold()
+//                            .font(.title)
+//                            .padding(.leading, 10)
+//                    }
+                    
+                    
+                    //                .padding(.leading, 10)
+                    
+                    //            Text("Sport")
+                    //                .font(.title3)
+                    //                .foregroundStyle(.gray.opacity(0.8))
+                    //                .padding(.leading, 15)
+                    //
+                    //            Text("Tennis")
+                    //                .bold()
+                    //                .font(.title)
+                    //                .padding(.leading, 15)
                     Spacer()
-                }
-                
-                //                .padding(.leading, 10)
-                
-                //            Text("Sport")
-                //                .font(.title3)
-                //                .foregroundStyle(.gray.opacity(0.8))
-                //                .padding(.leading, 15)
-                //
-                //            Text("Tennis")
-                //                .bold()
-                //                .font(.title)
-                //                .padding(.leading, 15)
-                Spacer()
-                    .frame(height: 10)
-                
-                Spacer()
-                    .frame(height: 10)
-                CustomTabBarView(tabs: tabs, selection: $tabSelection, localSelection: tabSelection)
-                
-                Spacer()
-                    .frame(height: 20)
-                Divider()
-                
-                VStack(spacing: 0){
+                        .frame(height: 10)
                     
-                    HStack(spacing: 0){
-                        Image(systemName: "cellularbars")
-                            .font(.title)
-                            .padding(10)
-                        Text("Tennis")
-                            .font(.title)
-                            .bold()
-                        Image(systemName: "chevron.down")
-                            .font(.headline)
-                            .padding(.trailing, 30)
-                        Spacer()
-                    }
-                    AthleteScrollView(athletes: athleteVM.athletes)
-                    
-                    
-                    
-                }
+                    Spacer()
+                        .frame(height: 10)
+                    CustomTabBarView(tabs: tabs, selection: $tabSelection, localSelection: tabSelection)
+                    //                HStack{
+                    //                    Spacer()
 
-                //.ignoresSafeArea(.all, edges: .top)
+                    //                    Spacer()
+                    //                }
+                    Spacer()
+                        .frame(height: 20)
+                    Divider()
+                    
+                    VStack(alignment:  .leading, spacing: 0){
+                        
+                        
+                        //AthleteScrollView(athletes: athleteVM.athletes)
+                        HStack(spacing: 0){
+                            Image(systemName: "cellularbars")
+                                .font(.title)
+                                .padding(.leading, 10)
+                            
+                            Text("Suggested Athletes" )
+                                .bold()
+                                .font(.title)
+                                .padding(.leading, 10)
+                            Spacer()
+                            
+                            
+                        }
+                        Spacer()
+                            .frame(height: 10)
+                        FeaturedAthletes()
+                        Spacer()
+                            .frame(height: 10)
+                        HStack(spacing: 0){
+                            Image(systemName: "calendar")
+                                .font(.title)
+                                .padding(.leading, 10)
+                            
+                            Text("Events" )
+                                .bold()
+                                .font(.title)
+                                .padding(.leading, 10)
+                            Spacer()
+                            
+                            
+                        }
+                            
+                        Spacer()
+                            .frame(height: 10)
+                        EventScrollView()
+                        Spacer()
+                            .frame(height: 10)
+                        HStack(spacing: 0){
+                            Image(systemName: "cart.fill")
+                                .font(.title)
+                                .padding(.leading, 10)
+                            
+                            Text("Shop" )
+                                .bold()
+                                .font(.title)
+                                .padding(.leading, 10)
+                            Spacer()
+                            
+                            
+                        }
+                        ShopScrollView()
+                        
+                        Spacer()
+                            .frame(height: 50)
+                        
+                        
+                        
+                    }
+                    
+                    //.ignoresSafeArea(.all, edges: .top)
+                }
+                
+                //.padding(.leading, 10)
             }
-            
-            //.padding(.leading, 10)
         }
     }
     
@@ -103,4 +155,5 @@ struct ExploreView: View {
     ExploreView()
         .environmentObject(PodcastVM())
         .environmentObject(AthleteVM())
+        .environmentObject(FeedVM())
 }
