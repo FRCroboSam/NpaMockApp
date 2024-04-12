@@ -55,6 +55,8 @@ struct FeedView: View {
                 .scrollDisabled(vm.showCommentSection)
                 .zIndex(0)
                 if(vm.showCommentSection){
+                    //let x = print("Should be showing comment section ")
+
                     VStack{
                         Spacer()
                             .frame(height: 200)
@@ -120,6 +122,7 @@ struct FeedView: View {
 
                         
                         withAnimation(.easeIn.speed(2.0)){
+                            let y = print("SHOWING COMMENT SECTION")
                             lastTranslation.height = 0
                         }
                     }

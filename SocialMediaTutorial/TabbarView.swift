@@ -19,16 +19,13 @@ struct TabbarView: View {
         
         ZStack{
             TabView(selection: $selected) {
-                VStack{
-                    FeedView()
-                        .transition(.slide)
-
-                        .tabItem {
-                            Text("")
-                        }.tag(1)
-                        .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
+                FeedView()
+                    .tabItem {
+                        Text("")
+                    }.tag(1)
+                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
                     
-                }
+                
 
                 
                 ExploreView()

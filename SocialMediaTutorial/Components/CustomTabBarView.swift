@@ -34,16 +34,18 @@ extension CustomTabBarView {
     }
     
     private var tabBarVersion1: some View {
-        HStack {
-            ForEach(tabs, id: \.self) { tab in
-                tabView(tab: tab)
-                    .onTapGesture {
-                        switchToTab(tab: tab)
-                    }
+        ScrollView(.horizontal){
+            HStack {
+                ForEach(tabs, id: \.self) { tab in
+                    tabView(tab: tab)
+                        .onTapGesture {
+                            switchToTab(tab: tab)
+                        }
+                }
             }
+            //.padding(6)
+            .background(Color.white.ignoresSafeArea(edges: .bottom))
         }
-        //.padding(6)
-        .background(Color.white.ignoresSafeArea(edges: .bottom))
     }
     
     private func switchToTab(tab: TabBarItem) {
@@ -73,6 +75,7 @@ extension CustomTabBarView {
                         .fill(tab.color.opacity(0.2))
                         .matchedGeometryEffect(id: "background_rectangle", in: namespace)
                         .padding(-5)
+                        .frame(width : 70)
 
                 }
             }
@@ -80,16 +83,20 @@ extension CustomTabBarView {
     }
     
     private var tabBarVersion2: some View {
-        HStack {
-            ForEach(tabs, id: \.self) { tab in
-                tabView2(tab: tab)
-                    .onTapGesture {
-                        switchToTab(tab: tab)
-                    }
+        ScrollView(.horizontal){
+            HStack {
+                ForEach(tabs, id: \.self) { tab in
+                    tabView2(tab: tab)
+                        .onTapGesture {
+                            switchToTab(tab: tab)
+                        }
+                    Spacer()
+                        .frame(width: 30)
+                }
             }
+            .padding(6)
+            .padding(.horizontal)
         }
-        .padding(6)
-        .padding(.horizontal)
     }
     
 }
