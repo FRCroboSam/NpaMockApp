@@ -69,9 +69,9 @@ struct TabbarView: View {
                     .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
 
             }
-            .onAppear {
-                  UIScrollView.appearance().isScrollEnabled = false
-            }
+//            .onAppear {
+//                  UIScrollView.appearance().isScrollEnabled = false
+//            }
             //.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             .navigationTitle("NPA")
             .navigationBarTitleDisplayMode(.large)
