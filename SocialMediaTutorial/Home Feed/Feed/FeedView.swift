@@ -32,7 +32,16 @@ struct FeedView: View {
     var body: some View {
         let blankPost = vm.posts[0]
         VStack(spacing: 0) {
-            NavBar()
+            //NavBar()
+            HStack{
+                Image("complete_logo")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 150, height: 80)
+                    .padding(.leading, 10)
+                Spacer()
+            }
+
 
             ZStack{
                 ScrollView{
@@ -133,7 +142,7 @@ struct FeedView: View {
             
             
         }
-        .ignoresSafeArea(.all, edges: .top)
+        //.ignoresSafeArea(.all, edges: .top)
     }
         
         func dismissKeyboard(){
@@ -162,7 +171,7 @@ struct FeedView: View {
                         lastNonZeroTranslation.height = value.translation.height
                     }
                     
-                    lastTranslation.height = max(-220, min(lastTranslation.height, 500)) //dont go too far off bottom of the screen
+                    lastTranslation.height = max(-280, min(lastTranslation.height, 500)) //dont go too far off bottom of the screen
                     
                 }
                 .onEnded { value in
@@ -196,7 +205,7 @@ struct FeedView: View {
                             
                         }
                         else if (lastTranslation.height < -92 || isUp && isSwipe) {
-                            lastTranslation.height = -220
+                            lastTranslation.height = -280
                         }
                         else{
                             lastTranslation.height = 0
