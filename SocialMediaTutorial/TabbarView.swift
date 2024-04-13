@@ -23,22 +23,20 @@ struct TabbarView: View {
                     .tabItem {
                         Text("")
                     }.tag(1)
-                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
-                    
+                    .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
+//
                 
 
                 
                 ExploreView()
-                    .transition(.slide)
 
                     .tabItem {
-                        Text("Athletes")
+                        Text("")
                     }.tag(2)
                     .navigationBarTitleDisplayMode(.inline)
-                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
+                    .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
 
                 DiscoverView()
-                    .transition(.slide)
                     .tabItem {
                         Text("")
                     }.tag(3)
@@ -51,19 +49,19 @@ struct TabbarView: View {
                             }
                         }
                     }
-                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
+                    .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
 
                 NpaContentView()
                     .tabItem {
                         Text("")
                     }.tag(4)
-                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
+                    .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
                 
                 InboxView(athletes: athleteVM.athletes)
                     .tabItem {
                         Text("")
                     }.tag(5)
-                    .toolbar(vm.showCommentSection ? .hidden : .hidden, for: .tabBar)
+                    .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
 
             }
 //            .onAppear {

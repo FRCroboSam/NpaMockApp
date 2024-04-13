@@ -53,7 +53,7 @@ struct DiscoverView: View {
                             } label: {
                                 HStack{
                                     Image(systemName: "line.3.horizontal.decrease")
-                                    Text("Filter")
+//                                    Text("Filter")
                                 }
                             }.buttonStyle(BigButtonStyle(height: 40, color: Color(UIColor.systemGray2), padding: 30))
                                 .padding(.trailing, 30)

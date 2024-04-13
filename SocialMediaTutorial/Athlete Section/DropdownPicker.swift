@@ -12,6 +12,7 @@ struct DropdownPicker: View {
     @Binding var value:String
     let text: String
     let color: Color
+    @State var textColor: Color?
     @State private var isExpanded: Bool = false
     //let items: [String]
      var items: [String]
@@ -22,14 +23,14 @@ struct DropdownPicker: View {
 
                         HStack(spacing: 5){
                             Text(value.isEmpty ? text : value)
-                                .font(.system(size: 30))
+                                .font(.system(size: 15))
                                 .bold()
-                                .foregroundStyle(.black)
+                                .foregroundStyle(textColor ?? Color(UIColor.darkGray))
 //                            Spacer()
 
                             Image(systemName: "chevron.down")
                                 .font(.subheadline)
-                                .foregroundStyle(.black)
+                                .foregroundStyle(textColor ?? Color(UIColor.darkGray))
                                 .rotationEffect(.degrees(isExpanded ? -180 : 0))
                         }
                         .contentShape(Rectangle())
@@ -41,7 +42,7 @@ struct DropdownPicker: View {
                         .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
                         
                     }
-                    .frame(width: 1/3 * 3/4 * deviceWidth)
+                    .frame(width: 1/4 * 3/4 * deviceWidth)
                     .padding(10)
                     .background(color)
                     .clipShape(

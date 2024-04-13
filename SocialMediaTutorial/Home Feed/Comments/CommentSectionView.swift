@@ -100,6 +100,10 @@ struct CommentSectionView: View {
                 .offset(x: 20)
                 .frame(width: deviceWidth + 50)
                 .background(Color.white)
+                .zIndex(500)
+                    .onAppear{
+                        let print =  print("HELLO")
+                    }
 
                 if(isCommentFocused){
                     VStack{
