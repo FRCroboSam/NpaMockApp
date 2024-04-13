@@ -43,6 +43,7 @@ struct PostCardBody: View {
                     },
                    label: {
                         Image(systemName: "text.bubble")
+                            .foregroundStyle(.gray)
                         Text("\(comment_count.formattedString())")
                        
                     })
