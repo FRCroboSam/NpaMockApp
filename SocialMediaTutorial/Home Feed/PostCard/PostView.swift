@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import YouTubePlayerKit
 
 struct PostView: View {
     // Properties for the post card
@@ -21,7 +22,7 @@ struct PostView: View {
     let view_count: Int
     let description: String
     var onCommentTapped: () -> Void // Closure to handle comment button tap
-
+    @State var player: YouTubePlayer
     var body: some View {
         VStack(spacing: 0) {
             PostCardHeader(profile_img: profile_img, profile_name: profile_name, profile_id: profile_id)
@@ -30,8 +31,9 @@ struct PostView: View {
                 }
             // Display the header section of the post card, including profile image, name, and ID
             
-            PostCardBody(image_or_video: image_or_video, like_count: like_count, comment_count: comment_count, view_count: view_count, post: post, description: description,
+            PostCardBody(image_or_video: image_or_video, like_count: like_count, comment_count: comment_count, view_count: view_count, post: post, description: description, player: player,
                          onCommentTapped: onCommentTapped)
+
             .padding(.top, -10)
                          
             

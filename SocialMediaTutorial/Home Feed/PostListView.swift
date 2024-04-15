@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import YouTubePlayerKit
 struct PostListView: View {
     @EnvironmentObject var feedVM: FeedVM// Observed object for reading JSON data
     let showCommentSection: Bool
@@ -16,6 +16,8 @@ struct PostListView: View {
     var body: some View {
         VStack {
             ForEach(feedVM.posts.prefix(feedVM.posts.count)) { post in //you can reintroduce the showCommentSection logic
+                let index = feedVM.post_with_videos.firstIndex(where: { $0 == post.post_id})
+                var player = index != nil ? feedVM.youtubePlayers[index ?? 0] : nil
                 PostView(
                     post: post, postVM: PostVM(post: post), profile_img: post.profile_img,
                     profile_name: post.profile_name,
@@ -30,7 +32,7 @@ struct PostListView: View {
                         withAnimation(.easeIn.speed(2.0)){
                             feedVM.showCommentSection = true
                         }
-                    }
+                    }, player: player ?? YouTubePlayer(source: .url(post.image_or_video))
                 )
                 .padding(.top)
             }

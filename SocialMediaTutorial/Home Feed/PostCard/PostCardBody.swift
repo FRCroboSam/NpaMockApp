@@ -14,13 +14,13 @@ struct PostCardBody: View {
     let view_count: Int
     let post: Post
     let description: String
-    
+    let player: YouTubePlayer
     var onCommentTapped: () -> Void // Closure to handle comment button tap
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             if(image_or_video.contains("youtube")){
-                CustomVideoPlayer(YoutubePlayer: YouTubePlayer(stringLiteral: "VIDEO"), url: image_or_video)
+                CustomVideoPlayer(player: player, url: image_or_video)
             }
             else{
                 Image(image_or_video)

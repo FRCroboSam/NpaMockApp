@@ -19,20 +19,25 @@ var deviceWidth: CGFloat {
 
 
 struct CustomVideoPlayer: View {
-    let YoutubePlayer: YouTubePlayer
+    var player: YouTubePlayer
     let url: String
     var body: some View {
+        
+            
         YouTubePlayerView(
-            YouTubePlayer(
-                source: .url(url)
-            ),
+            player,
             placeholderOverlay: {
-                    ProgressView()
-                }
-            )
-
+                ProgressView()
+            }
+        )
+        
         .frame(width: 4/4 * deviceWidth, height: 400)
         .background(Color(.systemBackground))
+        .onAppear{
+            //player.play()
+
+
+        }
 //        .shadow(
 //            color: .black.opacity(0.1),
 //            radius: 46,

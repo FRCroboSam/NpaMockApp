@@ -36,7 +36,6 @@ struct AthleteCardView: View {
                 .lineLimit(1)
             Text("1.5K Followers")
                 .font(.caption)
-            Divider()
             Button{
                 
             }label:{

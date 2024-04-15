@@ -13,18 +13,51 @@ struct SocialMediaTutorialApp: App {
     @StateObject private var athleteVM = AthleteVM()
     @StateObject private var podcastVM = PodcastVM()
     @StateObject private var blogVM = BlogVM()
+    @State var readyToShow = false;
+    @State var opacity = 0.0
     var body: some Scene {
+
         WindowGroup {
-            ContentView()
-                .environmentObject(feedVM)
-                .environmentObject(athleteVM)
-                .environmentObject(podcastVM)
-                .environmentObject(blogVM)
-                .onAppear{
-                      
-//                    modelData.loadData()
-//                    modelData.loadData()
+            ZStack{
+                
+                ContentView()
+                    .environmentObject(feedVM)
+                    .environmentObject(athleteVM)
+                    .environmentObject(podcastVM)
+                    .environmentObject(blogVM)
+                if(opacity != 0){
+                    LandingPageView()
+                        .opacity(opacity)
+                        .animation(.easeInOut(duration: 0.3), value: opacity)
                 }
-        }
+
+             
+                
+                    
+
+                
+            }
+            .onAppear{
+                withAnimation{
+                    opacity = 1.0
+
+                }
+                feedVM.loadData()
+                    
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        withAnimation{
+                            opacity = 0.1
+                        }
+                            
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                        withAnimation{
+                            opacity = 0
+                        }
+                            
+                    }
+                }
+                    
+            }
     }
 }
