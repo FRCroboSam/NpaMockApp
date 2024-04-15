@@ -89,7 +89,7 @@ struct ExploreView: View {
                         .frame(height: 10)
                     
                     Spacer()
-                        .frame(height: 10)
+                        .frame(height: 5)
                     CustomTabBarView(tabs: tabs, selection: $tabSelection, localSelection: tabSelection)
                     //                HStack{
                     //                    Spacer()

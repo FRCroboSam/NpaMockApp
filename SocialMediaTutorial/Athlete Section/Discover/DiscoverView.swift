@@ -105,10 +105,11 @@ struct DiscoverView: View {
 }
 struct BigButtonStyle: ButtonStyle {
     let height: CGFloat
+//    @State var width: CGFloat?
     @State var cornerRadius: CGFloat =  12
 //    @State var percentWidth = 0.75
     @State var color: Color = .orange
-    
+    @State var textColor: Color = .white
     let padding: CGFloat?
     @Environment(\.isEnabled) private var isEnabled: Bool
     var deviceWidth: CGFloat {
@@ -123,9 +124,10 @@ struct BigButtonStyle: ButtonStyle {
             configuration.label
             .padding(padding ?? 20)
             //.frame(width: percentWidth * deviceWidth)
-            .foregroundColor(isEnabled ? .white : Color(UIColor.systemGray3))
+            .foregroundColor(isEnabled ? textColor : Color(UIColor.systemGray3))
             .background(isEnabled ? color : Color(UIColor.systemGray5))
             .frame(height: height)
+            
             .cornerRadius(cornerRadius)
             .overlay {
                 if configuration.isPressed {

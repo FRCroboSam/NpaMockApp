@@ -50,6 +50,7 @@
 		36920C5D2BC93BC200CA9D8F /* EventCardVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C5C2BC93BC200CA9D8F /* EventCardVertical.swift */; };
 		36920C602BC9463800CA9D8F /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C5F2BC9463800CA9D8F /* InboxView.swift */; };
 		36920C622BC946A300CA9D8F /* ChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C612BC946A300CA9D8F /* ChatListItemView.swift */; };
+		36BAAC892BCD1216009E6541 /* AthleteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BAAC882BCD1216009E6541 /* AthleteCardView.swift */; };
 		36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */; };
 		36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */; };
 		36F0D7432BB0AAF20044C3B1 /* DiscoverNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7422BB0AAF20044C3B1 /* DiscoverNavBar.swift */; };
@@ -121,6 +122,7 @@
 		36920C5C2BC93BC200CA9D8F /* EventCardVertical.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardVertical.swift; sourceTree = "<group>"; };
 		36920C5F2BC9463800CA9D8F /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		36920C612BC946A300CA9D8F /* ChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItemView.swift; sourceTree = "<group>"; };
+		36BAAC882BCD1216009E6541 /* AthleteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteCardView.swift; sourceTree = "<group>"; };
 		36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentSectionView.swift; sourceTree = "<group>"; };
 		36F0D7422BB0AAF20044C3B1 /* DiscoverNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNavBar.swift; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				36F0D7482BB695DC0044C3B1 /* AthleteStatView.swift */,
 				36F0D74A2BBCC0E90044C3B1 /* AthleteHeadline.swift */,
 				367179222BC9124B004E380C /* AthleteScrollView.swift */,
+				36BAAC882BCD1216009E6541 /* AthleteCardView.swift */,
 			);
 			path = Athlete;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				E55B36422A61858B00CB859B /* Extensions.swift in Sources */,
 				3671791E2BC90D59004E380C /* TabBarItem.swift in Sources */,
 				3679F2AD2BAD454D00DAC43E /* Athlete.swift in Sources */,
+				36BAAC892BCD1216009E6541 /* AthleteCardView.swift in Sources */,
 				E55B36442A618D0700CB859B /* StoryListView.swift in Sources */,
 				E55B36492A618D2A00CB859B /* AddStoryCard.swift in Sources */,
 				36920C622BC946A300CA9D8F /* ChatListItemView.swift in Sources */,

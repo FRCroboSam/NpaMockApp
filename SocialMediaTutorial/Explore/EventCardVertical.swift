@@ -19,53 +19,80 @@ struct EventCardVertical: View {
                             image.resizable()
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width:  140, height:100)
+                                .frame(width:  3/4 * deviceWidth, height:160)
                                 .clipped()
                                 .roundedCorner(8, corners: .allCorners)
+                                .overlay(alignment: .topTrailing) {
+                                    Text("Ages 6 - 13")
+                                        .bold()
+                                        .foregroundStyle(Color.teal)
+                                        .background{
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .foregroundStyle(Color(UIColor.white))
+                                                .padding(-10)
+                                                .shadow(radius: 3)
+                                        }
+                                        .offset(x: -15, y: 15)
+                                    
+                                }
                             
                         },
                         placeholder: {
                             ProgressView()
                         }
                     )//.padding(.trailing, 20)
-                    Spacer()
                     VStack(alignment: .leading, spacing: 0){
                         Text("SAT, MAR 2 - SUN, MAR 11")
-                            .font(.caption2)
+                            .font(.caption)
                             .foregroundStyle(.red)
                         HStack{
-                            Text("Husky Football Camp ")
-                                .font(.system(size: 13))
-                            Spacer()
-
+                            Text("Husky Football Camp 2024")
+                                .bold()
+                                .font(.system(size: 16))
                         }
                         HStack{
-                            VStack(alignment: .leading){
-                                Spacer()
-                                    .frame(height: 5)
-                                Text("Emerald River Sports")
-                                    .font(.system(size: 10))
-                                    .opacity(0.5)
-                                Text("Seattle, WA ")
-                                    .font(.system(size: 10))
+                            VStack(alignment: .leading, spacing: 5){
+                                Text("Seattle, WA")
+                                
+                                    .bold()
+                                    .font(.system(size: 14))
+                                    .foregroundStyle(.gray)
+                                Text("3.5K interested · 50 registered")
+                                    .font(.system(size: 12))
                                     .foregroundStyle(Color(UIColor.systemGray))
-                                Text("Ages 6 - 13")
-                                    .font(.system(size: 10))
-                                    .foregroundStyle(Color(UIColor.systemGray))
-                                Spacer()
-                                    .frame(height: 5)
 
                                 Spacer()
+                                    .frame(height: 5)
                             }
 
                         }
-                        
+                        HStack(){
+                            Button{
+                                
+                            }label:{
+                                HStack{
+                                    Image(systemName: "star.fill")
+                                    Text("Interested")
+                                        .font(.system(size: 16))
+                                }
+                            }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: Color(UIColor.systemGray3),textColor: .black, padding: 60))
+                            Spacer()
+                            Button{
+                                
+                            }label:{
+                                HStack{
+                                    Image(systemName: "arrowshape.turn.up.right.fill")
+                                }
+                            }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: Color(UIColor.systemGray3),textColor: .black, padding: 20))
+                            
+                        }.frame(width: 3/4 * deviceWidth)
+
 
 
                     }//.padding(.leading, 10)
                 }
                 
-            }//.padding(.leading, 10)
+            }//.padding(.leading, 20)
 //            .frame(width: 3/4 * deviceWidth , height: 80)
 
 
