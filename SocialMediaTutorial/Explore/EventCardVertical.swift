@@ -22,17 +22,17 @@ struct EventCardVertical: View {
                                 .frame(width:  3/4 * deviceWidth, height:160)
                                 .clipped()
                                 .roundedCorner(8, corners: .allCorners)
-                                .overlay(alignment: .topTrailing) {
+                                .overlay(alignment: .bottomTrailing) {
                                     Text("Ages 6 - 13")
                                         .bold()
-                                        .foregroundStyle(Color.teal)
+                                        .foregroundStyle(Color.white)
                                         .background{
                                             RoundedRectangle(cornerRadius: 12)
-                                                .foregroundStyle(Color(UIColor.white))
+                                                .foregroundStyle(Color.teal.opacity(0.8))
                                                 .padding(-10)
                                                 .shadow(radius: 3)
                                         }
-                                        .offset(x: -15, y: 15)
+                                        .offset(x: -15, y: -15)
                                     
                                 }
                             

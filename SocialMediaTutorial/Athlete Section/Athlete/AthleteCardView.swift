@@ -47,7 +47,7 @@ struct AthleteCardView: View {
         .frame(width: 110)
         .background{
             RoundedRectangle(cornerRadius: 10)
-                .strokeBorder(Color(UIColor.lightGray))
+                .strokeBorder(Color(UIColor.systemGray5))
                 .padding(.vertical, -10)
                 .padding(.horizontal, -3)
         }

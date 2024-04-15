@@ -16,6 +16,7 @@ struct FeaturedAthletes: View {
             Spacer()
                 .frame(height: 5)
             HStack(spacing: 0) {
+                Spacer().frame(width: 10)
                 ForEach(Array(athleteData.athletes.enumerated()), id: \.1.id) { index, athlete in
                     Spacer().frame(width: 10)
                     if(index < 3){
@@ -36,7 +37,7 @@ struct FeaturedAthletes: View {
             }
         }
         
-        .offset(x: 15) // Offset the scroll view horizontally by 15 points
+        //.offset(x: 15) // Offset the scroll view horizontally by 15 points
     }
 }
 
