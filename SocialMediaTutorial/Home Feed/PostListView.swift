@@ -49,10 +49,11 @@ struct PostListView: View {
                 .onBecomingVisible{
                     print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
                     print(postPositions[index2])
-                    if(postPositions[index2] < 800 && postPositions[index2] > 100){
+//                    if(postPositions[index2] < 600 && postPositions[index2] > 200){
                         print("POST is visible  AT INDEX: " + String(index2 + 1))
+                        player?.play()
 
-                    }
+//                    }
                 }
                 .padding(.top)
             }
@@ -68,6 +69,7 @@ public extension View {
     func onBecomingVisible(perform action: @escaping () -> Void) -> some View {
         modifier(BecomingVisible(action: action))
     }
+
 }
 
 private struct BecomingVisible: ViewModifier {
@@ -81,9 +83,11 @@ private struct BecomingVisible: ViewModifier {
                     .preference(
                         key: VisibleKey.self,
                         // See discussion!
-                        value: proxy.frame(in: .global).minY > 0 && proxy.frame(in: .global).minY < 500//.intersects(proxy.frame(in: .global))
+                        value: proxy.frame(in: .global).minY > 50 && proxy.frame(in: .global).minY < 700//.intersects(proxy.frame(in: .global))
                     )
                     .onPreferenceChange(VisibleKey.self) { isVisible in
+                        print("isVisible: " + String(isVisible))
+                        print("PREFERENCE IS CHANGING")
                         guard isVisible, let action else { return }
                         action()
                         //action = nil
