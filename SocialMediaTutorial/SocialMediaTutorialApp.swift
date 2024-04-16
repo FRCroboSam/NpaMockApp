@@ -44,13 +44,13 @@ struct SocialMediaTutorialApp: App {
                 }
                 feedVM.loadData()
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                         withAnimation{
                             opacity = 0.1
                         }
                             
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.5) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
                         withAnimation{
                             opacity = 0
                         }
