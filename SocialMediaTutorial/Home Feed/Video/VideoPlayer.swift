@@ -34,8 +34,8 @@ struct CustomVideoPlayer: View {
         .frame(width: 4/4 * deviceWidth, height: 400)
         .background(Color(.systemBackground))
         .onAppear{
-            print("SHOULD BE PLAYING")
-            player.play()
+            //print("SHOULD BE PLAYING")
+            //player.play()
             //print(player.playbackState)
 
 

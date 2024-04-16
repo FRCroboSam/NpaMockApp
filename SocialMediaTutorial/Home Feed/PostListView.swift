@@ -12,10 +12,13 @@ struct PostListView: View {
     let showCommentSection: Bool
     
     var onCommentTapped: () -> Void // Closure to handle comment button tap
+    @State var currentVisiblePostIndex = -1
+    @State var postPositions: [CGFloat] = Array(repeating: 0, count: 10)
+
 
     var body: some View {
         LazyVStack {
-            ForEach(feedVM.posts.prefix(feedVM.posts.count)) { post in //you can reintroduce the showCommentSection logic
+            ForEach(Array(feedVM.posts.enumerated()), id: \.1.id) { index2, post in //you can reintroduce the showCommentSection logic
                 let index = feedVM.post_with_videos.firstIndex(where: { $0 == post.post_id})
                 var player = index != nil ? feedVM.youtubePlayers[index ?? 0] : nil
                 PostView(
@@ -34,12 +37,64 @@ struct PostListView: View {
                         }
                     }, player: player ?? YouTubePlayer(source: .url(post.image_or_video))
                 )
+                .background{
+                    GeometryReader{ geometry in
+                        Color.clear
+                            .onChange(of: geometry.frame(in: .global).origin) { pos in
+                                postPositions[index2] = geometry.frame(in: .global).minY
+                                
+                            }
+                    }
+                }
+                .onBecomingVisible{
+                    print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
+                    print(postPositions[index2])
+                    if(postPositions[index2] < 800 && postPositions[index2] > 100){
+                        print("POST is visible  AT INDEX: " + String(index2 + 1))
+
+                    }
+                }
                 .padding(.top)
             }
         }
+        
         .frame(width: deviceWidth)
         .listStyle(.plain) // Set the list style to plain
         .padding() // Apply padding to the VStack
+    }
+}
+public extension View {
+    
+    func onBecomingVisible(perform action: @escaping () -> Void) -> some View {
+        modifier(BecomingVisible(action: action))
+    }
+}
+
+private struct BecomingVisible: ViewModifier {
+    
+    @State var action: (() -> Void)?
+
+    func body(content: Content) -> some View {
+        content.overlay {
+            GeometryReader { proxy in
+                Color.clear
+                    .preference(
+                        key: VisibleKey.self,
+                        // See discussion!
+                        value: proxy.frame(in: .global).minY > 0 && proxy.frame(in: .global).minY < 500//.intersects(proxy.frame(in: .global))
+                    )
+                    .onPreferenceChange(VisibleKey.self) { isVisible in
+                        guard isVisible, let action else { return }
+                        action()
+                        //action = nil
+                    }
+            }
+        }
+    }
+
+    struct VisibleKey: PreferenceKey {
+        static var defaultValue: Bool = false
+        static func reduce(value: inout Bool, nextValue: () -> Bool) { }
     }
 }
 
