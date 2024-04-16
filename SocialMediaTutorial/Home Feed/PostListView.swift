@@ -14,7 +14,7 @@ struct PostListView: View {
     var onCommentTapped: () -> Void // Closure to handle comment button tap
 
     var body: some View {
-        VStack {
+        LazyVStack {
             ForEach(feedVM.posts.prefix(feedVM.posts.count)) { post in //you can reintroduce the showCommentSection logic
                 let index = feedVM.post_with_videos.firstIndex(where: { $0 == post.post_id})
                 var player = index != nil ? feedVM.youtubePlayers[index ?? 0] : nil
@@ -37,6 +37,7 @@ struct PostListView: View {
                 .padding(.top)
             }
         }
+        .frame(width: deviceWidth)
         .listStyle(.plain) // Set the list style to plain
         .padding() // Apply padding to the VStack
     }

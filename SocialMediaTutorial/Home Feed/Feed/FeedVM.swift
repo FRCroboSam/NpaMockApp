@@ -42,12 +42,12 @@ class FeedVM: ObservableObject {
             for post in self.posts {
                 if(post.image_or_video.contains("youtube")){
                     var youtubePlayer = YouTubePlayer(source: .url(post.image_or_video))
-                    if(index == 0){
+//                    if(index == 0){
                         print("LOADING TEH FIRST VIDEO:  " + post.profile_name)
                         youtubePlayer.load(source: .url(post.image_or_video)) { _ in
-////                            youtubePlayer.pause()
+                            youtubePlayer.pause()
                         }
-                    }
+//                    }
                     youtubePlayers.append(youtubePlayer)
                     post_with_videos.append(post.post_id)
                     index += 1;
