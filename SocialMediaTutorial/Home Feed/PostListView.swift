@@ -46,14 +46,20 @@ struct PostListView: View {
                             }
                     }
                 }
-                .onBecomingVisible{
+                .onBecomingVisible{ avgY in
                     print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
-                    print(postPositions[index2])
-//                    if(postPositions[index2] < 600 && postPositions[index2] > 200){
-                        print("POST is visible  AT INDEX: " + String(index2 + 1))
+                    print("POST IS VISIBLE: "  + String(avgY > 200 && avgY < 600))
+                    if(avgY > 100 && avgY < 950 && player != nil){
+                        print("AVG Y IS: " + String(avgY))
+                        print("PLAYING POST AT INDEX: " + String(index2 + 1))
                         player?.play()
 
-//                    }
+                    }
+                    else{
+                        print("AVG Y IS: " + String(avgY))
+                        print("PAUSING POST AT INDEX: " + String(index2 + 1))
+                        player?.pause()
+                    }
                 }
                 .padding(.top)
             }
@@ -66,7 +72,7 @@ struct PostListView: View {
 }
 public extension View {
     
-    func onBecomingVisible(perform action: @escaping () -> Void) -> some View {
+    func onBecomingVisible(perform action: @escaping (Double) -> Void) -> some View {
         modifier(BecomingVisible(action: action))
     }
 
@@ -74,22 +80,23 @@ public extension View {
 
 private struct BecomingVisible: ViewModifier {
     
-    @State var action: (() -> Void)?
+    @State var action: ((Double) -> Void)
 
     func body(content: Content) -> some View {
         content.overlay {
             GeometryReader { proxy in
+                let avgY = proxy.frame(in: .global).minY + proxy.frame(in: .global).maxY
                 Color.clear
                     .preference(
                         key: VisibleKey.self,
                         // See discussion!
-                        value: proxy.frame(in: .global).minY > 50 && proxy.frame(in: .global).minY < 700//.intersects(proxy.frame(in: .global))
+                        value: avgY > 100 && avgY < 950//.intersects(proxy.frame(in: .global))
                     )
                     .onPreferenceChange(VisibleKey.self) { isVisible in
                         print("isVisible: " + String(isVisible))
                         print("PREFERENCE IS CHANGING")
-                        guard isVisible, let action else { return }
-                        action()
+                        //guard isVisible, let action else { return }
+                        action(avgY)
                         //action = nil
                     }
             }
