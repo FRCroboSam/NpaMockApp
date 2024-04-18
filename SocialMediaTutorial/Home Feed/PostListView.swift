@@ -49,7 +49,8 @@ struct PostListView: View {
                 .onBecomingVisible{ avgY in
                     print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
                     print("POST IS VISIBLE: "  + String(avgY > 200 && avgY < 600))
-                    if(avgY > 100 && avgY < 950 && player != nil){
+                    print(3/4 * deviceHeight)
+                    if(avgY > 300 && avgY < 3/4 * deviceHeight && player != nil){
                         print("AVG Y IS: " + String(avgY))
                         print("PLAYING POST AT INDEX: " + String(index2 + 1))
                         player?.play()
@@ -85,12 +86,12 @@ private struct BecomingVisible: ViewModifier {
     func body(content: Content) -> some View {
         content.overlay {
             GeometryReader { proxy in
-                let avgY = proxy.frame(in: .global).minY + proxy.frame(in: .global).maxY
+                let avgY = (proxy.frame(in: .global).minY + proxy.frame(in: .global).maxY) / 2
                 Color.clear
                     .preference(
                         key: VisibleKey.self,
                         // See discussion!
-                        value: avgY > 100 && avgY < 950//.intersects(proxy.frame(in: .global))
+                        value: avgY > 300 && avgY < 3/4 * deviceHeight//.intersects(proxy.frame(in: .global))
                     )
                     .onPreferenceChange(VisibleKey.self) { isVisible in
                         print("isVisible: " + String(isVisible))
