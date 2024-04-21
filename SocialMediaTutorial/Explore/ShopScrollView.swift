@@ -9,11 +9,15 @@ import SwiftUI
 
 struct ShopScrollView: View {
     var body: some View {
+
         ScrollView(.horizontal, showsIndicators: false){
-            HStack(spacing: 0){
+            HStack(spacing: 10){
+                Spacer()
+                    .frame(width: 10)
                 ItemCard(item_url:
                             "https://stefanssoccer.com/mm5/graphics/00000001/9/AURORA_DZ3475-800_PHSLH000-2000.jpg"
                 )
+                .padding(.vertical, 10)
 //                .scaleEffect(0.8)
 
                 ItemCard(item_url:

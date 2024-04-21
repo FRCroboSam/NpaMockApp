@@ -49,18 +49,24 @@ struct ExploreView: View {
                         DropdownPicker(value: $selectedSport, text: "Select a sport: ", color: Color(hex: "ADD8E6"), textColor: Color(UIColor.darkGray), items: sports)
                                 .zIndex(500)
                                 .offset(x: 10)
-                        HStack{
-                            Image(systemName: "magnifyingglass")
-                                .foregroundColor(.black)
-//                            TextField("Shop, discover, plan, and more! ", text: $query)
-//                                .foregroundColor(.black)
-//                                .textContentType(.newPassword)
-//                                .keyboardType(.asciiCapable)
-//                                .autocorrectionDisabled()
-//                                .listRowSeparator(.hidden)
-                        }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.2))
-                            .padding(.leading, 10)
-                            .scaleEffect(0.8)
+                        NavigationLink {
+                            SearchView()
+                        } label: {
+                            HStack{
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.black)
+    //                            TextField("Shop, discover, plan, and more! ", text: $query)
+    //                                .foregroundColor(.black)
+    //                                .textContentType(.newPassword)
+    //                                .keyboardType(.asciiCapable)
+    //                                .autocorrectionDisabled()
+    //                                .listRowSeparator(.hidden)
+                            }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.2))
+                                .padding(.leading, 10)
+                                .scaleEffect(0.8)
+                        }
+
+
                         
                     }
                     Spacer()
@@ -98,7 +104,6 @@ struct ExploreView: View {
                     //                }
                     Spacer()
                         .frame(height: 20)
-                    Divider()
                     
                     VStack(alignment:  .leading, spacing: 0){
                         
@@ -121,13 +126,14 @@ struct ExploreView: View {
                             .frame(height: 10)
                         FeaturedAthletes()
                         Spacer()
-                            .frame(height: 10)
+                            .frame(height: 20)
                         HStack(spacing: 0){
                             Image(systemName: "calendar")
                                 .font(.title)
                                 .padding(.leading, 10)
                             
                             Text("Events" )
+                            
                                 .bold()
                                 .font(.title)
                                 .padding(.leading, 10)
@@ -136,9 +142,12 @@ struct ExploreView: View {
                             
                         }
                             
-                        Spacer()
-                            .frame(height: 10)
+                        Spacer( )
+                            .frame(height: 20)
+
                         EventScrollView()
+
+                        
                         Spacer()
                             .frame(height: 10)
                         HStack(spacing: 0){
@@ -154,7 +163,15 @@ struct ExploreView: View {
                             
                             
                         }
+                        Spacer()
+                            .frame(height: 10)
+
                         ShopScrollView()
+                            //.offset(x: 15)
+
+                        
+                        Spacer()
+                            .frame(height: 10)
                         
                         Spacer()
                             .frame(height: 50)

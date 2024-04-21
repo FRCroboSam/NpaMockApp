@@ -45,7 +45,7 @@ extension CustomTabBarView {
             }
             //.padding(6)
             .background(Color.white.ignoresSafeArea(edges: .bottom))
-        }
+        }.scrollIndicators(.hidden)
     }
     
     private func switchToTab(tab: TabBarItem) {
@@ -96,7 +96,7 @@ extension CustomTabBarView {
             }
             .padding(6)
             .padding(.horizontal)
-        }
+        }.scrollIndicators(.hidden)
     }
     
 }

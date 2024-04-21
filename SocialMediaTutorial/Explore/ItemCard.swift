@@ -11,25 +11,25 @@ struct ItemCard: View {
     let item_url: String
     var body: some View {
             VStack(alignment: .leading){
-                
-                HStack{
-                    HStack(spacing: 0){
-                        Image(systemName: "tag")
-                        Text("$852")
-                        
-                    }
-                    .padding(.horizontal, 5)
-                    .padding(.vertical, 5)
-                    .background{
-                        RoundedRectangle(cornerRadius: 15)
-                            .strokeBorder(.black)
-                    }
-                    .padding(.leading, 10)
+                HStack(spacing: 0){
+                    Image(systemName: "tag")
+                    Text("$852")
                     
+                }
+                .padding(.horizontal, 5)
+                .padding(.vertical, 5)
+                .background{
+                    RoundedRectangle(cornerRadius: 15)
+                        .strokeBorder(.black)
+                }
+                .padding(.leading, 10)
+
+                HStack{
+
                     Spacer()
                 }
                 Spacer()
-                    .frame(height: 30)
+                    .frame(height: 20)
                 HStack{
                     Spacer()
                     AsyncImage(
@@ -41,6 +41,9 @@ struct ItemCard: View {
                                 .frame(width: 100, height: 50)
                                 .clipped()
                                 .roundedCorner(8, corners: .allCorners)
+                                .background{
+                                    Color(UIColor.systemGray6)
+                                }
                             
                         },
                         placeholder: {
@@ -49,6 +52,7 @@ struct ItemCard: View {
                     )//.padding(.trailing, 20)
                     Spacer()
                 }
+
                 Spacer()
                     .frame(height: 20)
                 VStack(alignment: .leading){
@@ -59,7 +63,7 @@ struct ItemCard: View {
                         .frame(height: 5)
                     HStack(spacing: 0){
                         Text("4.8 ")
-                            .font(.system(size: 8))
+                            .font(.system(size: 12))
                         Image(systemName: "star.fill")
                             .font(.system(size: 8))
                         Image(systemName: "star.fill")
@@ -69,12 +73,13 @@ struct ItemCard: View {
                         Image(systemName: "star.fill")
                             .font(.system(size: 8))
                     }
-                    Text("Macies")
+                    Text("Men's shoes")
                         .font(.caption)
-                        .foregroundStyle(Color(UIColor.systemGray))
-                    Text("Size: 13")
-                        .font(.caption)
-                        .foregroundStyle(Color(UIColor.systemGray))
+                        .foregroundStyle(Color(UIColor.lightGray))
+                    
+
+                    
+
                 }.padding(.leading, 15)
                 
                 
@@ -82,13 +87,13 @@ struct ItemCard: View {
                 
                 
             }
-            .frame(width: 140, height: 220)
+            .frame(width: 140, height: 210)
             .background{
-                RoundedRectangle(cornerRadius: 30)
+                RoundedRectangle(cornerRadius: 20)
                     .foregroundColor(.white)
-                    .shadow(radius: 5)
+                    .shadow(radius: 1)
             }
-            .scaleEffect(0.8)
+            //.scaleEffect(0.8)
 
         
     }

@@ -41,16 +41,24 @@ struct PostListView: View {
                     GeometryReader{ geometry in
                         Color.clear
                             .onChange(of: geometry.frame(in: .global).origin) { pos in
+                                //print("POS IS CHANGING")
                                 postPositions[index2] = geometry.frame(in: .global).minY
                                 
                             }
                     }
                 }
+                .onAppear{
+                    print("APPEARING")
+                    if(postPositions[0] > 200 && postPositions[0] < 800){
+                        feedVM.youtubePlayers[0].play()
+                    }
+                }
+
                 .onBecomingVisible{ avgY in
                     print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
                     print("POST IS VISIBLE: "  + String(avgY > 200 && avgY < 600))
                     print(3/4 * deviceHeight)
-                    if(avgY > 300 && avgY < 3/4 * deviceHeight && player != nil){
+                    if(avgY > 200 && avgY < 3/4 * deviceHeight && player != nil){
                         print("AVG Y IS: " + String(avgY))
                         print("PLAYING POST AT INDEX: " + String(index2 + 1))
                         player?.play()
@@ -65,6 +73,8 @@ struct PostListView: View {
                 .padding(.top)
             }
         }
+
+
         
         .frame(width: deviceWidth)
         .listStyle(.plain) // Set the list style to plain
@@ -91,7 +101,7 @@ private struct BecomingVisible: ViewModifier {
                     .preference(
                         key: VisibleKey.self,
                         // See discussion!
-                        value: avgY > 300 && avgY < 3/4 * deviceHeight//.intersects(proxy.frame(in: .global))
+                        value: avgY > 200 && avgY < 3/4 * deviceHeight//.intersects(proxy.frame(in: .global))
                     )
                     .onPreferenceChange(VisibleKey.self) { isVisible in
                         print("isVisible: " + String(isVisible))

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		361170DE2BD24DF900BBB3B2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361170DD2BD24DF900BBB3B2 /* SearchView.swift */; };
 		3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */; };
 		3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */; };
 		3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */; };
@@ -81,6 +82,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		361170DD2BD24DF900BBB3B2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
@@ -166,6 +168,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		361170DB2BD24DC500BBB3B2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				361170DD2BD24DF900BBB3B2 /* SearchView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		361170DC2BD24DCF00BBB3B2 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 		3618B63B2B62C9AC00BD3D2F /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -366,6 +383,8 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				361170DC2BD24DCF00BBB3B2 /* Search */,
+				361170DB2BD24DC500BBB3B2 /* Profile */,
 				363E41972BCDDD7600A7EB88 /* LogoLandingPage */,
 				36920C5E2BC9461200CA9D8F /* Inbox */,
 				36236A492BC66D2D00580B29 /* Explore */,
@@ -528,6 +547,7 @@
 				E55B36472A618D1D00CB859B /* StoryCard.swift in Sources */,
 				36236A482BC295B600580B29 /* BlogCardView.swift in Sources */,
 				3679F2932BAA1DC600DAC43E /* CommentView.swift in Sources */,
+				361170DE2BD24DF900BBB3B2 /* SearchView.swift in Sources */,
 				3671791B2BC90CF1004E380C /* CustomTabBarView.swift in Sources */,
 				36236A442BC2957100580B29 /* Blog.swift in Sources */,
 				36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */,

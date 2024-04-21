@@ -16,15 +16,16 @@ struct DiscoverView: View {
         NavigationStack{
             VStack(alignment: .leading){
                 Spacer()
-                    .frame(height: 5)
+                    .frame(height: 15)
                 Text("Athletes")
                     .font(.title)
                     .bold()
-                    .foregroundStyle(Color(hex: "0A66C2"))
                     .padding(.leading, 20)
                 ZStack{
                     VStack(spacing: 0){
                         HStack{
+                            Spacer()
+                                .frame(width: 10)
                             HStack {
                                 Image(systemName: "magnifyingglass")
                                     .foregroundColor(.black)
@@ -37,14 +38,6 @@ struct DiscoverView: View {
                             }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.925))
 //                                .padding(.top, 10)
 //                                .offset(y: 20)
-                        }
-                        //                    Spacer()
-                        //                        .frame(height: 30)
-                        HStack(){
-//                            Text("Sponsor and interact with your favorite athletes!")
-//                                .bold()
-//                                .font(.subheadline)
-                            Spacer()
                             Button {
                                 withAnimation(.easeIn){
                                     athleteVM.showingFilters = !athleteVM.showingFilters
@@ -53,15 +46,112 @@ struct DiscoverView: View {
                             } label: {
                                 HStack{
                                     Image(systemName: "line.3.horizontal.decrease")
+                                        //.resizable()
+                                        .font(.system(size: 20))
+                                        .foregroundStyle(.white)
+                                        .frame(width: 50, height: 50)
+
+                                        .background{
+                                            Color(UIColor.gray)
+                                                .clipShape(.circle)
+                                        }
 //                                    Text("Filter")
                                 }
-                            }.buttonStyle(BigButtonStyle(height: 40, color: Color(UIColor.systemGray2), padding: 30))
-                                .padding(.trailing, 30)
+                                .padding(.trailing, 10)
+                            }
                         }
+                        //                    Spacer()
+                        //                        .frame(height: 30)
                         Spacer()
                             .frame(height: 10)
+                        ScrollView(.horizontal){
+                            HStack(spacing: 15){
+                                //                            Text("Sponsor and interact with your favorite athletes!")
+                                //                                .bold()
+                                //                                .font(.subheadline)
+                                Spacer()
+                                    .frame(width: 2)
+                                Text("Sport")
+                                    .foregroundStyle(Color(UIColor.systemGray2))
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 7)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .strokeBorder(Color(UIColor.systemGray4))
+                                            .cornerRadius(15)
+                                    }
+                                Text("Gender")
+                                    .foregroundStyle(Color(UIColor.systemGray2))
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 7)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .strokeBorder(Color(UIColor.systemGray4))
+                                            .cornerRadius(15)
+                                    }
+
+                                Text("Men's")
+                                    .foregroundStyle(Color.gray)
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 7)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .strokeBorder(Color.blue, lineWidth: 2)
+                                            .cornerRadius(15)
+                                    }
+
+
+
+                                Text("Basketball")
+                                    .foregroundStyle(Color.orange)
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 7)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .strokeBorder(.orange)
+                                            .cornerRadius(15)
+                                    }
+
+                                Text("High School")
+                                    .foregroundStyle(Color.teal)
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 7)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .strokeBorder(.teal)
+                                            .cornerRadius(15)
+                                    }
+                                
+                                
+                                
+                                
+                            }
+                        }.scrollIndicators(.hidden)
+                        Spacer()
+                            .frame(height: 15)
                         Divider()
-                        
+                        VStack{
+                            Spacer()
+                                .frame(height: 15)
+                            HStack{
+                                Text("48 results")
+                                    .foregroundStyle(.gray)
+                                    .padding(.leading, 15)
+                                Spacer()
+                                Text("Most Relevant")
+                                    .foregroundStyle(Color(hex: "#2E8BC0"))
+                                Image(systemName: "chevron.down")
+                                    .font(.subheadline)
+                                    .foregroundStyle(Color(hex: "#2E8BC0"))
+                                Spacer()
+                                    .frame(width: 15)
+
+                            }
+                            Spacer()
+                                .frame(height: 15)
+
+                        }
+                        Divider()
                         ScrollView{
                             VStack(spacing: 0){
                                 ForEach(athleteVM.athletes){ athlete in
@@ -142,3 +232,8 @@ struct BigButtonStyle: ButtonStyle {
 //                  "Basketball", "Pickleball", "Cross Country", "Track and Field"]
 //    DiscoverView()
 //}
+
+#Preview {
+    DiscoverView()
+        .environmentObject(AthleteVM())
+}
