@@ -51,7 +51,9 @@ struct PostListView: View {
                     print("POST POSITIONS 0")
                     print(postPositions[0]);
                     if(postPositions[0] > 200 && postPositions[0] <  3/4 * deviceHeight){
-                        feedVM.youtubePlayers[0].play()
+                        if(!feedVM.youtubePlayers[0].isPlaying){
+                            feedVM.youtubePlayers[0].play()
+                        }
                     }
                 }
 
@@ -62,8 +64,10 @@ struct PostListView: View {
                     if(avgY > 200 && avgY < 3/4 * deviceHeight && player != nil){
                         print("AVG Y IS: " + String(avgY))
 
-
-                        player?.play()
+                        if(!player!.isPlaying){
+                            print("STARTING THE PLAYER")
+                            player?.play()
+                        }
 
                     }
                     else{

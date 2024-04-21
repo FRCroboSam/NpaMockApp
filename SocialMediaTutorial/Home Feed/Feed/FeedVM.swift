@@ -12,7 +12,7 @@ import YouTubePlayerKit
 // FeedVM is the model for collecting all of the posts 
 class FeedVM: ObservableObject {
     @Published var posts = [Post]() // Array of posts
-    
+    @Published var videosHaveLoaded = false
     @Published var youtubePlayers = [YouTubePlayer]()
     @Published var post_with_videos = [String]()
 
@@ -47,7 +47,8 @@ class FeedVM: ObservableObject {
                         print("LOADING TEH FIRST VIDEO:  " + post.profile_name)
                         youtubePlayer.load(source: .url(post.image_or_video)) { _ in
                             print("PAUSING THE FIRST VIDEO")
-                            youtubePlayer.pause()
+                            self.videosHaveLoaded = true
+                            // youtubePlayer.pause()
                         }
                     }
                     youtubePlayers.append(youtubePlayer)
