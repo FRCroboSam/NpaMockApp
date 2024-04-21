@@ -14,7 +14,7 @@ struct SocialMediaTutorialApp: App {
     @StateObject private var podcastVM = PodcastVM()
     @StateObject private var blogVM = BlogVM()
     @State var readyToShow = false;
-    @State var opacity = 0.0
+    @State var opacity = 0.2
     var body: some Scene {
 
         WindowGroup {
@@ -25,6 +25,7 @@ struct SocialMediaTutorialApp: App {
                     .environmentObject(athleteVM)
                     .environmentObject(podcastVM)
                     .environmentObject(blogVM)
+                    .opacity(opacity > 0.0 ? 0.0 : 1.0)
                 if(opacity != 0){
                     LandingPageView()
                         .opacity(opacity)
@@ -42,15 +43,17 @@ struct SocialMediaTutorialApp: App {
                     opacity = 1.0
 
                 }
-                feedVM.loadData()
+                //feedVM.loadData()
                     
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                         withAnimation{
+                            print("TRYING TO PLAY")
                             opacity = 0.1
+                            feedVM.youtubePlayers[0].play()
                         }
                             
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
                         withAnimation{
                             opacity = 0
                         }

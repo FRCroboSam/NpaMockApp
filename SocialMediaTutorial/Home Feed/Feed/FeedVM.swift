@@ -46,7 +46,8 @@ class FeedVM: ObservableObject {
                     if(index == 0){
                         print("LOADING TEH FIRST VIDEO:  " + post.profile_name)
                         youtubePlayer.load(source: .url(post.image_or_video)) { _ in
-                            //youtubePlayer.pause()
+                            print("PAUSING THE FIRST VIDEO")
+                            youtubePlayer.pause()
                         }
                     }
                     youtubePlayers.append(youtubePlayer)

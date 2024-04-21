@@ -42,14 +42,15 @@ struct PostListView: View {
                         Color.clear
                             .onChange(of: geometry.frame(in: .global).origin) { pos in
                                 //print("POS IS CHANGING")
-                                postPositions[index2] = geometry.frame(in: .global).minY
+                                //postPositions[index2] = geometry.frame(in: .global).minY
                                 
                             }
                     }
                 }
                 .onAppear{
-                    print("APPEARING")
-                    if(postPositions[0] > 200 && postPositions[0] < 800){
+                    print("POST POSITIONS 0")
+                    print(postPositions[0]);
+                    if(postPositions[0] > 200 && postPositions[0] <  3/4 * deviceHeight){
                         feedVM.youtubePlayers[0].play()
                     }
                 }
@@ -57,19 +58,25 @@ struct PostListView: View {
                 .onBecomingVisible{ avgY in
                     print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
                     print("POST IS VISIBLE: "  + String(avgY > 200 && avgY < 600))
-                    print(3/4 * deviceHeight)
+                    postPositions[index2] = avgY
                     if(avgY > 200 && avgY < 3/4 * deviceHeight && player != nil){
                         print("AVG Y IS: " + String(avgY))
-                        print("PLAYING POST AT INDEX: " + String(index2 + 1))
+
+
                         player?.play()
 
                     }
                     else{
                         print("AVG Y IS: " + String(avgY))
-                        print("PAUSING POST AT INDEX: " + String(index2 + 1))
+
                         player?.pause()
                     }
                 }
+
+//                .onChange(of: postPositions[0], perform: { _ in
+//                    print("POST POSITIONS 0 is changing")
+//                    print(postPositions[0])
+//                })
                 .padding(.top)
             }
         }
