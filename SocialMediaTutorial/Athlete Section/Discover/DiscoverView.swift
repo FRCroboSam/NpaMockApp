@@ -12,21 +12,21 @@ struct DiscoverView: View {
     @State private var searchTeacher = ""
     @State private var selected_athlete: Athlete?
     @State private var goToAthleteProfile = false
-    var body: some View {
+    var body: some View{
         NavigationStack{
             VStack(alignment: .leading){
                 Spacer()
                     .frame(height: 15)
-                Text("Athletes")
-                    .font(.title)
-                    .bold()
-                    .padding(.leading, 20)
+//                Text("Athletes")
+//                    .font(.title)
+//                    .bold()
+//                    .padding(.leading, 20)
                 ZStack{
                     VStack(spacing: 0){
                         HStack{
                             Spacer()
                                 .frame(width: 10)
-                            HStack {
+                            HStack{
                                 Image(systemName: "magnifyingglass")
                                     .foregroundColor(.black)
                                 TextField("Discover, sponsor your favorite athletes!", text: $searchTeacher)
@@ -38,7 +38,7 @@ struct DiscoverView: View {
                             }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.925))
 //                                .padding(.top, 10)
 //                                .offset(y: 20)
-                            Button {
+                            Button{
                                 withAnimation(.easeIn){
                                     athleteVM.showingFilters = !athleteVM.showingFilters
                                     print(athleteVM.showingFilters)
@@ -133,6 +133,7 @@ struct DiscoverView: View {
                         VStack{
                             Spacer()
                                 .frame(height: 15)
+                            
                             HStack{
                                 Text("48 results")
                                     .foregroundStyle(.gray)
@@ -153,6 +154,24 @@ struct DiscoverView: View {
                         }
                         Divider()
                         ScrollView{
+                            Spacer()
+                                .frame(height: 20)
+                            HStack(spacing: 0){
+
+                                Text("Featured")
+                                    .bold()
+                                    .font(.title)
+                                    .padding(.leading, 20)
+                                Spacer()
+                                
+                                
+                            }
+                            Spacer()
+                                .frame(height: 10)
+                            FeaturedAthletes()
+                            Spacer()
+                                .frame(height: 20)
+                            Divider()
                             VStack(spacing: 0){
                                 ForEach(athleteVM.athletes){ athlete in
                                     
@@ -215,12 +234,12 @@ struct BigButtonStyle: ButtonStyle {
             .padding(padding ?? 20)
             //.frame(width: percentWidth * deviceWidth)
             .foregroundColor(isEnabled ? textColor : Color(UIColor.systemGray3))
-            .background(isEnabled ? color : Color(UIColor.systemGray5))
+            .background(isEnabled   ? color: Color(UIColor.systemGray5))
             .frame(height: height)
             
             .cornerRadius(cornerRadius)
-            .overlay {
-                if configuration.isPressed {
+            .overlay{
+                if configuration.isPressed{
                     Color(white: 1.0, opacity: 0.2)
                         .cornerRadius(12)
                 }

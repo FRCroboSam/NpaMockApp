@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3610AE232BD5DDE400CD54B4 /* HomePageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3610AE222BD5DDE400CD54B4 /* HomePageView.swift */; };
 		361170DE2BD24DF900BBB3B2 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361170DD2BD24DF900BBB3B2 /* SearchView.swift */; };
 		3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */; };
 		3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */; };
@@ -16,6 +17,8 @@
 		36236A462BC295A400580B29 /* BlogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A452BC295A400580B29 /* BlogVM.swift */; };
 		36236A482BC295B600580B29 /* BlogCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A472BC295B600580B29 /* BlogCardView.swift */; };
 		36236A4B2BC66D9600580B29 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A4A2BC66D9600580B29 /* ExploreView.swift */; };
+		363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A290B2BD60C9900BA33FF /* AccountTypeView.swift */; };
+		363A290F2BD6131000BA33FF /* iosCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A290E2BD6131000BA33FF /* iosCheckboxToggleStyle.swift */; };
 		363E41992BCDDD8F00A7EB88 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363E41982BCDDD8F00A7EB88 /* LandingPageView.swift */; };
 		365D385A2B63CE4D0013689A /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 365D38592B63CE4D0013689A /* YouTubePlayerKit */; };
 		3671791B2BC90CF1004E380C /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671791A2BC90CF1004E380C /* CustomTabBarView.swift */; };
@@ -82,6 +85,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3610AE222BD5DDE400CD54B4 /* HomePageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageView.swift; sourceTree = "<group>"; };
 		361170DD2BD24DF900BBB3B2 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 		36236A452BC295A400580B29 /* BlogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogVM.swift; sourceTree = "<group>"; };
 		36236A472BC295B600580B29 /* BlogCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCardView.swift; sourceTree = "<group>"; };
 		36236A4A2BC66D9600580B29 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		363A290B2BD60C9900BA33FF /* AccountTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypeView.swift; sourceTree = "<group>"; };
+		363A290E2BD6131000BA33FF /* iosCheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosCheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		363E41982BCDDD8F00A7EB88 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
 		3671791A2BC90CF1004E380C /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		3671791C2BC90D59004E380C /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
@@ -168,6 +174,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3610AE212BD5DDB600CD54B4 /* Profile Creation */ = {
+			isa = PBXGroup;
+			children = (
+				363A290D2BD6130200BA33FF /* Components */,
+				3610AE222BD5DDE400CD54B4 /* HomePageView.swift */,
+				363A290B2BD60C9900BA33FF /* AccountTypeView.swift */,
+			);
+			path = "Profile Creation";
+			sourceTree = "<group>";
+		};
 		361170DB2BD24DC500BBB3B2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,6 +238,14 @@
 				36920C5A2BC93ADC00CA9D8F /* EventScrollView.swift */,
 			);
 			path = Explore;
+			sourceTree = "<group>";
+		};
+		363A290D2BD6130200BA33FF /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				363A290E2BD6131000BA33FF /* iosCheckboxToggleStyle.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		363E41972BCDDD7600A7EB88 /* LogoLandingPage */ = {
@@ -383,6 +407,7 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				3610AE212BD5DDB600CD54B4 /* Profile Creation */,
 				361170DC2BD24DCF00BBB3B2 /* Search */,
 				361170DB2BD24DC500BBB3B2 /* Profile */,
 				363E41972BCDDD7600A7EB88 /* LogoLandingPage */,
@@ -551,6 +576,7 @@
 				3671791B2BC90CF1004E380C /* CustomTabBarView.swift in Sources */,
 				36236A442BC2957100580B29 /* Blog.swift in Sources */,
 				36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */,
+				3610AE232BD5DDE400CD54B4 /* HomePageView.swift in Sources */,
 				367179212BC90E4E004E380C /* CustomTabBarContainerView.swift in Sources */,
 				3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */,
 				36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */,
@@ -576,6 +602,7 @@
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
 				36920C592BC935C100CA9D8F /* EventCardHorizontal.swift in Sources */,
 				3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */,
+				363A290F2BD6131000BA33FF /* iosCheckboxToggleStyle.swift in Sources */,
 				36F0D74B2BBCC0E90044C3B1 /* AthleteHeadline.swift in Sources */,
 				36236A462BC295A400580B29 /* BlogVM.swift in Sources */,
 				E55B36402A61852C00CB859B /* PostCardBody.swift in Sources */,
@@ -587,6 +614,7 @@
 				36920C552BC92EEE00CA9D8F /* ShopScrollView.swift in Sources */,
 				3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */,
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
+				363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */,
 				3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */,
 				3679F2A12BAA211200DAC43E /* Post.swift in Sources */,
 				E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */,
