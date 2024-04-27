@@ -7,31 +7,37 @@
 
 import SwiftUI
 
-struct HighlightScrollView: View {
+struct ShopCategoriesScrollView: View {
     @EnvironmentObject var podcastVM: PodcastVM
     @State private var currentIndex = 0
     @State private var maxPodcastViewHeight: CGFloat = 380
     
     @State private var urls = [
-        "https://www.footballcamps.com/media/fbcamps360webcmscom/photos/1458/1458_3.jpg",
-        "https://www.ussportscamps.com/media/images/soccer/nike/camps/soxdal_gallerypic3_950x516.jpg",
-        "https://www.cincinnati.com/gcdn/presto/2023/07/28/PCIN/08923a7c-f1da-4574-8090-b44036fc1955-BRE1Brd_02-03-2023_Daily_1_B00120230202IMG_High_School_Football_1_1_K812BO549_L1944941859IMG_High_School_Football_1_1_K812BO549.jpg",
-        "https://ymcagbw.org/sites/default/files/2019-03/by_thank_you_reception_cover_shot.jpg"
-        //https://ymcagbw.org/sites/default/files/2019-03/by_thank_you_reception_cover_shot.jpg
-    
+        "model_shoes",
+        "apparel",
+        "equipment"
     ]
+    @State private var titles = [
+        "Shoes",
+        "Apparel",
+        "Equipment"
+    ]
+    
     var body: some View {
         
-        VStack(alignment: .center, spacing: 0){
-            TabView(selection: $currentIndex.animation()) {
+        ScrollView(.horizontal, showsIndicators: false){
+            
+            HStack {
+                Spacer()
+                    .frame(width: 20)
                 ForEach(urls.indices, id: \.self) { index in
-                    highlightview()
-                }
-            }
-            .frame(height: 220)
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            Fancy3DotsIndexView(numberOfPages: podcastVM.podcasts.count, currentIndex: currentIndex)
+                   ShopCategories(image_name: urls[index], text: titles[index])
 
+                    Spacer()
+                        .frame(width: 10)
+                }
+
+            }
         }
         
         
@@ -63,6 +69,6 @@ struct HighlightScrollView: View {
 }
 
 #Preview {
-    HighlightScrollView()
+    ShopCategoriesScrollView()
         .environmentObject(PodcastVM())
 }

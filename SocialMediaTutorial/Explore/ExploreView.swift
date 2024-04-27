@@ -129,9 +129,11 @@ struct ExploreView: View {
                             
                         }
                         CategoryScrollView()
+                        Spacer()
+                            .frame(height: 15)
                         HStack(spacing: 0){
                     
-                            Text("Events" )
+                            Text("Events For You" )
                             
                                 .bold()
                                 .font(.title2)
@@ -140,41 +142,49 @@ struct ExploreView: View {
                             
                             
                         }
+                        Spacer()
+                            .frame(height: 10)
+                        EventTypeScrollView()
+                        
+                        
+                        Spacer()
+                            .frame(height: 20)
+                        HStack(spacing: 0){
+                    
+                            Text("Shop Categories" )
+                            
+                                .bold()
+                                .font(.title2)
+                                .padding(.leading, 20)
+                            Spacer()
+                            
+                            
+                        }
+                        Spacer()
+                            .frame(height: 10)
+                        ShopCategoriesScrollView()
+                        Spacer()
+                            .frame(height: 20)
+                        HStack{
+                            Text("Popular")
+                                .font(.title2)
+                                .bold()
+                                .padding(.leading, 20)
 
-                        EventScrollView()
-                        
-                        HStack(spacing: 0){
-                    
-                            Text("Events" )
-                            
-                                .bold()
-                                .font(.title2)
-                                .padding(.leading, 20)
-                            Spacer()
-                            
-                            
                         }
-                        
-                        Spacer()
-                            .frame(height: 10)
-                        HStack(spacing: 0){
-                            Image(systemName: "cart.fill")
-                                .font(.title)
-                                .padding(.leading, 10)
-                            
-                            Text("Shop" )
-                                .bold()
-                                .font(.title)
-                                .padding(.leading, 10)
-                            Spacer()
-                            
-                            
-                        }
-                        Spacer()
-                            .frame(height: 10)
 
                         ShopScrollView()
+                        Spacer()
+                            .frame(height: 10)
+                        HStack{
+                            Text("Featured Athletes")
+                                .font(.title2)
+                                .bold()
+                                .padding(.leading, 20)
+
+                        }
                             //.offset(x: 15)
+                        FeaturedAthletes()
 
                         
                         Spacer()

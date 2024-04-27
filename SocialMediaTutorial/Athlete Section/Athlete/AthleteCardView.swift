@@ -15,11 +15,13 @@ struct AthleteCardView: View {
             Image(athlete.profile_img)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 90, height: 90)
+                .frame(width: 130, height: 150)
             
                 .clipped()
                 .clipShape(Rectangle())
-                .cornerRadius(15)
+                .roundedCorner(5, corners: .topRight)
+                .roundedCorner(5, corners: .topLeft)
+
                 .overlay(alignment: .bottomTrailing) {
                     Image(systemName: "basketball")
                         .font(.title)
@@ -34,8 +36,17 @@ struct AthleteCardView: View {
             Text(athlete.first_name + " " + athlete.last_name)
                 .font(.system(size: 15))
                 .lineLimit(1)
-            Text("1.5K Followers")
-                .font(.caption)
+            
+            HStack{
+                Text(athlete.city + ", " + athlete.state)
+                    .font(.caption)
+                    .lineLimit(1)
+                    .foregroundColor(.gray)
+
+            }
+            Spacer()
+                .frame(height: 15)
+            
             Button{
                 
             }label:{
@@ -43,12 +54,11 @@ struct AthleteCardView: View {
                     .font(.system(size: 16))
             }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: .blue, padding: 20 ))
         }
-        .frame(width: 110)
+        .frame(width: 130)
         .background{
             RoundedRectangle(cornerRadius: 10)
                 .strokeBorder(Color(UIColor.systemGray5))
-                .padding(.vertical, -10)
-                .padding(.horizontal, -3)
+                .padding(.bottom, -10)
         }
         .overlay(alignment: .topLeading) {
             if(fireValue != 0){
@@ -56,9 +66,7 @@ struct AthleteCardView: View {
                     Image(systemName: "flame.fill")
                         .foregroundStyle(Color(hex: "0A66C2"))
                     
-                    Text(String(fireValue))
-                        .bold()
-                        .foregroundStyle(Color(hex: "0A66C2"))
+                   
                 }
                 
                 .background{

@@ -33,8 +33,9 @@ struct CategoryView: View {
                     ProgressView()
                 }
             )
-            Text("Discover")
+            Text("Featured")
                 .font(.caption)
+                .opacity(0.5)
                 .padding(.leading, 5)
             Text(text)
                 .padding(.bottom, 10)

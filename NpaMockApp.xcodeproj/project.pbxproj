@@ -26,6 +26,10 @@
 		3649F35B2BDCD885003DBEBD /* HighlightScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3649F35A2BDCD885003DBEBD /* HighlightScrollView.swift */; };
 		3649F35D2BDCE769003DBEBD /* CategoriesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3649F35C2BDCE769003DBEBD /* CategoriesView.swift */; };
 		3649F35F2BDCE9B5003DBEBD /* CategoryScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3649F35E2BDCE9B5003DBEBD /* CategoryScrollView.swift */; };
+		3649F3612BDCF71E003DBEBD /* EventTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3649F3602BDCF71E003DBEBD /* EventTypeView.swift */; };
+		3649F3632BDCF9E0003DBEBD /* EventTypeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3649F3622BDCF9E0003DBEBD /* EventTypeScrollView.swift */; };
+		3649F3652BDCFC60003DBEBD /* ShopCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3649F3642BDCFC60003DBEBD /* ShopCategories.swift */; };
+		3649F3672BDCFE87003DBEBD /* ShopCategoriesScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3649F3662BDCFE87003DBEBD /* ShopCategoriesScrollView.swift */; };
 		365D385A2B63CE4D0013689A /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 365D38592B63CE4D0013689A /* YouTubePlayerKit */; };
 		3671791B2BC90CF1004E380C /* CustomTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671791A2BC90CF1004E380C /* CustomTabBarView.swift */; };
 		3671791E2BC90D59004E380C /* TabBarItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3671791C2BC90D59004E380C /* TabBarItem.swift */; };
@@ -110,6 +114,10 @@
 		3649F35A2BDCD885003DBEBD /* HighlightScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightScrollView.swift; sourceTree = "<group>"; };
 		3649F35C2BDCE769003DBEBD /* CategoriesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesView.swift; sourceTree = "<group>"; };
 		3649F35E2BDCE9B5003DBEBD /* CategoryScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScrollView.swift; sourceTree = "<group>"; };
+		3649F3602BDCF71E003DBEBD /* EventTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypeView.swift; sourceTree = "<group>"; };
+		3649F3622BDCF9E0003DBEBD /* EventTypeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTypeScrollView.swift; sourceTree = "<group>"; };
+		3649F3642BDCFC60003DBEBD /* ShopCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCategories.swift; sourceTree = "<group>"; };
+		3649F3662BDCFE87003DBEBD /* ShopCategoriesScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopCategoriesScrollView.swift; sourceTree = "<group>"; };
 		3671791A2BC90CF1004E380C /* CustomTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarView.swift; sourceTree = "<group>"; };
 		3671791C2BC90D59004E380C /* TabBarItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItem.swift; sourceTree = "<group>"; };
 		3671791D2BC90D59004E380C /* TabBarItemsPreferenceKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarItemsPreferenceKey.swift; sourceTree = "<group>"; };
@@ -253,6 +261,10 @@
 				3649F35A2BDCD885003DBEBD /* HighlightScrollView.swift */,
 				3649F35E2BDCE9B5003DBEBD /* CategoryScrollView.swift */,
 				3649F35C2BDCE769003DBEBD /* CategoriesView.swift */,
+				3649F3602BDCF71E003DBEBD /* EventTypeView.swift */,
+				3649F3622BDCF9E0003DBEBD /* EventTypeScrollView.swift */,
+				3649F3662BDCFE87003DBEBD /* ShopCategoriesScrollView.swift */,
+				3649F3642BDCFC60003DBEBD /* ShopCategories.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -584,6 +596,7 @@
 				3679F2952BAA1E2600DAC43E /* CommentVM.swift in Sources */,
 				36F767122BC26B8C008D8968 /* Podcast.swift in Sources */,
 				3679F2BE2BAFBB1A00DAC43E /* NavBar.swift in Sources */,
+				3649F3632BDCF9E0003DBEBD /* EventTypeScrollView.swift in Sources */,
 				3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */,
 				36F767142BC270C1008D8968 /* PodcastVM.swift in Sources */,
 				3679F29B2BAA205900DAC43E /* FeedVM.swift in Sources */,
@@ -622,6 +635,7 @@
 				36920C5D2BC93BC200CA9D8F /* EventCardVertical.swift in Sources */,
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
 				36920C592BC935C100CA9D8F /* EventCardHorizontal.swift in Sources */,
+				3649F3672BDCFE87003DBEBD /* ShopCategoriesScrollView.swift in Sources */,
 				3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */,
 				363A290F2BD6131000BA33FF /* iosCheckboxToggleStyle.swift in Sources */,
 				36F0D74B2BBCC0E90044C3B1 /* AthleteHeadline.swift in Sources */,
@@ -634,11 +648,13 @@
 				E55B36232A6181EC00CB859B /* ContentView.swift in Sources */,
 				36920C552BC92EEE00CA9D8F /* ShopScrollView.swift in Sources */,
 				3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */,
+				3649F3612BDCF71E003DBEBD /* EventTypeView.swift in Sources */,
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
 				363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */,
 				3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */,
 				3679F2A12BAA211200DAC43E /* Post.swift in Sources */,
 				E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */,
+				3649F3652BDCFC60003DBEBD /* ShopCategories.swift in Sources */,
 				3679F2872BA96AAD00DAC43E /* ProfileImage.swift in Sources */,
 				3679F2B42BAD4B0900DAC43E /* AthleteListView.swift in Sources */,
 				3649F3572BDC770C003DBEBD /* FeaturedAthleteView.swift in Sources */,

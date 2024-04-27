@@ -11,76 +11,56 @@ struct ItemCard: View {
     let item_url: String
     var body: some View {
             VStack(alignment: .leading){
-                HStack(spacing: 0){
-                    Image(systemName: "tag")
-                    Text("$852")
+                VStack{
+                    HStack{
+                        
+                        Spacer()
+                    }
+                    Spacer()
+                        .frame(height: 40)
+                    HStack{
+                        Spacer()
+                        AsyncImage(
+                            url: URL(string: item_url),
+                            content: { image in
+                                image.resizable()
+                                    .resizable()
+                                    .scaledToFill()
+                                    .frame(width: 100, height: 50)
+                                    .clipped()
+                                //.roundedCorner(8, corners: .allCorners)
+                                
+                                    .tint(Color.gray)
+                                
+                            },
+                            placeholder: {
+                                ProgressView()
+                            }
+                        )//.padding(.trailing, 20)
+                        Spacer()
+                    }
                     
-                }
-                .padding(.horizontal, 5)
-                .padding(.vertical, 5)
-                .background{
-                    RoundedRectangle(cornerRadius: 15)
-                        .strokeBorder(.black)
-                }
-                .padding(.leading, 10)
-
-                HStack{
-
+                    
                     Spacer()
+                        .frame(height: 20)
+                }.overlay{
+                    Color.gray
+                        .opacity(0.1)
                 }
                 Spacer()
-                    .frame(height: 20)
-                HStack{
-                    Spacer()
-                    AsyncImage(
-                        url: URL(string: item_url),
-                        content: { image in
-                            image.resizable()
-                                .resizable()
-                                .scaledToFill()
-                                .frame(width: 100, height: 50)
-                                .clipped()
-                                .roundedCorner(8, corners: .allCorners)
-                                .background{
-                                    Color(UIColor.systemGray6)
-                                }
-                            
-                        },
-                        placeholder: {
-                            ProgressView()
-                        }
-                    )//.padding(.trailing, 20)
-                    Spacer()
-                }
-
-                Spacer()
-                    .frame(height: 20)
+                    .frame(height: 10)
                 VStack(alignment: .leading){
-                    
                     Text("Nike Superfly 9")
                         .font(.subheadline)
+                        .bold()
                     Spacer()
                         .frame(height: 5)
-                    HStack(spacing: 0){
-                        Text("4.8 ")
-                            .font(.system(size: 12))
-                        Image(systemName: "star.fill")
-                            .font(.system(size: 8))
-                        Image(systemName: "star.fill")
-                            .font(.system(size: 8))
-                        Image(systemName: "star.fill")
-                            .font(.system(size: 8))
-                        Image(systemName: "star.fill")
-                            .font(.system(size: 8))
-                    }
-                    Text("Men's shoes")
-                        .font(.caption)
-                        .foregroundStyle(Color(UIColor.lightGray))
+                    Text("$852")
+                        .foregroundStyle(.gray)
+                        
                     
 
-                    
-
-                }.padding(.leading, 15)
+                }//.padding(.leading, 15)
                 
                 
                 
@@ -88,11 +68,11 @@ struct ItemCard: View {
                 
             }
             .frame(width: 140, height: 210)
-            .background{
-                RoundedRectangle(cornerRadius: 20)
-                    .foregroundColor(.white)
-                    .shadow(radius: 1)
-            }
+//            .background{
+//                RoundedRectangle(cornerRadius: 20)
+//                    .foregroundColor(.white)
+//                    .shadow(radius: 1)
+//            }
             //.scaleEffect(0.8)
 
         

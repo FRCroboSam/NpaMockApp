@@ -37,7 +37,10 @@ struct ShopScrollView: View {
 //                .scaleEffect(0.8)
 
             }
-        }.scrollIndicators(.hidden)
+        }
+        .frame(height: 180)
+        .scrollIndicators(.hidden)
+
     }
 }
 

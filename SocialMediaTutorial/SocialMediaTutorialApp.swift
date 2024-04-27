@@ -30,12 +30,7 @@ struct SocialMediaTutorialApp: App {
                             LandingPageView()
                                 .opacity(opacity)
                                 .animation(.easeInOut(duration: 0.3), value: opacity)
-                                .onAppear{
-                                    withAnimation{
-                                        opacity = 0.0
-                   
-                                   }
-                            }
+    
                         }
                         
                         
@@ -44,18 +39,7 @@ struct SocialMediaTutorialApp: App {
                         
                         
                     }
-                    .onChange(of: feedVM.videosHaveLoaded, perform: { value in
-                        withAnimation(.easeIn){
-                            opacity = 0.0
-                        }
-//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-//                                withAnimation{
-//                                    opacity = 0.0
-//                                }
-//
-//                            }
-                    }
-                    )
+
                 }
                 else{
                     HomePageView()
@@ -67,6 +51,19 @@ struct SocialMediaTutorialApp: App {
             .environmentObject(athleteVM)
             .environmentObject(podcastVM)
             .environmentObject(blogVM)
+            .onChange(of: feedVM.videosHaveLoaded, perform: { value in
+                print("VIDEOS HAVE LAODED")
+                withAnimation(.easeIn){
+                    opacity = 0.0
+                }
+//                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+//                                withAnimation{
+//                                    opacity = 0.0
+//                                }
+//
+//                            }
+            }
+            )
             .onAppear{
                 feedVM.loadData()
                 feedVM.loggedIn = true
