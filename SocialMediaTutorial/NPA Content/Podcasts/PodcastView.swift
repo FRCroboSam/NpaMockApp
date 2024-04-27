@@ -13,11 +13,11 @@ struct PodcastView: View {
             VStack(alignment: .leading){
                 Spacer()
                     .frame(height: 0)
-                    Text(podcast.title)
-                        .font(.system(size: 20))
-                        .lineLimit(1)
-                        .bold()
-                        .frame(width: 7/8 * deviceWidth )
+//                    Text(podcast.title)
+//                        .font(.system(size: 20))
+//                        .lineLimit(1)
+//                        .bold()
+//                        .frame(width: 7/8 * deviceWidth )
 
                 VideoPlayer(url: podcast.image_or_video, width: 7/8 * deviceWidth, height: 200)
                 

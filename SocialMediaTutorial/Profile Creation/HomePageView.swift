@@ -10,14 +10,24 @@ import SwiftUI
 struct HomePageView: View {
     var body: some View {
         NavigationStack{
-            VStack(alignment: .leading){
+            VStack(alignment: .center){
                 
                 Image("transparent_full_logo")
                     .resizable()
                     .scaledToFill()
                     .frame(width: deviceWidth, height: 400)
-                HStack{
+                    .padding(.top, 200)
+
+                    Text("Elevate Your game")
+                        .font(.title)
+                        .bold()
+                        .foregroundStyle(.white)
+                    Text("One Stride At A Time")
+                        .font(.title)
+                        .bold()
+                        .foregroundStyle(.white)
                     Spacer()
+                        .frame(height: 50)
                     NavigationLink{
                         AccountTypeView()
                     }label:{
@@ -28,14 +38,14 @@ struct HomePageView: View {
                             .background{
                                 RoundedRectangle(cornerRadius: 35)
                                     .fill(.white)
-                                    .padding(.horizontal, -20)
+                                    .frame(width: 7/8 * deviceWidth)
                                     .padding(.vertical, -15)
                                 
                             }
                     }
-                    Spacer()
-                        .frame(width: 70)
-                    Button{
+                    .padding(.bottom, 50)
+                    
+                    NavigationLink{
                         
                     }label:{
                         Text("Sign In")
@@ -45,31 +55,30 @@ struct HomePageView: View {
                             .background{
                                 RoundedRectangle(cornerRadius: 35)
                                     .strokeBorder(.white)
-                                    .padding(.horizontal, -20)
+                                    //.padding(.horizontal, -20)
+                                    .frame(width: 7/8 * deviceWidth)
                                     .padding(.vertical, -15)
                                 
                             }
                     }
-                    Spacer()
-                    
-                }
-                Spacer()
-                    .frame(height: 100)
+                    .padding(.bottom, 100)
+
                 
                 
             }
             .ignoresSafeArea(.all, edges: .top)
             .frame(width: deviceWidth, height: deviceHeight)
             .background{
-                LinearGradient(gradient:Gradient(colors:[
-
-                    Color(hex: "00008b"),
-                    Color(hex: "0A66C2"),
-                    
-
-
-                ]),
-                   startPoint:.top,endPoint:.bottom)
+                 Image("background")
+//                LinearGradient(gradient:Gradient(colors:[
+//
+//                    Color(hex: "00008b"),
+//                    Color(hex: "0A66C2"),
+//                    
+//
+//
+//                ]),
+//                   startPoint:.top,endPoint:.bottom)
 
             }
             .ignoresSafeArea(.all, edges: .top)

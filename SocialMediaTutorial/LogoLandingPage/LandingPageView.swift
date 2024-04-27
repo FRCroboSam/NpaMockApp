@@ -25,12 +25,13 @@ struct LandingPageView: View {
         .ignoresSafeArea(.all, edges: .top)
         .frame(width: deviceWidth, height: deviceHeight)
         .background{
-            LinearGradient(gradient:Gradient(colors:[
-                Color(hex: "00008b"),
-                Color(hex: "0A66C2"),
-//                Color(hex: "ADD8E6"),
-            ]),
-               startPoint:.top,endPoint:.bottom)
+            Image("background")
+//            LinearGradient(gradient:Gradient(colors:[
+//                Color(hex: "00008b"),
+//                Color(hex: "0A66C2"),
+////                Color(hex: "ADD8E6"),
+//            ]),
+//               startPoint:.top,endPoint:.bottom)
 
         }
         .ignoresSafeArea(.all, edges: .top)

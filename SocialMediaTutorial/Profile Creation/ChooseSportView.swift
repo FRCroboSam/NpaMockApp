@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct AccountTypeView: View {
+struct ChooseSportView: View {
     @State var athleteIsChecked = false
     @State var coachIsChecked = false
 
     @State var fanIsChecked = false
     @State var businessIsChecked = false
+    @EnvironmentObject var feedVM: FeedVM
 
     var body: some View {
         NavigationStack{
@@ -38,7 +39,7 @@ struct AccountTypeView: View {
                 Spacer()
                     .frame(height: 40)
 
-                Text("Select your account type")
+                Text("Choose your sport")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 40))
                     .font(.system(.title, design: .rounded))
@@ -62,7 +63,7 @@ struct AccountTypeView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "figure.run")
+                            Image(systemName: "football.fill")
                                 .font(.system(size: 30))
                                 .scaledToFill()
                                 .clipShape(Circle())
@@ -72,7 +73,7 @@ struct AccountTypeView: View {
                                 }
                             Spacer()
                                 .frame(width: 20)
-                            Text("Athletes")
+                            Text("Football")
                                 .font(.title)
                                 .bold()
                                 .foregroundStyle(Color(UIColor.systemGray4))
@@ -100,7 +101,7 @@ struct AccountTypeView: View {
                     Color.clear
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            //TODO: wright code to uncheck all the other ones 
+                            //TODO: wright code to uncheck all the other ones
                             athleteIsChecked = false
                             coachIsChecked = false
                             fanIsChecked = false
@@ -232,14 +233,10 @@ struct AccountTypeView: View {
                     .frame(height: 40)
                 HStack{
                     Spacer()
-                    
-                    NavigationLink{
-                        ChooseSportView()
-                            .onAppear {
-                                let defaults = UserDefaults.standard
-                                defaults.set("HELLO", forKey: "User Type")
-                            }
-
+                    Button{
+                        let defaults = UserDefaults.standard
+                        defaults.set("Athlete", forKey: "User Type")
+                        feedVM.loggedIn = true
                     }label:{
                         Text("Next")
                             .font(.system(.title2, design: .rounded))
@@ -260,18 +257,15 @@ struct AccountTypeView: View {
             }
             .frame(width: deviceWidth, height: deviceHeight)
             .background{
-                Image("background")
-                    .blur(radius: 20)
-
-//                LinearGradient(gradient:Gradient(colors:[
-//                    Color(hex: "00008b"),
-//                    Color(hex: "0A66C2"),
-//                    //                Color(hex: "ADD8E6"),
-//                    
-//                    
-//                    
-//                ]),
-//                               startPoint:.top,endPoint:.bottom)
+                LinearGradient(gradient:Gradient(colors:[
+                    Color(hex: "00008b"),
+                    Color(hex: "0A66C2"),
+                    //                Color(hex: "ADD8E6"),
+                    
+                    
+                    
+                ]),
+                               startPoint:.top,endPoint:.bottom)
                 
             }
             .ignoresSafeArea(.all, edges: .top)
@@ -282,5 +276,5 @@ struct AccountTypeView: View {
 }
 
 #Preview {
-    AccountTypeView()
+    ChooseSportView()
 }

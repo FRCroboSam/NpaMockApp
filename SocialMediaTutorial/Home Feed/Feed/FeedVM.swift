@@ -19,6 +19,8 @@ class FeedVM: ObservableObject {
     @Published var showCommentSection = false
     @Published var selected_post_vm: PostVM?
     
+    @Published var loggedIn = false; 
+    
     init() {
 //        print("POST LENGTH: " + String(posts.count))
         loadData() // Load the JSON data upon initialization
@@ -48,7 +50,7 @@ class FeedVM: ObservableObject {
                         youtubePlayer.load(source: .url(post.image_or_video)) { _ in
                             print("PAUSING THE FIRST VIDEO")
                             self.videosHaveLoaded = true
-                            // youtubePlayer.pause()
+//                             youtubePlayer.pause()
                         }
                     }
                     youtubePlayers.append(youtubePlayer)

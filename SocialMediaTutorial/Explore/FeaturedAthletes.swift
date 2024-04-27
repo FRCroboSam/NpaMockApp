@@ -19,19 +19,21 @@ struct FeaturedAthletes: View {
                 Spacer().frame(width: 10)
                 ForEach(Array(athleteData.athletes.enumerated()), id: \.1.id) { index, athlete in
                     Spacer().frame(width: 10)
-                    if(index < 3){
-                        AthleteCardView(athlete: athlete, fireValue: index + 1)
-                            .padding(10)
-                            .padding(.top, 10)
-                    }
-                    else{
-                        AthleteCardView(athlete: athlete)
-                            .padding(10)
-                            .padding(.top, 10)
-                    }
+                    FeaturedAthleteView(athlete: athlete)
+//                    if(index < 3){
+//                        AthleteCardView(athlete: athlete, fireValue: index + 1)
+//                            .padding(10)
+//                            .padding(.top, 10)
+//                    }
+//                    else{
+//                        AthleteCardView(athlete: athlete)
+//                            .padding(10)
+//                            .padding(.top, 10)
+//                    }
 
 
                 }
+                .frame(height: 250)
 
 
             }
