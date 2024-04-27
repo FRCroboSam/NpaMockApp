@@ -13,33 +13,47 @@ struct highlightview: View {
             Image("top10plays")
                 .resizable()
                 .cornerRadius(10)
+                .frame(width: 7/8 * deviceWidth, height:200)
 
                 .scaledToFill()
                 //.opacity(0.8)
-                .frame(width: 3/4 * deviceWidth, height:200)
-                .brightness(-0.2)
+                .brightness(-0.1)
 
             VStack(alignment: .leading){
                 Spacer()
-                    .frame(height: 50)
-                Text("Featured")
-                    .foregroundStyle(.white)
-                    .bold()
-                    .shadow(radius: 10)
-                    .foregroundStyle(.white)
-                Text("Top 10 Football Teams")
-                    .font(.title2)
-                    .foregroundStyle(.white)
-                    .bold()
-                    .shadow(radius: 1)
-                    .foregroundStyle(.white)
-                Text("Selection of the best")
-                    .foregroundStyle(.white)
-                    .padding(.bottom, 20)
+                    .frame(height: 60)
+                VStack(alignment: .leading){
+                    Text("Featured")
+                        .foregroundStyle(.white)
+                        .bold()
+                        .shadow(color: .black, radius: 3)
+                        .foregroundStyle(.white)
+                    Text("Top 10 Football Teams")
+                        .font(.title2)
+                        .foregroundStyle(.white)
+                        .bold()
+                        .shadow(color: .black, radius: 3)
+                        .foregroundStyle(.white)
+                    Text("Selection of the best")
+                        .foregroundStyle(.white)
+                        .shadow(color: .black, radius: 3)
+                        .padding(.bottom, 20)
+                }
+                .offset(x: -50)
+                .frame(width: 8/9 * deviceWidth)
+//                .background{
+//                    Color.gray
+//                        .opacity(0.3)
+//                        
+//                }
+                .roundedCorner(10, corners: .allCorners)
                 
                 
-            }.offset(x: -10)
-        }
+            }
+            .frame(width: 8/9 * deviceWidth)
+                
+
+        }.frame(width: deviceWidth, height: 200)
     }
 }
 

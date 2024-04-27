@@ -103,50 +103,57 @@ struct ExploreView: View {
                     //                    Spacer()
                     //                }
                     Spacer()
-                        .frame(height: 20)
+                        .frame(height: 5)
+                    Divider()
+                    Spacer()
+                        .frame(height: 10)
                     
                     VStack(alignment:  .leading, spacing: 0){
                         
                         
-                        //AthleteScrollView(athletes: athleteVM.athletes)
+                        
+                        Spacer()
+                            .frame(height: 10)
+                        HighlightScrollView()
+                        Spacer()
+                            .frame(height: 20)
                         HStack(spacing: 0){
-                            Image(systemName: "cellularbars")
-                                .font(.title)
-                                .padding(.leading, 10)
+                    
+                            Text("For Athletes" )
                             
-                            Text("Trending" )
                                 .bold()
-                                .font(.title)
-                                .padding(.leading, 10)
+                                .font(.title2)
+                                .padding(.leading, 20)
                             Spacer()
                             
                             
                         }
-                        Spacer()
-                            .frame(height: 10)
-                        FeaturedAthletes()
-                        Spacer()
-                            .frame(height: 20)
+                        CategoryScrollView()
                         HStack(spacing: 0){
-                            Image(systemName: "calendar")
-                                .font(.title)
-                                .padding(.leading, 10)
-                            
+                    
                             Text("Events" )
                             
                                 .bold()
-                                .font(.title)
-                                .padding(.leading, 10)
+                                .font(.title2)
+                                .padding(.leading, 20)
                             Spacer()
                             
                             
                         }
-                            
-                        Spacer( )
-                            .frame(height: 20)
 
                         EventScrollView()
-
+                        
+                        HStack(spacing: 0){
+                    
+                            Text("Events" )
+                            
+                                .bold()
+                                .font(.title2)
+                                .padding(.leading, 20)
+                            Spacer()
+                            
+                            
+                        }
                         
                         Spacer()
                             .frame(height: 10)

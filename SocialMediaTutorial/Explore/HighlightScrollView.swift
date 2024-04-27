@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct EventScrollView: View {
+struct HighlightScrollView: View {
     @EnvironmentObject var podcastVM: PodcastVM
     @State private var currentIndex = 0
     @State private var maxPodcastViewHeight: CGFloat = 380
@@ -22,18 +22,16 @@ struct EventScrollView: View {
     ]
     var body: some View {
         
-        ScrollView(.horizontal, showsIndicators: false){
-            
-            HStack {
-                Spacer()
-                    .frame(width: 20)
+        VStack(alignment: .center, spacing: 0){
+            TabView(selection: $currentIndex.animation()) {
                 ForEach(urls.indices, id: \.self) { index in
-                    EventCardVertical(event_url: urls[index])
-                        //.padding(10)
-
+                    highlightview()
                 }
             }
-            .frame(height: 320)
+            .frame(height: 220)
+            .tabViewStyle(.page(indexDisplayMode: .never))
+            Fancy3DotsIndexView(numberOfPages: podcastVM.podcasts.count, currentIndex: currentIndex)
+
         }
         
         
@@ -56,7 +54,7 @@ struct EventScrollView: View {
 //
 ////                .scaleEffect(0.8)
 //
-//                
+//
 ////                .scaleEffect(0.8)
 //
 //            }
@@ -65,6 +63,6 @@ struct EventScrollView: View {
 }
 
 #Preview {
-    EventScrollView()
+    HighlightScrollView()
         .environmentObject(PodcastVM())
 }

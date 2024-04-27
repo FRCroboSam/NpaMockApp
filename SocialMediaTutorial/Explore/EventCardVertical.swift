@@ -21,7 +21,9 @@ struct EventCardVertical: View {
                                 .scaledToFill()
                                 .frame(width:  3/4 * deviceWidth, height:160)
                                 .clipped()
-                                .roundedCorner(8, corners: .allCorners)
+                                .roundedCorner(8, corners: .topLeft)
+                                .roundedCorner(8, corners: .topRight)
+
                                 .overlay(alignment: .bottomTrailing) {
                                     Text("Ages 6 - 13")
                                         .bold()
@@ -42,13 +44,18 @@ struct EventCardVertical: View {
                         }
                     )//.padding(.trailing, 20)
                     VStack(alignment: .leading, spacing: 0){
+                        Spacer()
+                            .frame(height: 10)
                         Text("SAT, MAR 2 - SUN, MAR 11")
                             .font(.caption)
                             .foregroundStyle(.red)
+                            .padding(.leading, 10)
                         HStack{
                             Text("Husky Football Camp 2024")
                                 .bold()
                                 .font(.system(size: 16))
+                                .padding(.leading, 10)
+
                         }
                         HStack{
                             VStack(alignment: .leading, spacing: 5){
@@ -57,9 +64,13 @@ struct EventCardVertical: View {
                                     .bold()
                                     .font(.system(size: 14))
                                     .foregroundStyle(.gray)
+                                    .padding(.leading, 10)
+
                                 Text("3.5K interested · 50 registered")
                                     .font(.system(size: 12))
                                     .foregroundStyle(Color(UIColor.systemGray))
+                                    .padding(.leading, 10)
+
 
                                 Spacer()
                                     .frame(height: 5)
@@ -76,24 +87,27 @@ struct EventCardVertical: View {
                                         .font(.system(size: 16))
                                 }
                             }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: Color(UIColor.systemGray3),textColor: .black, padding: 60))
+                                .padding(.leading, 10)
+
                             Spacer()
-                            Button{
-                                
-                            }label:{
-                                HStack{
-                                    Image(systemName: "arrowshape.turn.up.right.fill")
-                                }
-                            }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: Color(UIColor.systemGray3),textColor: .black, padding: 20))
                             
                         }.frame(width: 3/4 * deviceWidth)
+                            .padding(.bottom, 10)
 
 
 
-                    }//.padding(.leading, 10)
+                    }
                 }
                 
             }//.padding(.leading, 20)
-//            .frame(width: 3/4 * deviceWidth , height: 80)
+            .frame(width: 3/4 * deviceWidth)
+            .background{
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white)
+                    .shadow(radius: 1)
+                    //.padding(.bottom, -10)
+
+            }
 
 
 
