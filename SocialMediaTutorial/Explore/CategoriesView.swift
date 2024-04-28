@@ -13,16 +13,18 @@ struct CategoryView: View {
 
     var body: some View {
         VStack(alignment: .leading){
+            Spacer()
+                .frame(height: 10)
             AsyncImage(
                 url: URL(string: item_url),
                 content: { image in
                     image.resizable()
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 100, height: 100)
+                        .frame(width: 120, height: 120)
                         .clipped()
-                        .roundedCorner(8, corners: .topLeft)
-                        .roundedCorner(8, corners: .topRight)
+//                        .roundedCorner(8, corners: .topLeft)
+//                        .roundedCorner(8, corners: .topRight)
 
                         .background{
                             Color(UIColor.systemGray6)
@@ -33,19 +35,19 @@ struct CategoryView: View {
                     ProgressView()
                 }
             )
-            Text("Featured")
-                .font(.caption)
-                .opacity(0.5)
-                .padding(.leading, 5)
+//            Text("Featured")
+//                .font(.caption)
+//                .opacity(0.5)
+//                .padding(.leading, 5)
             Text(text)
                 .padding(.bottom, 10)
                 .bold()
-                .padding(.leading, 5)
+                //.padding(.leading, 5)
         }
         .background{
             Color.white
-                .roundedCorner(8, corners: .allCorners)
-                .shadow(radius: 1)
+                //.roundedCorner(8, corners: .allCorners)
+                //.shadow(radius: 1)
         }
     }
 }

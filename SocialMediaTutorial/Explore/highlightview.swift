@@ -13,7 +13,7 @@ struct highlightview: View {
             Image("top10plays")
                 .resizable()
                 .cornerRadius(10)
-                .frame(width: 7/8 * deviceWidth, height:200)
+                .frame(width: deviceWidth - 40, height: 200)
 
                 .scaledToFill()
                 //.opacity(0.8)
@@ -40,7 +40,7 @@ struct highlightview: View {
                         .padding(.bottom, 20)
                 }
                 .offset(x: -50)
-                .frame(width: 8/9 * deviceWidth)
+                .frame(width: deviceWidth - 20)
 //                .background{
 //                    Color.gray
 //                        .opacity(0.3)

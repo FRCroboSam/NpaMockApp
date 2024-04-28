@@ -16,46 +16,64 @@ struct SocialMediaTutorialApp: App {
     
     @State var readyToShow = false;
     @State var opacity = 1.0
+    
+    @State var homeOpacity = 0.0
     var body: some Scene {
         
         WindowGroup {
             Group{
-                if(feedVM.loggedIn){
-                    ZStack{
-                        
-                        ContentView()
-                            
-                            .opacity(opacity > 0.0 ? 0.0 : 1.0)
-                        if(opacity != 0){
-                            LandingPageView()
-                                .opacity(opacity)
-                                .animation(.easeInOut(duration: 0.3), value: opacity)
-    
-                        }
-                        
-                        
-                        
-                        
-                        
-                        
-                    }
-
-                }
-                else{
+                ZStack{
                     HomePageView()
+                        .opacity(homeOpacity)
+                        .animation(.easeInOut(duration: 0.3), value: homeOpacity)
+
+                        .zIndex(4)
+
+                    LandingPageView()
+                        .opacity(opacity)
+                        .animation(.easeInOut(duration: 0.3), value: opacity)
+                        .zIndex(3)
+                    if(readyToShow){
+                        ContentView()
+//
+                        //.opacity(opacity > 0.0 ? 0.0 : 1.0)
+                        //.opacity(opacity)
+                        //.animation(.easeInOut(duration: 0.3), value: opacity)
+                    }
+                    else{
+
+                    }
                 }
                 
 
             }
+
             .environmentObject(feedVM)
             .environmentObject(athleteVM)
             .environmentObject(podcastVM)
             .environmentObject(blogVM)
+            .onChange(of: feedVM.loggedIn, perform: { value in
+                if(value == true){
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                        withAnimation(.easeIn){
+                            homeOpacity = 0.0
+                            readyToShow = true
+                        }
+                    }
+                }
+            })
             .onChange(of: feedVM.videosHaveLoaded, perform: { value in
                 print("VIDEOS HAVE LAODED")
-                withAnimation(.easeIn){
-                    opacity = 0.0
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    withAnimation(.easeIn){
+                        opacity = 0.0
+                        if(feedVM.loggedIn){
+                            readyToShow = true
+                        }
+                    }
                 }
+
+
 //                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
 //                                withAnimation{
 //                                    opacity = 0.0
@@ -65,8 +83,15 @@ struct SocialMediaTutorialApp: App {
             }
             )
             .onAppear{
+                feedVM.loggedIn = false
                 feedVM.loadData()
-                feedVM.loggedIn = true
+                feedVM.loggedIn = true //placeholder
+                if(feedVM.loggedIn){
+                    homeOpacity = 0.0
+                }
+                else{
+                    homeOpacity = 1.0
+                }
                 //CODE FOR DETECTING IF WE ALREADY CREATED USER SO WE SHOULD GO TO FEED VIEW
                 let defaults = UserDefaults.standard
                 print(defaults.value(forKey: "User Type"))
