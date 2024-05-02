@@ -53,10 +53,13 @@ class FeedVM: ObservableObject {
                         if(index == 0){
                             print("LOADING TEH FIRST VIDEO:  " + post.profile_name)
                             youtubePlayer.load(source: .url(post.image_or_video)) { _ in
+                                print("STATE")
+                                print(youtubePlayer.state)
                                 print("PAUSING THE FIRST VIDEO")
                                 self.videosHaveLoaded = true
                             }
                         }
+                        youtubePlayer.mute()
                         youtubePlayers.append(youtubePlayer)
                         post_with_videos.append(post.post_id)
                         index += 1;

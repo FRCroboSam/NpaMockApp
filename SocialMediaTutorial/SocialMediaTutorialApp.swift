@@ -54,7 +54,7 @@ struct SocialMediaTutorialApp: App {
             .environmentObject(blogVM)
             .onChange(of: feedVM.loggedIn, perform: { value in
                 if(value == true){
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                         withAnimation(.easeIn){
                             homeOpacity = 0.0
                             readyToShow = true
@@ -64,7 +64,7 @@ struct SocialMediaTutorialApp: App {
             })
             .onChange(of: feedVM.videosHaveLoaded, perform: { value in
                 print("VIDEOS HAVE LAODED")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
                     withAnimation(.easeIn){
                         opacity = 0.0
                         if(feedVM.loggedIn){
