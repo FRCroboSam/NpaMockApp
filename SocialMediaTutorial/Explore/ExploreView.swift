@@ -46,7 +46,7 @@ struct ExploreView: View {
 
                         Spacer()
                             
-                        DropdownPicker(value: $selectedSport, text: "Select a sport: ", color: Color(hex: "ADD8E6"), textColor: Color(UIColor.darkGray), items: sports)
+                        DropdownPicker(value: $selectedSport, text: "Select a sport: ", color: .blue.opacity(0.2), textColor: Color(UIColor.darkGray), items: sports)
                                 .zIndex(500)
                                 .offset(x: 10)
                         NavigationLink {
@@ -119,7 +119,7 @@ struct ExploreView: View {
                             .frame(height: 20)
                         HStack(spacing: 0){
                     
-                            Text("For Athletes" )
+                            Text("Discover" )
                             
                                 .bold()
                                 .font(.title2)

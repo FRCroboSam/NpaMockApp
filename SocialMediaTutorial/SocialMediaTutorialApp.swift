@@ -22,6 +22,7 @@ struct SocialMediaTutorialApp: App {
         
         WindowGroup {
             Group{
+//                EditProfileView(athlete: Athlete.defaultAthlete())
                 ZStack{
                     HomePageView()
                         .opacity(homeOpacity)

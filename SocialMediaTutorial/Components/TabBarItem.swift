@@ -32,6 +32,6 @@ enum TabBarItem: Hashable {
     }
     
     var color: Color {
-        return Color.teal
+        return Color.blue//Color.teal
     }
 }

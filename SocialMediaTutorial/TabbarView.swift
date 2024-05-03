@@ -57,11 +57,15 @@ struct TabbarView: View {
                     }.tag(4)
                     .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
                 
-                InboxView(athletes: athleteVM.athletes)
-                    .tabItem {
-                        Text("")
-                    }.tag(5)
+                EditProfileView(athlete: Athlete.defaultAthlete())
+                    .tag(5)
                     .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
+                
+//                InboxView(athletes: athleteVM.athletes)
+//                    .tabItem {
+//                        Text("")
+//                    }.tag(5)
+//                    .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
 
             }
 //            .onAppear {
@@ -143,12 +147,12 @@ struct TabbarView: View {
                                 self.selected = 5
 
                             } } ) {
-                                Image(systemName:  "envelope") // Tab icon for Profile View
+                                Image(systemName:  "person.crop.circle.fill") // Tab icon for Profile View
                                     .font(.system(size: 30))
                                     .tint(self.selected == 5 ? .blue : .gray)
                                 
                             }
-                            Text("Inbox")
+                            Text("Profile")
                                 .foregroundStyle(self.selected == 5 ? .blue : .gray)
                         }
                         Spacer()
@@ -174,13 +178,13 @@ struct TabbarView: View {
 
 }
 
-struct TabbarView_Previews: PreviewProvider {
-    static var previews: some View {
-        TabbarView()
-            .environmentObject(FeedVM())
-            .environmentObject(AthleteVM())
-    }
-}
+//struct TabbarView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        TabbarView()
+//            .environmentObject(FeedVM())
+//            .environmentObject(AthleteVM())
+//    }
+//}
 
 struct NavigationBarAccessor: UIViewControllerRepresentable {
     var callback: (UINavigationBar) -> (AnyView)
