@@ -22,6 +22,8 @@ class FeedVM: ObservableObject {
     @Published var loggedIn = false; 
     @Published var calledLoadData = false;
     
+    @Published var videoIds = []
+    
     init() {
 //        print("POST LENGTH: " + String(posts.count))
         if(!videosHaveLoaded && !calledLoadData){
@@ -71,4 +73,44 @@ class FeedVM: ObservableObject {
             }
         }
     }
+    
+    func fetchVideoCategories() {
+        guard let url = URL(string: "https://www.googleapis.com/youtube/v3/videoCategories?part=snippet&regionCode=us&key=AIzaSyC5oMXpLSoLSjhwSOF2K7LfgqTG1ifeNaE") else {
+            print("Invalid URL")
+            return
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, response, error in
+            guard let data = data, error == nil else {
+                print("Error: \(error?.localizedDescription ?? "Unknown error")")
+                return
+            }
+            
+            do {
+                let response = try JSONDecoder().decode(VideoCategoriesResponse.self, from: data)
+                DispatchQueue.main.async {
+                    self.videoIds = response.items.map { $0.id }
+                    print("GOT THE VIDEO IDS")
+                    for id in self.videoIds{
+                        print(id)
+                    }
+                }
+            } catch {
+                print("Error decoding JSON: \(error)")
+            }
+        }.resume()
+    }
+}
+
+struct VideoCategoriesResponse: Decodable {
+    let items: [VideoCategory]
+}
+
+struct VideoCategory: Decodable {
+    let id: String
+    let snippet: Snippet
+}
+
+struct Snippet: Decodable {
+    let title: String
 }
