@@ -84,9 +84,11 @@ struct SocialMediaTutorialApp: App {
             }
             )
             .onAppear{
+                
                 feedVM.loggedIn = false
                 feedVM.loadData()
                 feedVM.loggedIn = true //placeholder
+                feedVM.fetchVideoIds()
                 if(feedVM.loggedIn){
                     homeOpacity = 0.0
                 }
