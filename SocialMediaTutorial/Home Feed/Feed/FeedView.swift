@@ -37,7 +37,7 @@ struct FeedView: View {
                 Image("complete_logo")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 150, height: 80)
+                    .frame(width: 120, height: 60)
                     .padding(.leading, 10)
                 Spacer()
             }

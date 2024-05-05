@@ -128,42 +128,54 @@ struct ExploreView: View {
                             //                }
 
                             HStack{
+//                                Image("logo_blue")
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                //.rotationEffect(.init(degrees: 20))
+//                                    .frame(width: 100, height: 100)
+//                                //put background stuff here if necessary
+//                                    .zIndex(0)
+//                                    .frame(width: 100, height: 120)
+//                                    .padding(.trailing, -20)
+//                                    .offset(y: -20)
                                 
+
+
                                 VStack{
 //                                    Spacer()
 //                                        .frame(height: 10)
                                     Text("Welcome Bobby!")
                                         .bold()
-//                                        .padding(.leading, 20)
-                                        .offset(x: -5)
+                                        .padding(.leading, -60)
                                         .font(.title)
                                     Spacer()
                                         .frame(height: 10)
                                     Text("Explore teams, coaches, events, shop for items, and more.")
-                                        .padding(.leading, 20)
+                                        .padding(.leading, -10)
                                         .zIndex(10)
+                                        .frame(width: 2/3 * deviceWidth)
                                     Spacer()
                                     
                                     
                                     
                                 }
                                 .zIndex(200)
-                                
-                                Spacer()
-                                Image("athlete4")
+                                Image(Athlete.defaultAthlete().profile_img)
                                     .resizable()
-                                    .scaledToFit()
-                                //.rotationEffect(.init(degrees: 20))
-                                    .frame(width: 140, height: 180)
-                                //put background stuff here if necessary
-                                    .zIndex(0)
-                                    .frame(width: 100, height: 120)
-                                    .padding(.trailing, 20)
-                                    .offset(y: -10)
+                                    .scaledToFill()
+                                    .frame(width: 80, height: 80)
+                                    .offset(y: 10)
+                                    .clipped()
+                                    .clipShape(.circle)
+                                    .shadow(radius: 10)
+                                
+
                                 
                                 
                                 
                             }
+                            Spacer()
+                                .frame(height: 10)
                             
                         }
 
