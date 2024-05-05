@@ -58,28 +58,45 @@ extension CustomTabBarView {
     
     private func tabView2(tab: TabBarItem) -> some View {
         VStack {
-            Image(systemName: tab.iconName)
-                .font(.title)
+            VStack{
+                Image(systemName: tab.iconName)
+                    .font(.system(size: 25))
+                    .frame(height: 25)
+                
+                Text(tab.title)
+                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+            }
+            .frame(height: 50)
+            if(localSelection == tab){
+                Rectangle()
+                    .fill(Color.blue)
+                    .frame(width: 45, height: 2)
+                    .matchedGeometryEffect(id: "background_rectangle", in: namespace)
 
-            Text(tab.title)
-                .font(.system(size: 15, weight: .semibold, design: .rounded))
+            }
+            else{
+                Rectangle()
+                    .fill(Color.clear)
+                    .frame(width: 40, height: 2)
+            }
+            
 
         }
         .foregroundColor(localSelection == tab ? tab.color : Color.gray)
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity)
-        .background(
-            ZStack {
-                if localSelection == tab {
-                    RoundedRectangle(cornerRadius: 20)
-                        .fill(tab.color.opacity(0.2))
-                        .matchedGeometryEffect(id: "background_rectangle", in: namespace)
-                        .padding(-5)
-                        .frame(width : 70)
-
-                }
-            }
-        )
+//        .background(
+//            ZStack {
+//                if localSelection == tab {
+//                    RoundedRectangle(cornerRadius: 20)
+//                        .fill(tab.color.opacity(0.2))
+//                        .matchedGeometryEffect(id: "background_rectangle", in: namespace)
+//                        .padding(-5)
+//                        .frame(width : 70)
+//
+//                }
+//            }
+//        )
     }
     
     private var tabBarVersion2: some View {

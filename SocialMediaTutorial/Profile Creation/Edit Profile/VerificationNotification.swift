@@ -27,7 +27,7 @@ struct VerificationNotification: View {
                     )
                     .rotationEffect(.init(degrees: -90))
                     .frame(width: 100, height: 100)
-                Text("50%")
+                Text("33%")
                     .foregroundStyle(Color(hex: "0A66C2"))
                     .bold()
                     .font(.title)
@@ -50,22 +50,17 @@ struct VerificationNotification: View {
                             Image(systemName: "checkmark")
                                 .bold()
                                 .foregroundColor(.green)
-                            Text("Link Email")
+                            Text("Verify Email")
                         }
                         HStack{
                             Image(systemName: "xmark")
-                            Text("Submit Grades")
+                            Text("Submit Grade Reports")
                         }
                         .foregroundStyle(.gray)
 
                         HStack{
                             Image(systemName: "xmark")
-                            Text("Personal Info")
-                        }
-                        .foregroundStyle(.gray)
-                        HStack{
-                            Image(systemName: "xmark")
-                            Text("Athlete Documents")
+                            Text("Drug Screening")
                         }
                         .foregroundStyle(.gray)
                         Spacer()
@@ -95,8 +90,9 @@ struct VerificationNotification: View {
                     .shadow(radius: 1)
             }
             .onAppear{
-                withAnimation{
-                    self.fill = 0.2
+                self.fill = 0.0
+                withAnimation(.easeInOut.speed(0.5)){
+                    self.fill = 0.33
                 }
             }
     }

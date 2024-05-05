@@ -13,8 +13,8 @@ struct CategoryView: View {
 
     var body: some View {
         VStack(alignment: .leading){
-            Spacer()
-                .frame(height: 10)
+//            Spacer()
+//                .frame(height: 10)
             AsyncImage(
                 url: URL(string: item_url),
                 content: { image in
@@ -23,9 +23,12 @@ struct CategoryView: View {
                         .scaledToFill()
                         .frame(width: 120, height: 120)
                         .clipped()
-//                        .roundedCorner(8, corners: .topLeft)
-//                        .roundedCorner(8, corners: .topRight)
-
+                        .roundedCorner(8, corners: .topLeft)
+                        .roundedCorner(8, corners: .topRight)
+//                        .roundedCorner(8, corners: .bottomLeft)
+//                        .roundedCorner(8, corners: .bottomRight)
+                    
+                    
                         .background{
                             Color(UIColor.systemGray6)
                         }
@@ -40,14 +43,25 @@ struct CategoryView: View {
 //                .opacity(0.5)
 //                .padding(.leading, 5)
             Text(text)
-                .padding(.bottom, 10)
+//                .padding(.bottom, 20)
                 .bold()
-                //.padding(.leading, 5)
+                .padding(.leading, 10)
+            Text("5.3K • " + text)
+                .font(.footnote)
+                .foregroundStyle(.gray)
+                .padding(.leading, 10)
+                .padding(.bottom, 10)
+
         }
         .background{
-            Color.white
-                //.roundedCorner(8, corners: .allCorners)
-                //.shadow(radius: 1)
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color.white)
+
+                .shadow(color: Color.gray,radius: 2)                .mask(Rectangle().padding(.bottom, -10))
+                .shadow(color: Color.gray, radius: 1)
+
+
+            
         }
     }
 }

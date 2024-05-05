@@ -63,5 +63,5 @@ struct EventTypeView: View {
 
 #Preview {
     EventTypeView(
-        image_name: "baseball_showcase", text: "Showcases")
+        image_name: "games", text: "Showcases")
 }

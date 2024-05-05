@@ -12,6 +12,8 @@
 		3615F6352BE31D0000214E10 /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3615F6342BE31D0000214E10 /* EditProfileView.swift */; };
 		3615F6372BE4AD9000214E10 /* StatsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3615F6362BE4AD9000214E10 /* StatsView.swift */; };
 		3615F6392BE4DAF000214E10 /* VerificationNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3615F6382BE4DAF000214E10 /* VerificationNotification.swift */; };
+		3615F63B2BE4E96500214E10 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3615F63A2BE4E96500214E10 /* Preferences.swift */; };
+		3615F63D2BE4EDDB00214E10 /* AthleteDocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3615F63C2BE4EDDB00214E10 /* AthleteDocs.swift */; };
 		3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */; };
 		3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */; };
 		3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */; };
@@ -103,6 +105,8 @@
 		3615F6342BE31D0000214E10 /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
 		3615F6362BE4AD9000214E10 /* StatsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatsView.swift; sourceTree = "<group>"; };
 		3615F6382BE4DAF000214E10 /* VerificationNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationNotification.swift; sourceTree = "<group>"; };
+		3615F63A2BE4E96500214E10 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
+		3615F63C2BE4EDDB00214E10 /* AthleteDocs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteDocs.swift; sourceTree = "<group>"; };
 		3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
@@ -233,6 +237,8 @@
 				3615F6342BE31D0000214E10 /* EditProfileView.swift */,
 				3615F6362BE4AD9000214E10 /* StatsView.swift */,
 				3615F6382BE4DAF000214E10 /* VerificationNotification.swift */,
+				3615F63A2BE4E96500214E10 /* Preferences.swift */,
+				3615F63C2BE4EDDB00214E10 /* AthleteDocs.swift */,
 			);
 			path = "Edit Profile";
 			sourceTree = "<group>";
@@ -621,6 +627,7 @@
 				E55B36472A618D1D00CB859B /* StoryCard.swift in Sources */,
 				36236A482BC295B600580B29 /* BlogCardView.swift in Sources */,
 				3679F2932BAA1DC600DAC43E /* CommentView.swift in Sources */,
+				3615F63D2BE4EDDB00214E10 /* AthleteDocs.swift in Sources */,
 				361170DE2BD24DF900BBB3B2 /* SearchView.swift in Sources */,
 				3649F35F2BDCE9B5003DBEBD /* CategoryScrollView.swift in Sources */,
 				3671791B2BC90CF1004E380C /* CustomTabBarView.swift in Sources */,
@@ -671,6 +678,7 @@
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
 				363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */,
 				3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */,
+				3615F63B2BE4E96500214E10 /* Preferences.swift in Sources */,
 				3679F2A12BAA211200DAC43E /* Post.swift in Sources */,
 				E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */,
 				3649F3652BDCFC60003DBEBD /* ShopCategories.swift in Sources */,

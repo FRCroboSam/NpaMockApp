@@ -44,15 +44,15 @@ struct DropdownPicker: View {
                     }
                     .frame(width: 1/4 * 3/4 * deviceWidth)
                     .padding(10)
-                    .background(color)
-                    .clipShape(
-                        .rect(
-                            topLeadingRadius: 20,
-                            bottomLeadingRadius: isExpanded ? 0 : 20,
-                            bottomTrailingRadius: isExpanded ? 0 : 20,
-                            topTrailingRadius: 20
-                        )
-                    )
+//                    .background(Color.white)
+//                    .clipShape(
+//                        .rect(
+//                            topLeadingRadius: 20,
+//                            bottomLeadingRadius: isExpanded ? 0 : 20,
+//                            bottomTrailingRadius: isExpanded ? 0 : 20,
+//                            topTrailingRadius: 20
+//                        )
+//                    )
                 }
                 .onAppear{
                     value = items[0]

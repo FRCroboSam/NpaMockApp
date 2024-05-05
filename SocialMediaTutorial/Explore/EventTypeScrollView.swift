@@ -13,10 +13,12 @@ struct EventTypeScrollView: View {
     @State private var maxPodcastViewHeight: CGFloat = 380
     
     @State private var urls = [
+        "games",
         "baseball_showcase",
         "summer_camp"
     ]
     @State private var titles = [
+        "Games",
         "Showcases",
         "Camps"
     ]
