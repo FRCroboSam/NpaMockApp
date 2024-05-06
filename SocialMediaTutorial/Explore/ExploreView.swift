@@ -141,33 +141,58 @@ struct ExploreView: View {
                                 
 
 
-                                VStack{
+                                VStack(alignment: .leading){
 //                                    Spacer()
 //                                        .frame(height: 10)
                                     Text("Welcome Bobby!")
+                                        .lineLimit(1)
                                         .bold()
-                                        .padding(.leading, -60)
                                         .font(.title)
                                     Spacer()
                                         .frame(height: 10)
                                     Text("Explore teams, coaches, events, shop for items, and more.")
-                                        .padding(.leading, -10)
+                                        .font(.system(size: 16))
                                         .zIndex(10)
-                                        .frame(width: 2/3 * deviceWidth)
+                                        .lineLimit(2)
+                                        
                                     Spacer()
                                     
                                     
                                     
                                 }
+                                .padding(.leading, 20)
                                 .zIndex(200)
-                                Image(Athlete.defaultAthlete().profile_img)
+
+                                Spacer()
+                                //athlete version
+//                                Image("athlete2")
+//                                    .resizable()
+//                                    .scaledToFill()
+//                                    .frame(width: 105, height: 90)
+//                                    .offset(x: -5, y: 10)
+//                                    .frame(width: 105, height: 90)
+////                                    .background{
+////                                        Color.orange
+////                                    }
+////                                    .clipped()
+////                                    .clipShape(.circle)
+//                                    .shadow(radius: 10)
+//                                    .padding(.trailing, 25)
+                                
+                                //star version
+                                Image("logo_blue")
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 80, height: 80)
-                                    .offset(y: 10)
-                                    .clipped()
-                                    .clipShape(.circle)
-                                    .shadow(radius: 10)
+                                    .frame(width: 90, height: 90)
+                                    .offset(x: -5, y: -5)
+//                                    .background{
+//                                        Color.orange
+//                                    }
+//                                    .clipped()
+//                                    .clipShape(.circle)
+                                    .padding(.trailing, 25)
+                                    .padding(.bottom, 10)
+
                                 
 
                                 
@@ -219,7 +244,7 @@ struct ExploreView: View {
 //                        Spacer()
 //                            .frame(height: 20)
                         HighlightScrollView()
-                            .padding(.top, -10)
+                            .padding(.top, -15)
                         
                         Spacer()
                             .frame(height: 10)
