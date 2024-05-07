@@ -22,6 +22,7 @@
 		36236A462BC295A400580B29 /* BlogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A452BC295A400580B29 /* BlogVM.swift */; };
 		36236A482BC295B600580B29 /* BlogCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A472BC295B600580B29 /* BlogCardView.swift */; };
 		36236A4B2BC66D9600580B29 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A4A2BC66D9600580B29 /* ExploreView.swift */; };
+		362DC5C32BEA4011005E5472 /* IsScrolling in Frameworks */ = {isa = PBXBuildFile; productRef = 362DC5C22BEA4011005E5472 /* IsScrolling */; };
 		363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A290B2BD60C9900BA33FF /* AccountTypeView.swift */; };
 		363A290F2BD6131000BA33FF /* iosCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A290E2BD6131000BA33FF /* iosCheckboxToggleStyle.swift */; };
 		363E41992BCDDD8F00A7EB88 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363E41982BCDDD8F00A7EB88 /* LandingPageView.swift */; };
@@ -202,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				369F06CD2BEA2C5D00490B8C /* SnapToScroll in Frameworks */,
+				362DC5C32BEA4011005E5472 /* IsScrolling in Frameworks */,
 				365D385A2B63CE4D0013689A /* YouTubePlayerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -558,6 +560,7 @@
 			packageProductDependencies = (
 				365D38592B63CE4D0013689A /* YouTubePlayerKit */,
 				369F06CC2BEA2C5D00490B8C /* SnapToScroll */,
+				362DC5C22BEA4011005E5472 /* IsScrolling */,
 			);
 			productName = SocialMediaTutorial;
 			productReference = E55B361D2A6181EC00CB859B /* NpaMockApp.app */;
@@ -591,6 +594,7 @@
 			packageReferences = (
 				365D38582B63CE4D0013689A /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
 				369F06CB2BEA2C5D00490B8C /* XCRemoteSwiftPackageReference "hstack-snap-to-scroll" */,
+				362DC5C12BEA4011005E5472 /* XCRemoteSwiftPackageReference "IsScrolling" */,
 			);
 			productRefGroup = E55B361E2A6181EC00CB859B /* Products */;
 			projectDirPath = "";
@@ -913,6 +917,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		362DC5C12BEA4011005E5472 /* XCRemoteSwiftPackageReference "IsScrolling" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/fatbobman/IsScrolling.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.1.2;
+			};
+		};
 		365D38582B63CE4D0013689A /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit.git";
@@ -932,6 +944,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		362DC5C22BEA4011005E5472 /* IsScrolling */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 362DC5C12BEA4011005E5472 /* XCRemoteSwiftPackageReference "IsScrolling" */;
+			productName = IsScrolling;
+		};
 		365D38592B63CE4D0013689A /* YouTubePlayerKit */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 365D38582B63CE4D0013689A /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
