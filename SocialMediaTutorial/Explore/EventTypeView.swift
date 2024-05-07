@@ -38,7 +38,7 @@ struct EventTypeView: View {
                             .shadow(color: .black, radius: 3)
                             .padding(.bottom, 10)
                     }
-                    //.padding(.leading, 10)
+                    .padding(.leading, 10)
                     Spacer()
                 }
                 //.offset(x: -50)
@@ -52,10 +52,11 @@ struct EventTypeView: View {
                 
                 
             }
-            .frame(width: 1/2 * deviceWidth)
+            .frame(width: 5/9 * deviceWidth)
                 
 
         }//.frame(width: 1/2 * deviceWidth, height: 200)
+        //.frame(width: 5/9 * deviceWidth)
     }
 }
 

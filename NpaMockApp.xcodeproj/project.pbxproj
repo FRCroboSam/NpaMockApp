@@ -23,6 +23,7 @@
 		36236A482BC295B600580B29 /* BlogCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A472BC295B600580B29 /* BlogCardView.swift */; };
 		36236A4B2BC66D9600580B29 /* ExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A4A2BC66D9600580B29 /* ExploreView.swift */; };
 		362DC5C32BEA4011005E5472 /* IsScrolling in Frameworks */ = {isa = PBXBuildFile; productRef = 362DC5C22BEA4011005E5472 /* IsScrolling */; };
+		362DC5C52BEAC0FC005E5472 /* UIScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 362DC5C42BEAC0FC005E5472 /* UIScrollViewController.swift */; };
 		363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A290B2BD60C9900BA33FF /* AccountTypeView.swift */; };
 		363A290F2BD6131000BA33FF /* iosCheckboxToggleStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363A290E2BD6131000BA33FF /* iosCheckboxToggleStyle.swift */; };
 		363E41992BCDDD8F00A7EB88 /* LandingPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363E41982BCDDD8F00A7EB88 /* LandingPageView.swift */; };
@@ -118,6 +119,7 @@
 		36236A452BC295A400580B29 /* BlogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogVM.swift; sourceTree = "<group>"; };
 		36236A472BC295B600580B29 /* BlogCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogCardView.swift; sourceTree = "<group>"; };
 		36236A4A2BC66D9600580B29 /* ExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreView.swift; sourceTree = "<group>"; };
+		362DC5C42BEAC0FC005E5472 /* UIScrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewController.swift; sourceTree = "<group>"; };
 		363A290B2BD60C9900BA33FF /* AccountTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountTypeView.swift; sourceTree = "<group>"; };
 		363A290E2BD6131000BA33FF /* iosCheckboxToggleStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iosCheckboxToggleStyle.swift; sourceTree = "<group>"; };
 		363E41982BCDDD8F00A7EB88 /* LandingPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPageView.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 				3649F3662BDCFE87003DBEBD /* ShopCategoriesScrollView.swift */,
 				3649F3642BDCFC60003DBEBD /* ShopCategories.swift */,
 				369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */,
+				362DC5C42BEAC0FC005E5472 /* UIScrollViewController.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
 				363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */,
 				3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */,
+				362DC5C52BEAC0FC005E5472 /* UIScrollViewController.swift in Sources */,
 				3615F63B2BE4E96500214E10 /* Preferences.swift in Sources */,
 				3679F2A12BAA211200DAC43E /* Post.swift in Sources */,
 				E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */,
