@@ -24,17 +24,26 @@ struct EventTypeScrollView: View {
     ]
     
     var body: some View {
-        
-        ScrollView(.horizontal, showsIndicators: false){
-            
-            HStack {
-                Spacer()
-                    .frame(width: 20)
-                ForEach(urls.indices, id: \.self) { index in
-                   EventTypeView(image_name: urls[index], text: titles[index])
+        ScrollViewReader{ value in
+            ScrollView(.horizontal, showsIndicators: false){
+                
+                LazyHStack {
+                    Spacer()
+                        .frame(width: 20)
+                    ForEach(urls.indices, id: \.self) { index in
+                        EventTypeView(image_name: urls[index], text: titles[index])
+                            .id(index)
+                            .onTapGesture {
+                                withAnimation(.easeInOut(duration: 0.5)){
+                                    value.scrollTo(index, anchor: .leading)
+                                }
+                            }
+                        
+                    }
+                    Spacer()
+                        .frame(width: 200)
                     
                 }
-                
             }
         }
 

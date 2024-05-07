@@ -70,6 +70,8 @@
 		36920C5D2BC93BC200CA9D8F /* EventCardVertical.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C5C2BC93BC200CA9D8F /* EventCardVertical.swift */; };
 		36920C602BC9463800CA9D8F /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C5F2BC9463800CA9D8F /* InboxView.swift */; };
 		36920C622BC946A300CA9D8F /* ChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C612BC946A300CA9D8F /* ChatListItemView.swift */; };
+		369F06CA2BEA258F00490B8C /* SampleSnappingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */; };
+		369F06CD2BEA2C5D00490B8C /* SnapToScroll in Frameworks */ = {isa = PBXBuildFile; productRef = 369F06CC2BEA2C5D00490B8C /* SnapToScroll */; };
 		36BAAC892BCD1216009E6541 /* AthleteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BAAC882BCD1216009E6541 /* AthleteCardView.swift */; };
 		36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */; };
 		36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */; };
@@ -163,6 +165,7 @@
 		36920C5F2BC9463800CA9D8F /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		36920C612BC946A300CA9D8F /* ChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItemView.swift; sourceTree = "<group>"; };
 		369F06C82BE84E5100490B8C /* NpaMockApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NpaMockApp-Info.plist"; sourceTree = "<group>"; };
+		369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSnappingListView.swift; sourceTree = "<group>"; };
 		36BAAC882BCD1216009E6541 /* AthleteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteCardView.swift; sourceTree = "<group>"; };
 		36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentSectionView.swift; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				369F06CD2BEA2C5D00490B8C /* SnapToScroll in Frameworks */,
 				365D385A2B63CE4D0013689A /* YouTubePlayerKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +293,7 @@
 				3649F3622BDCF9E0003DBEBD /* EventTypeScrollView.swift */,
 				3649F3662BDCFE87003DBEBD /* ShopCategoriesScrollView.swift */,
 				3649F3642BDCFC60003DBEBD /* ShopCategories.swift */,
+				369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -552,6 +557,7 @@
 			name = NpaMockApp;
 			packageProductDependencies = (
 				365D38592B63CE4D0013689A /* YouTubePlayerKit */,
+				369F06CC2BEA2C5D00490B8C /* SnapToScroll */,
 			);
 			productName = SocialMediaTutorial;
 			productReference = E55B361D2A6181EC00CB859B /* NpaMockApp.app */;
@@ -584,6 +590,7 @@
 			mainGroup = E55B36142A6181EC00CB859B;
 			packageReferences = (
 				365D38582B63CE4D0013689A /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
+				369F06CB2BEA2C5D00490B8C /* XCRemoteSwiftPackageReference "hstack-snap-to-scroll" */,
 			);
 			productRefGroup = E55B361E2A6181EC00CB859B /* Products */;
 			projectDirPath = "";
@@ -639,6 +646,7 @@
 				3610AE232BD5DDE400CD54B4 /* HomePageView.swift in Sources */,
 				367179212BC90E4E004E380C /* CustomTabBarContainerView.swift in Sources */,
 				3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */,
+				369F06CA2BEA258F00490B8C /* SampleSnappingListView.swift in Sources */,
 				36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */,
 				36F0D7432BB0AAF20044C3B1 /* DiscoverNavBar.swift in Sources */,
 				36F7670F2BBFD9D2008D8968 /* DotsIndexView.swift in Sources */,
@@ -913,6 +921,14 @@
 				minimumVersion = 1.6.0;
 			};
 		};
+		369F06CB2BEA2C5D00490B8C /* XCRemoteSwiftPackageReference "hstack-snap-to-scroll" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/swiftui-library/hstack-snap-to-scroll";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -920,6 +936,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 365D38582B63CE4D0013689A /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
 			productName = YouTubePlayerKit;
+		};
+		369F06CC2BEA2C5D00490B8C /* SnapToScroll */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 369F06CB2BEA2C5D00490B8C /* XCRemoteSwiftPackageReference "hstack-snap-to-scroll" */;
+			productName = SnapToScroll;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

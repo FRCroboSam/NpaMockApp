@@ -1,5 +1,6 @@
 import SwiftUI
 struct CustomTabBarView: View {
+    @State private var scrollPosition: CGPoint = .zero
 
     let tabs: [TabBarItem]
     @Binding var selection: TabBarItem
@@ -55,7 +56,7 @@ extension CustomTabBarView {
 }
 
 extension CustomTabBarView {
-    
+
     private func tabView2(tab: TabBarItem) -> some View {
         VStack {
             VStack{
@@ -102,16 +103,23 @@ extension CustomTabBarView {
     }
     
     private var tabBarVersion2: some View {
-        if #available(iOS 17.0, *) {
-            AnyView(ScrollView(.horizontal){
+        ScrollViewReader{ reader in
+            ScrollView(.horizontal){
                 HStack {
-                    ForEach(tabs, id: \.self) { tab in
+                    ForEach(tabs.indices, id: \.self) { index in
+                        let tab = tabs[index]
                         tabView2(tab: tab)
+                            .id(index)
                             .onTapGesture {
                                 switchToTab(tab: tab)
+                                
+                                withAnimation{
+                                    reader.scrollTo(2)
+                                }
+                                
+                                
                             }
-                            .scrollTargetLayout()
-
+                        
                         Spacer()
                             .frame(width: 30)
                     }
@@ -122,29 +130,24 @@ extension CustomTabBarView {
                 .padding(6)
                 .padding(.horizontal)
             }
-                .scrollTargetBehavior(.paging)
-            .scrollIndicators(.hidden))
-                
-        }
-        else{
-            AnyView(ScrollView(.horizontal){
-                HStack {
-                    ForEach(tabs, id: \.self) { tab in
-                        tabView2(tab: tab)
-                            .onTapGesture {
-                                switchToTab(tab: tab)
-                            }
-                        Spacer()
-                            .frame(width: 30)
-                    }
-                }
-                
-                .padding(6)
-                .padding(.horizontal)
+            .scrollIndicators(.hidden)
+            .background(GeometryReader { geometry in
+                Color.clear
+                    .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
+            })
+            .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                print("SCROLL POSITION")
+                print(value.x)
+                self.scrollPosition = value
             }
-            .scrollIndicators(.hidden))
         }
             
     }
     
+}
+struct ScrollOffsetPreferenceKey: PreferenceKey {
+    static var defaultValue: CGPoint = .zero
+    
+    static func reduce(value: inout CGPoint, nextValue: () -> CGPoint) {
+    }
 }
