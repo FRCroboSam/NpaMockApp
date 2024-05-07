@@ -148,19 +148,22 @@ struct ExploreView: View {
                                         .lineLimit(1)
                                         .bold()
                                         .font(.title)
+                                        .padding(.leading, 15)
+
                                     Spacer()
                                         .frame(height: 10)
                                     Text("Explore teams, coaches, events, shop for items, and more.")
                                         .font(.system(size: 16))
                                         .zIndex(10)
                                         .lineLimit(2)
+                                        .padding(.leading, 20)
+
                                         
                                     Spacer()
                                     
                                     
                                     
                                 }
-                                .padding(.leading, 20)
                                 .zIndex(200)
 
                                 Spacer()
@@ -193,6 +196,7 @@ struct ExploreView: View {
                                     .padding(.trailing, 25)
                                     .padding(.bottom, 10)
 
+
                                 
 
                                 
@@ -209,6 +213,8 @@ struct ExploreView: View {
                         LinearGradient(gradient:Gradient(colors:[
                             Color.white,
                             Color.white,
+                            Color.white,
+                            Color.blue.opacity(0.1),
                             Color.blue.opacity(0.3),
 //                            Color(hex: "0A66C2").opacity(0.2)
 
@@ -256,9 +262,24 @@ struct ExploreView: View {
                                 .font(.title2)
                                 .padding(.leading, 20)
                             Spacer()
+                            Button{
+                                
+                            }label:{
+                                Text("View More")
+                                    .font(.system(size: 15))
+                                    .padding(10)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.blue).opacity(0.1)
+                                    }
+                                    .padding(.bottom, 5)
+                                
+                            }
+                            .padding(.trailing, 10)
                             
                             
                         }
+
                         CategoryScrollView()
                         Spacer()
                             .frame(height: 15)
@@ -270,6 +291,20 @@ struct ExploreView: View {
                                 .font(.title2)
                                 .padding(.leading, 20)
                             Spacer()
+                            Button{
+                                
+                            }label:{
+                                Text("View More")
+                                    .font(.system(size: 15))
+                                    .padding(10)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.blue).opacity(0.1)
+                                    }
+                                    .padding(.bottom, 5)
+                                
+                            }
+                            .padding(.trailing, 10)
                             
                             
                         }
@@ -288,6 +323,20 @@ struct ExploreView: View {
                                 .font(.title2)
                                 .padding(.leading, 20)
                             Spacer()
+                            Button{
+                                
+                            }label:{
+                                Text("View More")
+                                    .font(.system(size: 15))
+                                    .padding(10)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.blue).opacity(0.1)
+                                    }
+                                    .padding(.bottom, 5)
+                                
+                            }
+                            .padding(.trailing, 10)
                             
                             
                         }
@@ -301,6 +350,21 @@ struct ExploreView: View {
                                 .font(.title2)
                                 .bold()
                                 .padding(.leading, 20)
+                            Spacer()
+                            Button{
+                                
+                            }label:{
+                                Text("View More")
+                                    .font(.system(size: 15))
+                                    .padding(10)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.blue).opacity(0.1)
+                                    }
+                                    .padding(.bottom, 5)
+                                
+                            }
+                            .padding(.trailing, 10)
 
                         }
 
@@ -335,6 +399,7 @@ struct ExploreView: View {
                 
                 //.padding(.leading, 10)
             }
+            .scrollIndicators(.hidden)
             .ignoresSafeArea(.all, edges: .top)
 
         }

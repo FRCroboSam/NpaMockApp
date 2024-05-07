@@ -64,9 +64,11 @@ extension CustomTabBarView {
                     .frame(height: 25)
                 
                 Text(tab.title)
-                    .font(.system(size: 15, weight: .semibold, design: .rounded))
+                    //.font(.system(size: 15, weight: .semibold, design: .rounded))                    
+                    .scaledToFill()
+                    .minimumScaleFactor(0.5)
             }
-            .frame(height: 50)
+            .frame(width: 40, height: 50)
             if(localSelection == tab){
                 Rectangle()
                     .fill(Color.blue)
@@ -77,7 +79,7 @@ extension CustomTabBarView {
             else{
                 Rectangle()
                     .fill(Color.clear)
-                    .frame(width: 40, height: 2)
+                    .frame(width: 45, height: 2)
             }
             
 
@@ -100,20 +102,49 @@ extension CustomTabBarView {
     }
     
     private var tabBarVersion2: some View {
-        ScrollView(.horizontal){
-            HStack {
-                ForEach(tabs, id: \.self) { tab in
-                    tabView2(tab: tab)
-                        .onTapGesture {
-                            switchToTab(tab: tab)
-                        }
+        if #available(iOS 17.0, *) {
+            AnyView(ScrollView(.horizontal){
+                HStack {
+                    ForEach(tabs, id: \.self) { tab in
+                        tabView2(tab: tab)
+                            .onTapGesture {
+                                switchToTab(tab: tab)
+                            }
+                            .scrollTargetLayout()
+
+                        Spacer()
+                            .frame(width: 30)
+                    }
                     Spacer()
-                        .frame(width: 30)
+                        .frame(width: 200)
                 }
+                
+                .padding(6)
+                .padding(.horizontal)
             }
-            .padding(6)
-            .padding(.horizontal)
-        }.scrollIndicators(.hidden)
+                .scrollTargetBehavior(.paging)
+            .scrollIndicators(.hidden))
+                
+        }
+        else{
+            AnyView(ScrollView(.horizontal){
+                HStack {
+                    ForEach(tabs, id: \.self) { tab in
+                        tabView2(tab: tab)
+                            .onTapGesture {
+                                switchToTab(tab: tab)
+                            }
+                        Spacer()
+                            .frame(width: 30)
+                    }
+                }
+                
+                .padding(6)
+                .padding(.horizontal)
+            }
+            .scrollIndicators(.hidden))
+        }
+            
     }
     
 }

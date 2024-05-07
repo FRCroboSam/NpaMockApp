@@ -17,18 +17,16 @@ struct EventTypeView: View {
             Image(image_name)
                 .resizable()
                 .cornerRadius(10)
-                .frame(width: 1/2 * deviceWidth, height:150)
+                .frame(width: 5/9 * deviceWidth, height:130)
 
                 .scaledToFill()
                 //.opacity(0.8)
                 .brightness(-0.1)
 
             VStack(alignment: .leading){
-                Spacer()
-                    .frame(height: 60)
+
                 HStack{
                     VStack(alignment: .leading){
-                        
                         Text(text)
                             .font(.title2)
                             .foregroundStyle(.white)
@@ -38,13 +36,13 @@ struct EventTypeView: View {
                         Text("Ages 13 - 18")
                             .foregroundStyle(.white)
                             .shadow(color: .black, radius: 3)
-                            .padding(.bottom, 20)
+                            .padding(.bottom, 10)
                     }
-                    .padding(.leading, 10)
+                    //.padding(.leading, 10)
                     Spacer()
                 }
                 //.offset(x: -50)
-                .frame(width: 1/2 * deviceWidth)
+                .frame(width: 5/9 * deviceWidth)
 //                .background{
 //                    Color.gray
 //                        .opacity(0.3)

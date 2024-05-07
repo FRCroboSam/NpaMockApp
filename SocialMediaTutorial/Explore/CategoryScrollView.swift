@@ -24,6 +24,12 @@ struct CategoryScrollView: View {
         "Coaches",
         "Agents"
     ]
+    @State private var amounts = [
+        "34K",
+        "1.2K",
+        "3K",
+        "4.2K"
+    ]
     
     var body: some View {
         
@@ -33,8 +39,10 @@ struct CategoryScrollView: View {
                 Spacer()
                     .frame(width: 20)
                 ForEach(urls.indices, id: \.self) { index in
-                   CategoryView(item_url: urls[index], text: titles[index])
+                    CategoryView(item_url: urls[index], text: titles[index], amount: amounts[index])
                         .padding(.vertical, 10)
+                    Spacer()
+                        .frame(width: 10)
                 }
             }
         }

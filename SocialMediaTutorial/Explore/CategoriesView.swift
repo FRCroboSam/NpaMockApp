@@ -10,6 +10,7 @@ import SwiftUI
 struct CategoryView: View {
     let item_url: String
     let text: String
+    let amount: String
 
     var body: some View {
         VStack(alignment: .leading){
@@ -42,22 +43,39 @@ struct CategoryView: View {
 //                .font(.caption)
 //                .opacity(0.5)
 //                .padding(.leading, 5)
+            
             Text(text)
 //                .padding(.bottom, 20)
                 .bold()
-                .padding(.leading, 10)
-            Text("5.3K • " + text)
+                .padding(.leading, 5)
+            Text("View" +  " • " + amount)
                 .font(.footnote)
                 .foregroundStyle(.gray)
-                .padding(.leading, 10)
-                .padding(.bottom, 10)
+                .padding(.leading, 7)
+                .padding(.bottom, 5)
+            
+//            Button {
+//                
+//            } label: {
+//                Text("View 5.9K")
+//                    .foregroundStyle(.white)
+//                    .padding(
+//                    .background{
+//                        RoundedRectangle(cornerRadius: 10)
+//                            .fill(Color.blue)
+//                    }
+//                    .padding(.leading, 10)
+//
+//
+//            }
+
 
         }
         .background{
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color.white)
 
-                .shadow(color: Color.gray,radius: 2)                .mask(Rectangle().padding(.bottom, -10))
+                .shadow(color: Color(UIColor.lightGray).opacity(0.7),radius: 3)                .mask(Rectangle().padding(.bottom, -30))
                 .shadow(color: Color.gray, radius: 1)
 
 
@@ -67,5 +85,5 @@ struct CategoryView: View {
 }
 
 #Preview {
-    CategoryView(item_url: "https://thehill.com/wp-content/uploads/sites/2/2023/10/williamsjada_111822ap_high-school-athletes-nil.jpg?strip=1", text: "Athletes" )
+    CategoryView(item_url: "https://thehill.com/wp-content/uploads/sites/2/2023/10/williamsjada_111822ap_high-school-athletes-nil.jpg?strip=1", text: "Athletes", amount: "5.3K" )
 }
