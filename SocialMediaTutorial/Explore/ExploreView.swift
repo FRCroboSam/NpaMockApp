@@ -19,7 +19,7 @@ struct ExploreView: View {
     @State private var currentIndex = 0
     @State private var maxPodcastViewHeight: CGFloat = 380
     @State private var tabSelection: TabBarItem = .athletes
-    @State var tabs: [TabBarItem] = [.athletes, .events, .shop, .tickets, .train]
+    @State var tabs: [TabBarItem] = [.athletes, .events, .shop, .tickets, .train, .athlete2s, .event2s, .shop2, .ticket2s, .train2]
 
     @State var current = "Athletes"
     
