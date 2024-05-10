@@ -17,7 +17,7 @@ struct CustomTabBarView: View {
     
     @State var goToNearestTab = false;
     @State var called = false
-    @State var scrollViewOffset = CGPoint(x: 0, y: 0)
+    @State var scrollViewOffset = CGPoint(x: 6.0, y: 0)
     @State var opacities = [Double](repeating: 0.0, count: 12)
     @State var nearestTab = 0
     
@@ -232,7 +232,7 @@ extension CustomTabBarView {
                     .frame(width: 45, height: 2)
                 
                     .matchedGeometryEffect(id: "background_rectangle", in: namespace)
-                    .offset(x: max(0, min(scrollViewOffset.x, 300)), y: -15)
+                    .offset(x: max(0, min(scrollViewOffset.x, 300)), y: 0)
                     .padding(.leading, 20)
             }
         }

@@ -90,7 +90,7 @@ struct ExploreView: View {
                         CustomTabBarView(tabs: tabs, selection: $tabSelection, localSelection: tabSelection)
                         VStack(){
                             Divider()
-                                .offset(y: -15)
+                                
                             
                             
                             //                        Spacer()
@@ -119,7 +119,7 @@ struct ExploreView: View {
                             //                            .frame(height: 10)
                             //
                             Spacer()
-                                .frame(height: 5)
+                                .frame(height: 20)
                             
                             //                HStack{
                             //                    Spacer()
