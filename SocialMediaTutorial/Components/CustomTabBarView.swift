@@ -6,12 +6,22 @@ struct CustomTabBarView: View {
 
     let tabs: [TabBarItem]
     @Binding var selection: TabBarItem
+    
+    //@Binding var goToNearestTab: Bool
     @Namespace private var namespace
     @State var localSelection: TabBarItem
     
     @State var tabAtIndexShouldExtend = false ;
+    @State var selectedIndex = 0
     @State var hasScrolled = false;
     
+    @State var goToNearestTab = false;
+    @State var called = false
+    @State var scrollViewOffset = CGPoint(x: 0, y: 0)
+    @State var opacities = [Double](repeating: 0.0, count: 12)
+    @State var nearestTab = 0
+    
+    @State var lastOffset = CGPoint(x: 0, y: 0)
     var body: some View {
         tabBarVersion2
             .onChange(of: selection, perform: { value in
@@ -21,6 +31,8 @@ struct CustomTabBarView: View {
                 }
             })
     }
+    
+   
 }
 extension CustomTabBarView {
     
@@ -45,7 +57,7 @@ extension CustomTabBarView {
                 ForEach(tabs, id: \.self) { tab in
                     tabView(tab: tab)
                         .onTapGesture {
-                            switchToTab(tab: tab)
+                            switchToTab(tab: tab, index: 0)
                         }
                 }
             }
@@ -54,9 +66,12 @@ extension CustomTabBarView {
         }.scrollIndicators(.hidden)
     }
     
-    private func switchToTab(tab: TabBarItem) {
-        selection = tab
-//        scrollPosition.x = 0
+    private func switchToTab(tab: TabBarItem, index: Int) {
+        localSelection = tab
+        
+        opacities = [Double](repeating: 0.0, count: 12)
+        opacities[index] = 0.2
+        selectedIndex = index
         
     }
     
@@ -65,42 +80,26 @@ extension CustomTabBarView {
 extension CustomTabBarView {
 
     private func tabView2(tab: TabBarItem) -> some View {
+        
         VStack {
-            VStack{
-                Image(systemName: tab.iconName)
-                    .font(.system(size: 25))
-                    .frame(height: 25)
-                
-                Text(tab.title)
+            
+                VStack{
+                    Image(systemName: tab.iconName)
+                        .font(.system(size: 25))
+                        .foregroundStyle(localSelection == tab ? Color.blue : Color.gray)
+                        .frame(height: 25)
+                    
+                    Text(tab.title)
                     //.font(.system(size: 15, weight: .semibold, design: .rounded))
-                    .scaledToFill()
-                    .minimumScaleFactor(0.5)
-            }
-            .frame(width: 40, height: 50)
-            if(localSelection == tab){
-//                if(!tabAtIndexShouldExtend){
-
-
-//                }
-//                if(tabAtIndexShouldExtend){
-//                    Rectangle()
-//                        .fill(Color.blue)
-//                        .frame(width: 70, height: 2)
-//                        .offset(x: -scrollPosition.x)
-//                        .matchedGeometryEffect(id: "background_rectangle2", in: namespace)
-//                }
-            }
-            
-            else{
-                Rectangle()
-                    .fill(Color.clear)
-                    .frame(width: 45, height: 2)
-            }
-            
+                        .scaledToFill()
+                        .foregroundStyle(localSelection == tab ? Color.blue : Color.gray)
+                        .minimumScaleFactor(0.5)
+                }
+                .frame(width: 40, height: 50)
 
         }
         .scrollBounceBehavior(.basedOnSize)
-        .foregroundColor(localSelection == tab ? tab.color : Color.gray)
+        //.foregroundColor(localSelection == tab ? Color.blue : Color.gray)
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity)
 //        .background(
@@ -120,16 +119,27 @@ extension CustomTabBarView {
     private var tabBarVersion2: some View {
         ScrollViewReader{ reader in
             VStack(alignment: .leading){
-                ScrollView(.horizontal){
+                ScrollableView($scrollViewOffset, localSelection: $selectedIndex, goToNearestTab: $goToNearestTab, animationDuration: 0.2){
                     HStack {
+                        Spacer()
+                            .frame(width: 30)
                         ForEach(tabs.indices, id: \.self) { index in
                             VStack{
                                 let tab = tabs[index]
                                 tabView2(tab: tab)
+                                    .opacity(opacities[index] + 0.8)
+                                    .animation(.easeInOut(duration: 0.3), value: opacities[index])
                                     .id(index)
                                     .onTapGesture {
-                                        switchToTab(tab: tab)
+                                        withAnimation(.easeIn){
+                                            scrollViewOffset.x = 36.0 * Double(index) + 6.0
+                                        }
                                         
+                                        print(selectedIndex)
+                                        switchToTab(tab: tab, index: index)
+//                                        withAnimation{
+//                                            reader.scrollTo(index, anchor: .init(x: 0, y: 0))
+//                                        }
                                         
                                         
                                     }
@@ -141,11 +151,19 @@ extension CustomTabBarView {
                                 
                             }
                             Spacer()
-                                .frame(width: 30)
+                                .frame(width: index != tabs.count - 1  ? 30 : 10)
                         }
-                        Spacer()
-                            .frame(width: 200)
+//                        Spacer()
+//                            .frame(width: 200)
                     }
+
+                    .gesture(LongPressGesture(minimumDuration: 0).onEnded({ value in
+                        print("DONE DRAGGING")
+                    }))
+//                    .onTapGesture {}
+//                    .gesture(DragGesture(minimumDistance: 0).onChanged({ value in
+//                        print("DONE DRAGGING")
+//                    }))
                     .onAppear{
                         print("SETTING SCROLL POSITION")
                         self.scrollPosition.x = 0.0
@@ -153,54 +171,68 @@ extension CustomTabBarView {
                     //.frame(width: 3/4 * deviceWidth)
                     
                     .padding(6)
-                    .padding(.horizontal)
                     .background(GeometryReader { geometry in
                         Color.clear
                             .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
                     })
                     .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
-                        if(hasScrolled){
-                            print("VALUE X: " + String(Double(value.x)))
-
-                            if abs(value.x.truncatingRemainder(dividingBy: -30)) <= 10 {
-                                print("VALUE X: " + String(Double(value.x)))
-                                var nearestTab = Int(round(Double(Int(value.x / -30))))
-                                print(nearestTab)//write error handling, fix logic
-                                print("NEAREST  TAB" + String(nearestTab))
-
-                                nearestTab = min(tabs.count - 1, nearestTab)
-                                nearestTab = max(0, nearestTab)
-                                tabAtIndexShouldExtend = false
-                                print("TAB SHOULD NOT EXTEND")
-                                //                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                switchToTab(tab: tabs[nearestTab])
-                                //
-                                //                            }
-                                
-                                
-                            }
-                            //                    else if abs(value.x.truncatingRemainder(dividingBy: -60)) <= 40 {
-                            //                        withAnimation{
-                            //                            tabAtIndexShouldExtend = true
-                            //                        }
-                            //                        print("TAB SHOULD ExTE D")
-                            //                    }
-                            self.scrollPosition.x = value.x
+                        let newTab = max(0, min(tabs.count - 1, Int(round((scrollViewOffset.x - 6) / 36))))
+//                        if(newTab != nearestTab){
+                            nearestTab = newTab
+                            switchToTab(tab: tabs[newTab], index: newTab)
+                        print("GO TO NEAREST TAB IS: " + String(goToNearestTab))
                         
-                        }
-                        else if(abs(value.x) < 10){
-                            print(value)
-                            print("SETTING TO 0")
-                            hasScrolled = true
-                        }
+//                        if(abs(scrollViewOffset.x - lastOffset.x) > 1){
+//                            print("GOING TO NEAREST TAB2 SETTING CALL FALSED")
+//                            called = false
+//                        }
+//                        if(goToNearestTab){
+//                            print("GOING TO NEAREST TAB2")
+//                            nearestTab = newTab
+//                            switchToTab(tab: tabs[newTab], index: newTab)
+//                            
+//                            scrollViewOffset.x = 6.0 + 36.0 * Double(newTab)
+//                            print("SCROLL VIEW OFFSET: " + String(Double(scrollViewOffset.x)))
+//                            goToNearestTab = false
+//                        }
+//                        lastOffset = scrollViewOffset
+
+                    
+//                        print("SCROLL VIEW OFFSET: " + String(Double(scrollViewOffset.x)))
+//
+//                        print("NEAREST TAB" + String(Double(nearestTab)))
+                        
                     }
                 }
+                .onChange(of: goToNearestTab, perform: { value in
+                    print("go TO nearest tab changed")
+                    let newTab = max(0, min(tabs.count - 1, Int(round((scrollViewOffset.x - 6) / 36))))
+                    if(goToNearestTab == true){
+                        print("GOING TO NEAREST TAB2" + String(newTab))
+                        nearestTab = newTab
+
+                        withAnimation(.easeIn){
+                            scrollViewOffset.x = 36.0 * Double(newTab) + 6.0
+                        }
+                        
+                        print(selectedIndex)
+                        switchToTab(tab: tabs[newTab], index: newTab)
+                        goToNearestTab = false
+                    }
+                })
+                .frame(width: deviceWidth, height: 60)
+//                .onTapGesture {
+//                    DragGesture(minimumDistance: 0.0).onEnded { value in
+//                        print("DONE DRAGGING")
+//                    }
+//                }
+
                 Rectangle()
                     .fill(Color.blue)
                     .frame(width: 45, height: 2)
                 
                     .matchedGeometryEffect(id: "background_rectangle", in: namespace)
-                    .offset(x: -scrollPosition.x, y: -15)
+                    .offset(x: max(0, min(scrollViewOffset.x, 300)), y: -15)
                     .padding(.leading, 20)
             }
         }
@@ -394,7 +426,5 @@ struct ScrollOffsetPreferenceKey: PreferenceKey {
 //            )
 //    }
 //}
-
-
 
 

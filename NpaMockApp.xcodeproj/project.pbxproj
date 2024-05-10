@@ -75,6 +75,7 @@
 		369F06CA2BEA258F00490B8C /* SampleSnappingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */; };
 		369F06CD2BEA2C5D00490B8C /* SnapToScroll in Frameworks */ = {isa = PBXBuildFile; productRef = 369F06CC2BEA2C5D00490B8C /* SnapToScroll */; };
 		36BAAC892BCD1216009E6541 /* AthleteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BAAC882BCD1216009E6541 /* AthleteCardView.swift */; };
+		36CA856D2BED54FB0044A66C /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA856C2BED54FB0044A66C /* ScrollableView.swift */; };
 		36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */; };
 		36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */; };
 		36F0D7432BB0AAF20044C3B1 /* DiscoverNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7422BB0AAF20044C3B1 /* DiscoverNavBar.swift */; };
@@ -170,6 +171,7 @@
 		369F06C82BE84E5100490B8C /* NpaMockApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NpaMockApp-Info.plist"; sourceTree = "<group>"; };
 		369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSnappingListView.swift; sourceTree = "<group>"; };
 		36BAAC882BCD1216009E6541 /* AthleteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteCardView.swift; sourceTree = "<group>"; };
+		36CA856C2BED54FB0044A66C /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 		36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentSectionView.swift; sourceTree = "<group>"; };
 		36F0D7422BB0AAF20044C3B1 /* DiscoverNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverNavBar.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				3649F3642BDCFC60003DBEBD /* ShopCategories.swift */,
 				369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */,
 				362DC5C42BEAC0FC005E5472 /* UIScrollViewController.swift */,
+				36CA856C2BED54FB0044A66C /* ScrollableView.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -692,6 +695,7 @@
 				36920C552BC92EEE00CA9D8F /* ShopScrollView.swift in Sources */,
 				3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */,
 				3649F3612BDCF71E003DBEBD /* EventTypeView.swift in Sources */,
+				36CA856D2BED54FB0044A66C /* ScrollableView.swift in Sources */,
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
 				363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */,
 				3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */,
