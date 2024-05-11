@@ -91,34 +91,34 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
 //            print("VELOCITYL " + String(Double(velocity)) + String(goToNearestTab.wrappedValue))
 //            print("ACTUAL CONTENT OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
 
-//            if(!self.scrollAfterSlowDown && velocityStreak >= 3 && !scrollView.isTracking){
-//                print("VELOCITY: HELLO ")
-//                velocityStreak = 0
-//                self.scrollAfterSlowDown = true
-////                DispatchQueue.main.async{
-//                    //self.goToNearestTab.wrappedValue = true
-////
-////                UIView.animate(withDuration: 0.01, delay: 0, options: [.allowUserInteraction, .curveLinear, .beginFromCurrentState], animations: {
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-//                    self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
-//                    //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
-//                    print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
-//                    print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
-//                }
+            if(!self.scrollAfterSlowDown && velocityStreak >= 3 && !scrollView.isTracking){
+                print("VELOCITY: HELLO ")
+                velocityStreak = 0
+                self.scrollAfterSlowDown = true
+//                DispatchQueue.main.async{
+                    //self.goToNearestTab.wrappedValue = true
 //
-////                });
+//                UIView.animate(withDuration: 0.01, delay: 0, options: [.allowUserInteraction, .curveLinear, .beginFromCurrentState], animations: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                    self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                    //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                    print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
+                    print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
+                }
+
+//                });
+
+//                    });
+
 //
+//                        print("OFFSET: " + String(Double(self.offset.wrappedValue.x)))
+//                        print("SHOULD BE: " + String(Double(self.nearestTab.wrappedValue) * 35.0 + 6.0))
 ////                    });
-//
-////
-////                        print("OFFSET: " + String(Double(self.offset.wrappedValue.x)))
-////                        print("SHOULD BE: " + String(Double(self.nearestTab.wrappedValue) * 35.0 + 6.0))
-//////                    });
-//
-//
-////                }
-//            
-//            }
+
+
+//                }
+            
+            }
             lastOffsetX = self.offset.wrappedValue.x
 
 //            DispatchQueue.main.async{
