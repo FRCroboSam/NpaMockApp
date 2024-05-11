@@ -178,17 +178,25 @@ extension CustomTabBarView {
                             .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
                     })
                     .onPreferenceChange(ScrollOffsetPreferenceKey.self) { value in
+                        let tab = round((scrollViewOffset.x - 6) / 35)
+                        
+
+                        
+                        
+                        
+                        print(tab)
                         let newTab = max(0, min(tabs.count - 1, Int(round((scrollViewOffset.x - 6) / 35))))
 //                        if(newTab != nearestTab){
-                        if(nearestTab != newTab){
+
+                        if(nearestTab != newTab && abs((tab * 35 + 6) - scrollViewOffset.x) < 10){
+                            nearestTab = newTab
+                    
+                            switchToTab(tab: tabs[newTab], index: newTab)
                             let impactMed = UIImpactFeedbackGenerator(style: .medium)
                                 impactMed.impactOccurred()
                             
                         }
-                            nearestTab = newTab
-                        
 
-                            switchToTab(tab: tabs[newTab], index: newTab)
                         print(scrollViewOffset.x)
 //                        if(abs(scrollViewOffset.x - lastOffset.x) < 0.1){
 //                            goToNearestTab = true
