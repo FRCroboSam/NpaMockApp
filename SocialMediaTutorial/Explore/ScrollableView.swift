@@ -14,6 +14,10 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         private let scrollableView: ScrollableView
         var offset: Binding<CGPoint>
         var goToNearestTab: Binding<Bool>
+        
+        var scrollAfterSlowDown = false
+        
+        var nearestTab: Binding<Int>
                 
         var isDecelerating = false
         
@@ -27,8 +31,9 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         }
 
         // MARK: - Init
-        init(_ scrollView: UIScrollView, _ scrollableView: ScrollableView, offset: Binding<CGPoint>, goToNearestTab: Binding<Bool>) {
+        init(_ scrollView: UIScrollView, _ scrollableView: ScrollableView, offset: Binding<CGPoint>, nearestTab: Binding<Int>, goToNearestTab: Binding<Bool>) {
             self.scrollView          = scrollView
+            self.nearestTab          = nearestTab
             self.offset              = offset
             self.goToNearestTab      = goToNearestTab
             self.scrollableView      = scrollableView
@@ -41,20 +46,21 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
             
             // user just released their finger, find the nearest offset (0 for now)
             let velocity = abs(offset.wrappedValue.x - lastOffsetX)
-            if(velocity < 1){
+            if(velocity < 0.5 && !scrollView.isTracking){
                 velocityStreak += 1
             }
             else{
                 velocityStreak = 0
             }
-            
-            if(velocity > 2 && goToNearestTab.wrappedValue == true){
-                //goToNearestTab.wrappedValue = false
-            }
+        
             
 
             if(scrollView.isTracking){
                 print("USER IS SCROLLING")
+                DispatchQueue.main.async{
+                    self.goToNearestTab.wrappedValue = false
+                    self.scrollAfterSlowDown = false
+                }
                 DispatchQueue.main.async{
                     
 //                    self.offset.wrappedValue.x = scrollView.contentOffset.x
@@ -63,22 +69,56 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
                 }
             }
             else{
-                    print("NOT SCROLLING")
+                if(!scrollAfterSlowDown){
                     DispatchQueue.main.async{
+//                        print("SETTING THE WRAPPED VALUE OFFSET FROM CONTENT OFFSET ")
+
                         self.offset.wrappedValue.x = scrollView.contentOffset.x
+                        
                     }
+                }
+                else{
+                    DispatchQueue.main.async{
+//                        print("SETTING THE CONTENT OFFSET FROM WRAPPED VALUE ")
+                        self.scrollView.contentOffset.x = self.offset.wrappedValue.x
+                        
+                    }
+                }
+                
                 
             }
             
-            print("VELOCITYL " + String(Double(velocity)))
-//            if(!goToNearestTab.wrappedValue && velocityStreak >= 5 && !scrollView.isTracking){
-//                velocityStreak = 0
+//            print("VELOCITYL " + String(Double(velocity)) + String(goToNearestTab.wrappedValue))
+//            print("ACTUAL CONTENT OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
+
+            if(!self.scrollAfterSlowDown && velocityStreak >= 3 && !scrollView.isTracking){
+                print("VELOCITY: HELLO ")
+                velocityStreak = 0
+                self.scrollAfterSlowDown = true
 //                DispatchQueue.main.async{
-//                    print("ACTUALLY GOING TO NEAREST TAB")
+                    //self.goToNearestTab.wrappedValue = true
 //
-//                    self.goToNearestTab.wrappedValue = true
+//                UIView.animate(withDuration: 0.01, delay: 0, options: [.allowUserInteraction, .curveLinear, .beginFromCurrentState], animations: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                    self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                    //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                    print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
+                    print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
+                }
+
+//                });
+
+//                    });
+
+//
+//                        print("OFFSET: " + String(Double(self.offset.wrappedValue.x)))
+//                        print("SHOULD BE: " + String(Double(self.nearestTab.wrappedValue) * 35.0 + 6.0))
+////                    });
+
+
 //                }
-//            }
+            
+            }
             lastOffsetX = self.offset.wrappedValue.x
 
 //            DispatchQueue.main.async{
@@ -96,14 +136,19 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
 //        }
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
             print("ENDED ACCELERATING")
-            goToNearestTab.wrappedValue = true
+            //goToNearestTab.wrappedValue = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
+                print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
+            }
 
 //            if(!scrollView.isTracking){
-//                self.offset.wrappedValue.x = 0
 //            }
-            if(!scrollView.isTracking){
-                //goToNearestTab.wrappedValue = true
-            }
+//            if(!scrollView.isTracking){
+//                goToNearestTab.wrappedValue = true
+//            }
 
         }
 
@@ -114,9 +159,15 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
 
         }
         func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
-            if(abs(velocity.x) < 2){
-                print("DRAG END VLEOCITY: " + String(Double(velocity.x)))
-                goToNearestTab.wrappedValue = true
+//            if(abs(velocity.x) < 2.0){
+//                print("DRAG END VLEOCITY: " + String(Double(velocity.x)))
+//                //goToNearestTab.wrappedValue = true
+//            }
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+                self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
+                print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
             }
             
         }
@@ -129,6 +180,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
      var offset: Binding<CGPoint>
      var localSelection: Binding<Int>
     var goToNearestTab: Binding<Bool>
+    var nearestTab: Binding<Int>
 
 
 //    var userStoppedScrolling: Binding<Bool>
@@ -148,11 +200,12 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
     private let scrollViewController: UIViewControllerType
 
     // MARK: - Init
-    init(_ offset: Binding<CGPoint>, localSelection: Binding<Int>, goToNearestTab: Binding<Bool>, animationDuration: TimeInterval, showsScrollIndicator: Bool = false, axis: Axis = .horizontal, onScale: ((CGFloat)->Void)? = nil, disableScroll: Bool = false, forceRefresh: Bool = true, stopScrolling: Binding<Bool> = .constant(false),
+    init(_ offset: Binding<CGPoint>, localSelection: Binding<Int>, goToNearestTab: Binding<Bool>, nearestTab: Binding<Int>, animationDuration: TimeInterval, showsScrollIndicator: Bool = false, axis: Axis = .horizontal, onScale: ((CGFloat)->Void)? = nil, disableScroll: Bool = false, forceRefresh: Bool = true, stopScrolling: Binding<Bool> = .constant(false),
          @ViewBuilder content: @escaping () -> Content) {
         self.offset               = offset
         self.localSelection      = localSelection
         self.goToNearestTab      = goToNearestTab
+        self.nearestTab           = nearestTab
         self.onScale              = onScale
         self.animationDuration    = 1.0
         self.content              = content
@@ -180,7 +233,10 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         viewController.updateContent(self.content)
 
         let duration: TimeInterval                = self.duration(viewController)
-        let newValue: CGPoint                     = self.offset.wrappedValue
+        var newValue: CGPoint                     = self.offset.wrappedValue
+//        DispatchQueue.main.async{
+//            newValue.x = 0.1 * newValue.x
+//        }
         viewController.scrollView.isScrollEnabled = !self.disableScroll
 //        print(newValue.x)
 //        print("NEW VALUE X: " + String(Double(newValue.x)))
@@ -207,7 +263,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
     
     func makeCoordinator() -> Coordinator {
 
-        let coordinator = Coordinator(self.scrollViewController.scrollView, self, offset: self.offset, goToNearestTab: self.goToNearestTab)
+        let coordinator = Coordinator(self.scrollViewController.scrollView, self, offset: self.offset, nearestTab: self.nearestTab, goToNearestTab: self.goToNearestTab)
 //        var tapGestureRecognizer = UITapGestureRecognizer(target: coordinator, action: #selector(coordinator.handleTap))
 //        tapGestureRecognizer.numberOfTapsRequired = 1
 //        tapGestureRecognizer.isEnabled = true
@@ -225,7 +281,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         let maxOffsetX: CGFloat        = maxOffsetFrame.maxX - maxOffsetViewFrame.maxX
         let maxOffsetY: CGFloat        = maxOffsetFrame.maxY - maxOffsetViewFrame.maxY
         
-        return CGPoint(x: min(newValue.x, maxOffsetX), y: min(newValue.y, maxOffsetY))
+        return CGPoint(x: max(-6, min(newValue.x, maxOffsetX)), y: min(newValue.y, maxOffsetY))
     }
     
     //Calculate animation speed
@@ -270,6 +326,10 @@ final class UIScrollViewController<Content: View> : UIViewController, Observable
         scrollView.delaysContentTouches                      = true
         scrollView.scrollsToTop                              = false
         scrollView.backgroundColor                           = .clear
+        scrollView.decelerationRate                           = .fast
+
+
+//        scrollView.bounces                                   = false
         
         if self.onScale != nil {
             scrollView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(self.onGesture)))
