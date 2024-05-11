@@ -58,7 +58,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
             if(scrollView.isTracking){
                 print("USER IS SCROLLING")
                 DispatchQueue.main.async{
-                    self.goToNearestTab.wrappedValue = false
+                    //self.goToNearestTab.wrappedValue = false
                     self.scrollAfterSlowDown = false
                 }
                 DispatchQueue.main.async{
@@ -137,18 +137,19 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
             print("ENDED ACCELERATING")
             //goToNearestTab.wrappedValue = true
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-                self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
-                //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
-                print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
-                print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
-            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+//                self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+//                //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+//                print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
+//                print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
+//            }
 
 //            if(!scrollView.isTracking){
 //            }
-//            if(!scrollView.isTracking){
-//                goToNearestTab.wrappedValue = true
-//            }
+            if(!scrollView.isTracking){
+                goToNearestTab.wrappedValue = false
+                goToNearestTab.wrappedValue = true
+            }
 
         }
 
@@ -161,14 +162,17 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 //            if(abs(velocity.x) < 2.0){
 //                print("DRAG END VLEOCITY: " + String(Double(velocity.x)))
-//                //goToNearestTab.wrappedValue = true
+            goToNearestTab.wrappedValue = false
+            goToNearestTab.wrappedValue = true
+            
+            print("DONE DRAGGING")
 //            }
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-                self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
-                //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
-                print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
-                print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
-            }
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
+//                self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+//                //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+//                print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
+//                print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
+//            }
             
         }
     }

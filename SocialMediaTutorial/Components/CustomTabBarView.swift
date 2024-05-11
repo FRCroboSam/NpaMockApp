@@ -154,8 +154,9 @@ extension CustomTabBarView {
                             Spacer()
                                 .frame(width: index != tabs.count - 1  ? 30 : 10)
                         }
-//                        Spacer()
-//                            .frame(width: 200)
+                        Spacer()
+                            .frame(width: 150)
+
                     }
 
                     .gesture(LongPressGesture(minimumDuration: 0).onEnded({ value in
@@ -189,8 +190,13 @@ extension CustomTabBarView {
 
                             switchToTab(tab: tabs[newTab], index: newTab)
                         print(scrollViewOffset.x)
+//                        if(abs(scrollViewOffset.x - lastOffset.x) < 0.1){
+//                            goToNearestTab = true
+//                        }
                         print("GO TO NEAREST TAB IS: " + String(goToNearestTab))
+                        lastOffset.x = scrollViewOffset.x
                         
+
 //                        if(abs(scrollViewOffset.x - lastOffset.x) > 1){
 //                            print("GOING TO NEAREST TAB2 SETTING CALL FALSED")
 //                            called = false
