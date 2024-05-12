@@ -21,6 +21,10 @@ struct CustomTabBarView: View {
     @State var opacities = [Double](repeating: 0.0, count: 12)
     @State var nearestTab = 0
     
+    @State var isTouching = false
+    
+    @State var tabOffsets = (0..<6).map { Double(35 * $0 + 6) }
+
     @State var lastOffset = CGPoint(x: 0, y: 0)
     var body: some View {
         tabBarVersion2
@@ -120,7 +124,7 @@ extension CustomTabBarView {
         ScrollViewReader{ reader in
             VStack(alignment: .leading){
                 ScrollableView($scrollViewOffset, localSelection: $selectedIndex, goToNearestTab: $goToNearestTab,
-                               nearestTab: $nearestTab, animationDuration: 0.2){
+                               isTouching: $isTouching, nearestTab: $nearestTab, animationDuration: 0.2){
                     HStack {
                         Spacer()
                             .frame(width: 30)
@@ -181,29 +185,31 @@ extension CustomTabBarView {
                         let tab = round((scrollViewOffset.x - 6) / 35)
                         
 
-                        
-                        
-                        
-                        print(tab)
-                        let newTab = max(0, min(tabs.count - 1, Int(round((scrollViewOffset.x - 6) / 35))))
-//                        if(newTab != nearestTab){
-
-                        if(nearestTab != newTab && abs((tab * 35 + 6) - scrollViewOffset.x) < 10){
-                            nearestTab = newTab
-                    
-                            switchToTab(tab: tabs[newTab], index: newTab)
-                            let impactMed = UIImpactFeedbackGenerator(style: .medium)
-                                impactMed.impactOccurred()
+                        let velocity = abs(lastOffset.x - scrollViewOffset.x)
+                        print("OFFSET IS:: " + String(Double(scrollViewOffset.x)))
+                        if(velocity > 2.0 || isTouching){
                             
+                            print(tab)
+                            let newTab = max(0, min(tabs.count - 1, Int(round((scrollViewOffset.x - 6) / 35))))
+                            //                        if(newTab != nearestTab){
+                            
+                            if(nearestTab != newTab && abs((tab * 35 + 6) - scrollViewOffset.x) < 20){
+                                nearestTab = newTab
+                                
+                                switchToTab(tab: tabs[newTab], index: newTab)
+                                let impactMed = UIImpactFeedbackGenerator(style: .medium)
+                                impactMed.impactOccurred()
+                                
+                            }
+                            
+                            print(scrollViewOffset.x)
+                            //                        if(abs(scrollViewOffset.x - lastOffset.x) < 0.1){
+                            //                            goToNearestTab = true
+                            //                        }
+                            print("GO TO NEAREST TAB IS: " + String(goToNearestTab))
                         }
-
-                        print(scrollViewOffset.x)
-//                        if(abs(scrollViewOffset.x - lastOffset.x) < 0.1){
-//                            goToNearestTab = true
-//                        }
-                        print("GO TO NEAREST TAB IS: " + String(goToNearestTab))
-                        lastOffset.x = scrollViewOffset.x
                         
+                        lastOffset.x = scrollViewOffset.x
 
 //                        if(abs(scrollViewOffset.x - lastOffset.x) > 1){
 //                            print("GOING TO NEAREST TAB2 SETTING CALL FALSED")
@@ -231,6 +237,8 @@ extension CustomTabBarView {
                     print("go TO nearest tab changed")
                     //let newTab = max(0, min(tabs.count - 1, Int(round((scrollViewOffset.x - 6) / 35))))
                     if(goToNearestTab == true){
+                        print("NEAREST TAB: " + String(nearestTab))
+
                         withAnimation(.easeIn){
                             scrollViewOffset.x = 35 * Double(nearestTab) + 6.0
                             print("GOING TO NEAREST TAB2" + String(scrollViewOffset.x == 35 * Double(nearestTab) + 6.0))
@@ -256,9 +264,9 @@ extension CustomTabBarView {
                     .frame(width: 45, height: 2)
                 
                     .matchedGeometryEffect(id: "background_rectangle", in: namespace)
-                    .offset(x: max(0, min(scrollViewOffset.x, 300)), y: 0)
+                    .offset(x: max(0, min(scrollViewOffset.x, tabOffsets[nearestTab])), y: 0)
                     .padding(.leading, 20)
-                    .animation(.linear, value: scrollViewOffset.x)
+                    .animation(.linear, value: max(tabOffsets[nearestTab] - 5, min(scrollViewOffset.x, tabOffsets[nearestTab])))
             }
         }
 
