@@ -193,7 +193,7 @@ extension CustomTabBarView {
                             let newTab = max(0, min(tabs.count - 1, Int(round((scrollViewOffset.x - 6) / 35))))
                             //                        if(newTab != nearestTab){
                             
-                            if(nearestTab != newTab && abs((tab * 35 + 6) - scrollViewOffset.x) < 20){
+                            if(nearestTab != newTab && abs((tab * 35 + 6) - scrollViewOffset.x) < 10){
                                 nearestTab = newTab
                                 
                                 switchToTab(tab: tabs[newTab], index: newTab)
@@ -264,9 +264,9 @@ extension CustomTabBarView {
                     .frame(width: 45, height: 2)
                 
                     .matchedGeometryEffect(id: "background_rectangle", in: namespace)
-                    .offset(x: max(0, min(scrollViewOffset.x, tabOffsets[nearestTab])), y: 0)
+                    .offset(x: max(0, max(tabOffsets[nearestTab], min(scrollViewOffset.x, tabOffsets[nearestTab]))), y: 0)
                     .padding(.leading, 20)
-                    .animation(.linear, value: max(tabOffsets[nearestTab] - 5, min(scrollViewOffset.x, tabOffsets[nearestTab])))
+                    .animation(.linear.speed(1.5) , value: max(tabOffsets[nearestTab], min(scrollViewOffset.x, tabOffsets[nearestTab])))
             }
         }
 

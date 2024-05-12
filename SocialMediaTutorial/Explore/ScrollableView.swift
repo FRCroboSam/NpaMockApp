@@ -52,7 +52,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
             
             // user just released their finger, find the nearest offset (0 for now)
             let velocity = abs(offset.wrappedValue.x - lastOffsetX)
-            if(velocity < 2.0 && !scrollView.isTracking){
+            if(velocity < 8 && !scrollView.isTracking){
                 velocityStreak += 1
             }
             else{
@@ -85,13 +85,14 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
 //                        print("SETTING THE WRAPPED VALUE OFFSET FROM CONTENT OFFSET ")
 
                         self.offset.wrappedValue.x = scrollView.contentOffset.x
+                        print("ExpECted OFFSET HERE FOR SOME REASON")
                         
                     }
                 }
                 else{
                     DispatchQueue.main.async{
 //                        print("SETTING THE CONTENT OFFSET FROM WRAPPED VALUE ")
-                        self.scrollView.contentOffset.x = self.offset.wrappedValue.x
+                        self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
                         
                     }
                 }
@@ -107,18 +108,19 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
                 velocityStreak = 0
 //                DispatchQueue.main.async{
                     //self.goToNearestTab.wrappedValue = true
-//
-//                UIView.animate(withDuration: 0.01, delay: 0, options: [.allowUserInteraction, .curveLinear, .beginFromCurrentState], animations: {
-                DispatchQueue.main.asyncAfter(deadline: .now()){
-                    self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
-                    //self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
-                    print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
-                    print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
-                    self.scrollAfterSlowDown = true
-
+                self.scrollAfterSlowDown = true
+                print(self.scrollAfterSlowDown)
+                DispatchQueue.main.async{
+                    UIView.animate(withDuration: 0.5, delay: 0, options: [.allowUserInteraction, .curveLinear, .beginFromCurrentState], animations: {
+                        self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                        self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
+                        print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
+                        print("EXPECTED OFFSET: " + String(Double(self.scrollView.contentOffset.x)))
+                        
+                        
+                        
+                    });
                 }
-
-//                });
 
 //                    });
 
