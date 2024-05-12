@@ -47,7 +47,6 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         
         // MARK: - UIScrollViewDelegate
         
-        
         func scrollViewDidScroll(_ scrollView: UIScrollView) {
             
             // user just released their finger, find the nearest offset (0 for now)
@@ -381,7 +380,7 @@ final class UIScrollViewController<Content: View> : UIViewController, Observable
     func updateContent(_ content: () -> Content) {
 //        UIView.animate(withDuration: 0.5, delay: 0, options: [.allowUserInteraction, .curveEaseInOut, .beginFromCurrentState], animations: {
 
-
+            print("UPDATING CONTENT")
             self.hostingController.rootView = content()
             self.scrollView.addSubview(self.hostingController.view)
             

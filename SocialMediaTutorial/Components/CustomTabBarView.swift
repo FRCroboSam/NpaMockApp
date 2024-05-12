@@ -17,11 +17,15 @@ struct CustomTabBarView: View {
     
     @State var goToNearestTab = false;
     @State var called = false
-    @State var scrollViewOffset = CGPoint(x: 6.0, y: 0)
+    @State var scrollViewOffset = CGPoint(x: 6.00001, y: 0)
     @State var opacities = [Double](repeating: 0.0, count: 12)
     @State var nearestTab = 0
-    
+    @State var oldTab = 0
     @State var isTouching = false
+    
+    @State var velocity = 0.0
+    
+    @State var isLeft = false
     
     @State var tabOffsets = (0..<6).map { Double(35 * $0 + 6) }
 
@@ -121,7 +125,6 @@ extension CustomTabBarView {
     }
     
     private var tabBarVersion2: some View {
-        ScrollViewReader{ reader in
             VStack(alignment: .leading){
                 ScrollableView($scrollViewOffset, localSelection: $selectedIndex, goToNearestTab: $goToNearestTab,
                                isTouching: $isTouching, nearestTab: $nearestTab, animationDuration: 0.2){
@@ -162,19 +165,6 @@ extension CustomTabBarView {
                             .frame(width: 150)
 
                     }
-
-                    .gesture(LongPressGesture(minimumDuration: 0).onEnded({ value in
-                        print("DONE DRAGGING")
-                    }))
-//                    .onTapGesture {}
-//                    .gesture(DragGesture(minimumDistance: 0).onChanged({ value in
-//                        print("DONE DRAGGING")
-//                    }))
-                    .onAppear{
-                        print("SETTING SCROLL POSITION")
-                        self.scrollPosition.x = 0.0
-                    }
-                    //.frame(width: 3/4 * deviceWidth)
                     
                     .padding(6)
                     .background(GeometryReader { geometry in
@@ -185,8 +175,14 @@ extension CustomTabBarView {
                         let tab = round((scrollViewOffset.x - 6) / 35)
                         
 
-                        let velocity = abs(lastOffset.x - scrollViewOffset.x)
+                        velocity = abs(lastOffset.x - scrollViewOffset.x)
                         print("OFFSET IS:: " + String(Double(scrollViewOffset.x)))
+                        if(scrollViewOffset.x == 6.00001){
+                            scrollViewOffset.x = 6.0
+                        }
+                        if(!isTouching || abs((tab * 35 + 6) - scrollViewOffset.x) < 2){
+                            tabAtIndexShouldExtend = false
+                        }
                         if(velocity > 2.0 || isTouching){
                             
                             print(tab)
@@ -194,13 +190,23 @@ extension CustomTabBarView {
                             //                        if(newTab != nearestTab){
                             
                             if(nearestTab != newTab && abs((tab * 35 + 6) - scrollViewOffset.x) < 10){
+                                oldTab = nearestTab
+]                                if(lastOffset.x - scrollViewOffset.x < 0){
+                                    isLeft = true
+                                }
+                                else if(lastOffset.x - scrollViewOffset.x > 0){
+                                    isLeft = false
+                                }
                                 nearestTab = newTab
-                                
+                                if(abs((tab * 35 + 6) - scrollViewOffset.x) > 1 ){
+]                                    tabAtIndexShouldExtend = true
+                                }
                                 switchToTab(tab: tabs[newTab], index: newTab)
                                 let impactMed = UIImpactFeedbackGenerator(style: .medium)
                                 impactMed.impactOccurred()
                                 
                             }
+                            
                             
                             print(scrollViewOffset.x)
                             //                        if(abs(scrollViewOffset.x - lastOffset.x) < 0.1){
@@ -210,29 +216,14 @@ extension CustomTabBarView {
                         }
                         
                         lastOffset.x = scrollViewOffset.x
-
-//                        if(abs(scrollViewOffset.x - lastOffset.x) > 1){
-//                            print("GOING TO NEAREST TAB2 SETTING CALL FALSED")
-//                            called = false
-//                        }
-//                        if(goToNearestTab){
-//                            print("GOING TO NEAREST TAB2")
-//                            nearestTab = newTab
-//                            switchToTab(tab: tabs[newTab], index: newTab)
-//                            
-//                            scrollViewOffset.x = 6.0 + 36.0 * Double(newTab)
-//                            print("SCROLL VIEW OFFSET: " + String(Double(scrollViewOffset.x)))
-//                            goToNearestTab = false
-//                        }
-//                        lastOffset = scrollViewOffset
-
-                    
-//                        print("SCROLL VIEW OFFSET: " + String(Double(scrollViewOffset.x)))
-//
-//                        print("NEAREST TAB" + String(Double(nearestTab)))
                         
                     }
                 }
+               .onChange(of: isTouching, perform: { value in
+                   if(isTouching == false){
+                       tabAtIndexShouldExtend = false
+                   }
+               })
                 .onChange(of: goToNearestTab, perform: { value in
                     print("go TO nearest tab changed")
                     //let newTab = max(0, min(tabs.count - 1, Int(round((scrollViewOffset.x - 6) / 35))))
@@ -252,23 +243,30 @@ extension CustomTabBarView {
 
                     }
                 })
+
                 .frame(width: deviceWidth, height: 60)
 //                .onTapGesture {
 //                    DragGesture(minimumDistance: 0.0).onEnded { value in
 //                        print("DONE DRAGGING")
 //                    }
 //                }
+                    Rectangle()
+                        .fill(Color.blue)
+                        .frame(width: tabAtIndexShouldExtend ? 70 : 45, height: 2)
+                    
+                        .matchedGeometryEffect(id: "background_rectangle", in: namespace)
+                        .offset(x: tabAtIndexShouldExtend ? tabOffsets[oldTab] :
+                                tabOffsets[nearestTab], y: 0)
+                        .padding(.leading, tabAtIndexShouldExtend && !isLeft ? -10 : 20 + (tabAtIndexShouldExtend ? 10 : 0))
+                        .animation(.linear.speed(1.5) , value: tabAtIndexShouldExtend ? tabOffsets[oldTab] :
+                                    tabOffsets[nearestTab])
+                        .animation(.easeIn.speed(1.5) , value: tabAtIndexShouldExtend)
 
-                Rectangle()
-                    .fill(Color.blue)
-                    .frame(width: 45, height: 2)
+
                 
-                    .matchedGeometryEffect(id: "background_rectangle", in: namespace)
-                    .offset(x: max(0, max(tabOffsets[nearestTab], min(scrollViewOffset.x, tabOffsets[nearestTab]))), y: 0)
-                    .padding(.leading, 20)
-                    .animation(.linear.speed(1.5) , value: max(tabOffsets[nearestTab], min(scrollViewOffset.x, tabOffsets[nearestTab])))
             }
-        }
+            
+        
 
     }
     
