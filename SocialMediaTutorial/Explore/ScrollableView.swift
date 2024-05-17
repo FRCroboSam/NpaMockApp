@@ -110,7 +110,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
                 self.scrollAfterSlowDown = true
                 print(self.scrollAfterSlowDown)
                 DispatchQueue.main.async{
-                    UIView.animate(withDuration: 0.5, delay: 0, options: [.allowUserInteraction, .curveLinear, .beginFromCurrentState], animations: {
+                    UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .curveLinear, .beginFromCurrentState], animations: {
                         self.offset.wrappedValue.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
                         self.scrollView.contentOffset.x = Double(self.nearestTab.wrappedValue) * 35.0 + 6.0
                         print("EXPECTED OFFSET: " + String(Double(self.offset.wrappedValue.x)))
@@ -232,7 +232,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         self.isTouching           = isTouching
         self.nearestTab           = nearestTab
         self.onScale              = onScale
-        self.animationDuration    = 1.0
+        self.animationDuration    = 0.5
         self.content              = content
         self.showsScrollIndicator = showsScrollIndicator
         self.axis                 = axis

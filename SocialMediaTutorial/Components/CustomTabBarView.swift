@@ -257,7 +257,7 @@ extension CustomTabBarView {
                         .matchedGeometryEffect(id: "background_rectangle", in: namespace)
                         .offset(x: tabAtIndexShouldExtend ? tabOffsets[oldTab] :
                                 tabOffsets[nearestTab], y: 0)
-                        .padding(.leading, tabAtIndexShouldExtend && !isLeft ? -10 : 20 + (tabAtIndexShouldExtend ? 5 : 0))
+                        .padding(.leading, tabAtIndexShouldExtend && !isLeft ? -10 : 20 + (tabAtIndexShouldExtend ? 0 : 0))
                         .animation(.linear.speed(0.7) , value: tabAtIndexShouldExtend ? tabOffsets[oldTab] :
                                     tabOffsets[nearestTab])
                         .animation(.easeIn.speed(3.0) , value: tabAtIndexShouldExtend)
