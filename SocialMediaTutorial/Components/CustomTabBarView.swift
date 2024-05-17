@@ -252,15 +252,15 @@ extension CustomTabBarView {
 //                }
                     Rectangle()
                         .fill(Color.blue)
-                        .frame(width: tabAtIndexShouldExtend ? 70 : 45, height: 2)
+                        .frame(width: tabAtIndexShouldExtend ? 60 : 45, height: 2)
                     
                         .matchedGeometryEffect(id: "background_rectangle", in: namespace)
                         .offset(x: tabAtIndexShouldExtend ? tabOffsets[oldTab] :
                                 tabOffsets[nearestTab], y: 0)
-                        .padding(.leading, tabAtIndexShouldExtend && !isLeft ? -10 : 20 + (tabAtIndexShouldExtend ? 10 : 0))
-                        .animation(.linear.speed(1.5) , value: tabAtIndexShouldExtend ? tabOffsets[oldTab] :
+                        .padding(.leading, tabAtIndexShouldExtend && !isLeft ? -10 : 20 + (tabAtIndexShouldExtend ? 5 : 0))
+                        .animation(.linear.speed(0.7) , value: tabAtIndexShouldExtend ? tabOffsets[oldTab] :
                                     tabOffsets[nearestTab])
-                        .animation(.easeIn.speed(1.5) , value: tabAtIndexShouldExtend)
+                        .animation(.easeIn.speed(3.0) , value: tabAtIndexShouldExtend)
 
 
                 
