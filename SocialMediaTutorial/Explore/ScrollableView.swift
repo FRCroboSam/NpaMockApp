@@ -178,6 +178,8 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
 //                print("DRAG END VLEOCITY: " + String(Double(velocity.x)))
             goToNearestTab.wrappedValue = false
             goToNearestTab.wrappedValue = true
+            
+//            scrollView.setContentOffset(CGPoint(x: Double(self.nearestTab.wrappedValue) * 35.0 + 6.0, y: 0.0), animated: true)
             print("VELOCITY: HELLO 0")
 //
             

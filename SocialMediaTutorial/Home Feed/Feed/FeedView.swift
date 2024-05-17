@@ -40,6 +40,22 @@ struct FeedView: View {
                     .frame(width: 120, height: 60)
                     .padding(.leading, 10)
                 Spacer()
+                NavigationLink {
+                    SearchView()
+                } label: {
+                    HStack{
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(.black)
+                        //                            TextField("Shop, discover, plan, and more! ", text: $query)
+                        //                                .foregroundColor(.black)
+                        //                                .textContentType(.newPassword)
+                        //                                .keyboardType(.asciiCapable)
+                        //                                .autocorrectionDisabled()
+                        //                                .listRowSeparator(.hidden)
+                    }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: Color(UIColor.systemBlue), ratio: 0.2))
+                    //                                    .padding(.leading, 10)
+                        .scaleEffect(0.8)
+                }
             }
 
 

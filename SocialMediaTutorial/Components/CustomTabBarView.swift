@@ -191,7 +191,7 @@ extension CustomTabBarView {
                             
                             if(nearestTab != newTab && abs((tab * 35 + 6) - scrollViewOffset.x) < 10){
                                 oldTab = nearestTab
-]                                if(lastOffset.x - scrollViewOffset.x < 0){
+                                if(lastOffset.x - scrollViewOffset.x < 0){
                                     isLeft = true
                                 }
                                 else if(lastOffset.x - scrollViewOffset.x > 0){
@@ -199,7 +199,7 @@ extension CustomTabBarView {
                                 }
                                 nearestTab = newTab
                                 if(abs((tab * 35 + 6) - scrollViewOffset.x) > 1 ){
-]                                    tabAtIndexShouldExtend = true
+                                     tabAtIndexShouldExtend = true
                                 }
                                 switchToTab(tab: tabs[newTab], index: newTab)
                                 let impactMed = UIImpactFeedbackGenerator(style: .medium)
