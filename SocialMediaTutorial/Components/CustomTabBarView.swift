@@ -139,15 +139,15 @@ extension CustomTabBarView {
                                     .animation(.easeInOut(duration: 0.3), value: opacities[index])
                                     .id(index)
                                     .onTapGesture {
+                                        print("TAPPPED")
+
                                         withAnimation(.easeIn){
                                             scrollViewOffset.x = 35.0 * Double(index) + 6.0
                                         }
                                         
                                         print(selectedIndex)
                                         switchToTab(tab: tab, index: index)
-//                                        withAnimation{
-//                                            reader.scrollTo(index, anchor: .init(x: 0, y: 0))
-//                                        }
+
                                         
                                         
                                     }
@@ -162,7 +162,7 @@ extension CustomTabBarView {
                                 .frame(width: index != tabs.count - 1  ? 30 : 10)
                         }
                         Spacer()
-                            .frame(width: 150)
+                            .frame(width: 200)
 
                     }
                     
@@ -176,7 +176,7 @@ extension CustomTabBarView {
                         
 
                         velocity = abs(lastOffset.x - scrollViewOffset.x)
-                        print("OFFSET IS:: " + String(Double(scrollViewOffset.x)))
+                        //print("OFFSET IS:: " + String(Double(scrollViewOffset.x)))
                         if(scrollViewOffset.x == 6.00001){
                             scrollViewOffset.x = 6.0
                         }
@@ -208,7 +208,7 @@ extension CustomTabBarView {
                             }
                             
                             
-                            print(scrollViewOffset.x)
+                            //print(scrollViewOffset.x)
                             //                        if(abs(scrollViewOffset.x - lastOffset.x) < 0.1){
                             //                            goToNearestTab = true
                             //                        }

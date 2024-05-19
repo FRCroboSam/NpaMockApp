@@ -354,7 +354,7 @@ final class UIScrollViewController<Content: View> : UIViewController, Observable
         scrollView.decelerationRate                           = .fast
 
 
-//        scrollView.bounces                                   = false
+        scrollView.bounces                                   = false
         
         if self.onScale != nil {
             scrollView.addGestureRecognizer(UIPinchGestureRecognizer(target: self, action: #selector(self.onGesture)))

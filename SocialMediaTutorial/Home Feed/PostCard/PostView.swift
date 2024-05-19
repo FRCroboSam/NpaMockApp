@@ -27,7 +27,7 @@ struct PostView: View {
         VStack(spacing: 0) {
             PostCardHeader(profile_img: profile_img, profile_name: profile_name, profile_id: profile_id)
                 .background{
-                    Color(hex: "0A66C2")
+                    //Color(hex: "0A66C2").opacity(0.2)
                 }
             // Display the header section of the post card, including profile image, name, and ID
             

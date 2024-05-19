@@ -25,9 +25,9 @@ struct CategoryScrollView: View {
         "Agents"
     ]
     @State private var amounts = [
-        "34K",
+        "34.3K",
         "1.2K",
-        "3K",
+        "567",
         "4.2K"
     ]
     

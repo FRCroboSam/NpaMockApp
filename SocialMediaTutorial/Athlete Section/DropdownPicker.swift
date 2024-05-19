@@ -42,7 +42,7 @@ struct DropdownPicker: View {
                         .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
                         
                     }
-                    .frame(width: 1/4 * 3/4 * deviceWidth)
+                    //.frame(width: 1/4 * 3/4 * deviceWidth)
                     .padding(10)
 //                    .background(Color.white)
 //                    .clipShape(

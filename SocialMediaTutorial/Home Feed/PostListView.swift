@@ -52,6 +52,8 @@ struct PostListView: View {
                     print(postPositions[0]);
                     if(postPositions[0] > 200 && postPositions[0] <  3/4 * deviceHeight){
                        // if(!feedVM.youtubePlayers[0].isPlaying){
+                        print("TRYING TO PLAY")
+                        print(feedVM.youtubePlayers[0].isPlaying)
                             feedVM.youtubePlayers[0].play()
                         //s}
                     }
@@ -63,10 +65,23 @@ struct PostListView: View {
                     postPositions[index2] = avgY
                     if(avgY > 200 && avgY < 3/4 * deviceHeight && player != nil){
                         print("AVG Y IS: " + String(avgY))
+                            //if(!player!.isPlaying){
+                            print("STARTING THE PLAYER FOR: ")
+                            print(index)
+                            print(player == nil)
+                            player?.play(){ completed in
+                                print("STARTING THE PLAYER DONE: ")
 
-                        //if(!player!.isPlaying){
-                            print("STARTING THE PLAYER")
-                            player?.play()
+                                if(index2 == 0 && self.feedVM.videosHaveLoaded == false ){
+                                    print(feedVM.youtubePlayers[0].isPlaying)
+                                    print(feedVM.youtubePlayers[0].state)
+                                    feedVM.youtubePlayers[0].play()
+  
+                                    self.feedVM.videosHaveLoaded = true
+                                }
+                                
+                            }
+                        
                         //}
 
                     }

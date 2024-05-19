@@ -22,7 +22,7 @@ struct CategoryView: View {
                     image.resizable()
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 120, height: 120)
+                        .frame(width: 140, height: 120)
                         .clipped()
                         .roundedCorner(8, corners: .topLeft)
                         .roundedCorner(8, corners: .topRight)
@@ -48,11 +48,11 @@ struct CategoryView: View {
 //                .padding(.bottom, 20)
                 .bold()
                 .padding(.leading, 5)
-            Text("View" +  " • " + amount)
+            Text("• " + amount + " " + text + " •")
                 .font(.footnote)
                 .foregroundStyle(.gray)
                 .padding(.leading, 7)
-                .padding(.bottom, 5)
+                .padding(.bottom, 10)
             
 //            Button {
 //                

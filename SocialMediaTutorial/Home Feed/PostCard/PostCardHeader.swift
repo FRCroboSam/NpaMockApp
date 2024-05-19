@@ -17,24 +17,39 @@ struct PostCardHeader: View {
         VStack{
             Spacer()
                 .frame(height: 10)
+            Divider()
             HStack {
-                Image(profile_img)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 40, height: 40)
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                
-                VStack(alignment: .leading) {
-                    Text(profile_name).bold()
+                HStack{
+                    Image(profile_img)
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 40, height: 40)
+                        .clipShape(Circle())
+                    
+                    VStack(alignment: .leading) {
+                        HStack{
+                            Text(profile_name).bold()
+                                .foregroundStyle(.black)
+                            Text("• 10m")
+                                .font(.caption)
+                                .foregroundStyle(.black).opacity(0.7)
+                        }
                         .foregroundStyle(.white)
-                    Text(profile_id)
-                        .font(.footnote)
-                        .foregroundStyle(.white)
+                        Text("1.5K Followers")
+                            .font(.footnote)
+                            .foregroundStyle(.black).opacity(0.8)
+
+                    }
                 }
+//                .background{
+//                    RoundedRectangle(cornerRadius: 10){
+//                        Color.blue
+//                    }
+//                }
                 Spacer()
                 Image(systemName: "ellipsis")
                     .padding(.horizontal, 15)
-                    .foregroundStyle(.white)
+                    //.foregroundStyle(.white)
                 
                 
             }

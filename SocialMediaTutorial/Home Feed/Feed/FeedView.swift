@@ -9,6 +9,7 @@ import SwiftUI
 import YouTubePlayerKit
 struct FeedView: View {
     @EnvironmentObject var vm: FeedVM
+    @EnvironmentObject var athleteVM: AthleteVM
     @State var showCommentSection = false
     //    @ObservedObject var postData: ReadJsonData
     var deviceHeight: CGFloat {
@@ -27,136 +28,234 @@ struct FeedView: View {
     
     @State private var lastStateWasTop = false
     
+    
+    @State private var notificationCount = 1
+    
+    let sports = ["All", "Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
+                  "Basketball", "Pickleball", "Cross Country", "Track and Field"]
+    
+    let sort = ["Hot Posts", "New Posts", "Top Posts"]
+    @State var selectedSport: String = ""
+    @State var sortType: String = ""
+
     //    @State private var currentPost: Post
     
     var body: some View {
         let blankPost = vm.posts[0]
-        VStack(spacing: 0) {
-            //NavBar()
-            HStack{
-                Image("complete_logo")
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 120, height: 60)
-                    .padding(.leading, 10)
-                Spacer()
-                NavigationLink {
-                    SearchView()
-                } label: {
-                    HStack{
-                        Image(systemName: "magnifyingglass")
-                            .foregroundColor(.black)
-                        //                            TextField("Shop, discover, plan, and more! ", text: $query)
-                        //                                .foregroundColor(.black)
-                        //                                .textContentType(.newPassword)
-                        //                                .keyboardType(.asciiCapable)
-                        //                                .autocorrectionDisabled()
-                        //                                .listRowSeparator(.hidden)
-                    }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: Color(UIColor.systemBlue), ratio: 0.2))
-                    //                                    .padding(.leading, 10)
-                        .scaleEffect(0.8)
-                }
-            }
-
-
-            ZStack{
-                ScrollView{
+        NavigationStack{
+            VStack(spacing: 0) {
+                //NavBar()
+                HStack{
+                    Image("complete_logo")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 120, height: 60)
+                        .padding(.leading, 10)
                     Spacer()
-                        .frame(height: 10)
-                    StoryListView() // Display the list of stories
-                    Divider()
-                    PostListView(showCommentSection: false, onCommentTapped: {
-                        withAnimation(.default){
-                        }
-                    }) // Display the list of posts
-                    .padding(.top, -30)
-                }
-                .onAppear{
-//                    lastTranslation.height = 500
-                }
-//                .navigationTitle("NPA") // Set the navigation title
-//                .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
-                .brightness(vm.showCommentSection ? -0.3 : 0.0)
-                .scrollDisabled(vm.showCommentSection)
-                .zIndex(0)
-                if(vm.showCommentSection){
-                    //let x = print("Should be showing comment section ")
+                    NavigationLink {
+                        InboxView(athletes: athleteVM.athletes)
+                    } label: {
+                        HStack{
+                            Image(systemName: "bell")
+                                .foregroundColor(.black)
+                                .font(.title)
+                                .overlay(alignment: .topTrailing){
+                                    if(notificationCount > 0){
+                                        Text(String(notificationCount))
+                                            .font(.caption2)
+                                            .bold()
+                                            .foregroundStyle(.white)
+                                            .padding(4)
+                                            .background{
+                                                Circle()
+                                                    .fill(Color.red)
+                                            }
+                                            .offset(x: -3, y: -5)
+                                    }
+                                }
+                                .padding(.trailing, 20)
 
-                    VStack{
+                                
+                        }
+                        
+                    }
+                    Spacer()
+                        .frame(width: 20)
+                    NavigationLink {
+                        InboxView(athletes: athleteVM.athletes)
+                    } label: {
+                        HStack{
+                            Image(systemName: "ellipsis.message")
+                                .foregroundColor(.black)
+                                .font(.title)
+                                .overlay(alignment: .topTrailing){
+                                    if(notificationCount > 0){
+                                        Text(String(notificationCount))
+                                            .font(.caption2)
+                                            .bold()
+                                            .foregroundStyle(.white)
+                                            .padding(4)
+                                            .background{
+                                                Circle()
+                                                    .fill(Color.red)
+                                            }
+                                            .offset(x: -3, y: -5)
+                                    }
+                                }
+                                .padding(.trailing, 20)
+
+                                
+                        }
+                        
+                    }
+                }
+                
+                ZStack{
+                    ScrollView{
                         Spacer()
-                            .frame(height: 200)
-                        VStack(spacing: 0){
-                            VStack{
-                                Spacer()
-                                    .frame(height: 10)
-                                RoundedRectangle(cornerRadius: 10)
-                                    .frame(width: 50, height: 7)
-                                    .foregroundStyle(Color(UIColor.systemGray4))
-                                Spacer()
-                                    .frame(height: 20)
-                                Text("Comments")
-                                    .bold()
-                                Spacer()
-                                    .frame(height: 10)
-                                Divider()
-                                    .background(Color.gray)
-                                Spacer()
-                                    .frame(height: 10)
-                            }
-                            .background{
-                                Color.white
-                            }
-                            .frame(width: deviceWidth)
-                            .clipShape(
-                                .rect(
-                                    topLeadingRadius: 20,
-                                    bottomLeadingRadius: 0,
-                                    bottomTrailingRadius: 0,
-                                    topTrailingRadius: 20
-                                )
-                            )
-                            .contentShape(Rectangle())
-                            .highPriorityGesture(dragGesture)
-                            .offset(
-                                y: lastTranslation.height
-                            )
-                            
-                            
-                            VStack {
-                                GeometryReader { geometry in
-                                    CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
-                                        .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
-                                        .background(Color.white)
-                                        .zIndex(12)
+                            .frame(height: 10)
+                        StoryListView() // Display the list of stories
+                        Divider()
+                        Spacer()
+                            .frame(height: 10)
+                        HStack{
+                            Spacer()
+                                .frame(width: 15)
+                            Image(systemName: "flame")
+                            //                        .bold()
+                                .font(.title)
+                                .foregroundStyle(Color(hex: "0077B6").opacity(1.0))
+                                .background{
+                                    Color(UIColor.systemBlue).opacity(0.2)
+                                        .clipped()
+                                        .clipShape(.circle)
+                                        .frame(width: 40, height: 40)
+                                }
+                                .padding(.leading, 20)
+                            DropdownPicker(value: $sortType, text: "Select a sport: ", color: .white.opacity(0.2), textColor: Color(hex: "0077B6"), items: sort)
+                            Spacer()
+                            HStack{
+                                Text("Filter Sports")
+                                    .foregroundStyle(.gray).opacity(1.0)
+                                HStack{
+                                    Image(systemName: "line.3.horizontal.decrease")
+                                    //.resizable()
+                                        .font(.system(size: 20))
+                                        .foregroundStyle(.white)
+                                        .frame(width: 30, height: 30)
+                                    
+                                        .background{
+                                            Color(UIColor.gray).opacity(0.7)
+                                                .clipShape(.circle)
+                                        }
+                                    //                                    Text("Filter")
                                 }
                             }
-                            .offset(y: self.lastTranslation.height)
+                            .padding(.leading, 5)
+                            .padding(5)
                             .background{
-                                Color.white
-                                    .frame(width: 2 * deviceWidth)
-                                    .offset(y: self.lastTranslation.height)
-
+                                RoundedRectangle(cornerRadius: 30)
+                                    .fill(Color.gray.opacity(0.2))
+                            }
+                            .padding(.trailing, 30)
+                                //.padding(.trailing, 10)
+                        }
+                        Spacer()
+                            .frame(height: 10)
+                        
+                        PostListView(showCommentSection: false, onCommentTapped: {
+                            withAnimation(.default){
+                            }
+                        }) // Display the list of posts
+                        .padding(.top, -30)
+                    }
+                    .onAppear{
+                        //                    lastTranslation.height = 500
+                    }
+                    //                .navigationTitle("NPA") // Set the navigation title
+                    //                .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
+                    .brightness(vm.showCommentSection ? -0.3 : 0.0)
+                    .scrollDisabled(vm.showCommentSection)
+                    .zIndex(0)
+                    if(vm.showCommentSection){
+                        //let x = print("Should be showing comment section ")
+                        
+                        VStack{
+                            Spacer()
+                                .frame(height: 200)
+                            VStack(spacing: 0){
+                                VStack{
+                                    Spacer()
+                                        .frame(height: 10)
+                                    RoundedRectangle(cornerRadius: 10)
+                                        .frame(width: 50, height: 7)
+                                        .foregroundStyle(Color(UIColor.systemGray4))
+                                    Spacer()
+                                        .frame(height: 20)
+                                    Text("Comments")
+                                        .bold()
+                                    Spacer()
+                                        .frame(height: 10)
+                                    Divider()
+                                        .background(Color.gray)
+                                    Spacer()
+                                        .frame(height: 10)
+                                }
+                                .background{
+                                    Color.white
+                                }
+                                .frame(width: deviceWidth)
+                                .clipShape(
+                                    .rect(
+                                        topLeadingRadius: 20,
+                                        bottomLeadingRadius: 0,
+                                        bottomTrailingRadius: 0,
+                                        topTrailingRadius: 20
+                                    )
+                                )
+                                .contentShape(Rectangle())
+                                .highPriorityGesture(dragGesture)
+                                .offset(
+                                    y: lastTranslation.height
+                                )
+                                
+                                
+                                VStack {
+                                    GeometryReader { geometry in
+                                        CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
+                                            .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
+                                            .background(Color.white)
+                                            .zIndex(12)
+                                    }
+                                }
+                                .offset(y: self.lastTranslation.height)
+                                .background{
+                                    Color.white
+                                        .frame(width: 2 * deviceWidth)
+                                        .offset(y: self.lastTranslation.height)
+                                    
+                                }
+                            }
+                            
+                        }
+                        
+                        
+                        .onAppear{
+                            
+                            
+                            
+                            withAnimation(.easeIn.speed(2.0)){
+                                let y = print("SHOWING COMMENT SECTION")
+                                lastTranslation.height = 0
                             }
                         }
-
                     }
-
-
-                    .onAppear{
-
-
-                        
-                        withAnimation(.easeIn.speed(2.0)){
-                            let y = print("SHOWING COMMENT SECTION")
-                            lastTranslation.height = 0
-                        }
-                    }
+                    
+                    
                 }
                 
                 
             }
-            
-            
         }
         //.ignoresSafeArea(.all, edges: .top)
     }

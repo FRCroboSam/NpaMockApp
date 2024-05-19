@@ -11,6 +11,8 @@ struct ExploreView: View {
     @EnvironmentObject var athleteVM: AthleteVM
     let sports = ["Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
                   "Basketball", "Pickleball", "Cross Country", "Track and Field"]
+    @State var current = "Athletes"
+
     let levels = ["HS", "Collegiate", "Pro"]
     @State var query: String = ""
     @State var selectedSport: String = ""
@@ -21,7 +23,6 @@ struct ExploreView: View {
     @State private var tabSelection: TabBarItem = .athletes
     @State var tabs: [TabBarItem] = [.athletes, .events, .shop, .tickets, .train, .athlete2s]//, .event2s, .shop2, .ticket2s, .train2]
 
-    @State var current = "Athletes"
     
     @Namespace var animation
     @Namespace var namespace
@@ -256,7 +257,7 @@ struct ExploreView: View {
                             .frame(height: 10)
                         HStack(spacing: 0){
                     
-                            Text("Discover" )
+                            Text("Explore" )
                             
                                 .bold()
                                 .font(.title2)
