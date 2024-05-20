@@ -12,6 +12,8 @@ struct DiscoverView: View {
     @State private var searchTeacher = ""
     @State private var selected_athlete: Athlete?
     @State private var goToAthleteProfile = false
+    @State private var filterViewOffset = 0.0
+    @State private var startSlidingDown = false
     var body: some View{
         NavigationStack{
             VStack(alignment: .leading){
@@ -21,7 +23,7 @@ struct DiscoverView: View {
 //                    .font(.title)
 //                    .bold()
 //                    .padding(.leading, 20)
-                ZStack{
+
                     VStack(spacing: 0){
                         HStack{
                             Spacer()
@@ -39,10 +41,15 @@ struct DiscoverView: View {
 //                                .padding(.top, 10)
 //                                .offset(y: 20)
                             Button{
-                                withAnimation(.easeIn){
-                                    athleteVM.showingFilters = !athleteVM.showingFilters
-                                    print(athleteVM.showingFilters)
+                                filterViewOffset = 500
+                                if(athleteVM.showingFilters){
+                                    startSlidingDown = true
                                 }
+                                else{
+                                    athleteVM.showingFilters = true
+
+                                }
+                                
                             } label: {
                                 HStack{
                                     Image(systemName: "line.3.horizontal.decrease")
@@ -153,59 +160,83 @@ struct DiscoverView: View {
 
                         }
                         Divider()
-                        ScrollView{
-                            Spacer()
-                                .frame(height: 20)
-                            HStack(spacing: 0){
-
-                                Text("Featured")
-                                    .bold()
-                                    .font(.title)
-                                    .padding(.leading, 20)
+                        ZStack{
+                            ScrollView{
                                 Spacer()
-                                
-                                
-                            }
-                            Spacer()
-                                .frame(height: 10)
-                            FeaturedAthletes()
-                            Spacer()
-                                .frame(height: 20)
-                            Divider()
-                            VStack(spacing: 0){
-                                ForEach(athleteVM.athletes){ athlete in
+                                    .frame(height: 20)
+                                HStack(spacing: 0){
                                     
-                                    NavigationLink{
-                                        AthleteProfileView(athlete: athlete)
-                                    }label: {
-                                        AthleteBannerView(athlete: athlete)
-                                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                        
-                                        Divider()
-                                        
+                                    Text("Featured")
+                                        .bold()
+                                        .font(.title)
+                                        .padding(.leading, 20)
+                                    Spacer()
                                     
-                                    }
+                                    
                                 }
                                 Spacer()
-                                    .frame(height: 50)
+                                    .frame(height: 10)
+                                FeaturedAthletes()
+                                Spacer()
+                                    .frame(height: 20)
+                                Divider()
+                                VStack(spacing: 0){
+                                    ForEach(athleteVM.athletes){ athlete in
+                                        
+                                        NavigationLink{
+                                            AthleteProfileView(athlete: athlete)
+                                        }label: {
+                                            AthleteBannerView(athlete: athlete)
+                                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+                                            
+                                            Divider()
+                                            
+                                            
+                                        }
+                                    }
+                                    Spacer()
+                                        .frame(height: 50)
+                                }
+                                
+                                
+                                .onAppear{
+                                    goToAthleteProfile = false
+                                    print(String(
+                                        athleteVM.athletes.count))
+                                }
                             }
-                            
-                            
-                            .onAppear{
-                                goToAthleteProfile = false
-                                print(String(
-                                    athleteVM.athletes.count))
+                            if(athleteVM.showingFilters){
+                                
+                                
+                                FilterView()
+                                    .offset(y: filterViewOffset)
+                                    .animation(.easeIn, value: filterViewOffset)
+                                    .onAppear{
+                                        withAnimation(.easeIn.speed(3.5)){
+                                            let y = print("SHOWING COMMENT SECTION")
+                                            filterViewOffset = 100
+                                        }
+                                    }
+                                    .onChange(of: startSlidingDown) { value in
+                                        if(value == true){
+                                            withAnimation(.easeIn.speed(3.5)){
+                                                filterViewOffset = 500
+                                            }
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+                                                startSlidingDown = false
+                                                athleteVM.showingFilters = false
+                                                
+                                            }
+                                        }
+                                    }
+                                
                             }
-                        }
-                        if(athleteVM.showingFilters){
-                            FilterView()
-                            
                         }
                     }
                     
                     
                     
-                }
+                
             }
 
         }

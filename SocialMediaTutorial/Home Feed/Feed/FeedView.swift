@@ -52,6 +52,9 @@ struct FeedView: View {
                         .frame(width: 120, height: 60)
                         .padding(.leading, 10)
                     Spacer()
+                    Image(systemName: "plus.app")
+                        .font(.title)
+                        .padding(.trailing, 15)
                     NavigationLink {
                         InboxView(athletes: athleteVM.athletes)
                     } label: {
@@ -62,25 +65,25 @@ struct FeedView: View {
                                 .overlay(alignment: .topTrailing){
                                     if(notificationCount > 0){
                                         Text(String(notificationCount))
-                                            .font(.caption2)
+                                            .font(.caption)
                                             .bold()
                                             .foregroundStyle(.white)
-                                            .padding(4)
+                                            .padding(8)
                                             .background{
                                                 Circle()
                                                     .fill(Color.red)
                                             }
-                                            .offset(x: -3, y: -5)
+                                            .offset(x: 2, y: -12)
                                     }
                                 }
-                                .padding(.trailing, 20)
+                                .padding(.trailing, 10)
 
                                 
                         }
                         
                     }
                     Spacer()
-                        .frame(width: 20)
+                        .frame(width: 15)
                     NavigationLink {
                         InboxView(athletes: athleteVM.athletes)
                     } label: {
@@ -91,15 +94,15 @@ struct FeedView: View {
                                 .overlay(alignment: .topTrailing){
                                     if(notificationCount > 0){
                                         Text(String(notificationCount))
-                                            .font(.caption2)
+                                            .font(.caption)
                                             .bold()
                                             .foregroundStyle(.white)
-                                            .padding(4)
+                                            .padding(8)
                                             .background{
                                                 Circle()
                                                     .fill(Color.red)
                                             }
-                                            .offset(x: -3, y: -5)
+                                            .offset(x: 2, y: -12)
                                     }
                                 }
                                 .padding(.trailing, 20)
@@ -143,7 +146,6 @@ struct FeedView: View {
                                         .font(.system(size: 20))
                                         .foregroundStyle(.white)
                                         .frame(width: 30, height: 30)
-                                    
                                         .background{
                                             Color(UIColor.gray).opacity(0.7)
                                                 .clipShape(.circle)
