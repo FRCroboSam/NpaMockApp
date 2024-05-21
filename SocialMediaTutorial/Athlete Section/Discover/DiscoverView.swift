@@ -14,6 +14,7 @@ struct DiscoverView: View {
     @State private var goToAthleteProfile = false
     @State private var filterViewOffset = 0.0
     @State private var startSlidingDown = false
+    @State private var showTeams = false
     var body: some View{
         NavigationStack{
             VStack(alignment: .leading){
@@ -44,9 +45,12 @@ struct DiscoverView: View {
                                 filterViewOffset = 500
                                 if(athleteVM.showingFilters){
                                     startSlidingDown = true
+                                    athleteVM.animatingFilters = true
                                 }
                                 else{
                                     athleteVM.showingFilters = true
+                                    athleteVM.animatingFilters = true
+
 
                                 }
                                 
@@ -78,6 +82,15 @@ struct DiscoverView: View {
                                 //                                .font(.subheadline)
                                 Spacer()
                                     .frame(width: 2)
+                                Text("League")
+                                    .foregroundStyle(Color(UIColor.systemGray2))
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 7)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .strokeBorder(Color(UIColor.systemGray4))
+                                            .cornerRadius(15)
+                                    }
                                 Text("Sport")
                                     .foregroundStyle(Color(UIColor.systemGray2))
                                     .padding(.horizontal, 14)
@@ -96,9 +109,18 @@ struct DiscoverView: View {
                                             .strokeBorder(Color(UIColor.systemGray4))
                                             .cornerRadius(15)
                                     }
+                                Text("State")
+                                    .foregroundStyle(Color(UIColor.systemGray2))
+                                    .padding(.horizontal, 14)
+                                    .padding(.vertical, 7)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 20)
+                                            .strokeBorder(Color(UIColor.systemGray4))
+                                            .cornerRadius(15)
+                                    }
 
                                 Text("Men's")
-                                    .foregroundStyle(Color.gray)
+                                    .foregroundStyle(Color.blue)
                                     .padding(.horizontal, 14)
                                     .padding(.vertical, 7)
                                     .background{
@@ -119,7 +141,7 @@ struct DiscoverView: View {
                                             .cornerRadius(15)
                                     }
 
-                                Text("High School")
+                                Text("JUCO")
                                     .foregroundStyle(Color.teal)
                                     .padding(.horizontal, 14)
                                     .padding(.vertical, 7)
@@ -136,6 +158,67 @@ struct DiscoverView: View {
                         }.scrollIndicators(.hidden)
                         Spacer()
                             .frame(height: 15)
+                        
+                        ScrollView(.horizontal){
+                            Spacer()
+                                .frame(height: 5)
+//                            HStack(spacing: 15){
+//                                Spacer()
+//                                    .frame(width: 2)
+//                                Text("Add Filters +")
+//                                    .foregroundStyle(Color(UIColor.systemGray2))
+//                                    .padding(.horizontal, 14)
+//                                    .padding(.vertical, 7)
+//                                    .background{
+//                                        RoundedRectangle(cornerRadius: 20)
+//                                            .strokeBorder(Color(UIColor.systemGray4))
+//                                            .cornerRadius(15)
+//                                    }
+//                                Text("Men's")
+//                                    .foregroundStyle(Color.blue)
+//                                    .padding(.horizontal, 14)
+//                                    .padding(.vertical, 7)
+//                                    .background{
+//                                        RoundedRectangle(cornerRadius: 20)
+//                                            .strokeBorder(Color.blue, lineWidth: 2)
+//                                            .cornerRadius(15)
+//                                    }
+//                                    .overlay(alignment: .topTrailing){
+//                                        Image(systemName: "x.circle.fill")
+//                                            .foregroundStyle(.red)
+//                                            .offset(x: 5, y: -5)
+//                                    }
+//
+//
+//
+//                                Text("Basketball")
+//                                    .foregroundStyle(Color.orange)
+//                                    .padding(.horizontal, 14)
+//                                    .padding(.vertical, 7)
+//                                    .background{
+//                                        RoundedRectangle(cornerRadius: 20)
+//                                            .strokeBorder(.orange)
+//                                            .cornerRadius(15)
+//                                    }
+//
+//                                Text("JUCO")
+//                                    .foregroundStyle(Color.teal)
+//                                    .padding(.horizontal, 14)
+//                                    .padding(.vertical, 7)
+//                                    .background{
+//                                        RoundedRectangle(cornerRadius: 20)
+//                                            .strokeBorder(.teal)
+//                                            .cornerRadius(15)
+//                                    }
+//                                
+//                                
+//                                
+//                                
+//                                
+//                            }
+                        }.scrollIndicators(.hidden)
+//                        Spacer()
+//                            .frame(height: 15)
                         Divider()
                         VStack{
                             Spacer()
@@ -161,75 +244,16 @@ struct DiscoverView: View {
                         }
                         Divider()
                         ZStack{
-                            ScrollView{
-                                Spacer()
-                                    .frame(height: 20)
-                                HStack(spacing: 0){
-                                    
-                                    Text("Featured")
-                                        .bold()
-                                        .font(.title)
-                                        .padding(.leading, 20)
-                                    Spacer()
-                                    
-                                    
-                                }
-                                Spacer()
-                                    .frame(height: 10)
-                                FeaturedAthletes()
-                                Spacer()
-                                    .frame(height: 20)
-                                Divider()
-                                VStack(spacing: 0){
-                                    ForEach(athleteVM.athletes){ athlete in
-                                        
-                                        NavigationLink{
-                                            AthleteProfileView(athlete: athlete)
-                                        }label: {
-                                            AthleteBannerView(athlete: athlete)
-                                                .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                                            
-                                            Divider()
-                                            
-                                            
-                                        }
-                                    }
-                                    Spacer()
-                                        .frame(height: 50)
-                                }
-                                
-                                
-                                .onAppear{
-                                    goToAthleteProfile = false
-                                    print(String(
-                                        athleteVM.athletes.count))
-                                }
-                            }
-                            if(athleteVM.showingFilters){
-                                
-                                
-                                FilterView()
-                                    .offset(y: filterViewOffset)
-                                    .animation(.easeIn, value: filterViewOffset)
+                            if(!showTeams){
+                                AthleteDiscoverView(showTeams: $showTeams)
                                     .onAppear{
-                                        withAnimation(.easeIn.speed(3.5)){
-                                            let y = print("SHOWING COMMENT SECTION")
-                                            filterViewOffset = 100
-                                        }
+                                        goToAthleteProfile = false
+                                        print(String(
+                                            athleteVM.athletes.count))
                                     }
-                                    .onChange(of: startSlidingDown) { value in
-                                        if(value == true){
-                                            withAnimation(.easeIn.speed(3.5)){
-                                                filterViewOffset = 500
-                                            }
-                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                                                startSlidingDown = false
-                                                athleteVM.showingFilters = false
-                                                
-                                            }
-                                        }
-                                    }
-                                
+                            }
+                            else{
+                                TeamsDiscoverView( showTeams: $showTeams)
                             }
                         }
                     }
@@ -238,8 +262,42 @@ struct DiscoverView: View {
                     
                 
             }
+            .zIndex(6)
 
         }
+        if(athleteVM.showingFilters){
+            
+            
+            FilterView()
+                .zIndex(40)
+
+                .offset(y: filterViewOffset)
+                .animation(.easeIn, value: filterViewOffset)
+                .onAppear{
+                    withAnimation(.easeIn.speed(3.5)){
+                        let y = print("SHOWING COMMENT SECTION")
+                        filterViewOffset = 200
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+                        athleteVM.animatingFilters = false
+                    }
+                }
+                .onChange(of: startSlidingDown) { value in
+                    if(value == true){
+                        withAnimation(.easeIn.speed(3.5)){
+                            filterViewOffset = 500
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+                            athleteVM.animatingFilters = false
+                            startSlidingDown = false
+                            athleteVM.showingFilters = false
+                            
+                        }
+                    }
+                }
+            
+        }
+
 
     }
 }
@@ -277,11 +335,7 @@ struct BigButtonStyle: ButtonStyle {
             }
     }
 }
-//#Preview {
-//    let sports = ["Swimming", "Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
-//                  "Basketball", "Pickleball", "Cross Country", "Track and Field"]
-//    DiscoverView()
-//}
+
 
 #Preview {
     DiscoverView()

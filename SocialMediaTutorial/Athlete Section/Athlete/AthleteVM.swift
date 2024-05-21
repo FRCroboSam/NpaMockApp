@@ -10,6 +10,7 @@ class AthleteVM: ObservableObject{
     @Published var athletes: [Athlete] = []
     @Published var selected_athlete: Athlete?
     @Published var showingFilters: Bool = false
+    @Published var animatingFilters: Bool = false 
     init(){
         fetchAthletes() 
     }

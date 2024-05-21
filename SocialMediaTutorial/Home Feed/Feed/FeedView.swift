@@ -139,7 +139,9 @@ struct FeedView: View {
                             Spacer()
                             HStack{
                                 Text("Filter Sports")
+                                    .font(.system(size: 15))
                                     .foregroundStyle(.gray).opacity(1.0)
+                                    .lineLimit(1)
                                 HStack{
                                     Image(systemName: "line.3.horizontal.decrease")
                                     //.resizable()
