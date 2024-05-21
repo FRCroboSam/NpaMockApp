@@ -22,7 +22,7 @@ struct FeedView: View {
     @State var isUp = false
     @State private var translation = CGSize.zero
     @State private var prevTranslation = CGSize.zero
-    @State private var lastTranslation: CGSize = CGSize(width: 0, height: 250)
+    @State private var lastTranslation: CGSize = CGSize(width: 0, height: 350)
     @State var lastNonZeroTranslation = CGSize.zero
     @State private var peakVelocity = 0.0
     
@@ -229,6 +229,8 @@ struct FeedView: View {
                                 .offset(
                                     y: lastTranslation.height
                                 )
+                                .animation(.easeIn, value: self.lastTranslation.height)
+
                                 
                                 
                                 VStack {
@@ -237,13 +239,18 @@ struct FeedView: View {
                                             .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
                                             .background(Color.white)
                                             .zIndex(12)
+                                            .transaction { $0.disablesAnimations = true }
+
                                     }
                                 }
                                 .offset(y: self.lastTranslation.height)
+                                .animation(.easeIn, value: self.lastTranslation.height)
                                 .background{
                                     Color.white
                                         .frame(width: 2 * deviceWidth)
                                         .offset(y: self.lastTranslation.height)
+                                        .animation(.easeIn, value: self.lastTranslation.height)
+
                                     
                                 }
                             }
@@ -253,12 +260,13 @@ struct FeedView: View {
                         
                         .onAppear{
                             
-                            
-                            
-                            withAnimation(.easeIn.speed(2.0)){
+                            print("APPEARING")
+                            //withAnimation(.easeIn.speed(0.8)){
                                 let y = print("SHOWING COMMENT SECTION")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
                                 lastTranslation.height = 0
                             }
+                            //}
                         }
                     }
                     
