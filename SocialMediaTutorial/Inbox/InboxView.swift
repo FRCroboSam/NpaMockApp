@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct InboxView: View {
+    @EnvironmentObject var athleteVM: AthleteVM
     @State var query: String = ""
     @State var athletes: [Athlete]
     var body: some View {
@@ -15,10 +16,25 @@ struct InboxView: View {
             Spacer()
                 .frame(height: 10)
             HStack{
+                Spacer()
+                    .frame(width: 10)
+                Button{
+                    athleteVM.feedOrCommentSection = 2
+                    withAnimation(.easeIn.speed(0.5)){
+                        print("ANIMATING DONE")
+                        athleteVM.feedOrCommentSection = 1
+                    }
+                }label:{
+                    Image(systemName: "chevron.down")
+                        .font(.title2)
+                        .foregroundStyle(.gray)
+                        .rotationEffect(.init(degrees: -270))
+                }
+
                 Text("Inbox")
                     .font(.title)
                     .bold()
-                    .padding(.leading, 20)
+                    .padding(.leading, 10)
                 Spacer()
             }
             StoryListView()

@@ -15,11 +15,25 @@ struct TabbarView: View {
     var deviceHeight: CGFloat {
         UIScreen.main.bounds.height
     }
+    var urls = ["1", "2"]
+    @State var selected2 = 1
     var body: some View {
         
         ZStack{
             if(selected == 1){
-                FeedView()
+                TabView(selection: $selected2){ //$athleteVM.feedOrCommentSection.animation()){
+//                    ForEach(urls.indices, id: \.self) { index in
+//                        if(urls[index] == "1"){
+//                            FeedView()
+//                        }
+//                        else{
+//                            InboxView(athletes: athleteVM.athletes)
+//                        }
+//                    }
+                    FeedView().tag(1)
+                    InboxView(athletes: athleteVM.athletes).tag(2)
+                }
+                .tabViewStyle(.page(indexDisplayMode: .never))
             }
             else if(selected == 2){
                 ExploreView()
@@ -109,7 +123,6 @@ struct TabbarView: View {
                             Button(action: {
                                 withAnimation(.easeIn){
                                     self.selected = 1
-
                                 }
                             } ) {
                                 Image(systemName: self.selected == 1 ? "house.fill" : "house") // Tab icon for HomeView
@@ -122,8 +135,10 @@ struct TabbarView: View {
 
                         Spacer()
                         VStack{
-                            Button(action: {                                 withAnimation(.easeIn){
+                            Button(action: {                                 
+                                withAnimation(.easeIn){
                                 self.selected = 2
+
 
                             } } ) {
                                 Image(systemName: "magnifyingglass") // Tab icon for Search View
@@ -195,6 +210,11 @@ struct TabbarView: View {
                     }
                     .offset(y: 1/2 * deviceHeight - 50 )
                     //                .frame(width: deviceWidth)
+                    .onChange(of: athleteVM.feedOrCommentSection){ value in
+                        withAnimation(.easeIn){
+                            selected2 = athleteVM.feedOrCommentSection
+                        }
+                    }
                     
                 }
             }

@@ -17,7 +17,7 @@ struct NpaContentView: View {
         VStack(alignment: .leading, spacing: 0){
 //            DiscoverNavBar(text: "NPA Content")
             Spacer()
-                .frame(height: 5)
+                .frame(height: 60)
             ScrollView(){
                 HStack{
                     Text("World of Sports")

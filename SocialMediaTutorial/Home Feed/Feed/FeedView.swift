@@ -45,6 +45,8 @@ struct FeedView: View {
         NavigationStack{
             VStack(spacing: 0) {
                 //NavBar()
+                Spacer()
+                    .frame(height: 50)
                 HStack{
                     Image("complete_logo")
                         .resizable()
@@ -84,8 +86,13 @@ struct FeedView: View {
                     }
                     Spacer()
                         .frame(width: 15)
-                    NavigationLink {
-                        InboxView(athletes: athleteVM.athletes)
+                    Button {
+                        athleteVM.feedOrCommentSection = 1
+                        withAnimation(.easeIn){
+                            print("GOING TO COMMENT")
+                            athleteVM.feedOrCommentSection = 2
+                        }
+                        //InboxView(athletes: athleteVM.athletes)
                     } label: {
                         HStack{
                             Image(systemName: "ellipsis.message")
