@@ -135,6 +135,7 @@ struct TabbarView: View {
 //                            InboxView(athletes: athleteVM.athletes)
 //                        }
 //                    }
+                    CreatePostView().tag(0)
                     FeedView().tag(1)
                     InboxView(athletes: athleteVM.athletes).tag(2)
                     //NotificationsView().tag(-1)

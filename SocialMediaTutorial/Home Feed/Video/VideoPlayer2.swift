@@ -49,7 +49,7 @@ struct CustomVideoPlayer: View {
     }
 }
 
-struct VideoPlayer: View {
+struct VideoPlayer2: View {
     let url: String
     let width: CGFloat
     let height: CGFloat

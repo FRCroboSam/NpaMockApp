@@ -14,7 +14,7 @@ struct PostTypePopupView: View {
                 .font(.headline)
                 .bold()
             Spacer()
-                .frame(height: 5)
+                .frame(height: 10)
             Divider()
             HStack{
                 Image(systemName: "square.and.pencil")
@@ -22,7 +22,7 @@ struct PostTypePopupView: View {
                     .bold()
             }
             Spacer()
-                .frame(height: 5)
+                .frame(height: 10)
             Divider()
             HStack{
                 Image(systemName: "video.circle.fill")
@@ -30,7 +30,7 @@ struct PostTypePopupView: View {
                     .bold()
             }
             Spacer()
-                .frame(height: 5)
+                .frame(height: 10)
             Divider()
             HStack{
                 Image(systemName: "book.fill")

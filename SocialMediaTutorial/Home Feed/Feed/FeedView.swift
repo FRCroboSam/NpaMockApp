@@ -308,7 +308,7 @@ struct FeedView: View {
                     }
                     if(showPostTypePopup){
                         PostTypePopupView()
-                            .offset(x: 110, y: 65)
+                            .offset(x: 100, y: 120)
                     }
                     
                 }

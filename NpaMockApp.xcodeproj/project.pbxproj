@@ -16,7 +16,7 @@
 		3615F63D2BE4EDDB00214E10 /* AthleteDocs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3615F63C2BE4EDDB00214E10 /* AthleteDocs.swift */; };
 		3618B63D2B62C9BA00BD3D2F /* LikeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */; };
 		3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */; };
-		3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */; };
+		3618B6442B62D4F200BD3D2F /* VideoPlayer2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3618B6432B62D4F200BD3D2F /* VideoPlayer2.swift */; };
 		36236A412BC294C800580B29 /* blogs.json in Resources */ = {isa = PBXBuildFile; fileRef = 36236A402BC294C800580B29 /* blogs.json */; };
 		36236A442BC2957100580B29 /* Blog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A432BC2957100580B29 /* Blog.swift */; };
 		36236A462BC295A400580B29 /* BlogVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36236A452BC295A400580B29 /* BlogVM.swift */; };
@@ -78,6 +78,7 @@
 		36BE40D82BFD480D0028A2AE /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE40D72BFD480D0028A2AE /* NotificationsView.swift */; };
 		36BE40DB2BFD7ED90028A2AE /* PostTypePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE40DA2BFD7ED90028A2AE /* PostTypePopupView.swift */; };
 		36BE40DD2BFD84660028A2AE /* FeedFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE40DC2BFD84660028A2AE /* FeedFilterView.swift */; };
+		36BE40DF2BFDDB9B0028A2AE /* CreatePostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE40DE2BFDDB9B0028A2AE /* CreatePostView.swift */; };
 		36CA856D2BED54FB0044A66C /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA856C2BED54FB0044A66C /* ScrollableView.swift */; };
 		36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */; };
 		36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */; };
@@ -121,7 +122,7 @@
 		3615F63C2BE4EDDB00214E10 /* AthleteDocs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteDocs.swift; sourceTree = "<group>"; };
 		3618B63C2B62C9BA00BD3D2F /* LikeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikeButton.swift; sourceTree = "<group>"; };
 		3618B63E2B62CB5A00BD3D2F /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
-		3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer.swift; sourceTree = "<group>"; };
+		3618B6432B62D4F200BD3D2F /* VideoPlayer2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayer2.swift; sourceTree = "<group>"; };
 		36236A402BC294C800580B29 /* blogs.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = blogs.json; sourceTree = "<group>"; };
 		36236A432BC2957100580B29 /* Blog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Blog.swift; sourceTree = "<group>"; };
 		36236A452BC295A400580B29 /* BlogVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlogVM.swift; sourceTree = "<group>"; };
@@ -181,6 +182,7 @@
 		36BE40D72BFD480D0028A2AE /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		36BE40DA2BFD7ED90028A2AE /* PostTypePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTypePopupView.swift; sourceTree = "<group>"; };
 		36BE40DC2BFD84660028A2AE /* FeedFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterView.swift; sourceTree = "<group>"; };
+		36BE40DE2BFDDB9B0028A2AE /* CreatePostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePostView.swift; sourceTree = "<group>"; };
 		36CA856C2BED54FB0044A66C /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 		36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentSectionView.swift; sourceTree = "<group>"; };
@@ -280,7 +282,7 @@
 		3618B6422B62D48600BD3D2F /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				3618B6432B62D4F200BD3D2F /* VideoPlayer.swift */,
+				3618B6432B62D4F200BD3D2F /* VideoPlayer2.swift */,
 			);
 			path = Video;
 			sourceTree = "<group>";
@@ -444,6 +446,7 @@
 			isa = PBXGroup;
 			children = (
 				36BE40DA2BFD7ED90028A2AE /* PostTypePopupView.swift */,
+				36BE40DE2BFDDB9B0028A2AE /* CreatePostView.swift */,
 			);
 			path = "User Content";
 			sourceTree = "<group>";
@@ -687,7 +690,7 @@
 				36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */,
 				3610AE232BD5DDE400CD54B4 /* HomePageView.swift in Sources */,
 				367179212BC90E4E004E380C /* CustomTabBarContainerView.swift in Sources */,
-				3618B6442B62D4F200BD3D2F /* VideoPlayer.swift in Sources */,
+				3618B6442B62D4F200BD3D2F /* VideoPlayer2.swift in Sources */,
 				369F06CA2BEA258F00490B8C /* SampleSnappingListView.swift in Sources */,
 				36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */,
 				36F0D7432BB0AAF20044C3B1 /* DiscoverNavBar.swift in Sources */,
@@ -747,6 +750,7 @@
 				367179232BC9124B004E380C /* AthleteScrollView.swift in Sources */,
 				36236A4B2BC66D9600580B29 /* ExploreView.swift in Sources */,
 				E55B364D2A619B5300CB859B /* TabbarView.swift in Sources */,
+				36BE40DF2BFDDB9B0028A2AE /* CreatePostView.swift in Sources */,
 				3679F29D2BAA20A900DAC43E /* Utils.swift in Sources */,
 				3649F3552BD6E04D003DBEBD /* ChooseSportView.swift in Sources */,
 				36BE40DD2BFD84660028A2AE /* FeedFilterView.swift in Sources */,

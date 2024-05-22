@@ -19,7 +19,7 @@ struct PodcastView: View {
 //                        .bold()
 //                        .frame(width: 7/8 * deviceWidth )
 
-                VideoPlayer(url: podcast.image_or_video, width: 7/8 * deviceWidth, height: 200)
+                VideoPlayer2(url: podcast.image_or_video, width: 7/8 * deviceWidth, height: 200)
                 
                 
                 
