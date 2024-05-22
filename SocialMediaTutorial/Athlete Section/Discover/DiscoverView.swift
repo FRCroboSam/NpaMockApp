@@ -44,7 +44,7 @@ struct DiscoverView: View {
                             Button{
                                 filterViewOffset = 500
                                 if(athleteVM.showingFilters){
-                                    startSlidingDown = true
+                                    athleteVM.startSlidingDown = true
                                     athleteVM.animatingFilters = true
                                 }
                                 else{
@@ -265,38 +265,39 @@ struct DiscoverView: View {
             .zIndex(6)
 
         }
-        if(athleteVM.showingFilters){
-            
-            
-            FilterView()
-                .zIndex(40)
 
-                .offset(y: filterViewOffset)
-                .animation(.easeIn, value: filterViewOffset)
-                .onAppear{
-                    withAnimation(.easeIn.speed(3.5)){
-                        let y = print("SHOWING COMMENT SECTION")
-                        filterViewOffset = 200
-                    }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                        athleteVM.animatingFilters = false
-                    }
-                }
-                .onChange(of: startSlidingDown) { value in
-                    if(value == true){
-                        withAnimation(.easeIn.speed(3.5)){
-                            filterViewOffset = 500
-                        }
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                            athleteVM.animatingFilters = false
-                            startSlidingDown = false
-                            athleteVM.showingFilters = false
-                            
-                        }
-                    }
-                }
-            
-        }
+//        if(athleteVM.showingFilters){
+//            
+//            
+//            FilterView()
+//                .zIndex(40)
+//
+//                .offset(y: filterViewOffset)
+//                .animation(.easeIn, value: filterViewOffset)
+//                .onAppear{
+//                    withAnimation(.easeIn.speed(3.5)){
+//                        let y = print("SHOWING COMMENT SECTION")
+//                        filterViewOffset = 200
+//                    }
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+//                        athleteVM.animatingFilters = false
+//                    }
+//                }
+//                .onChange(of: startSlidingDown) { value in
+//                    if(value == true){
+//                        withAnimation(.easeIn.speed(3.5)){
+//                            filterViewOffset = 500
+//                        }
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+//                            athleteVM.animatingFilters = false
+//                            startSlidingDown = false
+//                            athleteVM.showingFilters = false
+//                            
+//                        }
+//                    }
+//                }
+//            
+//        }
 
 
     }

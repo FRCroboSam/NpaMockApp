@@ -10,7 +10,8 @@ class AthleteVM: ObservableObject{
     @Published var athletes: [Athlete] = []
     @Published var selected_athlete: Athlete?
     @Published var showingFilters: Bool = false
-    @Published var animatingFilters: Bool = false 
+    @Published var startSlidingDown: Bool = false 
+    @Published var animatingFilters: Bool = false
     
     @Published var feedOrCommentSection = 1
     @Published var isNotifications = false 

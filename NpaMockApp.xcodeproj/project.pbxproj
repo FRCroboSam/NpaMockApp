@@ -76,6 +76,8 @@
 		369F06CD2BEA2C5D00490B8C /* SnapToScroll in Frameworks */ = {isa = PBXBuildFile; productRef = 369F06CC2BEA2C5D00490B8C /* SnapToScroll */; };
 		36BAAC892BCD1216009E6541 /* AthleteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BAAC882BCD1216009E6541 /* AthleteCardView.swift */; };
 		36BE40D82BFD480D0028A2AE /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE40D72BFD480D0028A2AE /* NotificationsView.swift */; };
+		36BE40DB2BFD7ED90028A2AE /* PostTypePopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE40DA2BFD7ED90028A2AE /* PostTypePopupView.swift */; };
+		36BE40DD2BFD84660028A2AE /* FeedFilterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE40DC2BFD84660028A2AE /* FeedFilterView.swift */; };
 		36CA856D2BED54FB0044A66C /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA856C2BED54FB0044A66C /* ScrollableView.swift */; };
 		36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */; };
 		36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */; };
@@ -177,6 +179,8 @@
 		369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSnappingListView.swift; sourceTree = "<group>"; };
 		36BAAC882BCD1216009E6541 /* AthleteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteCardView.swift; sourceTree = "<group>"; };
 		36BE40D72BFD480D0028A2AE /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
+		36BE40DA2BFD7ED90028A2AE /* PostTypePopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTypePopupView.swift; sourceTree = "<group>"; };
+		36BE40DC2BFD84660028A2AE /* FeedFilterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedFilterView.swift; sourceTree = "<group>"; };
 		36CA856C2BED54FB0044A66C /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 		36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentSectionView.swift; sourceTree = "<group>"; };
@@ -355,6 +359,7 @@
 			children = (
 				3679F29A2BAA205900DAC43E /* FeedVM.swift */,
 				3679F2A42BAA455000DAC43E /* FeedView.swift */,
+				36BE40DC2BFD84660028A2AE /* FeedFilterView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -438,6 +443,7 @@
 		36BE40D92BFD7CB30028A2AE /* User Content */ = {
 			isa = PBXGroup;
 			children = (
+				36BE40DA2BFD7ED90028A2AE /* PostTypePopupView.swift */,
 			);
 			path = "User Content";
 			sourceTree = "<group>";
@@ -664,6 +670,7 @@
 				3679F2BE2BAFBB1A00DAC43E /* NavBar.swift in Sources */,
 				3649F3632BDCF9E0003DBEBD /* EventTypeScrollView.swift in Sources */,
 				36DC85112BFBBC2000FCC7E2 /* TeamHeadline.swift in Sources */,
+				36BE40DB2BFD7ED90028A2AE /* PostTypePopupView.swift in Sources */,
 				36DC850F2BFBBBC900FCC7E2 /* TeamScrollView.swift in Sources */,
 				3618B63F2B62CB5A00BD3D2F /* ToggleButton.swift in Sources */,
 				36F767142BC270C1008D8968 /* PodcastVM.swift in Sources */,
@@ -742,6 +749,7 @@
 				E55B364D2A619B5300CB859B /* TabbarView.swift in Sources */,
 				3679F29D2BAA20A900DAC43E /* Utils.swift in Sources */,
 				3649F3552BD6E04D003DBEBD /* ChooseSportView.swift in Sources */,
+				36BE40DD2BFD84660028A2AE /* FeedFilterView.swift in Sources */,
 				3615F6372BE4AD9000214E10 /* StatsView.swift in Sources */,
 				3679F29F2BAA20DE00DAC43E /* PostVM.swift in Sources */,
 				3649F35D2BDCE769003DBEBD /* CategoriesView.swift in Sources */,

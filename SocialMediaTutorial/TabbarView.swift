@@ -17,106 +17,13 @@ struct TabbarView: View {
     }
     var urls = ["1", "2"]
     @State var selected2 = 1
+    @State var filterViewOffset = 600.0
+    @State var filterFeed = false
+    
+    @State private var startSlidingDown = false
     var body: some View {
         
         ZStack{
-            if(selected == 1){
-                TabView(selection: $selected2){ //$athleteVM.feedOrCommentSection.animation()){
-//                    ForEach(urls.indices, id: \.self) { index in
-//                        if(urls[index] == "1"){
-//                            FeedView()
-//                        }
-//                        else{
-//                            InboxView(athletes: athleteVM.athletes)
-//                        }
-//                    }
-                    FeedView().tag(1)
-                    InboxView(athletes: athleteVM.athletes).tag(2)
-                    //NotificationsView().tag(-1)
-                }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-            }
-            else if(selected == 2){
-                ExploreView()
-
-            }
-            else if(selected == 3){
-                DiscoverView()
-            }
-            else if(selected == 4){
-                NpaContentView()
-            }
-            else{
-                EditProfileView(athlete: Athlete.defaultAthlete())
-            }
-//            TabView(selection: $selected) {
-//                FeedView()
-//                    .tabItem {
-//                        Text("")
-//                    }.tag(1)
-//            .toolbar(vm.showCommentSection || athleteVM.showingFilters ? .hidden : .visible, for: .tabBar)                      .zIndex(athleteVM.animatingFilters ? -10 : 0)
-//
-////
-//                
-//
-//                
-//                ExploreView()
-//
-//                    .tabItem {
-//                        Text("")
-//                    }.tag(2)
-//                    .navigationBarTitleDisplayMode(.inline)
-//                    .toolbar(vm.showCommentSection || athleteVM.showingFilters ? .hidden : .visible, for: .tabBar)                    .zIndex(athleteVM.animatingFilters ? -10 : 0)
-//
-//
-//                DiscoverView()
-//                    .tabItem {
-//                        Text("")
-//                    }.tag(3)
-//                    .navigationBarTitleDisplayMode(.inline)
-//                    .toolbar {
-//                        ToolbarItem(placement: .principal) {
-//                            HStack {
-//                                Image(systemName: "sun.min.fill")
-//                                Text("Title").font(.headline)
-//                            }
-//                        }
-//                    }
-//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)
-//                    .zIndex(athleteVM.showingFilters ? -10 : 0)
-//
-//                NpaContentView()
-//                    .tabItem {
-//                        Text("")
-//                    }.tag(4)
-//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)                    
-//                    .zIndex(athleteVM.showingFilters ? -10 : 0)
-//
-//
-//                EditProfileView(athlete: Athlete.defaultAthlete())
-//                    .tag(5)
-//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)                   
-//                    .zIndex(athleteVM.showingFilters ? -10 : 0)
-//
-//
-////                InboxView(athletes: athleteVM.athletes)
-////                    .tabItem {
-////                        Text("")
-////                    }.tag(5)
-////                    .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
-//
-//            }
-            
-            
-            
-//            .onAppear {
-//                  UIScrollView.appearance().isScrollEnabled = false
-//            }
-            //.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-//            .navigationTitle("NPA")
-//            .navigationBarTitleDisplayMode(.large)
-//            .accentColor(.brown) // Accent color for the TabView
-            // tab-items cover - do anything needed, height, position, alignment, etc.
             if(!vm.showCommentSection){
                     HStack {
                         Spacer()
@@ -136,7 +43,7 @@ struct TabbarView: View {
 
                         Spacer()
                         VStack{
-                            Button(action: {                                 
+                            Button(action: {
                                 withAnimation(.easeIn){
                                 self.selected = 2
 
@@ -218,11 +125,153 @@ struct TabbarView: View {
                     }
                     
                 }
+            if(selected == 1){
+                TabView(selection: $selected2){ //$athleteVM.feedOrCommentSection.animation()){
+//                    ForEach(urls.indices, id: \.self) { index in
+//                        if(urls[index] == "1"){
+//                            FeedView()
+//                        }
+//                        else{
+//                            InboxView(athletes: athleteVM.athletes)
+//                        }
+//                    }
+                    FeedView().tag(1)
+                    InboxView(athletes: athleteVM.athletes).tag(2)
+                    //NotificationsView().tag(-1)
+                }
+                
+                .tabViewStyle(.page(indexDisplayMode: .never))
+            }
+            else if(selected == 2){
+                ExploreView()
+
+            }
+            else if(selected == 3){
+                
+                DiscoverView()
+            }
+            else if(selected == 4){
+                NpaContentView()
+            }
+            else{
+                EditProfileView(athlete: Athlete.defaultAthlete())
+            }
+            if(athleteVM.showingFilters){
+                ZStack{
+                    if(selected == 1){
+                        FeedFilterView()
+                    }
+                    else{
+                        FilterView()
+                    }
+                }
+                    .tag(1)
+                    .zIndex(40)
+                
+                    .offset(y: filterViewOffset)
+                    .animation(.easeIn, value: filterViewOffset)
+                    .onAppear{
+                        print("SHOULD BE APPEARING")
+                        filterViewOffset = 500
+                        withAnimation(.easeIn.speed(3.5)){
+                            let y = print("SHOWING COMMENT SECTION")
+                            filterViewOffset = 200
+                            filterFeed = true
+                        }
+                        
+                    }
+                    .onChange(of: athleteVM.startSlidingDown) { value in
+                        if(value == true){
+                            withAnimation(.easeIn.speed(3.5)){
+                                filterViewOffset = 500
+                            }
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+                                athleteVM.animatingFilters = false
+                                athleteVM.startSlidingDown = false
+                                athleteVM.showingFilters = false
+                                filterFeed = false
+                                
+                            }
+                        }
+                    }
+                
+            }
+//            TabView(selection: $selected) {
+//                FeedView()
+//                    .tabItem {
+//                        Text("")
+//                    }.tag(1)
+//            .toolbar(vm.showCommentSection || athleteVM.showingFilters ? .hidden : .visible, for: .tabBar)                      .zIndex(athleteVM.animatingFilters ? -10 : 0)
+//
+////
+//                
+//
+//                
+//                ExploreView()
+//
+//                    .tabItem {
+//                        Text("")
+//                    }.tag(2)
+//                    .navigationBarTitleDisplayMode(.inline)
+//                    .toolbar(vm.showCommentSection || athleteVM.showingFilters ? .hidden : .visible, for: .tabBar)                    .zIndex(athleteVM.animatingFilters ? -10 : 0)
+//
+//
+//                DiscoverView()
+//                    .tabItem {
+//                        Text("")
+//                    }.tag(3)
+//                    .navigationBarTitleDisplayMode(.inline)
+//                    .toolbar {
+//                        ToolbarItem(placement: .principal) {
+//                            HStack {
+//                                Image(systemName: "sun.min.fill")
+//                                Text("Title").font(.headline)
+//                            }
+//                        }
+//                    }
+//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)
+//                    .zIndex(athleteVM.showingFilters ? -10 : 0)
+//
+//                NpaContentView()
+//                    .tabItem {
+//                        Text("")
+//                    }.tag(4)
+//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)                    
+//                    .zIndex(athleteVM.showingFilters ? -10 : 0)
+//
+//
+//                EditProfileView(athlete: Athlete.defaultAthlete())
+//                    .tag(5)
+//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)                   
+//                    .zIndex(athleteVM.showingFilters ? -10 : 0)
+//
+//
+////                InboxView(athletes: athleteVM.athletes)
+////                    .tabItem {
+////                        Text("")
+////                    }.tag(5)
+////                    .toolbar(vm.showCommentSection ? .hidden : .visible, for: .tabBar)
+//
+//            }
+            
+            
+            
+//            .onAppear {
+//                  UIScrollView.appearance().isScrollEnabled = false
+//            }
+            //.tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+//            .navigationTitle("NPA")
+//            .navigationBarTitleDisplayMode(.large)
+//            .accentColor(.brown) // Accent color for the TabView
+            // tab-items cover - do anything needed, height, position, alignment, etc.
+
             }
             .toolbar(.hidden, for: .navigationBar)
+            
+        
+        
 
-
-            }
+    }
 
 
 }

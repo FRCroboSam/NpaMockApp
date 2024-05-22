@@ -24,16 +24,16 @@ struct SocialMediaTutorialApp: App {
             Group{
 //                EditProfileView(athlete: Athlete.defaultAthlete())
                 ZStack{
-//                    HomePageView()
-//                        .opacity(homeOpacity)
-//                        .animation(.easeInOut(duration: 0.3), value: homeOpacity)
-//
-//                        .zIndex(4)
-//
-//                    LandingPageView()
-//                        .opacity(opacity)
-//                        .animation(.easeInOut(duration: 0.3), value: opacity)
-//                        .zIndex(3)
+                    HomePageView()
+                        .opacity(homeOpacity)
+                        .animation(.easeInOut(duration: 0.3), value: homeOpacity)
+
+                        .zIndex(4)
+
+                    LandingPageView()
+                        .opacity(opacity)
+                        .animation(.easeInOut(duration: 0.3), value: opacity)
+                        .zIndex(3)
                     if(readyToShow){
                         ContentView()
                             .toolbar(.hidden, for: .navigationBar)
@@ -58,7 +58,7 @@ struct SocialMediaTutorialApp: App {
             .environmentObject(blogVM)
             .onChange(of: feedVM.loggedIn, perform: { value in
                 if(value == true){
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         withAnimation(.easeIn){
                             homeOpacity = 0.0
                             readyToShow = true
@@ -68,7 +68,7 @@ struct SocialMediaTutorialApp: App {
             })
             .onChange(of: feedVM.videosHaveLoaded, perform: { value in
                 print("VIDEOS HAVE LAODED")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.7) {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     withAnimation(.easeIn){
                         opacity = 0.0
                         if(feedVM.loggedIn){
