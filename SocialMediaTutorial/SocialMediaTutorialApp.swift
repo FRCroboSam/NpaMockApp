@@ -24,18 +24,19 @@ struct SocialMediaTutorialApp: App {
             Group{
 //                EditProfileView(athlete: Athlete.defaultAthlete())
                 ZStack{
-                    HomePageView()
-                        .opacity(homeOpacity)
-                        .animation(.easeInOut(duration: 0.3), value: homeOpacity)
-
-                        .zIndex(4)
-
-                    LandingPageView()
-                        .opacity(opacity)
-                        .animation(.easeInOut(duration: 0.3), value: opacity)
-                        .zIndex(3)
+//                    HomePageView()
+//                        .opacity(homeOpacity)
+//                        .animation(.easeInOut(duration: 0.3), value: homeOpacity)
+//
+//                        .zIndex(4)
+//
+//                    LandingPageView()
+//                        .opacity(opacity)
+//                        .animation(.easeInOut(duration: 0.3), value: opacity)
+//                        .zIndex(3)
                     if(readyToShow){
                         ContentView()
+                            .toolbar(.hidden, for: .navigationBar)
 //
                         //.opacity(opacity > 0.0 ? 0.0 : 1.0)
                         //.opacity(opacity)
@@ -48,6 +49,8 @@ struct SocialMediaTutorialApp: App {
                 
 
             }
+            .toolbar(.hidden, for: .navigationBar)
+
 
             .environmentObject(feedVM)
             .environmentObject(athleteVM)

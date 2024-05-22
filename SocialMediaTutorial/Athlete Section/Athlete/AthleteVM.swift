@@ -13,6 +13,7 @@ class AthleteVM: ObservableObject{
     @Published var animatingFilters: Bool = false 
     
     @Published var feedOrCommentSection = 1
+    @Published var isNotifications = false 
     init(){
         fetchAthletes() 
     }

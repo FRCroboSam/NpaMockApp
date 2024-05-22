@@ -32,6 +32,7 @@ struct TabbarView: View {
 //                    }
                     FeedView().tag(1)
                     InboxView(athletes: athleteVM.athletes).tag(2)
+                    //NotificationsView().tag(-1)
                 }
                 .tabViewStyle(.page(indexDisplayMode: .never))
             }
@@ -218,6 +219,8 @@ struct TabbarView: View {
                     
                 }
             }
+            .toolbar(.hidden, for: .navigationBar)
+
 
             }
 

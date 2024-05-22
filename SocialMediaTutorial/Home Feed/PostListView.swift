@@ -8,6 +8,7 @@
 import SwiftUI
 import YouTubePlayerKit
 struct PostListView: View {
+    @EnvironmentObject var athleteVM: AthleteVM
     @EnvironmentObject var feedVM: FeedVM// Observed object for reading JSON data
     let showCommentSection: Bool
     
@@ -58,7 +59,15 @@ struct PostListView: View {
                         //s}
                     }
                 }
-
+                .onChange(of: athleteVM.feedOrCommentSection){ value in
+                    if(athleteVM.feedOrCommentSection == 2){
+                        print("PAUSING")
+                        player?.pause()
+                    }
+                    else if(athleteVM.feedOrCommentSection == 1){
+                        player?.play()
+                    }
+                }
                 .onBecomingVisible{ avgY in
                     print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
                     print("POST IS VISIBLE: "  + String(avgY > 200 && avgY < 600))

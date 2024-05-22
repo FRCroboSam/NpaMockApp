@@ -10,6 +10,7 @@ import YouTubePlayerKit
 struct FeedView: View {
     @EnvironmentObject var vm: FeedVM
     @EnvironmentObject var athleteVM: AthleteVM
+    @State var showNotifications = false
     @State var showCommentSection = false
     //    @ObservedObject var postData: ReadJsonData
     var deviceHeight: CGFloat {
@@ -46,7 +47,7 @@ struct FeedView: View {
             VStack(spacing: 0) {
                 //NavBar()
                 Spacer()
-                    .frame(height: 50)
+                    .frame(height: 10)
                 HStack{
                     Image("complete_logo")
                         .resizable()
@@ -57,8 +58,13 @@ struct FeedView: View {
                     Image(systemName: "plus.app")
                         .font(.title)
                         .padding(.trailing, 15)
-                    NavigationLink {
-                        InboxView(athletes: athleteVM.athletes)
+                    Button {
+//                        print("SHOW NOTIFICATIONS")
+                        athleteVM.feedOrCommentSection = 1
+                        withAnimation(.easeIn){
+                            athleteVM.feedOrCommentSection = 2
+                            athleteVM.isNotifications = true
+                        }
                     } label: {
                         HStack{
                             Image(systemName: "bell")
@@ -91,6 +97,7 @@ struct FeedView: View {
                         withAnimation(.easeIn){
                             print("GOING TO COMMENT")
                             athleteVM.feedOrCommentSection = 2
+                            athleteVM.isNotifications = false
                         }
                         //InboxView(athletes: athleteVM.athletes)
                     } label: {
@@ -275,7 +282,10 @@ struct FeedView: View {
                 
                 
             }
+
         }
+        .navigationBarBackButtonHidden()
+        .toolbar(.hidden, for: .navigationBar)
         //.ignoresSafeArea(.all, edges: .top)
     }
         

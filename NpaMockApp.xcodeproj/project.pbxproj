@@ -75,6 +75,7 @@
 		369F06CA2BEA258F00490B8C /* SampleSnappingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */; };
 		369F06CD2BEA2C5D00490B8C /* SnapToScroll in Frameworks */ = {isa = PBXBuildFile; productRef = 369F06CC2BEA2C5D00490B8C /* SnapToScroll */; };
 		36BAAC892BCD1216009E6541 /* AthleteCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BAAC882BCD1216009E6541 /* AthleteCardView.swift */; };
+		36BE40D82BFD480D0028A2AE /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36BE40D72BFD480D0028A2AE /* NotificationsView.swift */; };
 		36CA856D2BED54FB0044A66C /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA856C2BED54FB0044A66C /* ScrollableView.swift */; };
 		36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */; };
 		36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */; };
@@ -175,6 +176,7 @@
 		369F06C82BE84E5100490B8C /* NpaMockApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NpaMockApp-Info.plist"; sourceTree = "<group>"; };
 		369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSnappingListView.swift; sourceTree = "<group>"; };
 		36BAAC882BCD1216009E6541 /* AthleteCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteCardView.swift; sourceTree = "<group>"; };
+		36BE40D72BFD480D0028A2AE /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		36CA856C2BED54FB0044A66C /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 		36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentSectionView.swift; sourceTree = "<group>"; };
@@ -428,8 +430,16 @@
 			children = (
 				36920C5F2BC9463800CA9D8F /* InboxView.swift */,
 				36920C612BC946A300CA9D8F /* ChatListItemView.swift */,
+				36BE40D72BFD480D0028A2AE /* NotificationsView.swift */,
 			);
 			path = Inbox;
+			sourceTree = "<group>";
+		};
+		36BE40D92BFD7CB30028A2AE /* User Content */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "User Content";
 			sourceTree = "<group>";
 		};
 		36F767082BBFCF63008D8968 /* Sports Worlds */ = {
@@ -487,6 +497,7 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				36BE40D92BFD7CB30028A2AE /* User Content */,
 				3610AE212BD5DDB600CD54B4 /* Profile Creation */,
 				361170DC2BD24DCF00BBB3B2 /* Search */,
 				361170DB2BD24DC500BBB3B2 /* Profile */,
@@ -709,6 +720,7 @@
 				36920C552BC92EEE00CA9D8F /* ShopScrollView.swift in Sources */,
 				3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */,
 				36DC850D2BFBBB7D00FCC7E2 /* TeamsDiscoverView.swift in Sources */,
+				36BE40D82BFD480D0028A2AE /* NotificationsView.swift in Sources */,
 				3649F3612BDCF71E003DBEBD /* EventTypeView.swift in Sources */,
 				36CA856D2BED54FB0044A66C /* ScrollableView.swift in Sources */,
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
