@@ -23,7 +23,7 @@ class PostVM: ObservableObject {
     
     init(post: Post){
         self.post = post 
-        self.loading = true
+        self.loading = false
     }
     
     func copyFileFromBundleToDocumentsFolder(sourceFile: String, destinationFile: String = "") {

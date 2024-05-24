@@ -32,10 +32,13 @@ struct PostListView: View {
                     view_count: post.view_count,
                     description: post.description,
                     onCommentTapped: {
-                        feedVM.selected_post_vm = PostVM(post: post) 
+                        feedVM.selected_post_vm = PostVM(post: post)
+                        feedVM.selected_post_vm.fetchComments(postId: feedVM.selected_post_vm.post.post_id)
                         withAnimation(.easeIn.speed(2.0)){
                             feedVM.showCommentSection = true
                         }
+                        onCommentTapped()
+
                     }, player: player ?? YouTubePlayer(source: .url(post.image_or_video))
                 )
                 .background{

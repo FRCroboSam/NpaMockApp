@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 struct CommentSectionView: View {
-    @ObservedObject var vm: PostVM
+    @Binding var vm: PostVM
     @State var comment: String = ""
     @FocusState var isCommentFocused: Bool
     @State private var keyboardHeight: CGFloat = 0
@@ -22,6 +22,7 @@ struct CommentSectionView: View {
         VStack(spacing: 0){
             ScrollView {
                 if self.vm.loading {
+                    let _ = print("ACTUAL ACTUAL POST ID: " + vm.post.post_id)
                     ProgressView().progressViewStyle(.circular)
                 } else {
                     LazyVStack(spacing:0){
@@ -31,18 +32,18 @@ struct CommentSectionView: View {
 
                         }
                     }.listRowInsets(EdgeInsets())
+
+
                 }
             }.listStyle(PlainListStyle())
+
                 .frame(width: deviceWidth)
                 //.background(Color.white)
 //                .padding(.leading, 40)
                 .offset(x: 20)
-            
-                .background{
-                    Color.white
-                        .frame(width: 2 * deviceWidth)
 
-                }
+            
+
             
             
             VStack(spacing: 0){
@@ -105,6 +106,7 @@ struct CommentSectionView: View {
                 .background(Color.white)
                 .zIndex(500)
                     .onAppear{
+                        print("ACTUAL POST ID: " + vm.post.post_id)
                         let print =  print("HELLO")
                     }
 
@@ -129,7 +131,7 @@ struct CommentSectionView: View {
 
         .navigationTitle(Text("Post Detail"))
         .navigationBarTitleDisplayMode(.inline)
-        .onAppear{vm.fetchComments(postId: vm.post.post_id)}
+        .onAppear{}
     }
     
     private func dismissKeyboard() {
@@ -159,11 +161,11 @@ struct customViewModifier: ViewModifier {
 
     }
 }
-struct PostDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        CommentSectionView(vm: PostVM(post: Post(image_or_video: "lskdjf", like_count: 12, comment_count: 12, view_count: 12, description: "SDF", profile_img: "WEFS", profile_name: "Bobby", profile_id: "oiuwhjeklrfsdvoiuh4j", post_id:"IOWEJKSD")))
-    }
-}
+//struct PostDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CommentSectionView(vm: PostVM(post: Post(image_or_video: "lskdjf", like_count: 12, comment_count: 12, view_count: 12, description: "SDF", profile_img: "WEFS", profile_name: "Bobby", profile_id: "oiuwhjeklrfsdvoiuh4j", post_id:"IOWEJKSD")))
+//    }
+//}
 
 extension Publishers {
     // 1.

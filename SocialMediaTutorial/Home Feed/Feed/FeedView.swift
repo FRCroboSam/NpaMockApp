@@ -23,7 +23,7 @@ struct FeedView: View {
     @State var isUp = false
     @State private var translation = CGSize.zero
     @State private var prevTranslation = CGSize.zero
-    @State private var lastTranslation: CGSize = CGSize(width: 0, height: 200)
+    @State private var lastTranslation: CGSize = CGSize(width: 0, height: 500)
     @State var lastNonZeroTranslation = CGSize.zero
     @State private var peakVelocity = 0.0
     @State var stopTranslating = false
@@ -41,6 +41,8 @@ struct FeedView: View {
     let sort = ["Hot Posts", "New Posts", "Top Posts"]
     @State var selectedSport: String = ""
     @State var sortType: String = ""
+    
+    @State var blankPost = PostVM(post: Post.blankPost())
     
 
     //    @State private var currentPost: Post
@@ -206,7 +208,13 @@ struct FeedView: View {
                                     .frame(height: 10)
                                 
                                 PostListView(showCommentSection: false, onCommentTapped: {
+                                    print("EXECUTING")
                                     withAnimation(.default){
+                                        
+                                            vm.showCommentSection = true
+                                        lastTranslation.height = 0
+                                            
+                                        
                                     }
                                 }) // Display the list of posts
                                 .padding(.top, -30)
@@ -219,7 +227,7 @@ struct FeedView: View {
                             .brightness(vm.showCommentSection ? -0.3 : 0.0)
                             .scrollDisabled(vm.showCommentSection)
                             .zIndex(0)
-                            if(vm.showCommentSection){
+                            if(true){
                                 //let x = print("Should be showing comment section ")
                                 
                                 VStack{
@@ -261,24 +269,34 @@ struct FeedView: View {
                                         .offset(
                                             y: lastTranslation.height
                                         )
-                                        .animation(.easeIn.speed(1.0), value: self.lastTranslation.height)
+                                        .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
                                     
                                         
                                         VStack {
                                             GeometryReader{ geometry in
-                                                    CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
+
+
+                                                CommentSectionView(vm: $vm.selected_post_vm)
                                                         .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
                                                         .zIndex(12)
-                                                        .transaction{ $0.disablesAnimations = true}
-                                                        .animation(.easeIn.speed(1.0), value: self.lastTranslation.height)
+//                                                        .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
 //                                                        .background{
 //                                                            Color.white
 //                                                                .frame(width: 2 * deviceWidth)
 //                                                                .animation(.easeIn.speed(1.1), value: self.lastTranslation.height)
 //
 //                                                        }
+                                                        .transaction{ $0.disablesAnimations = true}
+
 
                                             }
+
+                                        }
+                                        .background{
+                                            Color.white
+                                                .frame(width: 2 * deviceWidth)
+                                                .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
+
 
                                         }
 //                                        .background{
@@ -288,7 +306,7 @@ struct FeedView: View {
 //                                                                self.lastTranslation.height :
 //                                                            self.lastTranslation.height + 100)
 //                                        }
-                                        .animation(.easeIn.speed(1.0), value: self.lastTranslation.height)
+                                        .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
                                         .offset(y: self.lastTranslation.height)
 
 
@@ -296,16 +314,11 @@ struct FeedView: View {
                                     
                                 }
                       .onAppear{
-                                    
-                                    print("APPEARING")
-                                    //withAnimation(.easeIn.speed(0.8)){
-                                    let y = print("SHOWING COMMENT SECTION")
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1){
-                                        lastTranslation.height = 0
-                                    }
+                            
+                       
                                     //}
                                 }
-                            }
+                        }
                             
                             
                         }
@@ -355,7 +368,7 @@ struct FeedView: View {
                     print("HEIGHT: " + String(Double(value.translation.height)))
                     if(abs(value.velocity.height) > 100){
 //                        print("CHANGING")
-                        
+                        print("COMMENT SECTION: "  + vm.selected_post_vm.post.post_id)
                         print("CHANGING LAST TRANSLATION AMOUNT: " + String(Double(value.translation.height)))
 //                        print("CHANGING LAST VELOCITY: " + String(Double(value.velocity.height)))
                         peakVelocity = max(abs(peakVelocity), abs(value.velocity.height))

@@ -17,7 +17,7 @@ class FeedVM: ObservableObject {
     @Published var post_with_videos = [String]()
 
     @Published var showCommentSection = false
-    @Published var selected_post_vm: PostVM?
+    @Published var selected_post_vm: PostVM = PostVM(post: Post.blankPost())
     
     @Published var loggedIn = false;
     @Published var calledLoadData = false;

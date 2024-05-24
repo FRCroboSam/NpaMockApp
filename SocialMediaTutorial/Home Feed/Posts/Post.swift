@@ -24,4 +24,8 @@ struct Post: Codable, Identifiable, Hashable{
     var profile_name: String // Profile name
     var profile_id: String // Profile ID
     var post_id: String
+    
+    static func blankPost() -> Post{
+        return Post(id: UUID(), image_or_video: "sdfsdf", like_count: 0, comment_count: 0, view_count: 0, description: "123", profile_img: "123", profile_name: "123", profile_id: "123", post_id: "23")
+    }
 }
