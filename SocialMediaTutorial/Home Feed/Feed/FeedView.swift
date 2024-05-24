@@ -23,10 +23,10 @@ struct FeedView: View {
     @State var isUp = false
     @State private var translation = CGSize.zero
     @State private var prevTranslation = CGSize.zero
-    @State private var lastTranslation: CGSize = CGSize(width: 0, height: 350)
+    @State private var lastTranslation: CGSize = CGSize(width: 0, height: 200)
     @State var lastNonZeroTranslation = CGSize.zero
     @State private var peakVelocity = 0.0
-    
+    @State var stopTranslating = false
     @State private var lastStateWasTop = false
     
     @State private var showPostTypePopup = false
@@ -243,6 +243,7 @@ struct FeedView: View {
                                             Spacer()
                                                 .frame(height: 10)
                                         }
+                                        .zIndex(20000)
                                         .background{
                                             Color.white
                                         }
@@ -260,36 +261,41 @@ struct FeedView: View {
                                         .offset(
                                             y: lastTranslation.height
                                         )
-                                        .animation(.easeIn, value: self.lastTranslation.height)
-                                        
-                                        
+                                        .animation(.easeIn.speed(1.0), value: self.lastTranslation.height)
+                                    
                                         
                                         VStack {
-                                            GeometryReader { geometry in
-                                                CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
-                                                    .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
-                                                    .background(Color.white)
-                                                    .zIndex(12)
-                                                    .transaction { $0.disablesAnimations = true }
-                                                
+                                            GeometryReader{ geometry in
+                                                    CommentSectionView(vm: vm.selected_post_vm ?? PostVM(post: blankPost))
+                                                        .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
+                                                        .zIndex(12)
+                                                        .transaction{ $0.disablesAnimations = true}
+                                                        .animation(.easeIn.speed(1.0), value: self.lastTranslation.height)
+//                                                        .background{
+//                                                            Color.white
+//                                                                .frame(width: 2 * deviceWidth)
+//                                                                .animation(.easeIn.speed(1.1), value: self.lastTranslation.height)
+//
+//                                                        }
+
                                             }
+
                                         }
+//                                        .background{
+//                                            Color.white
+//                                                .animation(.easeIn.speed(1.2), value: self.lastTranslation.height)
+//                                                .offset(y: self.lastTranslation.height > -50 ?
+//                                                                self.lastTranslation.height :
+//                                                            self.lastTranslation.height + 100)
+//                                        }
+                                        .animation(.easeIn.speed(1.0), value: self.lastTranslation.height)
                                         .offset(y: self.lastTranslation.height)
-                                        .animation(.easeIn, value: self.lastTranslation.height)
-                                        .background{
-                                            Color.white
-                                                .frame(width: 2 * deviceWidth)
-                                                .offset(y: self.lastTranslation.height)
-                                                .animation(.easeIn, value: self.lastTranslation.height)
-                                            
-                                            
-                                        }
+
+
                                     }
                                     
                                 }
-                                
-                                
-                                .onAppear{
+                      .onAppear{
                                     
                                     print("APPEARING")
                                     //withAnimation(.easeIn.speed(0.8)){
@@ -339,27 +345,37 @@ struct FeedView: View {
             
             // Calculate the remaining space from the bottom of the device to the bottom of the ScrollView
             let remainingSpace = deviceHeight - maxScrollViewHeight
-            
+            print(deviceHeight - vStackTop)
             // Adjust the ScrollView height by adding the remaining space to its maximum height
             return max(deviceHeight - vStackTop, 1/4 * deviceHeight)
         }
         var dragGesture: some Gesture {
-            DragGesture()
+            DragGesture(minimumDistance: 0.0, coordinateSpace: .global)
                 .onChanged { value in
-                    
-                    peakVelocity = max(abs(peakVelocity), abs(value.velocity.height))
-                    prevTranslation = translation
-                    translation.height = value.translation.height
-                    lastTranslation.height += value.translation.height
-                    if(abs(value.translation.height) >= 0.01){
-                        lastNonZeroTranslation.height = value.translation.height
+                    print("HEIGHT: " + String(Double(value.translation.height)))
+                    if(abs(value.velocity.height) > 100){
+//                        print("CHANGING")
+                        
+                        print("CHANGING LAST TRANSLATION AMOUNT: " + String(Double(value.translation.height)))
+//                        print("CHANGING LAST VELOCITY: " + String(Double(value.velocity.height)))
+                        peakVelocity = max(abs(peakVelocity), abs(value.velocity.height))
+                        prevTranslation = translation
+                        translation.height = value.translation.height
+                        lastTranslation.height = value.translation.height
+                        if(abs(value.translation.height) >= 0.01){
+                            lastNonZeroTranslation.height = value.translation.height
+                        }
+                        
+                        //lastTranslation.height = max(-280, min(lastTranslation.height, 500)) //dont go too far off bottom of the screen
                     }
-                    
-                    lastTranslation.height = max(-280, min(lastTranslation.height, 500)) //dont go too far off bottom of the screen
+                    else{
+                        print("VELOCITY IS SLOW: " + String(Double(lastTranslation.height)))
+                    }
+  
                     
                 }
                 .onEnded { value in
-                    
+                    print("ENDED DRAG GESTURE")
                     let velocity = value.velocity.height
                     print("Peak Velocity: " + String(Double(peakVelocity)))
                     let isSwipe = lastNonZeroTranslation.height == translation.height
@@ -389,7 +405,7 @@ struct FeedView: View {
                             
                         }
                         else if (lastTranslation.height < -92 || isUp && isSwipe) {
-                            lastTranslation.height = -280
+                            lastTranslation.height = -100
                         }
                         else{
                             lastTranslation.height = 0

@@ -27,20 +27,23 @@ struct CommentSectionView: View {
                     LazyVStack(spacing:0){
                         ForEach(vm.commentSection, id: \.id){ comment in
                             CommentView(postVM: vm, vm: comment)
-                                .background{
-                                    Color.white
-                                        .frame(width: 2 * deviceWidth)
 
-                                }
 
                         }
                     }.listRowInsets(EdgeInsets())
                 }
             }.listStyle(PlainListStyle())
                 .frame(width: deviceWidth)
-                .background(Color.white)
+                //.background(Color.white)
 //                .padding(.leading, 40)
                 .offset(x: 20)
+            
+                .background{
+                    Color.white
+                        .frame(width: 2 * deviceWidth)
+
+                }
+            
             
             VStack(spacing: 0){
                 Divider()
@@ -85,7 +88,7 @@ struct CommentSectionView: View {
                         })
                     }
                     
-                    .modifier(customViewModifier(roundedCornes: 20, startColor: .orange, endColor: .orange, textColor: .white))
+                    .modifier(customViewModifier(roundedCornes: 20, startColor: Color(UIColor.lightGray).opacity(0.3), endColor: Color(UIColor.lightGray).opacity(0.3), textColor: .white))
                         .padding(5)
                         .padding(.trailing, 20)
 
@@ -120,6 +123,7 @@ struct CommentSectionView: View {
             }
             
         }
+
 
         .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
 
