@@ -16,6 +16,7 @@ struct CustomTabBarView: View {
     @State var hasScrolled = false;
     
     @State var goToNearestTab = false;
+    @State var stoppedAccelerating = false;
     @State var called = false
     @State var scrollViewOffset = CGPoint(x: 6.00001, y: 0)
     @State var opacities = [Double](repeating: 0.0, count: 12)
@@ -127,7 +128,7 @@ extension CustomTabBarView {
     private var tabBarVersion2: some View {
             VStack(alignment: .leading){
                 ScrollableView($scrollViewOffset, localSelection: $selectedIndex, goToNearestTab: $goToNearestTab,
-                               isTouching: $isTouching, nearestTab: $nearestTab, animationDuration: 0.2){
+                               isTouching: $isTouching, stoppedAccelerating: $stoppedAccelerating, nearestTab: $nearestTab, animationDuration: 0.2){
                     HStack {
                         Spacer()
                             .frame(width: 30)
@@ -167,6 +168,7 @@ extension CustomTabBarView {
                     }
                     
                     .padding(6)
+
                     .background(GeometryReader { geometry in
                         Color.clear
                             .preference(key: ScrollOffsetPreferenceKey.self, value: geometry.frame(in: .named("scroll")).origin)
@@ -224,6 +226,16 @@ extension CustomTabBarView {
                        tabAtIndexShouldExtend = false
                    }
                })
+               .onChange(of: localSelection, perform: { value in
+                   print("CHANGING")
+                   DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                       withAnimation(.easeIn){
+                           selection = localSelection
+                       }
+                   }
+
+               })
+
                 .onChange(of: goToNearestTab, perform: { value in
                     print("go TO nearest tab changed")
                     //let newTab = max(0, min(tabs.count - 1, Int(round((scrollViewOffset.x - 6) / 35))))
@@ -234,6 +246,8 @@ extension CustomTabBarView {
                             scrollViewOffset.x = 35 * Double(nearestTab) + 6.0
                             print("GOING TO NEAREST TAB2" + String(scrollViewOffset.x == 35 * Double(nearestTab) + 6.0))
                             goToNearestTab = false
+
+                            //selection = localSelection
 
                         }
 

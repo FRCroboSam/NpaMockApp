@@ -14,6 +14,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         private let scrollableView: ScrollableView
         var offset: Binding<CGPoint>
         var goToNearestTab: Binding<Bool>
+        var stoppedAccelerating: Binding<Bool>
         
         var scrollAfterSlowDown = false
         
@@ -34,13 +35,14 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
         }
 
         // MARK: - Init
-        init(_ scrollView: UIScrollView, _ scrollableView: ScrollableView, offset: Binding<CGPoint>, nearestTab: Binding<Int>, goToNearestTab: Binding<Bool>, isTouching: Binding<Bool>) {
+        init(_ scrollView: UIScrollView, _ scrollableView: ScrollableView, offset: Binding<CGPoint>, nearestTab: Binding<Int>, goToNearestTab: Binding<Bool>, isTouching: Binding<Bool>, stoppedAccelerating: Binding<Bool>) {
             self.scrollView          = scrollView
             self.nearestTab          = nearestTab
             self.offset              = offset
             self.goToNearestTab      = goToNearestTab
             self.isTouching          = isTouching
             self.scrollableView      = scrollableView
+            self.stoppedAccelerating = stoppedAccelerating
             super.init()
             self.scrollView.delegate = self
         }
@@ -159,6 +161,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
 
 //            if(!scrollView.isTracking){
 //            }
+            stoppedAccelerating.wrappedValue = true 
             if(!scrollView.isTracking && !goToNearestTab.wrappedValue){
                 goToNearestTab.wrappedValue = false
                 goToNearestTab.wrappedValue = true
@@ -217,6 +220,8 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
     var disableScroll: Bool
     var forceRefresh: Bool
     var stopScrolling: Binding<Bool>
+    var stoppedAccelerating: Binding<Bool>
+
     var isTouching: Binding<Bool>
     
     
@@ -224,13 +229,14 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
     private let scrollViewController: UIViewControllerType
 
     // MARK: - Init
-    init(_ offset: Binding<CGPoint>, localSelection: Binding<Int>, goToNearestTab: Binding<Bool>, isTouching: Binding<Bool>, nearestTab: Binding<Int>, animationDuration: TimeInterval, showsScrollIndicator: Bool = false, axis: Axis = .horizontal, onScale: ((CGFloat)->Void)? = nil, disableScroll: Bool = false, forceRefresh: Bool = true, stopScrolling: Binding<Bool> = .constant(false),
+    init(_ offset: Binding<CGPoint>, localSelection: Binding<Int>, goToNearestTab: Binding<Bool>, isTouching: Binding<Bool>, stoppedAccelerating: Binding<Bool> , nearestTab: Binding<Int>, animationDuration: TimeInterval, showsScrollIndicator: Bool = false, axis: Axis = .horizontal, onScale: ((CGFloat)->Void)? = nil, disableScroll: Bool = false, forceRefresh: Bool = true, stopScrolling: Binding<Bool> = .constant(false),
          @ViewBuilder content: @escaping () -> Content) {
         self.offset               = offset
         self.localSelection      = localSelection
         self.goToNearestTab      = goToNearestTab
         self.isTouching           = isTouching
         self.nearestTab           = nearestTab
+        self.stoppedAccelerating = stoppedAccelerating
         self.onScale              = onScale
         self.animationDuration    = 0.5
         self.content              = content
@@ -288,7 +294,7 @@ struct ScrollableView<Content: View>: UIViewControllerRepresentable, Equatable {
     
     func makeCoordinator() -> Coordinator {
 
-        let coordinator = Coordinator(self.scrollViewController.scrollView, self, offset: self.offset, nearestTab: self.nearestTab, goToNearestTab: self.goToNearestTab, isTouching: self.isTouching)
+        let coordinator = Coordinator(self.scrollViewController.scrollView, self, offset: self.offset, nearestTab: self.nearestTab, goToNearestTab: self.goToNearestTab, isTouching: self.isTouching, stoppedAccelerating: self.stoppedAccelerating)
 //        var tapGestureRecognizer = UITapGestureRecognizer(target: coordinator, action: #selector(coordinator.handleTap))
 //        tapGestureRecognizer.numberOfTapsRequired = 1
 //        tapGestureRecognizer.isEnabled = true
