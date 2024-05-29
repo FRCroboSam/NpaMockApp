@@ -19,7 +19,7 @@ struct EventCardVertical: View {
                             image.resizable()
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width:  3/4 * deviceWidth, height:160)
+                                .frame(width:  7/8 * deviceWidth, height:160)
                                 .clipped()
                                 .roundedCorner(8, corners: .topLeft)
                                 .roundedCorner(8, corners: .topRight)
@@ -100,7 +100,7 @@ struct EventCardVertical: View {
                 }
                 
             }//.padding(.leading, 20)
-            .frame(width: 3/4 * deviceWidth)
+            .frame(width: 7/8 * deviceWidth)
             .background{
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)
