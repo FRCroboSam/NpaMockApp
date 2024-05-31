@@ -28,7 +28,7 @@ struct CustomTabBarView: View {
     
     @State var isLeft = false
     
-    @State var tabOffsets = (0..<6).map { Double(35 * $0 + 6) }
+    @State var tabOffsets = (0..<7).map { Double(35 * $0 + 7) }
 
     @State var lastOffset = CGPoint(x: 0, y: 0)
     var body: some View {
@@ -229,7 +229,7 @@ extension CustomTabBarView {
                .onChange(of: localSelection, perform: { value in
                    print("CHANGING")
                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                       withAnimation(.easeIn){
+                       withAnimation(.spring.speed(0.5)){
                            selection = localSelection
                        }
                    }

@@ -21,7 +21,7 @@ struct ExploreView: View {
     @State private var currentIndex = 0
     @State private var maxPodcastViewHeight: CGFloat = 380
     @State private var tabSelection: TabBarItem = .athletes
-    @State var tabs: [TabBarItem] = [.athletes, .events, .shop, .tickets, .train, .athlete2s]//, .event2s, .shop2, .ticket2s, .train2]
+    @State var tabs: [TabBarItem] = [.athletes, .train2, .events, .shop, .tickets, .train, .athlete2s]//, .event2s, .shop2, .ticket2s, .train2]
 
     
     @Namespace var animation
@@ -95,12 +95,39 @@ struct ExploreView: View {
                 if(tabSelection == .athletes){
                     ExploreHomeView()
                         .offset(y: -10)
+                        .transition(.opacity)
                 }
                 else if(tabSelection == .events){
                     EventTabContentView()
+                        .transition(.opacity)
+
+                }
+                else if(tabSelection ==
+                    .train2){
+                    NetworkContentView()
+                        .transition(.opacity)
+
                 }
                 else if(tabSelection == .shop){
                     ShopContentView()
+                        .transition(.opacity)
+
+                }
+                else if(tabSelection == .tickets){
+                    TicketContentView()
+                        .transition(.opacity)
+
+                }
+                else if(tabSelection ==
+                    .athlete2s){
+                    ShowcasesContentView()
+                        .transition(.opacity)
+
+                }
+                else{
+                    TrainingContentView()
+                        .transition(.opacity)
+
                 }
             }
             .scrollIndicators(.hidden)
