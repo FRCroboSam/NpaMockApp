@@ -17,11 +17,11 @@ struct EventTabContentView: View {
     ]
     var body: some View {
         Spacer()
-            .frame(height: 50)
+            .frame(height: 20)
 
         ScrollView(.vertical , showsIndicators: false){
             HStack{
-                Text("Top Events for You ")
+                Text("Top Events ")
                     .bold()
                     .font(.title)
                     .padding(.leading, 20)

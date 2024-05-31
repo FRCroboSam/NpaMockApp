@@ -94,9 +94,13 @@ struct ExploreView: View {
                 }
                 if(tabSelection == .athletes){
                     ExploreHomeView()
+                        .offset(y: -10)
                 }
-                else{
+                else if(tabSelection == .events){
                     EventTabContentView()
+                }
+                else if(tabSelection == .shop){
+                    ShopContentView()
                 }
             }
             .scrollIndicators(.hidden)

@@ -26,7 +26,7 @@ struct ItemCard: View {
                                 image.resizable()
                                     .resizable()
                                     .scaledToFill()
-                                    .frame(width: 100, height: 50)
+                                    .frame(width: 120, height: 70)
                                     .clipped()
                                 //.roundedCorner(8, corners: .allCorners)
                                 
@@ -67,7 +67,7 @@ struct ItemCard: View {
                 
                 
             }
-            .frame(width: 140, height: 210)
+            .frame(width: 180, height: 210)
 //            .background{
 //                RoundedRectangle(cornerRadius: 20)
 //                    .foregroundColor(.white)
