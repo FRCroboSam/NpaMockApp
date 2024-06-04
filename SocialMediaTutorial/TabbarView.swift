@@ -142,6 +142,11 @@ struct TabbarView: View {
                 }
                 
                 .tabViewStyle(.page(indexDisplayMode: .never))
+                .onChange(of: selected) { value in
+                    if(value == 1){
+                        print("Changing selected")
+                    }
+                }
             }
             else if(selected == 2){
                 ExploreView()
@@ -181,6 +186,7 @@ struct TabbarView: View {
                         }
                         
                     }
+
                     .onChange(of: athleteVM.startSlidingDown) { value in
                         if(value == true){
                             withAnimation(.easeIn.speed(3.5)){
@@ -197,6 +203,7 @@ struct TabbarView: View {
                     }
                 
             }
+
 //            TabView(selection: $selected) {
 //                FeedView()
 //                    .tabItem {

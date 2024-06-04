@@ -26,9 +26,7 @@ struct TicketContentView: View {
                 "Gender"
 
             ]
-            EventFilterScrollView(filters: filters)
-            Spacer()
-                .frame(height: 20)
+
             HStack{
                 Text("For You")
                     .bold()
@@ -37,8 +35,8 @@ struct TicketContentView: View {
                 Spacer()
                 HStack{
                     Text("Filter Events")
-                        .font(.system(size: 15))
-                        .foregroundStyle(.gray).opacity(1.0)
+                        .font(.system(size: 18))
+                        .foregroundStyle(.black).opacity(0.7)
                         .lineLimit(1)
                     HStack{
                         Image(systemName: "line.3.horizontal.decrease")
@@ -54,7 +52,7 @@ struct TicketContentView: View {
                     }
                 }
                 .padding(.leading, 5)
-                .padding(5)
+                .padding(10)
                 .background{
                     RoundedRectangle(cornerRadius: 30)
                         .fill(Color.gray.opacity(0.2))
@@ -63,12 +61,17 @@ struct TicketContentView: View {
             }
             Spacer()
                 .frame(height: 20)
+            EventFilterScrollView(filters: filters)
+                .offset(x: 5)
+            Spacer()
+                .frame(height: 20)
             
             VStack {
                 Spacer()
                     .frame(width: 20)
                 ForEach(urls.indices, id: \.self) { index in
                     EventCardVertical(event_url: urls[index])
+                        .offset(x: -5)
                         //.padding(10)
                     Spacer()
                         .frame(height: 20)

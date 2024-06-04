@@ -20,41 +20,29 @@ struct EventTabContentView: View {
             .frame(height: 20)
 
         ScrollView(.vertical , showsIndicators: false){
-            EventFilterScrollView()
-            Spacer()
-                .frame(height: 20)
+
             HStack{
                 Text("For You")
                     .bold()
                     .font(.title)
-                    .padding(.horizontal, 20)
+                    .padding(.horizontal, 15)
                 Spacer()
                 HStack{
-                    Text("Filter Events")
-                        .font(.system(size: 15))
-                        .foregroundStyle(.gray).opacity(1.0)
-                        .lineLimit(1)
-                    HStack{
-                        Image(systemName: "line.3.horizontal.decrease")
-                        //.resizable()
-                            .font(.system(size: 20))
-                            .foregroundStyle(.white)
-                            .frame(width: 30, height: 30)
-                            .background{
-                                Color(UIColor.gray).opacity(0.7)
-                                    .clipShape(.circle)
-                            }
-                        //                                    Text("Filter")
-                    }
+                    Image(systemName: "list.bullet")
+                        .font(.system(size: 22))
+                    
                 }
-                .padding(.leading, 5)
-                .padding(5)
+                .padding(8)
                 .background{
-                    RoundedRectangle(cornerRadius: 30)
-                        .fill(Color.gray.opacity(0.2))
+                    RoundedRectangle(cornerRadius: 10)
+                        .fill(Color.gray.opacity(0.3))
                 }
                 .padding(.trailing, 30)
             }
+            Spacer()
+                .frame(height: 20)
+            EventFilterScrollView()
+                .offset(x: 5)
             Spacer()
                 .frame(height: 20)
             
@@ -69,6 +57,7 @@ struct EventTabContentView: View {
 
                 }
             }
+            .offset(x: -5)
         }.frame(height: 3/4 * deviceHeight)
         
     }

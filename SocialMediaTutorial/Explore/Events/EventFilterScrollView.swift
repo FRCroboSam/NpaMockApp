@@ -21,16 +21,26 @@ struct EventFilterScrollView: View {
             HStack{
                 Spacer()
                     .frame(width: 15)
+                
+                Image(systemName: "slider.horizontal.3")
+                    .font(.title2)
+                    .padding(10)
+                    .background{
+                        RoundedRectangle(cornerRadius: 5)
+                            .fill(Color.gray.opacity(0.3))
+                    }
 
                 ForEach(filters.indices, id: \.self) { index in
                     HStack{
                         Text(filters[index])
-                        Image(systemName: "chevron.down")
+                        Image(systemName: "triangle.fill")
+                            .font(.system(size: 8))
+                            .rotationEffect(Angle(degrees: 180))
                         
                     }
                         .padding(10)
                         .background{
-                            RoundedRectangle(cornerRadius: 15)
+                            RoundedRectangle(cornerRadius: 5)
                                 .fill(Color.gray.opacity(0.3))
                         }
                     

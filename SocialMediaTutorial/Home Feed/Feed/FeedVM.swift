@@ -68,6 +68,7 @@ class FeedVM: ObservableObject {
                         index += 1;
                         
                     }
+                    
                 }
                 
                 print(String(self.posts.count))

@@ -129,7 +129,6 @@ struct CommentSectionView: View {
 
         .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
 
-        .navigationTitle(Text("Post Detail"))
         .navigationBarTitleDisplayMode(.inline)
         .onAppear{}
     }

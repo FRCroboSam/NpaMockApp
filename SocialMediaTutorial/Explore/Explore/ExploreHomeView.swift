@@ -117,6 +117,7 @@ struct ExploreHomeView: View {
                 Spacer()
                     .frame(height: 10)
                 EventTypeScrollView()
+                    .offset(x: -15)
                 
                 
                 Spacer()

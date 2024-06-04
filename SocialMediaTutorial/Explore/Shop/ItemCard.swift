@@ -45,7 +45,29 @@ struct ItemCard: View {
                         .frame(height: 20)
                 }.overlay{
                     Color.gray
-                        .opacity(0.1)
+                        .opacity(0.2)
+                }
+                .overlay(alignment: .topLeading){
+                    Image(systemName: "cart.badge.plus")
+                        .font(.system(size: 18))
+                        .foregroundStyle(Color.white)
+                        .padding(7)
+                        .background{
+                            Circle()
+                                .fill(Color.black.opacity(0.5))
+                        }
+                        .offset(x: 5, y: 5)
+                    
+                }
+                .overlay(alignment: .topTrailing){
+                    Image(systemName: "heart")
+                        .padding(10)
+                        .background{
+                            Circle()
+                                .fill(Color.white)
+                        }
+                        .offset(x: -5, y: 5)
+                    
                 }
                 Spacer()
                     .frame(height: 10)

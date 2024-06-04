@@ -11,21 +11,27 @@ struct HighlightScrollView: View {
     @EnvironmentObject var podcastVM: PodcastVM
     @State private var currentIndex = 0
     @State private var maxPodcastViewHeight: CGFloat = 380
-    
-    @State private var urls = [
-        "https://www.footballcamps.com/media/fbcamps360webcmscom/photos/1458/1458_3.jpg",
-        "https://www.ussportscamps.com/media/images/soccer/nike/camps/soxdal_gallerypic3_950x516.jpg",
-        "https://www.cincinnati.com/gcdn/presto/2023/07/28/PCIN/08923a7c-f1da-4574-8090-b44036fc1955-BRE1Brd_02-03-2023_Daily_1_B00120230202IMG_High_School_Football_1_1_K812BO549_L1944941859IMG_High_School_Football_1_1_K812BO549.jpg",
-        "https://ymcagbw.org/sites/default/files/2019-03/by_thank_you_reception_cover_shot.jpg"
-        //https://ymcagbw.org/sites/default/files/2019-03/by_thank_you_reception_cover_shot.jpg
-    
+    @State var imageURLS = [
+        "",
+        "https://wgcoaching.com/wp-content/uploads/2010/07/Coach-with-Women1.jpg",
+        "https://www.shutterstock.com/image-photo/sport-clothes-store-shopping-mall-600nw-1179384757.jpg",
+        "https://cdn.bleacherreport.net/images_root/slides/photos/000/373/668/90426815_original.jpg?1283400570"
     ]
+    @State var text = [
+        "",
+        "Discover Agents and Coaches",
+        "Shop Essential Goods",
+        "Shop Tickets to Your Favorite Games"
+    ]
+
     var body: some View {
         
         VStack(alignment: .center, spacing: 0){
             TabView(selection: $currentIndex.animation()) {
-                ForEach(urls.indices, id: \.self) { index in
-                    highlightview()
+                ForEach(imageURLS.indices, id: \.self) { index in
+
+                    highlightview(url: imageURLS[index], text: text[index])
+                    
                 }
             }
             .frame(height: 220)

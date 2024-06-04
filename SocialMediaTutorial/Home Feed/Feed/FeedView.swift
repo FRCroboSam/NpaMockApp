@@ -176,38 +176,22 @@ struct FeedView: View {
                                         }
                                         
                                     }label: {
-                                        HStack{
-                                            Text("Filter Sports")
-                                                .font(.system(size: 15))
-                                                .foregroundStyle(.gray).opacity(1.0)
-                                                .lineLimit(1)
-                                            HStack{
-                                                Image(systemName: "line.3.horizontal.decrease")
-                                                //.resizable()
-                                                    .font(.system(size: 20))
-                                                    .foregroundStyle(.white)
-                                                    .frame(width: 30, height: 30)
-                                                    .background{
-                                                        Color(UIColor.gray).opacity(0.7)
-                                                            .clipShape(.circle)
-                                                    }
-                                                //                                    Text("Filter")
+                                        Image(systemName: "slider.horizontal.3")
+                                            .font(.title2)
+                                            .foregroundStyle(.gray)
+                                            .padding(10)
+                                            .background{
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .fill(Color.gray.opacity(0.3))
                                             }
-                                        }
-                                        .padding(.leading, 5)
-                                        .padding(5)
-                                        .background{
-                                            RoundedRectangle(cornerRadius: 30)
-                                                .fill(Color.gray.opacity(0.2))
-                                        }
-                                        .padding(.trailing, 30)
+                                            .padding(.trailing, 30)
                                     }
                                     //.padding(.trailing, 10)
                                 }
                                 Spacer()
                                     .frame(height: 10)
                                 
-                                PostListView(showCommentSection: false, onCommentTapped: {
+                                PostListView(feedVM: _vm, showCommentSection: false, onCommentTapped: {
                                     print("EXECUTING")
                                     withAnimation(.default){
                                         

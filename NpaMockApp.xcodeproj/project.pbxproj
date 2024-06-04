@@ -251,6 +251,96 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		360C880D2C0A359F00D952D2 /* Events */ = {
+			isa = PBXGroup;
+			children = (
+				3649F3602BDCF71E003DBEBD /* EventTypeView.swift */,
+				36920C582BC935C100CA9D8F /* EventCardHorizontal.swift */,
+				36920C5C2BC93BC200CA9D8F /* EventCardVertical.swift */,
+				36920C5A2BC93ADC00CA9D8F /* EventScrollView.swift */,
+				36AFCD292C099ADD00FCBD2F /* EventFilterScrollView.swift */,
+				361ACDC42C0687A5002D4BA5 /* EventTabContentView.swift */,
+				3649F3622BDCF9E0003DBEBD /* EventTypeScrollView.swift */,
+			);
+			path = Events;
+			sourceTree = "<group>";
+		};
+		360C880E2C0A35C600D952D2 /* Shop */ = {
+			isa = PBXGroup;
+			children = (
+				36920C542BC92EEE00CA9D8F /* ShopScrollView.swift */,
+				3649F3662BDCFE87003DBEBD /* ShopCategoriesScrollView.swift */,
+				3649F3642BDCFC60003DBEBD /* ShopCategories.swift */,
+				36920C562BC92EF900CA9D8F /* ItemCard.swift */,
+				36AFCD2B2C099FFF00FCBD2F /* ShopTypes.swift */,
+				36AFCD272C09651500FCBD2F /* ShopContentView.swift */,
+			);
+			path = Shop;
+			sourceTree = "<group>";
+		};
+		360C880F2C0A35F000D952D2 /* Highlights */ = {
+			isa = PBXGroup;
+			children = (
+				3649F3582BDCD29D003DBEBD /* highlightview.swift */,
+				3649F35A2BDCD885003DBEBD /* HighlightScrollView.swift */,
+			);
+			path = Highlights;
+			sourceTree = "<group>";
+		};
+		360C88102C0A360800D952D2 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+				361ACDC62C07C1B2002D4BA5 /* ExploreHomeView.swift */,
+				3649F35C2BDCE769003DBEBD /* CategoriesView.swift */,
+				3649F35E2BDCE9B5003DBEBD /* CategoryScrollView.swift */,
+				36236A4A2BC66D9600580B29 /* ExploreView.swift */,
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		360C88112C0A361E00D952D2 /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				360C88032C09A6FB00D952D2 /* TicketContentView.swift */,
+				360C88052C09A8BC00D952D2 /* TicketFilterScrollView.swift */,
+			);
+			path = Ticket;
+			sourceTree = "<group>";
+		};
+		360C88122C0A363700D952D2 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				36920C522BC928A700CA9D8F /* FeaturedAthletes.swift */,
+				360C88092C09AFAD00D952D2 /* NetworkContentView.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		360C88132C0A365C00D952D2 /* Showcases */ = {
+			isa = PBXGroup;
+			children = (
+				360C88072C09AAF100D952D2 /* ShowcasesContentView.swift */,
+			);
+			path = Showcases;
+			sourceTree = "<group>";
+		};
+		360C88142C0A366600D952D2 /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				360C880B2C09B21000D952D2 /* TrainingContentView.swift */,
+			);
+			path = Training;
+			sourceTree = "<group>";
+		};
+		360C88152C0A368E00D952D2 /* Filler */ = {
+			isa = PBXGroup;
+			children = (
+				369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */,
+				362DC5C42BEAC0FC005E5472 /* UIScrollViewController.swift */,
+			);
+			path = Filler;
+			sourceTree = "<group>";
+		};
 		3610AE212BD5DDB600CD54B4 /* Profile Creation */ = {
 			isa = PBXGroup;
 			children = (
@@ -321,34 +411,15 @@
 		36236A492BC66D2D00580B29 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
-				36236A4A2BC66D9600580B29 /* ExploreView.swift */,
-				36920C522BC928A700CA9D8F /* FeaturedAthletes.swift */,
-				36920C542BC92EEE00CA9D8F /* ShopScrollView.swift */,
-				36920C562BC92EF900CA9D8F /* ItemCard.swift */,
-				36920C582BC935C100CA9D8F /* EventCardHorizontal.swift */,
-				36920C5C2BC93BC200CA9D8F /* EventCardVertical.swift */,
-				36920C5A2BC93ADC00CA9D8F /* EventScrollView.swift */,
-				3649F3582BDCD29D003DBEBD /* highlightview.swift */,
-				3649F35A2BDCD885003DBEBD /* HighlightScrollView.swift */,
-				3649F35E2BDCE9B5003DBEBD /* CategoryScrollView.swift */,
-				3649F35C2BDCE769003DBEBD /* CategoriesView.swift */,
-				3649F3602BDCF71E003DBEBD /* EventTypeView.swift */,
-				3649F3622BDCF9E0003DBEBD /* EventTypeScrollView.swift */,
-				3649F3662BDCFE87003DBEBD /* ShopCategoriesScrollView.swift */,
-				3649F3642BDCFC60003DBEBD /* ShopCategories.swift */,
-				369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */,
-				362DC5C42BEAC0FC005E5472 /* UIScrollViewController.swift */,
+				360C88142C0A366600D952D2 /* Training */,
+				360C88132C0A365C00D952D2 /* Showcases */,
+				360C88122C0A363700D952D2 /* Network */,
+				360C88112C0A361E00D952D2 /* Ticket */,
+				360C88102C0A360800D952D2 /* Explore */,
+				360C880F2C0A35F000D952D2 /* Highlights */,
+				360C880E2C0A35C600D952D2 /* Shop */,
+				360C880D2C0A359F00D952D2 /* Events */,
 				36CA856C2BED54FB0044A66C /* ScrollableView.swift */,
-				361ACDC42C0687A5002D4BA5 /* EventTabContentView.swift */,
-				361ACDC62C07C1B2002D4BA5 /* ExploreHomeView.swift */,
-				36AFCD272C09651500FCBD2F /* ShopContentView.swift */,
-				36AFCD292C099ADD00FCBD2F /* EventFilterScrollView.swift */,
-				36AFCD2B2C099FFF00FCBD2F /* ShopTypes.swift */,
-				360C88032C09A6FB00D952D2 /* TicketContentView.swift */,
-				360C88052C09A8BC00D952D2 /* TicketFilterScrollView.swift */,
-				360C88072C09AAF100D952D2 /* ShowcasesContentView.swift */,
-				360C88092C09AFAD00D952D2 /* NetworkContentView.swift */,
-				360C880B2C09B21000D952D2 /* TrainingContentView.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -537,6 +608,7 @@
 		E55B361F2A6181EC00CB859B /* SocialMediaTutorial */ = {
 			isa = PBXGroup;
 			children = (
+				360C88152C0A368E00D952D2 /* Filler */,
 				36BE40D92BFD7CB30028A2AE /* User Content */,
 				3610AE212BD5DDB600CD54B4 /* Profile Creation */,
 				361170DC2BD24DCF00BBB3B2 /* Search */,

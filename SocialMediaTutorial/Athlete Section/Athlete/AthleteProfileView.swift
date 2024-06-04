@@ -9,6 +9,8 @@ import SwiftUI
 
 struct AthleteProfileView: View {
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var vm: FeedVM
+
     @EnvironmentObject var feedVM: FeedVM
     var athlete: Athlete
     @State var athleteHeadline: String = ""
@@ -148,9 +150,10 @@ struct AthleteProfileView: View {
             }
             if(current == "Posts"){
                 ScrollView{
-                    PostListView(showCommentSection: false) {
+                    PostListView(feedVM: _vm, showCommentSection: false, onCommentTapped: {
                         
-                    }
+                    })
+                    
                     .padding(.top, -20)
 
                 }
