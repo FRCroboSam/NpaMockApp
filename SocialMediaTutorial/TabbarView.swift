@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
+import YouTubePlayerKit
 
 struct TabbarView: View {
     @EnvironmentObject var athleteVM: AthleteVM
 
     @EnvironmentObject var vm: FeedVM
     @State private var selected = 1
+    @State private var lastSelected = 1
     var deviceHeight: CGFloat {
         UIScreen.main.bounds.height
     }
@@ -105,6 +107,14 @@ struct TabbarView: View {
                         }
                         Spacer()
                     }
+                    .onChange(of: selected){ value in
+                        if(lastSelected == 3 && selected == 1){
+                            
+                        }
+                        lastSelected = selected
+                        
+                        
+                    }
                     
                     
                     .padding(.bottom, 40)
@@ -138,15 +148,11 @@ struct TabbarView: View {
                     CreatePostView().tag(0)
                     FeedView().tag(1)
                     InboxView(athletes: athleteVM.athletes).tag(2)
+                    EmptyView().tag(4)
                     //NotificationsView().tag(-1)
                 }
                 
                 .tabViewStyle(.page(indexDisplayMode: .never))
-                .onChange(of: selected) { value in
-                    if(value == 1){
-                        print("Changing selected")
-                    }
-                }
             }
             else if(selected == 2){
                 ExploreView()
@@ -155,12 +161,25 @@ struct TabbarView: View {
             else if(selected == 3){
                 
                 DiscoverView()
+                    .onAppear{
+                        print("DISCOVER APPEARS")
+//                        selected = 1
+                    }
             }
             else if(selected == 4){
                 NpaContentView()
             }
-            else{
+            else if(selected == 5){
                 EditProfileView(athlete: Athlete.defaultAthlete())
+            }
+            else{
+                Color.white
+//                    .onAppear{
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+//                            selected = 1
+//                        }
+//                    }
+
             }
             if(athleteVM.showingFilters){
                 ZStack{
@@ -274,6 +293,7 @@ struct TabbarView: View {
             // tab-items cover - do anything needed, height, position, alignment, etc.
 
             }
+
             .toolbar(.hidden, for: .navigationBar)
             
         

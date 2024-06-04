@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import YouTubePlayerKit
 
 struct AthleteProfileView: View {
     @Environment(\.dismiss) var dismiss
@@ -150,11 +151,28 @@ struct AthleteProfileView: View {
             }
             if(current == "Posts"){
                 ScrollView{
-                    PostListView(feedVM: _vm, showCommentSection: false, onCommentTapped: {
-                        
-                    })
+                    Text("EIFJ")
+                    let post = vm.posts[0]
+                    PostView(
+                        post: post, postVM: PostVM(post: post), profile_img: post.profile_img,
+                        profile_name: post.profile_name,
+                        profile_id: post.profile_id,
+                        image_or_video: post.image_or_video,
+                        like_count: post.like_count,
+                        comment_count: post.comment_count,
+                        view_count: post.view_count,
+                        description: post.description,
+                        onCommentTapped: {
+                            feedVM.selected_post_vm = PostVM(post: post)
+                            feedVM.selected_post_vm.fetchComments(postId: feedVM.selected_post_vm.post.post_id)
+                            withAnimation(.easeIn.speed(2.0)){
+                                feedVM.showCommentSection = true
+                            }
+
+                        }, player: YouTubePlayer(source: .url(post.image_or_video))
+                    )
                     
-                    .padding(.top, -20)
+                    //.padding(.top, -20)
 
                 }
                 Spacer()
