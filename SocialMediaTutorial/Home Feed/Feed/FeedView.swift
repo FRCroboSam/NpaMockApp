@@ -10,6 +10,12 @@ import YouTubePlayerKit
 struct FeedView: View {
     @EnvironmentObject var vm: FeedVM
     @EnvironmentObject var athleteVM: AthleteVM
+    
+    
+    @State var selectedFeed = "All"
+    
+    
+    
     @State var showNotifications = false
     @State var showCommentSection = false
     //    @ObservedObject var postData: ReadJsonData
@@ -38,7 +44,7 @@ struct FeedView: View {
     let sports = ["All", "Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
                   "Basketball", "Pickleball", "Cross Country", "Track and Field"]
     
-    let sort = ["Hot Posts", "New Posts", "Top Posts"]
+    let sort = ["Hot", "New", "Top", "Records"]
     @State var selectedSport: String = ""
     @State var sortType: String = ""
     
@@ -149,47 +155,197 @@ struct FeedView: View {
                                     .frame(height: 10)
                                 StoryListView() // Display the list of stories
                                 Divider()
-                                Spacer()
-                                    .frame(height: 10)
-                                HStack{
+                                VStack{
                                     Spacer()
-                                        .frame(width: 15)
-                                    Image(systemName: "flame")
-                                    //                        .bold()
-                                        .font(.title)
-                                        .foregroundStyle(Color(hex: "0077B6").opacity(1.0))
-                                        .background{
-                                            Color(UIColor.systemBlue).opacity(0.2)
-                                                .clipped()
-                                                .clipShape(.circle)
-                                                .frame(width: 40, height: 40)
-                                        }
-                                        .padding(.leading, 20)
-                                    DropdownPicker(value: $sortType, text: "Select a sport: ", color: .white.opacity(0.2), textColor: Color(hex: "0077B6"), items: sort)
-                                    Spacer()
-                                    Button{
-                                        if(athleteVM.showingFilters){
-                                            athleteVM.startSlidingDown = true
-                                        }
-                                        else{
-                                            athleteVM.showingFilters = true
-                                        }
-                                        
-                                    }label: {
-                                        Image(systemName: "slider.horizontal.3")
-                                            .font(.title2)
-                                            .foregroundStyle(.gray)
-                                            .padding(10)
-                                            .background{
-                                                RoundedRectangle(cornerRadius: 10)
-                                                    .fill(Color.gray.opacity(0.3))
+                                        .frame(height: 5)
+                                    
+                                    ScrollView(.horizontal){
+                                        HStack(spacing: 15){
+                                            //                            Text("Sponsor and interact with your favorite athletes!")
+                                            //                                .bold()
+                                            //                                .font(.subheadline)
+                                           
+                                            HStack(spacing: 0){
+                                                Image(systemName: "flame")
+                                                //                        .bold()
+                                                    .font(.title2)
+                                                    .foregroundStyle(Color(hex: "0077B6").opacity(1.0))
+                                            
+                                                            
+                                                DropdownPicker(value: $sortType, text: "Select a sport: ", color: .white.opacity(0.2), textColor: Color(hex: "0077B6"), items: sort)
                                             }
-                                            .padding(.trailing, 30)
-                                    }
-                                    //.padding(.trailing, 10)
+
+                                            .padding(.vertical, 4)
+                                            .padding(.leading, 8)
+                                            .padding(.trailing, 5)
+                                            .background{
+                                                RoundedRectangle(cornerRadius: 15)
+                                                    //.strokeBorder(Color(hex: "0A66C2"))
+                                                    .fill(
+                                                        Color.blue.opacity(0.15))
+                                                    //.padding(.leading, 15)
+
+
+                                            }
+                                            .padding(.leading, 20)
+
+
+                                            Text("All")
+                                                .foregroundStyle(.white.opacity(1.0))
+                                                .padding(.horizontal, 16)
+                                                .padding(.vertical, 12)
+                                                .background{
+                                                    
+                                                    RoundedRectangle(cornerRadius: 15)
+                                                        .fill(Color(hex: "0A66C2")).opacity(1.0)
+                                                    
+                                                    //.strokeBorder(Color(UIColor.systemGray4))
+                                                        //.shadow(color: Color(UIColor.gray).opacity(0.6),radius: 1.6)*/
+                                                        //.mask(RoundedRectangle(cornerRadius: 15).padding(.bottom, -10))
+                                                            //.padding(.horizontal, -10)
+                                                        //.shadow(color: Color(UIColor.gray).opacity(0.8), radius: 1.7)
+                                                    
+                                                }
+//                                            Divider()
+//                                                .overlay(Color.gray.opacity(0.8)
+//                                                    .frame(width: 0.2)
+//                                                )
+                                            Text("Basketball")
+                                                .foregroundStyle(Color(UIColor.systemGray2))
+                                                .padding(.horizontal, 14)
+                                                .padding(.vertical, 12)
+                                                .background{
+                                                    RoundedRectangle(cornerRadius: 10)
+                                                        .fill(Color.gray.opacity(0.15))
+                                                    
+                                                    //.strokeBorder(Color(UIColor.systemGray4))
+                                                        //.cornerRadius(15)
+                                                        //.shadow(radius: 1)
+                                                    
+                                                }
+                                            Text("Soccer")
+                                                .foregroundStyle(Color(UIColor.systemGray2))
+                                                .padding(.horizontal, 14)
+                                                .padding(.vertical, 12)
+                                                .background{
+                                                    RoundedRectangle(cornerRadius: 10)
+                                                        .fill(Color.gray.opacity(0.15))
+                                                    
+                                                    //.strokeBorder(Color(UIColor.systemGray4))
+                                                        //.cornerRadius(15)
+                                                        //.shadow(radius: 1)
+                                                    
+                                                }
+                                            Text("Baseball")
+                                                .foregroundStyle(Color(UIColor.systemGray2))
+                                                .padding(.horizontal, 14)
+                                                .padding(.vertical, 12)
+                                                .background{
+                                                    RoundedRectangle(cornerRadius: 10)
+                                                        .fill(Color.gray.opacity(0.15))
+                                                    
+                                                    //.strokeBorder(Color(UIColor.systemGray4))
+                                                        //.cornerRadius(15)
+                                                        //.shadow(radius: 1)
+                                                    
+                                                }
+                                            
+                                            Text("Men's")
+                                                .foregroundStyle(Color.blue)
+                                                .padding(.horizontal, 14)
+                                                .padding(.vertical, 7)
+                                                .background{
+                                                    RoundedRectangle(cornerRadius: 20)
+                                                        .fill(Color.white)
+                                                    
+                                                    //.strokeBorder(Color.blue, lineWidth: 2)
+                                                        .cornerRadius(15)
+                                                }
+                                            
+                                            
+                                            
+                                            Text("Basketball")
+                                                .foregroundStyle(Color.orange)
+                                                .padding(.horizontal, 14)
+                                                .padding(.vertical, 7)
+                                                .background{
+                                                    RoundedRectangle(cornerRadius: 20)
+                                                        .fill(Color.white)
+                                                    
+                                                    //.strokeBorder(.orange)
+                                                        .cornerRadius(15)
+                                                }
+                                            
+                                            Text("JUCO")
+                                                .foregroundStyle(Color.teal)
+                                                .padding(.horizontal, 14)
+                                                .padding(.vertical, 7)
+                                                .background{
+                                                    RoundedRectangle(cornerRadius: 20)
+                                                        .fill(Color.white)
+                                                    //.strokeBorder(.teal)
+                                                        .cornerRadius(15)
+                                                }
+                                            
+                                            
+                                            
+                                            
+                                        }
+                                        .padding(10)
+                                    }.scrollIndicators(.hidden)
+                                    
+                                    Divider()
+
                                 }
-                                Spacer()
-                                    .frame(height: 10)
+//                                .background{
+//                                    Color.gray.opacity(0.2)
+//                                }
+//                                Spacer()
+//                                    .frame(height: 15)
+//                                HStack{
+//                                    
+//                                    Spacer()
+//                                        .frame(width: 15)
+//                                    HStack{
+//                                        Image(systemName: "flame")
+//                                        //                        .bold()
+//                                            .font(.title)
+//                                            .foregroundStyle(Color(hex: "0077B6").opacity(1.0))
+//                                            .background{
+//                                                Color(UIColor.systemBlue).opacity(0.2)
+//                                                    .clipped()
+//                                                    .clipShape(.circle)
+//                                                    .frame(width: 40, height: 40)
+//                                            }
+//                                            .padding(.leading, 20)
+//                                        DropdownPicker(value: $sortType, text: "Select a sport: ", color: .white.opacity(0.2), textColor: Color(hex: "0077B6"), items: sort)
+//                                    }
+//                                    .padding(5)
+//                                    
+//                                    Spacer()
+//                                    Button{
+//                                        if(athleteVM.showingFilters){
+//                                            athleteVM.startSlidingDown = true
+//                                        }
+//                                        else{
+//                                            athleteVM.showingFilters = true
+//                                        }
+//                                        
+//                                    }label: {
+//                                        Image(systemName: "slider.horizontal.3")
+//                                            .font(.title2)
+//                                            .foregroundStyle(.gray)
+//                                            .padding(10)
+//                                            .background{
+//                                                RoundedRectangle(cornerRadius: 10)
+//                                                    .fill(Color.gray.opacity(0.15))
+//                                            }
+//                                            .padding(.trailing, 30)
+//                                    }
+//                                    //.padding(.trailing, 10)
+//                                }
+//                                Spacer()
+//                                    .frame(height: 10)
                                 
                                 PostListView(feedVM: _vm, showCommentSection: false, onCommentTapped: {
                                     print("EXECUTING")
@@ -201,7 +357,7 @@ struct FeedView: View {
                                         
                                     }
                                 }) // Display the list of posts
-                                .padding(.top, -30)
+                                .padding(.top, -50)
                             }
                             .onAppear{
                                 //                    lastTranslation.height = 500
@@ -417,8 +573,10 @@ struct FeedView: View {
 }
 
 
-//struct HomeView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HomeView()
-//    }
-//}
+struct HomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        FeedView()
+            .environmentObject(FeedVM())
+            .environmentObject(AthleteVM())
+    }
+}

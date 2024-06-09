@@ -26,7 +26,7 @@ struct FeedFilterView: View {
         VStack(alignment: .leading ){
             HStack{
                 Text("SORT BY")
-                    .font(.system(size: 15))
+                    .font(.system(size: 20))
                     .bold()
                 Spacer()
             }
@@ -37,6 +37,8 @@ struct FeedFilterView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 25)
                 Text("Trending")
+                    .font(.system(size: 20))
+
             
             }
             Spacer()
@@ -47,6 +49,8 @@ struct FeedFilterView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 25)
                 Text("New")
+                    .font(.system(size: 20))
+
             }
             Spacer()
                 .frame(height: 10)
@@ -56,6 +60,8 @@ struct FeedFilterView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 25)
                 Text("Top")
+                    .font(.system(size: 20))
+
             }
             Spacer()
                 .frame(height: 10)
@@ -65,6 +71,8 @@ struct FeedFilterView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(width: 25, height: 25)
                 Text("Rising")
+                    .font(.system(size: 20))
+
             }
             Spacer()
                 .frame(height: 10)
@@ -114,7 +122,7 @@ struct FeedFilterView: View {
                 
             }
         .padding(10)
-        .frame(width: 15/16 * deviceWidth)
+        .frame(width: 16/17 * deviceWidth)
         //.frame(width: 7/8 * deviceWidth, height: 300)///3/4 * deviceWidth, height: 300)
         .background(
             RoundedRectangle(cornerRadius: 10)

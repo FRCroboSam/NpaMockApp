@@ -22,91 +22,139 @@ struct TabbarView: View {
     @State var filterViewOffset = 600.0
     @State var filterFeed = false
     
+    @State var slidingTabOffset = 50.0
+    let tabOffsets = [55.0, 130.0, 205, 285.0, 155.0 + 1/2 * deviceWidth]
     @State private var startSlidingDown = false
     var body: some View {
         
         ZStack{
             if(!vm.showCommentSection){
+                VStack{
+                    
+                    Rectangle()
+                        .fill(Color(hex: "0A66C2"))
+                        .frame(width: 50, height: 3.0)
+                        .offset(x: slidingTabOffset - 1/2 * deviceWidth, y: -5)
+                        .animation(.easeIn, value: slidingTabOffset)
                     HStack {
                         Spacer()
                         VStack{
                             Button(action: {
                                 withAnimation(.easeIn){
                                     self.selected = 1
+                                    slidingTabOffset = tabOffsets[self.selected - 1]
                                 }
                             } ) {
                                 Image(systemName: self.selected == 1 ? "house.fill" : "house") // Tab icon for HomeView
-                                    .font(.system(size: 30))
-                                    .tint(self.selected == 1 ? .blue : .gray)
+                                    .font(.system(size: 25))
+                                    .tint(self.selected == 1 ? Color(hex: "0A66C2") : .gray)
                             }
+                            .frame(height: 25)
+
                             Text("Home")
-                                .foregroundStyle(self.selected == 1 ? .blue : .gray)
+                                .font(.caption)
+                                .foregroundStyle(self.selected == 1 ? Color(hex: "0A66C2") : .gray)
                         }
+                        .frame(width: 50)
 
                         Spacer()
                         VStack{
                             Button(action: {
                                 withAnimation(.easeIn){
                                 self.selected = 2
+                                slidingTabOffset = tabOffsets[self.selected - 1]
+
 
 
                             } } ) {
                                 Image(systemName: "magnifyingglass") // Tab icon for Search View
-                                    .font(.system(size: 30))
-                                    .bold(self.selected == 2)
-                                    .tint(self.selected == 2 ? .blue : .gray)
+                                    .font(.system(size: 25))
+                                    //bold(self.selected == 2)
+                                    .tint(self.selected == 2 ? Color(hex: "0A66C2") : .gray)
                                 
                             }
+                            .frame(height: 25)
+
                             Text("Explore")
-                                .foregroundStyle(self.selected == 2 ? .blue : .gray)
+                                .font(.caption)
+                                .foregroundStyle(self.selected == 2 ? Color(hex: "0A66C2") : .gray)
 
                         }
+                        .frame(width: 50)
+
                         Spacer()
                         VStack{
                             Button(action: {                                 withAnimation(.easeIn){
                                 self.selected = 3
+                                slidingTabOffset = tabOffsets[self.selected - 1]
+
 
                             } } ) {
                                 Image(systemName: "figure.run") // Tab icon for New Post
-                                    .font(.system(size: 30))
-                                    .tint(self.selected == 3 ? .blue : .gray)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .font(.system(size: 25))
+                                    .tint(self.selected == 3 ? Color(hex: "0A66C2") : .gray)
+//                                    .background{
+//                                        Color.orange
+//                                    }
                                 
                             }
+                            .frame(height: 25)
+
                             Text("Athletes")
-                                .foregroundStyle(self.selected == 3 ? .blue : .gray)
-                                .offset(y: 2)
+                                .font(.caption)
+                                .foregroundStyle(self.selected == 3 ? Color(hex: "0A66C2") : .gray)
                         }
+                        .frame(width: 50)
+
                         Spacer()
                         VStack{
                             Button(action: {                                 withAnimation(.easeIn){
                                 self.selected = 4
+                                slidingTabOffset = tabOffsets[self.selected - 1]
+
 
                             } } ) {
                                 Image(systemName: "network") // Tab icon for New Post
-                                    .font(.system(size: 30))
-                                    .tint(self.selected == 4 ? .blue : .gray)
+                                    .font(.system(size: 25))
+                                    .tint(self.selected == 4 ? Color(hex: "0A66C2") : .gray)
                                 
                             }
+                            .frame(height: 25)
+
                             Text("Content")
-                                .foregroundStyle(self.selected == 4 ? .blue : .gray)
+                                .font(.caption)
+                                .foregroundStyle(self.selected == 4 ? Color(hex: "0A66C2") : .gray)
                         }
+                        .frame(width: 50)
+
                         Spacer()
 
                         VStack{
                             Button(action: {                                 withAnimation(.easeOut(duration: 0.1)){
                                 self.selected = 5
+                                slidingTabOffset = tabOffsets[self.selected - 1]
+
 
                             } } ) {
                                 Image(systemName:  "person.crop.circle.fill") // Tab icon for Profile View
-                                    .font(.system(size: 30))
-                                    .tint(self.selected == 5 ? .blue : .gray)
+                                    .font(.system(size: 25))
+                                    .tint(self.selected == 5 ? Color(hex: "0A66C2") : .gray)
                                 
                             }
+                            .frame(height: 25)
+
                             Text("Profile")
-                                .foregroundStyle(self.selected == 5 ? .blue : .gray)
+                                .font(.caption)
+                                .foregroundStyle(self.selected == 5 ? Color(hex: "0A66C2") : .gray)
                         }
+                        .frame(width: 50)
+
                         Spacer()
                     }
+                }
+
                     .onChange(of: selected){ value in
                         if(lastSelected == 3 && selected == 1){
                             
@@ -116,17 +164,16 @@ struct TabbarView: View {
                         
                     }
                     
-                    
-                    .padding(.bottom, 40)
+                    .padding(.top, 5)
                     .zIndex(athleteVM.showingFilters ? 5 : 20)
 
-                    .frame(height: 120)
                 
                     .background{
                         Color.white
                             .shadow(color: Color.gray.opacity(0.3), radius: 4, x: 0, y: 0)
+                            .padding(.bottom, -50)
                     }
-                    .offset(y: 1/2 * deviceHeight - 50 )
+                    .offset(y: 1/2 * deviceHeight - 60 )
                     //                .frame(width: deviceWidth)
                     .onChange(of: athleteVM.feedOrCommentSection){ value in
                         withAnimation(.easeIn){
@@ -146,11 +193,16 @@ struct TabbarView: View {
 //                        }
 //                    }
                     CreatePostView().tag(0)
+                    
                     FeedView().tag(1)
                     InboxView(athletes: athleteVM.athletes).tag(2)
                     EmptyView().tag(4)
                     //NotificationsView().tag(-1)
                 }
+                .onAppear{
+                    UIScrollView.appearance().alwaysBounceHorizontal = false
+                }
+                
                 
                 .tabViewStyle(.page(indexDisplayMode: .never))
             }
@@ -161,6 +213,8 @@ struct TabbarView: View {
             else if(selected == 3){
                 
                 DiscoverView()
+                    .ignoresSafeArea(.keyboard)
+
                     .onAppear{
                         print("DISCOVER APPEARS")
 //                        selected = 1
@@ -200,7 +254,7 @@ struct TabbarView: View {
                         filterViewOffset = 500
                         withAnimation(.easeIn.speed(3.5)){
                             let y = print("SHOWING COMMENT SECTION")
-                            filterViewOffset = 200
+                            filterViewOffset = 300
                             filterFeed = true
                         }
                         
@@ -231,9 +285,9 @@ struct TabbarView: View {
 //            .toolbar(vm.showCommentSection || athleteVM.showingFilters ? .hidden : .visible, for: .tabBar)                      .zIndex(athleteVM.animatingFilters ? -10 : 0)
 //
 ////
-//                
 //
-//                
+//
+//
 //                ExploreView()
 //
 //                    .tabItem {
@@ -263,13 +317,13 @@ struct TabbarView: View {
 //                    .tabItem {
 //                        Text("")
 //                    }.tag(4)
-//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)                    
+//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)
 //                    .zIndex(athleteVM.showingFilters ? -10 : 0)
 //
 //
 //                EditProfileView(athlete: Athlete.defaultAthlete())
 //                    .tag(5)
-//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)                   
+//                    .toolbar(vm.showCommentSection || athleteVM.animatingFilters ? .hidden : .visible, for: .tabBar)
 //                    .zIndex(athleteVM.showingFilters ? -10 : 0)
 //
 //
@@ -293,6 +347,7 @@ struct TabbarView: View {
             // tab-items cover - do anything needed, height, position, alignment, etc.
 
             }
+
 
             .toolbar(.hidden, for: .navigationBar)
             

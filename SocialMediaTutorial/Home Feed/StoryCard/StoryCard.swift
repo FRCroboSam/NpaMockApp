@@ -15,13 +15,16 @@ import SwiftUI
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 80, height: 80) // Set the size of the image
-                .clipShape(Circle()) // Clip the image into a circle shape
+                .clipShape(RoundedRectangle(cornerRadius: 20)) // Clip the image into a circle shape
+                .padding(4)
                 .overlay(
-                    Circle()
-                        .stroke(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .leading, endPoint: .trailing), lineWidth: 2)
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(LinearGradient(gradient: Gradient(colors: [Color.blue, Color.orange, Color.red, Color.yellow, Color.purple]), startPoint: .bottom, endPoint: .top), lineWidth: 3)
                 )
             Text(post.profile_name)
                 .font(.footnote)
+                .lineLimit(1)
+                .frame(width: 100)
                 .padding(.horizontal, -2)
 
                 // Add an overlay circle stroke with a gradient color

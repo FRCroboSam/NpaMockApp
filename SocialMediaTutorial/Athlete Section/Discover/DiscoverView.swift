@@ -19,7 +19,7 @@ struct DiscoverView: View {
         NavigationStack{
             VStack(alignment: .leading){
                 Spacer()
-                    .frame(height: 15)
+                    .frame(height: 30)
 //                Text("Athletes")
 //                    .font(.title)
 //                    .bold()
@@ -39,6 +39,7 @@ struct DiscoverView: View {
                                     .autocorrectionDisabled()
                                     .listRowSeparator(.hidden)
                             }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.925))
+                                .ignoresSafeArea(.keyboard)
 //                                .padding(.top, 10)
 //                                .offset(y: 20)
                             Button{
@@ -262,6 +263,7 @@ struct DiscoverView: View {
                     
                 
             }
+
             .zIndex(6)
 
         }

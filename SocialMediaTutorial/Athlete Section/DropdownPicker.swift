@@ -39,11 +39,12 @@ struct DropdownPicker: View {
                                 isExpanded = !isExpanded
                             }
                         }
-                        .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
+                        //.frame(width: 100, alignment: .leading) // Align text within its frame to the leading edge
                         
                     }
                     //.frame(width: 1/4 * 3/4 * deviceWidth)
-                    .padding(10)
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 10)
 //                    .background(Color.white)
 //                    .clipShape(
 //                        .rect(
@@ -57,65 +58,65 @@ struct DropdownPicker: View {
                 .onAppear{
                     value = items[0]
                 }
-                .overlay{
-                    
-                    
-                    ZStack{
-                        
-                        if(isExpanded){
-                            VStack{
-                                ScrollView{
-                                    VStack(alignment: .leading){
-                                        ForEach(items, id: \.self) {item in
-                                            VStack{
-                                                Text(item)
-                                                    .font(.system(size: 15))
-                                                    .foregroundColor(.black)
-                                                    .multilineTextAlignment(.leading) // Align text to the left
-                                                    .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
-
-                                                Divider()
-                                            }
-                                            .contentShape(Rectangle())
-                                            .onTapGesture {
-                                                withAnimation(.easeIn){
-                                                    value = item
-                                                    isExpanded = false
-                                                    
-                                                }
-                                                
-                                                
-                                            }
-                                            
-
-                                            
-                                            
-
-                                            
-                                        }
-                                    }
-                                }
-                            }
-                            .frame(width: 1/4 * 3/4 * deviceWidth, height: 200)
-                            .padding(10)
-                            .background(color)
-                            .clipShape(
-                                .rect(
-                                    topLeadingRadius: 0,
-                                    bottomLeadingRadius: 10,
-                                    bottomTrailingRadius: 10,
-                                    topTrailingRadius: 0
-                                )
-                            )
-                            
-                            
-                        }
-                    }
-                    .layoutPriority(10)
-                    .offset(x: 0, y: 120)
-                    .zIndex(200)
-
-                }
+//                .overlay{
+//                    
+//                    
+//                    ZStack{
+//                        
+//                        if(isExpanded){
+//                            VStack{
+//                                ScrollView{
+//                                    VStack(alignment: .leading){
+//                                        ForEach(items, id: \.self) {item in
+//                                            VStack{
+//                                                Text(item)
+//                                                    .font(.system(size: 15))
+//                                                    .foregroundColor(.black)
+//                                                    .multilineTextAlignment(.leading) // Align text to the left
+//                                                    .frame(maxWidth: .infinity, alignment: .leading) // Align text within its frame to the leading edge
+//
+//                                                Divider()
+//                                            }
+//                                            .contentShape(Rectangle())
+//                                            .onTapGesture {
+//                                                withAnimation(.easeIn){
+//                                                    value = item
+//                                                    isExpanded = false
+//                                                    
+//                                                }
+//                                                
+//                                                
+//                                            }
+//                                            
+//
+//                                            
+//                                            
+//
+//                                            
+//                                        }
+//                                    }
+//                                }
+//                            }
+//                            .frame(width: 1/4 * 3/4 * deviceWidth, height: 200)
+//                            .padding(10)
+//                            .background(color)
+//                            .clipShape(
+//                                .rect(
+//                                    topLeadingRadius: 0,
+//                                    bottomLeadingRadius: 10,
+//                                    bottomTrailingRadius: 10,
+//                                    topTrailingRadius: 0
+//                                )
+//                            )
+//                            
+//                            
+//                        }
+//                    }
+//                    .layoutPriority(10)
+//                    .offset(x: 0, y: 120)
+//                    .zIndex(200)
+//
+//                }
         }
 
     }

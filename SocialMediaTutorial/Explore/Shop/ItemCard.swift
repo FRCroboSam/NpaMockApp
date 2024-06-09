@@ -38,6 +38,7 @@ struct ItemCard: View {
                             }
                         )//.padding(.trailing, 20)
                         Spacer()
+                        
                     }
                     
                     

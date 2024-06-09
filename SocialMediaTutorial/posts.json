@@ -4,7 +4,7 @@
     "like_count": 50,
     "comment_count": 12,
     "view_count": 1200,
-    "description": "Learn the basics of Python programming!",
+    "description": "12-year old Gabrial Micheal sets state record in 100 meter dash with 11.69 seconds ",
     "profile_img": "male_athlete1",
     "profile_name": "Gabrial Micheal",
     "profile_id": "gabrial_micheal",
@@ -16,8 +16,8 @@
     "comment_count": 15,
     "view_count": 1500,
     "description": "Discover the latest JavaScript frameworks!",
-    "profile_img": "male_athlete1",
-    "profile_name": "Micheal Gabrial",
+    "profile_img": "male_athlete3",
+    "profile_name": "Jon Jones",
     "profile_id": "gabrial_micheal",
     "post_id": "86804218-8D47-4FB0-9785-3621A1BEE604"
 
@@ -28,8 +28,8 @@
     "comment_count": 25,
     "view_count": 2000,
     "description": "Explore machine learning algorithms in R!",
-    "profile_img": "male_athlete2",
-    "profile_name": "David Adem",
+    "profile_img": "female_athlete1",
+    "profile_name": "David Addle",
     "profile_id": "gabrial_micheal",
     "post_id": "82145027-602A-4C47-8283-035BEAD26156"
 
@@ -40,8 +40,8 @@
     "comment_count": 18,
     "view_count": 1400,
     "description": "Tips for optimizing your SQL queries!",
-    "profile_img": "female_athlete1",
-    "profile_name": "Adem David",
+    "profile_img": "female_athlete2",
+    "profile_name": "Brianna Stewart",
     "profile_id": "gabrial_micheal",
     "post_id": "960A0184-9720-4E8F-9C1D-8F5BF52F706D"
 

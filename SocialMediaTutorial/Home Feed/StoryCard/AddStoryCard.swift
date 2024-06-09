@@ -18,7 +18,7 @@ struct AddStoryCard: View {
                 .foregroundColor(.white)
                 .frame(width: 80, height: 80)
                 .background(Color.white)
-                .clipShape(Circle())
+                .clipShape(RoundedRectangle(cornerRadius: 20))
                 .overlay(alignment: .bottomTrailing){
                     Image(systemName: "plus.circle.fill")
                         .font(.title)
@@ -28,9 +28,15 @@ struct AddStoryCard: View {
                         .clipShape(Circle())
                         .offset(x: 12, y: 8)
                 }
+                .padding(4)
+                .background(
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.white)
+                )
                 
-            Text("Your Story")
-                .padding(.horizontal, 10)
+            Text("Highlights")
+                .frame(width: 85)
+                .lineLimit(1)
                 .font(.footnote)
                 .tint(.gray)
                 

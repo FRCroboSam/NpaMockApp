@@ -19,6 +19,14 @@ struct PostCardBody: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            Text("11.69s, 100 meter dash")
+                .italic()
+                .multilineTextAlignment(.leading)
+                .font(.headline)
+                .foregroundColor(.black.opacity(0.7))
+                .padding(.leading, 15)
+            Spacer()
+                .frame(height: 10)
             if(image_or_video.contains("youtube")){
                 CustomVideoPlayer(player: player, url: image_or_video)
             }
@@ -32,10 +40,20 @@ struct PostCardBody: View {
                 .frame(height: 15)
             HStack {
                 HStack(spacing: 3) {
-                    ToggleButton(color: Color.red, imageName: "heart")
+                    ToggleButton(color: Color(hex: "0A66C2"), imageName: "flame")
+                    Spacer()
+                        .frame(width: 1)
                     Text("\(like_count.formattedString())")
+                        .foregroundStyle(Color(hex: "0A66C2"))
+                }
+                .padding(.horizontal, 8)
+                .padding(.vertical, 5)
+                .background{
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.gray.opacity(0.45), lineWidth: 0.5)
                 }
                 Spacer()
+                    .frame(width: 10)
                 HStack {
                     Button(action: {
                         onCommentTapped()
@@ -45,18 +63,32 @@ struct PostCardBody: View {
                         Image(systemName: "text.bubble")
                             .foregroundStyle(.gray)
                         Text("\(comment_count.formattedString())")
+                            .foregroundStyle(.black.opacity(0.6))
                        
                     })
 
                 }
-                Spacer()
-                HStack {
-                    Image(systemName: "eye")
-                    Text("\(view_count.formattedString())")
+                .padding(.horizontal, 8)
+                .padding(.vertical, 5)
+                .background{
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.gray.opacity(0.45), lineWidth: 0.5)
                 }
+                Spacer()
+                    .frame(width: 10)
+                Image(systemName: "arrowshape.turn.up.right")
+                    .foregroundStyle(.black.opacity(0.6))
+                    .padding(.horizontal, 10)
+                    .padding(.vertical, 6)
+                    .background{
+                        RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color.gray.opacity(0.45), lineWidth: 0.5)
+                    }
+                 
                 Spacer()
                 HStack {
                     Image(systemName: "bookmark")
+
                 }
                 .padding(.horizontal, 10)
             }

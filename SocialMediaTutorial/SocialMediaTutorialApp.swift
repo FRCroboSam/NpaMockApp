@@ -102,6 +102,7 @@ struct SocialMediaTutorialApp: App {
                 //CODE FOR DETECTING IF WE ALREADY CREATED USER SO WE SHOULD GO TO FEED VIEW
                 let defaults = UserDefaults.standard
                 print(defaults.value(forKey: "User Type"))
+                feedVM.loadVideoIds()
 //                loggedIn = defaults.value(forKey: "User Type") != nil
             }
             

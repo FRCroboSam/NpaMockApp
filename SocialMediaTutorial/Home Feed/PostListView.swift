@@ -54,7 +54,7 @@ struct PostListView: View {
                 .onAppear{
                     print("POST POSITIONS 0")
                     print(postPositions[0]);
-                    if(postPositions[0] > 200 && postPositions[0] <  3/4 * deviceHeight){
+                    if(postPositions[0] > 200 && postPositions[0] < 700){
                        // if(!feedVM.youtubePlayers[0].isPlaying){
                         print("TRYING TO PLAY")
                         print(feedVM.youtubePlayers[0].isPlaying)
@@ -75,8 +75,8 @@ struct PostListView: View {
                     print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
                     print("POST IS VISIBLE: "  + String(avgY > 200 && avgY < 600))
                     postPositions[index2] = avgY
-                    if(avgY > 200 && avgY < 3/4 * deviceHeight && player != nil){
-                        print("AVG Y IS: " + String(avgY))
+                    if(avgY > 200 && avgY < 700 && player != nil){
+                        print("BRO AVG Y IS: " + String(avgY))
                             //if(!player!.isPlaying){
                             print("STARTING THE PLAYER FOR: ")
                             print(index)
@@ -98,7 +98,7 @@ struct PostListView: View {
 
                     }
                     else{
-                        print("AVG Y IS: " + String(avgY))
+                        print("SHOULD BE PAUSING " + String(avgY))
 
                         player?.pause()
                     }
@@ -139,7 +139,7 @@ private struct BecomingVisible: ViewModifier {
                     .preference(
                         key: VisibleKey.self,
                         // See discussion!
-                        value: avgY > 200 && avgY < 3/4 * deviceHeight//.intersects(proxy.frame(in: .global))
+                        value: avgY > 200 && avgY < 700//.intersects(proxy.frame(in: .global))
                     )
                     .onPreferenceChange(VisibleKey.self) { isVisible in
                         print("isVisible: " + String(isVisible))

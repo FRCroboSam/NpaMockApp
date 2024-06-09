@@ -103,13 +103,29 @@ class FeedVM: ObservableObject {
                             
                             
                         }
+                        UserDefaults.standard.set(self.videoIds, forKey: "videoIds")
+
                     }
                 } catch {
                     print("Error decoding JSON: \(error)")
                 }
             }.resume()
         }
+        func loadVideoIds(){
+            self.videoIds = UserDefaults.standard.stringArray(forKey: "videoIds") ?? []
+            if(videoIds.isEmpty){
+                print("NO VIDEOS FOUND FETCHING")
+                fetchVideoIds()
+            }
+            else{
+                print("VIDEOS ALREADY FETCHED")
+                print(videoIds.count)
+                print(videoIds[0])
+            }
+            
+        }
     }
+
 
     struct SearchListResponse: Decodable {
         let items: [SearchResult]
