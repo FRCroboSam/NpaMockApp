@@ -60,7 +60,7 @@ struct FeedView: View {
                     VStack(spacing: 0) {
                         //NavBar()
                         Spacer()
-                            .frame(height: 50)
+                            .frame(height: 15)
                         HStack{
                             Image("complete_logo")
                                 .resizable()

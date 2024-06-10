@@ -14,7 +14,7 @@ struct SocialMediaTutorialApp: App {
     @StateObject private var podcastVM = PodcastVM()
     @StateObject private var blogVM = BlogVM()
     
-    @State var readyToShow = false;
+    @State var readyToShow =  false;
     @State var opacity = 1.0
     
     @State var homeOpacity = 0.0

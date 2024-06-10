@@ -75,11 +75,16 @@ struct PostListView: View {
                     print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
                     print("POST IS VISIBLE: "  + String(avgY > 200 && avgY < 600))
                     postPositions[index2] = avgY
+                    if(index2 == 4){
+                        print("FOR 4: " + String(Double(avgY)))
+                    }
                     if(avgY > 200 && avgY < 700 && player != nil){
                         print("BRO AVG Y IS: " + String(avgY))
                             //if(!player!.isPlaying){
-                            print("STARTING THE PLAYER FOR: ")
-                            print(index)
+                            print("STARTING THE PLAYER FOR: " + String(Double(index2)))
+                            let index2 = feedVM.post_with_videos.firstIndex(where: { $0 == post.post_id})
+                            var player = index != nil ? feedVM.youtubePlayers[index ?? 0] : nil
+                            print(index2)
                             print(player == nil)
                             player?.play(){ completed in
                                 print("STARTING THE PLAYER DONE: ")
@@ -98,7 +103,7 @@ struct PostListView: View {
 
                     }
                     else{
-                        print("SHOULD BE PAUSING " + String(avgY))
+                        print("SHOULD BE PAUSING FOR " + String(index2))
 
                         player?.pause()
                     }

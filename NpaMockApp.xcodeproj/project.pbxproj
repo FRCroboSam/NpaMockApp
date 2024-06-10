@@ -81,6 +81,8 @@
 		36920C622BC946A300CA9D8F /* ChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C612BC946A300CA9D8F /* ChatListItemView.swift */; };
 		369F06CA2BEA258F00490B8C /* SampleSnappingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */; };
 		369F06CD2BEA2C5D00490B8C /* SnapToScroll in Frameworks */ = {isa = PBXBuildFile; productRef = 369F06CC2BEA2C5D00490B8C /* SnapToScroll */; };
+		36A6BDBE2C16481700CF9670 /* MainExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6BDBD2C16481700CF9670 /* MainExploreView.swift */; };
+		36A6BDC02C164EAF00CF9670 /* ExploreCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6BDBF2C164EAF00CF9670 /* ExploreCategoryView.swift */; };
 		36AFCD282C09651500FCBD2F /* ShopContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFCD272C09651500FCBD2F /* ShopContentView.swift */; };
 		36AFCD2A2C099ADD00FCBD2F /* EventFilterScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFCD292C099ADD00FCBD2F /* EventFilterScrollView.swift */; };
 		36AFCD2C2C099FFF00FCBD2F /* ShopTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36AFCD2B2C099FFF00FCBD2F /* ShopTypes.swift */; };
@@ -92,6 +94,10 @@
 		36CA856D2BED54FB0044A66C /* ScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CA856C2BED54FB0044A66C /* ScrollableView.swift */; };
 		36CD28782BBE7C7100B02588 /* CustomTabBarButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */; };
 		36CD287A2BBF26D000B02588 /* ScrollableCommentSectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */; };
+		36D5653E2C166B82000136C4 /* VerificationReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D5653D2C166B82000136C4 /* VerificationReminder.swift */; };
+		36D565402C167647000136C4 /* FilterScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D5653F2C167647000136C4 /* FilterScrollView.swift */; };
+		36D565422C167B81000136C4 /* HighlightScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D565412C167B81000136C4 /* HighlightScrollableView.swift */; };
+		36D9D31C2C16B91E00E2E035 /* BioCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9D31B2C16B91E00E2E035 /* BioCard.swift */; };
 		36DC850B2BFBB8AE00FCC7E2 /* AthleteDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DC850A2BFBB8AE00FCC7E2 /* AthleteDiscoverView.swift */; };
 		36DC850D2BFBBB7D00FCC7E2 /* TeamsDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DC850C2BFBBB7D00FCC7E2 /* TeamsDiscoverView.swift */; };
 		36DC850F2BFBBBC900FCC7E2 /* TeamScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DC850E2BFBBBC900FCC7E2 /* TeamScrollView.swift */; };
@@ -195,6 +201,8 @@
 		36920C612BC946A300CA9D8F /* ChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItemView.swift; sourceTree = "<group>"; };
 		369F06C82BE84E5100490B8C /* NpaMockApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NpaMockApp-Info.plist"; sourceTree = "<group>"; };
 		369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSnappingListView.swift; sourceTree = "<group>"; };
+		36A6BDBD2C16481700CF9670 /* MainExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainExploreView.swift; sourceTree = "<group>"; };
+		36A6BDBF2C164EAF00CF9670 /* ExploreCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreCategoryView.swift; sourceTree = "<group>"; };
 		36AFCD272C09651500FCBD2F /* ShopContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopContentView.swift; sourceTree = "<group>"; };
 		36AFCD292C099ADD00FCBD2F /* EventFilterScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventFilterScrollView.swift; sourceTree = "<group>"; };
 		36AFCD2B2C099FFF00FCBD2F /* ShopTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopTypes.swift; sourceTree = "<group>"; };
@@ -206,6 +214,10 @@
 		36CA856C2BED54FB0044A66C /* ScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableView.swift; sourceTree = "<group>"; };
 		36CD28772BBE7C7100B02588 /* CustomTabBarButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabBarButton.swift; sourceTree = "<group>"; };
 		36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableCommentSectionView.swift; sourceTree = "<group>"; };
+		36D5653D2C166B82000136C4 /* VerificationReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationReminder.swift; sourceTree = "<group>"; };
+		36D5653F2C167647000136C4 /* FilterScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScrollView.swift; sourceTree = "<group>"; };
+		36D565412C167B81000136C4 /* HighlightScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightScrollableView.swift; sourceTree = "<group>"; };
+		36D9D31B2C16B91E00E2E035 /* BioCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCard.swift; sourceTree = "<group>"; };
 		36DC850A2BFBB8AE00FCC7E2 /* AthleteDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteDiscoverView.swift; sourceTree = "<group>"; };
 		36DC850C2BFBBB7D00FCC7E2 /* TeamsDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsDiscoverView.swift; sourceTree = "<group>"; };
 		36DC850E2BFBBBC900FCC7E2 /* TeamScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamScrollView.swift; sourceTree = "<group>"; };
@@ -283,6 +295,7 @@
 			children = (
 				3649F3582BDCD29D003DBEBD /* highlightview.swift */,
 				3649F35A2BDCD885003DBEBD /* HighlightScrollView.swift */,
+				36D565412C167B81000136C4 /* HighlightScrollableView.swift */,
 			);
 			path = Highlights;
 			sourceTree = "<group>";
@@ -294,6 +307,8 @@
 				3649F35C2BDCE769003DBEBD /* CategoriesView.swift */,
 				3649F35E2BDCE9B5003DBEBD /* CategoryScrollView.swift */,
 				36236A4A2BC66D9600580B29 /* ExploreView.swift */,
+				36A6BDBD2C16481700CF9670 /* MainExploreView.swift */,
+				36A6BDBF2C164EAF00CF9670 /* ExploreCategoryView.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -375,6 +390,7 @@
 				3615F6342BE31D0000214E10 /* EditProfileView.swift */,
 				3615F6362BE4AD9000214E10 /* StatsView.swift */,
 				3615F6382BE4DAF000214E10 /* VerificationNotification.swift */,
+				36D5653D2C166B82000136C4 /* VerificationReminder.swift */,
 				3615F63A2BE4E96500214E10 /* Preferences.swift */,
 				3615F63C2BE4EDDB00214E10 /* AthleteDocs.swift */,
 			);
@@ -514,6 +530,7 @@
 				36DC850C2BFBBB7D00FCC7E2 /* TeamsDiscoverView.swift */,
 				36DC850E2BFBBBC900FCC7E2 /* TeamScrollView.swift */,
 				36DC85102BFBBC2000FCC7E2 /* TeamHeadline.swift */,
+				36D5653F2C167647000136C4 /* FilterScrollView.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -551,6 +568,14 @@
 				36BE40DE2BFDDB9B0028A2AE /* CreatePostView.swift */,
 			);
 			path = "User Content";
+			sourceTree = "<group>";
+		};
+		36D9D31A2C16B89B00E2E035 /* BIo */ = {
+			isa = PBXGroup;
+			children = (
+				36D9D31B2C16B91E00E2E035 /* BioCard.swift */,
+			);
+			path = BIo;
 			sourceTree = "<group>";
 		};
 		36F767082BBFCF63008D8968 /* Sports Worlds */ = {
@@ -658,6 +683,7 @@
 				E55B36392A61850200CB859B /* PostCard */,
 				E55B36372A6184AB00CB859B /* PostListView.swift */,
 				E55B36432A618D0700CB859B /* StoryListView.swift */,
+				36D9D31A2C16B89B00E2E035 /* BIo */,
 			);
 			path = "Home Feed";
 			sourceTree = "<group>";
@@ -804,12 +830,14 @@
 				36F7670F2BBFD9D2008D8968 /* DotsIndexView.swift in Sources */,
 				E55B36422A61858B00CB859B /* Extensions.swift in Sources */,
 				3671791E2BC90D59004E380C /* TabBarItem.swift in Sources */,
+				36A6BDC02C164EAF00CF9670 /* ExploreCategoryView.swift in Sources */,
 				3679F2AD2BAD454D00DAC43E /* Athlete.swift in Sources */,
 				36BAAC892BCD1216009E6541 /* AthleteCardView.swift in Sources */,
 				E55B36442A618D0700CB859B /* StoryListView.swift in Sources */,
 				E55B36492A618D2A00CB859B /* AddStoryCard.swift in Sources */,
 				36920C622BC946A300CA9D8F /* ChatListItemView.swift in Sources */,
 				3679F2B92BAE617E00DAC43E /* DropdownPicker.swift in Sources */,
+				36D565402C167647000136C4 /* FilterScrollView.swift in Sources */,
 				363E41992BCDDD8F00A7EB88 /* LandingPageView.swift in Sources */,
 				36AFCD2A2C099ADD00FCBD2F /* EventFilterScrollView.swift in Sources */,
 				3679F2A72BAA4A6600DAC43E /* PostView.swift in Sources */,
@@ -823,6 +851,7 @@
 				36F7670C2BBFCFE6008D8968 /* NpaContentView.swift in Sources */,
 				36920C5D2BC93BC200CA9D8F /* EventCardVertical.swift in Sources */,
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
+				36A6BDBE2C16481700CF9670 /* MainExploreView.swift in Sources */,
 				36920C592BC935C100CA9D8F /* EventCardHorizontal.swift in Sources */,
 				3649F3672BDCFE87003DBEBD /* ShopCategoriesScrollView.swift in Sources */,
 				3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */,
@@ -845,10 +874,12 @@
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
 				363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */,
 				3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */,
+				36D9D31C2C16B91E00E2E035 /* BioCard.swift in Sources */,
 				362DC5C52BEAC0FC005E5472 /* UIScrollViewController.swift in Sources */,
 				36AFCD2C2C099FFF00FCBD2F /* ShopTypes.swift in Sources */,
 				360C88042C09A6FB00D952D2 /* TicketContentView.swift in Sources */,
 				3615F63B2BE4E96500214E10 /* Preferences.swift in Sources */,
+				36D5653E2C166B82000136C4 /* VerificationReminder.swift in Sources */,
 				3679F2A12BAA211200DAC43E /* Post.swift in Sources */,
 				E55B36212A6181EC00CB859B /* SocialMediaTutorialApp.swift in Sources */,
 				3649F3652BDCFC60003DBEBD /* ShopCategories.swift in Sources */,
@@ -867,6 +898,7 @@
 				3649F3552BD6E04D003DBEBD /* ChooseSportView.swift in Sources */,
 				36BE40DD2BFD84660028A2AE /* FeedFilterView.swift in Sources */,
 				3615F6372BE4AD9000214E10 /* StatsView.swift in Sources */,
+				36D565422C167B81000136C4 /* HighlightScrollableView.swift in Sources */,
 				3679F29F2BAA20DE00DAC43E /* PostVM.swift in Sources */,
 				3649F35D2BDCE769003DBEBD /* CategoriesView.swift in Sources */,
 				36920C572BC92EF900CA9D8F /* ItemCard.swift in Sources */,

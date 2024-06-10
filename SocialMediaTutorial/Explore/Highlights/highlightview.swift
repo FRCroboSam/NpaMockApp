@@ -10,13 +10,14 @@ import SwiftUI
 struct highlightview: View {
     @State var url = ""
     @State var text = ""
+    @State var width: Double?
     var body: some View {
         ZStack(alignment: .bottomLeading){
             if(url.isEmpty){
                 Image("top10plays")
                     .resizable()
                     .cornerRadius(10)
-                    .frame(width: deviceWidth - 40, height: 200)
+                    .frame(width: width ?? 5/6 * deviceWidth, height: 150)
                 
                     .scaledToFill()
                 //.opacity(0.8)
@@ -29,7 +30,7 @@ struct highlightview: View {
                         image.resizable()
                             .resizable()
                             .cornerRadius(10)
-                            .frame(width: deviceWidth - 40, height: 200)
+                            .frame(width: width ?? 5/6 * deviceWidth, height: 150)
                         
                             .scaledToFill()
                         //.opacity(0.8)
@@ -91,7 +92,7 @@ struct highlightview: View {
                     }
                 }
                 //.offset(x: -50)
-                .frame(width: deviceWidth - 20)
+                .frame(width: width ?? 5/6 * deviceWidth)
 //                .background{
 //                    Color.gray
 //                        .opacity(0.3)
@@ -101,10 +102,10 @@ struct highlightview: View {
                 
                 
             }
-            .frame(width: 8/9 * deviceWidth)
+            .frame(width: width ?? 5/6 * deviceWidth)
                 
 
-        }.frame(width: deviceWidth, height: 200)
+        }.frame(height: 150)
     }
 }
 

@@ -97,8 +97,18 @@ class FeedVM: ObservableObject {
                             guard let videoId = item.id?.videoId else {
                                 return nil
                             }
+                            guard let title = item.snippet?.title else{
+                                print("CANT FIND TITLE")
+                                return nil
+                            }
+//                            guard let title = item.id?.title else {
+//                                return nil
+//                            }
+                            
                             print("VIDEO ID: ")
                             print(videoId)
+                            print("TITLE IS: ")
+                            print(title)
                             return videoId
                             
                             
@@ -118,6 +128,7 @@ class FeedVM: ObservableObject {
                 fetchVideoIds()
             }
             else{
+
                 print("VIDEOS ALREADY FETCHED")
                 print(videoIds.count)
                 print(videoIds[0])
@@ -133,8 +144,13 @@ class FeedVM: ObservableObject {
 
     struct SearchResult: Decodable {
         let id: VideoId?
+        let snippet:Snippet?
     }
 
     struct VideoId: Decodable {
         let videoId: String?
+    }
+    struct Snippet: Decodable{
+        let title: String?
+        
     }

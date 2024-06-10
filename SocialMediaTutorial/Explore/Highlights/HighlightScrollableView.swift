@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct HighlightScrollView: View {
+struct HighlightScrollableView: View {
     @EnvironmentObject var podcastVM: PodcastVM
     @State private var currentIndex = 0
     @State private var maxPodcastViewHeight: CGFloat = 380
@@ -26,21 +26,22 @@ struct HighlightScrollView: View {
 
     var body: some View {
         
-        VStack(alignment: .center, spacing: 0){
-            TabView(selection: $currentIndex.animation()) {
+        ScrollView(.horizontal){
+            HStack{
+                Spacer()
+                    .frame(width: 20)
                 ForEach(imageURLS.indices, id: \.self) { index in
 
-                    highlightview(url: imageURLS[index], text: text[index])
+                    highlightview(url: imageURLS[index], text: text[index], width: 2/3 * deviceWidth)
+                    Spacer()
+                        .frame(width: 10)
                     
                 }
             }
             .frame(height: 150)
-            .tabViewStyle(.page(indexDisplayMode: .never))
-            Spacer()
-                .frame(height: 5)
-            Fancy3DotsIndexView(numberOfPages: podcastVM.podcasts.count, currentIndex: currentIndex)
 
         }
+        .scrollIndicators(.hidden)
         
         
 //        ScrollView(.horizontal, showsIndicators: false){
@@ -71,6 +72,6 @@ struct HighlightScrollView: View {
 }
 
 #Preview {
-    HighlightScrollView()
+    HighlightScrollableView()
         .environmentObject(PodcastVM())
 }

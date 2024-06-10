@@ -23,7 +23,7 @@ struct TabbarView: View {
     @State var filterFeed = false
     
     @State var slidingTabOffset = 50.0
-    let tabOffsets = [55.0, 130.0, 205, 285.0, 155.0 + 1/2 * deviceWidth]
+    let tabOffsets = [50.0, 130.0, 205, 285.0, 156.0 + 1/2 * deviceWidth]
     @State private var startSlidingDown = false
     var body: some View {
         
@@ -33,7 +33,7 @@ struct TabbarView: View {
                     
                     Rectangle()
                         .fill(Color(hex: "0A66C2"))
-                        .frame(width: 50, height: 3.0)
+                        .frame(width: 40, height: 2.0)
                         .offset(x: slidingTabOffset - 1/2 * deviceWidth, y: -5)
                         .animation(.easeIn, value: slidingTabOffset)
                     HStack {
@@ -45,9 +45,16 @@ struct TabbarView: View {
                                     slidingTabOffset = tabOffsets[self.selected - 1]
                                 }
                             } ) {
-                                Image(systemName: self.selected == 1 ? "house.fill" : "house") // Tab icon for HomeView
-                                    .font(.system(size: 25))
-                                    .tint(self.selected == 1 ? Color(hex: "0A66C2") : .gray)
+                                Image("home_icon")
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .scaleEffect(1.25)
+                                    .frame(width: 25, height: 25)
+                                    .padding(3)
+                                //Image(systemName: self.selected == 1 ? "house.fill" : "house") // Tab icon for HomeView
+
+                                    .foregroundStyle(self.selected == 1 ? Color(hex: "0A66C2") : .gray)
                             }
                             .frame(height: 25)
 
@@ -67,7 +74,12 @@ struct TabbarView: View {
 
 
                             } } ) {
-                                Image(systemName: "magnifyingglass") // Tab icon for Search View
+                                Image("discover_icon") // Tab icon for Search View
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .scaledToFill()
+                                    .scaleEffect(1.2)
+                                    .frame(width: 25, height: 25)
                                     .font(.system(size: 25))
                                     //bold(self.selected == 2)
                                     .tint(self.selected == 2 ? Color(hex: "0A66C2") : .gray)
@@ -90,10 +102,13 @@ struct TabbarView: View {
 
 
                             } } ) {
-                                Image(systemName: "figure.run") // Tab icon for New Post
+                                Image("athlete_icon") // Tab icon for New Post
+                                    .renderingMode(.template)
+                                    
                                     .resizable()
                                     .scaledToFit()
-                                    .font(.system(size: 25))
+                                    .scaleEffect(1.25)
+                                    .frame(width: 25, height: 25)
                                     .tint(self.selected == 3 ? Color(hex: "0A66C2") : .gray)
 //                                    .background{
 //                                        Color.orange
@@ -116,8 +131,12 @@ struct TabbarView: View {
 
 
                             } } ) {
-                                Image(systemName: "network") // Tab icon for New Post
-                                    .font(.system(size: 25))
+                                Image("content_icon") // Tab icon for New Post
+                                    .renderingMode(.template)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .scaleEffect(1.2)
+                                    .frame(width: 25, height: 25)
                                     .tint(self.selected == 4 ? Color(hex: "0A66C2") : .gray)
                                 
                             }
@@ -207,7 +226,7 @@ struct TabbarView: View {
                 .tabViewStyle(.page(indexDisplayMode: .never))
             }
             else if(selected == 2){
-                ExploreView()
+                MainExploreView()
 
             }
             else if(selected == 3){
