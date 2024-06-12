@@ -14,16 +14,18 @@ struct MainExploreView: View {
     @State var selectedSport = "Tennis"
     var body: some View {
         NavigationStack{
+            Spacer()
+                .frame(height: 10)
             ScrollView{
                 VStack{
                     VStack{
                         Spacer()
-                            .frame(height: 75)
+                            .frame(height: 40)
                         HStack{
                             Text("Welcome, Bobby")
                                 .font(.title)
                                 .bold()
-                                .padding(.leading, 20)
+                                .padding(.leading, 25)
                             Spacer()
                             Image(systemName: "cart")
                             //                        .bold()
@@ -39,6 +41,7 @@ struct MainExploreView: View {
                                 .padding(.trailing, 25)
                             
                         }
+
                         HStack(spacing: 0){
                             NavigationLink {
                                 SearchView()
@@ -67,78 +70,98 @@ struct MainExploreView: View {
                                 .padding(.horizontal, 10)
                                 .background{
                                     RoundedRectangle(cornerRadius: 30)
-                                        .fill(Color(UIColor.white))
+                                        .fill(Color(UIColor.clear))
                                 }
                             }
                             .padding(.leading, 20)
                             
                             Spacer()
                             
-                            Image(systemName: "slider.horizontal.3")
-                            //                        .bold()
-                                .font(.title3)
-                                .foregroundStyle(Color.gray.opacity(0.7))
-                                .background{
-                                    Color(UIColor.systemGray5).opacity(0.5)
-                                        .clipped()
-                                        .clipShape(.circle)
-                                        .frame(width: 42, height: 42)
-                                }
-                                .padding(.leading, 15)
-                                .padding(.trailing, 25)
-                            
                             
                         }
+                        .ignoresSafeArea(.all, edges: .top)
+                        
+                        HighlightScrollView()
+
                         
                         Spacer()
                             .frame(height: 15)
-                        
-                        VStack{
-                            HStack(spacing: 15){
-                                ExploreCategoryView()
-                                ExploreCategoryView(
-                                    imageName: "events_icon",
-                                    textName: "Events"
-                                )
-                                
-                                ExploreCategoryView(imageName: "training_icon", textName: "Training")
-                                ExploreCategoryView(imageName: "supplements_icon", textName: "Supplements")
-                                
-                            }
-                            HStack(spacing: 15){
-                                ExploreCategoryView(
-                                    imageName: "mental_icon",
-                                    textName: "Mental"
-                                )
-                                ExploreCategoryView(
-                                    imageName: "agent_icon",
-                                    textName: "Agents"
-                                )
-                                
-                                ExploreCategoryView(imageName: "coaching_icon", textName: "Coaching")
-                            }
+                        CategoryGroupView()
+                        Spacer()
+                            .frame(height: 5)
+                        HStack(spacing: 10){
+                            ExploreCategoryView(
+                                imageName: "mental_icon",
+                                textName: "Mental"
+                            )
+                            ExploreCategoryView(
+                                imageName: "agent_icon",
+                                textName: "Agents"
+                            )
+                            
+                            ExploreCategoryView(imageName: "coaching_icon", textName: "Coaching")
                         }
-                        .padding(.horizontal, 20)
-                        .padding(.top, 15)
-                        .padding(.bottom, -5)
+                       
+
+
+                        Spacer()
+                            .frame(height: 15)
+                        BioScrollView()
+                            .zIndex(1000)
+                        //HighlightScrollView()
+                        
+                        
 //                        .background{
 //                            RoundedRectangle(cornerRadius: 20)
 //                                .fill(Color(UIColor.systemGray6))
 //                        }
                     }
+                    .ignoresSafeArea(.all, edges: .top)
+
+                    
                 
                     
                     VStack {
-                        FilterScrollView()
-                        Spacer()
-                            .frame(height: 20)
-                        HighlightScrollableView()
-        //
-                        Spacer()
-                            .frame(height: 10)
+
+                        
 //                        VerificationReminder()
 //                        Spacer()
 //                            .frame(height: 10)
+                        HStack(spacing: 0){
+                            
+                            Text("Events For You" )
+                            
+                                .bold()
+                                .font(.title2)
+                                .padding(.top, -20)
+                                .padding(.leading, 20)
+                            Spacer()
+                            Button{
+                                
+                            }label:{
+                                Text("View More")
+                                    .font(.system(size: 15))
+                                    .padding(10)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 10)
+                                            .fill(Color.blue).opacity(0.1)
+                                    }
+                                    .padding(.bottom, 5)
+                                
+                            }
+                            .padding(.trailing, 10)
+                            
+                            
+                        }
+
+                        Spacer()
+                            .frame(height: 10)
+                        EventTypeScrollView()
+                            .offset(x: -25)
+                        
+                        
+                        Spacer()
+                            .frame(height: 20)
                         HStack(spacing: 0){
                             
                             Text("Shop Categories" )
@@ -168,41 +191,8 @@ struct MainExploreView: View {
                             .frame(height: 10)
                         ShopCategoriesScrollView()
                             .padding(.leading, 5)
-                        Spacer()
-                            .frame(height: 20)
-                        HStack(spacing: 0){
-                            
-                            Text("Events For You" )
-                            
-                                .bold()
-                                .font(.title2)
-                                .padding(.leading, 20)
-                            Spacer()
-                            Button{
-                                
-                            }label:{
-                                Text("View More")
-                                    .font(.system(size: 15))
-                                    .padding(10)
-                                    .background{
-                                        RoundedRectangle(cornerRadius: 10)
-                                            .fill(Color.blue).opacity(0.1)
-                                    }
-                                    .padding(.bottom, 5)
-                                
-                            }
-                            .padding(.trailing, 10)
-                            
-                            
-                        }
-                        Spacer()
-                            .frame(height: 10)
-                        EventTypeScrollView()
-                            .offset(x: -20)
+
                         
-                        
-                        Spacer()
-                            .frame(height: 20)
                         
                         Spacer()
                             .frame(height: 20)
@@ -257,15 +247,14 @@ struct MainExploreView: View {
                 }
 
             }
-            .ignoresSafeArea(.all, edges: .top)
-//            .background{
-//                Color.blue.opacity(0.1)
-//            }
+
+            
             .ignoresSafeArea(.all, edges: .top)
 
 
 
         }
+        
     }
 }
 

@@ -19,8 +19,8 @@ struct ExploreCategoryView: View {
                 .padding(20)
                 .background{
                     RoundedRectangle(cornerRadius: 20)
-                        .fill(.white)
-                        .shadow(radius: 1)
+                        .fill(Color(UIColor.systemGray4).opacity(0.12))
+                        .shadow(radius: 1.0)
                     
                 }
             Text(textName ?? "Sports Gear")
@@ -29,6 +29,8 @@ struct ExploreCategoryView: View {
                 .foregroundStyle(.black.opacity(0.6))
             Spacer()
         }
+        .frame(width: 90)
+
     }
 }
 

@@ -32,7 +32,7 @@ struct PostView: View {
             // Display the header section of the post card, including profile image, name, and ID
             
             PostCardBody(image_or_video: image_or_video, like_count: like_count, comment_count: comment_count, view_count: view_count, post: post, description: description, player: player,
-                         onCommentTapped: onCommentTapped)
+                         onCommentTapped: onCommentTapped, title: post.title)
 
             .padding(.top, -10)
                          

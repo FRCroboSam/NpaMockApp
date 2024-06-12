@@ -17,7 +17,7 @@ struct NetworkContentView: View {
                 "Ages"
             ]
             let text = [
-                "Top Coaches in the League",
+                "Top Coaches in Your Area",
                 "How a Good Agent Represents You",
                 "Standing out to Recruiters",
                 ""
@@ -31,7 +31,7 @@ struct NetworkContentView: View {
             HighlightScrollView(imageURLS: images, text: text)
             
             HStack{
-                Text("Coaches")
+                Text("Instructors Near You")
                     .font(.title)
                     .bold()
                     .padding(.leading, 20)

@@ -25,7 +25,7 @@ struct PodcastView: View {
                 
             }
             
-            .frame(width: 11/12 * deviceWidth, height: 260)
+            .frame(width: 11/12 * deviceWidth, height: 200)
             .background{
                 RoundedRectangle(cornerSize: CGSize(width: 20, height: 20))
                     .strokeBorder(Color(UIColor.systemGray4))

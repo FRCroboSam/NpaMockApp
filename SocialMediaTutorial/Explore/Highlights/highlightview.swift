@@ -11,13 +11,14 @@ struct highlightview: View {
     @State var url = ""
     @State var text = ""
     @State var width: Double?
+    @State var height: Double?
     var body: some View {
         ZStack(alignment: .bottomLeading){
             if(url.isEmpty){
                 Image("top10plays")
                     .resizable()
                     .cornerRadius(10)
-                    .frame(width: width ?? 5/6 * deviceWidth, height: 150)
+                    .frame(width: width ?? 5/6 * deviceWidth, height: height ?? 150)
                 
                     .scaledToFill()
                 //.opacity(0.8)
@@ -30,7 +31,7 @@ struct highlightview: View {
                         image.resizable()
                             .resizable()
                             .cornerRadius(10)
-                            .frame(width: width ?? 5/6 * deviceWidth, height: 150)
+                            .frame(width: width ?? 5/6 * deviceWidth, height: height ?? 150)
                         
                             .scaledToFill()
                         //.opacity(0.8)
@@ -105,7 +106,7 @@ struct highlightview: View {
             .frame(width: width ?? 5/6 * deviceWidth)
                 
 
-        }.frame(height: 150)
+        }.frame(height: height ?? 150)
     }
 }
 

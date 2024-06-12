@@ -25,22 +25,46 @@ struct HighlightScrollView: View {
     ]
 
     var body: some View {
-        
+        let timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect()
         VStack(alignment: .center, spacing: 0){
             TabView(selection: $currentIndex.animation()) {
                 ForEach(imageURLS.indices, id: \.self) { index in
 
-                    highlightview(url: imageURLS[index], text: text[index])
-                    
+                    highlightview(url: imageURLS[index], text: text[index], height: 180)
+                        .tag(index)
+                        
                 }
+                highlightview(url: imageURLS.first!, text: text.first!, height: 180)
+                    .tag(imageURLS.count)
+                    
+
             }
-            .frame(height: 150)
+            .onChange(of: currentIndex) { _value in
+                if(currentIndex == imageURLS.count){
+                    currentIndex = 0
+                }
+                    
+            }
+            
+            .frame(height: 180)
             .tabViewStyle(.page(indexDisplayMode: .never))
             Spacer()
-                .frame(height: 5)
+                .frame(height: 10)
             Fancy3DotsIndexView(numberOfPages: podcastVM.podcasts.count, currentIndex: currentIndex)
 
         }
+
+//        .onReceive(timer) { time in
+//            withAnimation(.easeIn){
+//                if(currentIndex < imageURLS.count - 1){
+//                    currentIndex += 1
+//                }
+//                else{
+//                    currentIndex = 0
+//                }
+//            }
+//               
+//       }
         
         
 //        ScrollView(.horizontal, showsIndicators: false){

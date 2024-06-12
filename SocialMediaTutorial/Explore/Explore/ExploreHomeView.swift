@@ -11,12 +11,13 @@ struct ExploreHomeView: View {
     var body: some View {
         ScrollView{
             VStack{
-                
+                Divider()
+
                 HStack(alignment: .center){
                     VStack(alignment: .leading){
                         Spacer()
-                            .frame(height: 20)
-                        Text("Welcome Bobby!")
+                            .frame(height: 15)
+                        Text("Welcome, Bobby")
                             .lineLimit(1)
                             .bold()
                             .font(.title)
@@ -47,9 +48,9 @@ struct ExploreHomeView: View {
             .background{
                 LinearGradient(gradient:Gradient(colors:[
                     Color.white,
-                    Color.blue.opacity(0.05),
-                    Color.blue.opacity(0.1),
-                    Color.blue.opacity(0.3),
+                    Color.white,
+                    Color.blue.opacity(0.15),
+                    Color.blue.opacity(0.25),
                 ]),
                                startPoint:.top,endPoint:.bottom)
                 .frame(width: deviceWidth, height: 200)
@@ -61,12 +62,17 @@ struct ExploreHomeView: View {
                 Spacer()
                     .frame(height: 10)
                 HStack(spacing: 0){
-                    
-                    Text("Explore" )
-                    
-                        .bold()
-                        .font(.title2)
-                        .padding(.leading, 20)
+                    HStack{
+                        Text("NPA+" )
+                            .foregroundStyle(Color(hex: "0A66C2"))
+                            .bold()
+                            .font(.title2)
+                            .padding(.leading, 20)
+                        Text("Services")
+                            .bold()
+                            .font(.title2)
+                            .padding(.leading, 0)
+                    }
                     Spacer()
                     Button{
                         
@@ -178,15 +184,8 @@ struct ExploreHomeView: View {
                 ShopScrollView()
                 Spacer()
                     .frame(height: 10)
-                HStack{
-                    Text("Featured Athletes")
-                        .font(.title2)
-                        .bold()
-                        .padding(.leading, 20)
-                    
-                }
-                //.offset(x: 15)
-                FeaturedAthletes()
+
+                BioScrollView()
                 
                 
                 Spacer()

@@ -16,10 +16,10 @@ struct PostCardBody: View {
     let description: String
     let player: YouTubePlayer
     var onCommentTapped: () -> Void // Closure to handle comment button tap
-
+    let title: String
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
-            Text("11.69s, 100 meter dash")
+            Text(title)
                 .italic()
                 .multilineTextAlignment(.leading)
                 .font(.headline)

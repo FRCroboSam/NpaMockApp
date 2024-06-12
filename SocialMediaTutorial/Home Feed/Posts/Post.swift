@@ -12,6 +12,7 @@ struct Post: Codable, Identifiable, Hashable{
         case profile_name
         case profile_id
         case post_id
+        case title
     }
     
     var id = UUID() // Unique identifier for the post
@@ -24,8 +25,12 @@ struct Post: Codable, Identifiable, Hashable{
     var profile_name: String // Profile name
     var profile_id: String // Profile ID
     var post_id: String
+    var title: String
     
     static func blankPost() -> Post{
-        return Post(id: UUID(), image_or_video: "sdfsdf", like_count: 0, comment_count: 0, view_count: 0, description: "123", profile_img: "123", profile_name: "123", profile_id: "123", post_id: "23")
+        return Post(id: UUID(), image_or_video: "sdfsdf", like_count: 0, comment_count: 0, view_count: 0, description: "123", profile_img: "123", profile_name: "123", profile_id: "123", post_id: "23", title: "")
+    }
+    static func postFromVideo(url: String, profile_name: String, title: String) -> Post{
+        return Post(id: UUID(), image_or_video: url, like_count: 0, comment_count: 0, view_count: 0, description: "", profile_img: "male_athlete1", profile_name: profile_name, profile_id: "123", post_id: UUID().uuidString, title: title)
     }
 }

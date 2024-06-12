@@ -14,14 +14,14 @@ struct CategoryScrollView: View {
     
     @State private var urls = [
         "https://thehill.com/wp-content/uploads/sites/2/2023/10/williamsjada_111822ap_high-school-athletes-nil.jpg?strip=1",
+        "https://online.jwu.edu/wp-content/uploads/2023/06/sports20agent.jpg",
+        "https://d3on3ztz3vi4v9.cloudfront.net/uploads/2013/06/25155356/Concentration-629x419-1.jpg",
         "https://www.shape.com/thmb/Hcvt02WmCFLvv3A6o2CGhYOPWLI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Heavy-vs-Light-Weights-GettyImages-946365998-4cabfff802b145c09c9d0dcc6d655267.jpg",
-        "https://cultmtl.com/wp-content/uploads/2023/05/EFBF4B5C-2829-4B45-9326-5EA930E3A2E4.jpeg",
-        "https://online.jwu.edu/wp-content/uploads/2023/06/sports20agent.jpg"
     ]
     @State private var titles = [
-        "Athletes",
-        "Training",
-        "Coaches",
+        "Athlete Bios",
+        "Recruitment",
+        "Mental Skill",
         "Agents"
     ]
     @State private var amounts = [
@@ -39,10 +39,21 @@ struct CategoryScrollView: View {
                 Spacer()
                     .frame(width: 20)
                 ForEach(urls.indices, id: \.self) { index in
-                    CategoryView(item_url: urls[index], text: titles[index], amount: amounts[index])
-                        .padding(.vertical, 10)
-                    Spacer()
-                        .frame(width: 10)
+                    NavigationLink{
+                        if(index == 0){
+                            AthleteStoryContentView()
+                        }
+                        else if(index == 1){
+                            RecruitmentContentView()
+                        }
+                        else if(index == 2){
+                            MentalContentView()
+                        }
+                    }label: {CategoryView(item_url: urls[index], text: titles[index], amount: amounts[index])
+                            .padding(.vertical, 10)
+                        Spacer()
+                            .frame(width: 10)
+                    }
                 }
             }
         }

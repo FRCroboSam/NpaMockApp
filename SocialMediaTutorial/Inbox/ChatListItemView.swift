@@ -9,7 +9,10 @@ import SwiftUI
 
 struct ChatListItemView: View {
     
-    var athlete: Athlete
+    var profile_img: String
+    var name: String
+
+    @State var message_text: String?
     @State var athlete_text: String = ""
     var deviceHeight: CGFloat {
         UIScreen.main.bounds.height
@@ -22,7 +25,7 @@ struct ChatListItemView: View {
             HStack {
                 Spacer()
                     .frame(width: 20)
-                Image(athlete.profile_img)
+                Image(profile_img)
                     .resizable()
                     .scaledToFill()
                     .frame(width: 60, height: 60)
@@ -31,9 +34,9 @@ struct ChatListItemView: View {
                     .clipShape(Circle())
 //                    .clipShape(Parallelogram(angle: 10))
                 VStack(alignment: .leading){
-                    Text(athlete.first_name + " " + athlete.last_name)
+                    Text(name)
                         .foregroundStyle(.black)
-                    Text("Seen 10 minutes ago")
+                    Text(message_text ?? "Seen 10 minutes ago")
                         .foregroundStyle(Color(UIColor.lightGray))
 
                     

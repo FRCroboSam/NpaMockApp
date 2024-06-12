@@ -191,13 +191,19 @@ struct FeedView: View {
 
 
                                             Text("All")
-                                                .foregroundStyle(.white.opacity(1.0))
+                                                .foregroundStyle(selectedFeed == "All" ? .white.opacity(1.0) :  Color(UIColor.systemGray2))
                                                 .padding(.horizontal, 16)
                                                 .padding(.vertical, 12)
                                                 .background{
-                                                    
-                                                    RoundedRectangle(cornerRadius: 15)
-                                                        .fill(Color(hex: "0A66C2")).opacity(1.0)
+                                                    if(selectedFeed == "All"){
+                                                        RoundedRectangle(cornerRadius: 15)
+                                                            .fill(Color(hex: "0A66C2")).opacity(1.0)
+                                                    }
+                                                    else{
+                                                        RoundedRectangle(cornerRadius: 15)
+                                                            .fill(Color.gray.opacity(0.15))
+
+                                                    }
                                                     
                                                     //.strokeBorder(Color(UIColor.systemGray4))
                                                         //.shadow(color: Color(UIColor.gray).opacity(0.6),radius: 1.6)*/
@@ -206,22 +212,38 @@ struct FeedView: View {
                                                         //.shadow(color: Color(UIColor.gray).opacity(0.8), radius: 1.7)
                                                     
                                                 }
+                                                .onTapGesture{
+                                                    withAnimation(.easeIn){
+                                                        
+                                                        selectedFeed = "All"
+                                                        vm.switchToDefault()
+                                                    }
+                                                }
 //                                            Divider()
 //                                                .overlay(Color.gray.opacity(0.8)
 //                                                    .frame(width: 0.2)
 //                                                )
                                             Text("Basketball")
-                                                .foregroundStyle(Color(UIColor.systemGray2))
+                                                .foregroundStyle(selectedFeed == "Basketball" ? .white.opacity(1.0) :  Color(UIColor.systemGray2))
                                                 .padding(.horizontal, 14)
                                                 .padding(.vertical, 12)
                                                 .background{
-                                                    RoundedRectangle(cornerRadius: 10)
-                                                        .fill(Color.gray.opacity(0.15))
+                                                    if(selectedFeed == "Basketball"){
+                                                        RoundedRectangle(cornerRadius: 15)
+                                                            .fill(Color(hex: "0A66C2")).opacity(1.0)
+                                                    }
+                                                    else{
+                                                        RoundedRectangle(cornerRadius: 15)
+                                                            .fill(Color.gray.opacity(0.15))
+
+                                                    }
                                                     
-                                                    //.strokeBorder(Color(UIColor.systemGray4))
-                                                        //.cornerRadius(15)
-                                                        //.shadow(radius: 1)
-                                                    
+                                                }
+                                                .onTapGesture {
+                                                    withAnimation(.easeIn){
+                                                        selectedFeed = "Basketball"
+                                                        vm.switchFeeds()
+                                                    }
                                                 }
                                             Text("Soccer")
                                                 .foregroundStyle(Color(UIColor.systemGray2))
@@ -294,7 +316,7 @@ struct FeedView: View {
                                         .padding(10)
                                     }.scrollIndicators(.hidden)
                                     
-                                    Divider()
+                                    //Divider()
 
                                 }
 //                                .background{

@@ -22,12 +22,12 @@ struct CategoryView: View {
                     image.resizable()
                         .resizable()
                         .scaledToFill()
-                        .frame(width: 140, height: 120)
+                        .frame(width: 140, height: 175)
                         .clipped()
                         .roundedCorner(8, corners: .topLeft)
                         .roundedCorner(8, corners: .topRight)
-//                        .roundedCorner(8, corners: .bottomLeft)
-//                        .roundedCorner(8, corners: .bottomRight)
+                        .roundedCorner(8, corners: .bottomLeft)
+                        .roundedCorner(8, corners: .bottomRight)
                     
                     
                         .background{
@@ -43,16 +43,30 @@ struct CategoryView: View {
 //                .font(.caption)
 //                .opacity(0.5)
 //                .padding(.leading, 5)
+            .overlay(alignment: .bottomTrailing){
+                VStack{
+                    Text(text.uppercased())
+                        .bold()
+
+                    //                .padding(.bottom, 20)
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                        .padding(5)
+                    Spacer()
+                        .frame(height: 10)
+//                    Text("• " + amount + " " + text + " •")
+//                        .foregroundStyle(.white)
+//                        .font(.footnote)
+//                        .foregroundStyle(.gray)
+//                        .padding(.leading, 7)
+//                        .padding(.bottom, 10)
+                }
+                .background{
+                    Color.blue.opacity(0.5)
+                        .blur(radius: 5)
+                }
+            }
             
-            Text(text)
-//                .padding(.bottom, 20)
-                .bold()
-                .padding(.leading, 5)
-            Text("• " + amount + " " + text + " •")
-                .font(.footnote)
-                .foregroundStyle(.gray)
-                .padding(.leading, 7)
-                .padding(.bottom, 10)
             
 //            Button {
 //                
@@ -71,16 +85,17 @@ struct CategoryView: View {
 
 
         }
-        .background{
-            RoundedRectangle(cornerRadius: 10)
-                .fill(Color.white)
-
-                .shadow(color: Color(UIColor.lightGray).opacity(0.7),radius: 3)                .mask(Rectangle().padding(.bottom, -30))
-                .shadow(color: Color.gray, radius: 1)
-
-
-            
-        }
+        
+//        .background{
+//            RoundedRectangle(cornerRadius: 10)
+//                .fill(Color.blue.opacity(0.1))
+//
+//                .shadow(color: Color(UIColor.lightGray).opacity(0.7),radius: 3)                .mask(Rectangle().padding(.bottom, -30))
+//                .shadow(color: Color.gray, radius: 1)
+//
+//
+//            
+//        }
     }
 }
 

@@ -226,7 +226,8 @@ struct TabbarView: View {
                 .tabViewStyle(.page(indexDisplayMode: .never))
             }
             else if(selected == 2){
-                MainExploreView()
+                ExploreView()
+                //MainExploreView()
 
             }
             else if(selected == 3){

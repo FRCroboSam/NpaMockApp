@@ -53,15 +53,15 @@ struct NotificationsView: View {
             VStack(spacing: 0){
                 ForEach(athletes){ athlete in
                     
-                    NavigationLink{
-                        AthleteProfileView(athlete: athlete)
-                    }label: {
-                        ChatListItemView(athlete: athlete)
-                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-                        
-                        
-                        
-                    }
+//                    NavigationLink{
+//                        AthleteProfileView(athlete: athlete)
+//                    }label: {
+//                        ChatListItemView(athlete: athlete)
+//                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
+//                        
+//                        
+//                        
+//                    }
                 }
                 Spacer()
                     .frame(height: 50)

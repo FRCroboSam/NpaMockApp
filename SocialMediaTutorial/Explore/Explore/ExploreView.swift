@@ -80,10 +80,9 @@ struct ExploreView: View {
                         Spacer()
                             .frame(height: 10)
                         
-                        CustomTabBarView(tabs: tabs, selection: $tabSelection, localSelection: tabSelection)
-                            .zIndex(10)
-                        Divider()
-                            .zIndex(10)
+                        CategoryGroupView()
+//                        Divider()
+//                            .zIndex(10)
 
                         
                     }
@@ -94,7 +93,7 @@ struct ExploreView: View {
                 }
                 if(tabSelection == .athletes){
                     ExploreHomeView()
-                        .offset(y: -10)
+                        .offset(y: -15)
                         .transition(.opacity)
                 }
                 else if(tabSelection == .events){
@@ -133,7 +132,7 @@ struct ExploreView: View {
             .scrollIndicators(.hidden)
             .ignoresSafeArea(.all, edges: .top)
 
-        }
+        }.tint(.gray.opacity(0.7))
 
     }
     

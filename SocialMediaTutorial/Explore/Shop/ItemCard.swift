@@ -9,6 +9,9 @@ import SwiftUI
 
 struct ItemCard: View {
     let item_url: String
+    @State var itemName: String?
+    @State var width: Double?
+    @State var height: Double?
     var body: some View {
             VStack(alignment: .leading){
                 VStack{
@@ -25,8 +28,8 @@ struct ItemCard: View {
                             content: { image in
                                 image.resizable()
                                     .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 120, height: 70)
+                                    .scaledToFit()
+                                    .frame(width: width ?? 120, height: height ?? 70)
                                     .clipped()
                                 //.roundedCorner(8, corners: .allCorners)
                                 
@@ -73,7 +76,7 @@ struct ItemCard: View {
                 Spacer()
                     .frame(height: 10)
                 VStack(alignment: .leading){
-                    Text("Nike Superfly 9")
+                    Text(itemName ?? "Nike Superfly 9")
                         .font(.subheadline)
                         .bold()
                     Spacer()
@@ -90,7 +93,9 @@ struct ItemCard: View {
                 
                 
             }
-            .frame(width: 180, height: 210)
+            .frame(width: (width ?? 120) + 60, height: (height ?? 120) + 120)
+            .padding(20)
+
 //            .background{
 //                RoundedRectangle(cornerRadius: 20)
 //                    .foregroundColor(.white)

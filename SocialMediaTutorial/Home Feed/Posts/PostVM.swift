@@ -59,6 +59,7 @@ class PostVM: ObservableObject {
             do {
                 let fileURL = documentsURL.appendingPathComponent("comments.json")
                 print("FILE EXISTS: " + String(FileManager.default.fileExists(atPath: fileURL.path)))
+                
                 if(!FileManager.default.fileExists(atPath: fileURL.path)){
                     copyFileFromBundleToDocumentsFolder(sourceFile: "comments.json") //-> when you need to reset comments
 

@@ -72,6 +72,9 @@ struct PostListView: View {
                     }
                 }
                 .onBecomingVisible{ avgY in
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
+                        self.feedVM.videosHaveLoaded = true
+                    }
                     print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
                     print("POST IS VISIBLE: "  + String(avgY > 200 && avgY < 600))
                     postPositions[index2] = avgY
@@ -96,6 +99,7 @@ struct PostListView: View {
   
                                     self.feedVM.videosHaveLoaded = true
                                 }
+                                
                                 
                             }
                         

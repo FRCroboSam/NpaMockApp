@@ -82,7 +82,7 @@ struct HomePageView: View {
 
             }
             .ignoresSafeArea(.all, edges: .top)
-        }
+        }.tint(.gray.opacity(0.7))
         
 
         

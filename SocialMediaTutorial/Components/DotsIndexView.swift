@@ -25,17 +25,19 @@ struct Fancy3DotsIndexView: View {
   var body: some View {
     HStack(spacing: circleSpacing) {
       ForEach(0..<numberOfPages) { index in // 1
-          if shouldShowIndex(index) {
+          //if shouldShowIndex(index) {
           Circle()
-            .fill(currentIndex == index ? primaryColor : secondaryColor) // 2
-            .scaleEffect(currentIndex == index ? 1 : smallScale)
+            .fill(((currentIndex + 1) % numberOfPages) == index + 1 || currentIndex == index
+                  ? primaryColor : secondaryColor) // 2
+            .scaleEffect(((currentIndex + 1) % numberOfPages) == index + 1 || currentIndex == index
+                         ? 1 : smallScale)
             
             .frame(width: circleSize, height: circleSize)
        
             .transition(AnyTransition.opacity.combined(with: .scale)) // 3
             
             .id(index) // 4
-        }
+        //}
       }
     }
   }

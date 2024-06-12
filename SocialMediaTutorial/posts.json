@@ -8,18 +8,21 @@
     "profile_img": "male_athlete1",
     "profile_name": "Gabrial Micheal",
     "profile_id": "gabrial_micheal",
-    "post_id": "D9D87D7F-EEE4-4EBB-BED1-7B9F1F14DAB2"
+    "post_id": "D9D87D7F-EEE4-4EBB-BED1-7B9F1F14DAB2",
+    "title": "11.69s, 100m dash"
   },
   {
     "image_or_video": "post2",
     "like_count": 80,
     "comment_count": 15,
     "view_count": 1500,
-    "description": "Discover the latest JavaScript frameworks!",
+    "description": "Come to my race at Lynswood Invitation this weekend!",
     "profile_img": "male_athlete3",
     "profile_name": "Jon Jones",
     "profile_id": "gabrial_micheal",
-    "post_id": "86804218-8D47-4FB0-9785-3621A1BEE604"
+    "post_id": "86804218-8D47-4FB0-9785-3621A1BEE604",
+    "title": "Lynwood Track Invitational this Weekend"
+
 
   },
   {
@@ -27,11 +30,13 @@
     "like_count": 120,
     "comment_count": 25,
     "view_count": 2000,
-    "description": "Explore machine learning algorithms in R!",
+    "description": "My Pole Vaulting Journey",
     "profile_img": "female_athlete1",
     "profile_name": "David Addle",
     "profile_id": "gabrial_micheal",
-    "post_id": "82145027-602A-4C47-8283-035BEAD26156"
+    "post_id": "82145027-602A-4C47-8283-035BEAD26156",
+    "title": "Pole Vault Highlights"
+
 
   },
   {
@@ -39,11 +44,13 @@
     "like_count": 70,
     "comment_count": 18,
     "view_count": 1400,
-    "description": "Tips for optimizing your SQL queries!",
+    "description": "My Team (Garfield High School) are basketball State Champions!!!!!",
     "profile_img": "female_athlete2",
     "profile_name": "Brianna Stewart",
     "profile_id": "gabrial_micheal",
-    "post_id": "960A0184-9720-4E8F-9C1D-8F5BF52F706D3235"
+    "post_id": "960A0184-9720-4E8F-9C1D-8F5BF52F706D3235",
+    "title": "Basketball State Champions!"
+
 
   },
   {
@@ -51,65 +58,72 @@
     "like_count": 70,
     "comment_count": 18,
     "view_count": 1400,
-    "description": "Tips for optimizing your SQL queries!",
+    "description": "Tennis Recruiting Video",
     "profile_img": "male_athlete2",
     "profile_name": "Mohammad Gabrial",
     "profile_id": "gabrial_micheal",
-    "post_id": "960A0184-9720-4E8F-9C1D-8F5BF52F706D"
+    "post_id": "960A0184-9720-4E8F-9C1D-8F5BF52F706D",
+    "title": "Tennis Recruiting Video (C/O 2028)"
   },
   {
     "image_or_video": "post6",
     "like_count": 90,
     "comment_count": 20,
     "view_count": 1800,
-    "description": "Introduction to data structures in C++!",
+    "description": "Come out to support!",
     "profile_img": "male_athlete3",
     "profile_name": "Gabrial David",
     "profile_id": "gabrial_micheal",
-    "post_id": "F5398675-B200-4ACA-827D-CEF93506E4BF"
+    "post_id": "F5398675-B200-4ACA-827D-CEF93506E4BF",
+    "title": "Last game of the season against Montlake!"
+
   },
   {
     "image_or_video": "post7",
     "like_count": 60,
     "comment_count": 14,
     "view_count": 1300,
-    "description": "Build a RESTful API using Node.js and Express!",
+    "description": "Excited to announce my commitment to UNC Chapel Hill this season!",
     "profile_img": "female_athlete2",
     "profile_name": "Adam Mohammad",
     "profile_id": "gabrial_micheal",
-    "post_id": "0A88E102-EE69-4A50-ADDC-E84740455D6B"
+    "post_id": "0A88E102-EE69-4A50-ADDC-E84740455D6B",
+    "title": "Committed to UNC Chapel Hill!"
   },
   {
     "image_or_video": "post8",
     "like_count": 100,
     "comment_count": 22,
     "view_count": 2200,
-    "description": "Introduction to object-oriented programming concepts!",
+    "description": "Excited for the season ahead.",
     "profile_img": "female_athlete2",
     "profile_name": "David Micheal",
     "profile_id": "gabrial_micheal",
-    "post_id": "7335AD91-B78A-4C0B-9C4D-352A47E236A9"
+    "post_id": "7335AD91-B78A-4C0B-9C4D-352A47E236A9",
+    "title": "Looking Ahead"
   },
   {
     "image_or_video": "https://www.youtube.com/watch?v=tJsdb72cdEM",
     "like_count": 75,
     "comment_count": 16,
     "view_count": 1600,
-    "description": "Exploring the world of front-end web development!",
+    "description": "PR in the 50 yard Freestyle",
     "profile_img": "male_athlete1",
     "profile_name": "Adam Adam",
     "profile_id": "gabrial_micheal",
-    "post_id": "797BEE2C-5AA0-4E3E-B6DA-B41A478DFF85"
+    "post_id": "797BEE2C-5AA0-4E3E-B6DA-B41A478DFF85",
+    "title": "23.11s, 50-yard Freestyle"
   },
   {
     "image_or_video": "post10",
     "like_count": 110,
     "comment_count": 30,
     "view_count": 2400,
-    "description": "Mastering algorithms and data structures in Java!",
+    "description": "Loved watching the huskies this past weekend!",
     "profile_img": "female_athlete1",
     "profile_name": "Gabrial Adam",
     "profile_id": "gabrial_micheal",
-    "post_id": "E82D9B65-130B-480A-9200-068644CC80B8"
+    "post_id": "E82D9B65-130B-480A-9200-068644CC80B8",
+    "title": "UW Game this Weekend"
   }
 ]
