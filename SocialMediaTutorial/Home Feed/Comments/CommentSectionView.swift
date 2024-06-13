@@ -23,7 +23,8 @@ struct CommentSectionView: View {
             ScrollView {
                 if self.vm.loading {
                     let _ = print("ACTUAL ACTUAL POST ID: " + vm.post.post_id)
-                    ProgressView().progressViewStyle(.circular)
+                    //ProgressView().progressViewStyle(.circular)
+                    LoadingView(width: 180, height: 200)
                 } else {
                     LazyVStack(spacing:0){
                         ForEach(vm.commentSection, id: \.id){ comment in

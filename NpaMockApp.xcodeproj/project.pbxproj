@@ -72,6 +72,8 @@
 		3679F2BB2BAF8D9300DAC43E /* AthleteBannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2BA2BAF8D9300DAC43E /* AthleteBannerView.swift */; };
 		3679F2BE2BAFBB1A00DAC43E /* NavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679F2BD2BAFBB1A00DAC43E /* NavBar.swift */; };
 		36862E3B2C19783300A3AC33 /* VerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36862E3A2C19783300A3AC33 /* VerificationView.swift */; };
+		36862E3E2C1A3D8400A3AC33 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36862E3D2C1A3D8400A3AC33 /* LoadingView.swift */; };
+		36862E402C1A50D500A3AC33 /* CategoryTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36862E3F2C1A50D500A3AC33 /* CategoryTabView.swift */; };
 		36920C532BC928A700CA9D8F /* FeaturedAthletes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C522BC928A700CA9D8F /* FeaturedAthletes.swift */; };
 		36920C552BC92EEE00CA9D8F /* ShopScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C542BC92EEE00CA9D8F /* ShopScrollView.swift */; };
 		36920C572BC92EF900CA9D8F /* ItemCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C562BC92EF900CA9D8F /* ItemCard.swift */; };
@@ -114,6 +116,11 @@
 		36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7462BB12B880044C3B1 /* AthleteNavBar.swift */; };
 		36F0D7492BB695DC0044C3B1 /* AthleteStatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D7482BB695DC0044C3B1 /* AthleteStatView.swift */; };
 		36F0D74B2BBCC0E90044C3B1 /* AthleteHeadline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F0D74A2BBCC0E90044C3B1 /* AthleteHeadline.swift */; };
+		36F3DB8F2C1A920900BF25A3 /* RecoveryContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3DB8E2C1A920900BF25A3 /* RecoveryContentView.swift */; };
+		36F3DB912C1AA56E00BF25A3 /* SponsorNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3DB902C1AA56E00BF25A3 /* SponsorNotification.swift */; };
+		36F3DB932C1AA84300BF25A3 /* AthleteFiltersScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3DB922C1AA84300BF25A3 /* AthleteFiltersScrollView.swift */; };
+		36F3DB952C1ABD0100BF25A3 /* SponsorPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3DB942C1ABD0100BF25A3 /* SponsorPopup.swift */; };
+		36F3DB972C1ABF7000BF25A3 /* AwardsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F3DB962C1ABF7000BF25A3 /* AwardsView.swift */; };
 		36F7670C2BBFCFE6008D8968 /* NpaContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F7670B2BBFCFE6008D8968 /* NpaContentView.swift */; };
 		36F7670F2BBFD9D2008D8968 /* DotsIndexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F7670E2BBFD9D2008D8968 /* DotsIndexView.swift */; };
 		36F767122BC26B8C008D8968 /* Podcast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36F767112BC26B8C008D8968 /* Podcast.swift */; };
@@ -201,6 +208,8 @@
 		3679F2BA2BAF8D9300DAC43E /* AthleteBannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteBannerView.swift; sourceTree = "<group>"; };
 		3679F2BD2BAFBB1A00DAC43E /* NavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBar.swift; sourceTree = "<group>"; };
 		36862E3A2C19783300A3AC33 /* VerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationView.swift; sourceTree = "<group>"; };
+		36862E3D2C1A3D8400A3AC33 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		36862E3F2C1A50D500A3AC33 /* CategoryTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTabView.swift; sourceTree = "<group>"; };
 		36920C522BC928A700CA9D8F /* FeaturedAthletes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedAthletes.swift; sourceTree = "<group>"; };
 		36920C542BC92EEE00CA9D8F /* ShopScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShopScrollView.swift; sourceTree = "<group>"; };
 		36920C562BC92EF900CA9D8F /* ItemCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCard.swift; sourceTree = "<group>"; };
@@ -243,6 +252,11 @@
 		36F0D7462BB12B880044C3B1 /* AthleteNavBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteNavBar.swift; sourceTree = "<group>"; };
 		36F0D7482BB695DC0044C3B1 /* AthleteStatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteStatView.swift; sourceTree = "<group>"; };
 		36F0D74A2BBCC0E90044C3B1 /* AthleteHeadline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteHeadline.swift; sourceTree = "<group>"; };
+		36F3DB8E2C1A920900BF25A3 /* RecoveryContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecoveryContentView.swift; sourceTree = "<group>"; };
+		36F3DB902C1AA56E00BF25A3 /* SponsorNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorNotification.swift; sourceTree = "<group>"; };
+		36F3DB922C1AA84300BF25A3 /* AthleteFiltersScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteFiltersScrollView.swift; sourceTree = "<group>"; };
+		36F3DB942C1ABD0100BF25A3 /* SponsorPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SponsorPopup.swift; sourceTree = "<group>"; };
+		36F3DB962C1ABF7000BF25A3 /* AwardsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsView.swift; sourceTree = "<group>"; };
 		36F7670B2BBFCFE6008D8968 /* NpaContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NpaContentView.swift; sourceTree = "<group>"; };
 		36F7670D2BBFD11A008D8968 /* podcasts.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = podcasts.json; sourceTree = "<group>"; };
 		36F7670E2BBFD9D2008D8968 /* DotsIndexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DotsIndexView.swift; sourceTree = "<group>"; };
@@ -367,6 +381,8 @@
 			isa = PBXGroup;
 			children = (
 				360C880B2C09B21000D952D2 /* TrainingContentView.swift */,
+				36862E3F2C1A50D500A3AC33 /* CategoryTabView.swift */,
+				36F3DB8E2C1A920900BF25A3 /* RecoveryContentView.swift */,
 			);
 			path = Training;
 			sourceTree = "<group>";
@@ -462,6 +478,7 @@
 				360C880E2C0A35C600D952D2 /* Shop */,
 				360C880D2C0A359F00D952D2 /* Events */,
 				36CA856C2BED54FB0044A66C /* ScrollableView.swift */,
+				36F3DB902C1AA56E00BF25A3 /* SponsorNotification.swift */,
 			);
 			path = Explore;
 			sourceTree = "<group>";
@@ -544,6 +561,7 @@
 				367179222BC9124B004E380C /* AthleteScrollView.swift */,
 				36BAAC882BCD1216009E6541 /* AthleteCardView.swift */,
 				3649F3562BDC770C003DBEBD /* FeaturedAthleteView.swift */,
+				36F3DB962C1ABF7000BF25A3 /* AwardsView.swift */,
 			);
 			path = Athlete;
 			sourceTree = "<group>";
@@ -557,6 +575,8 @@
 				36DC850E2BFBBBC900FCC7E2 /* TeamScrollView.swift */,
 				36DC85102BFBBC2000FCC7E2 /* TeamHeadline.swift */,
 				36D5653F2C167647000136C4 /* FilterScrollView.swift */,
+				36F3DB922C1AA84300BF25A3 /* AthleteFiltersScrollView.swift */,
+				36F3DB942C1ABD0100BF25A3 /* SponsorPopup.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -575,6 +595,14 @@
 				3671791A2BC90CF1004E380C /* CustomTabBarView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		36862E3C2C1A3D7700A3AC33 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				36862E3D2C1A3D8400A3AC33 /* LoadingView.swift */,
+			);
+			path = Loading;
 			sourceTree = "<group>";
 		};
 		36920C5E2BC9461200CA9D8F /* Inbox */ = {
@@ -673,6 +701,7 @@
 				3610AE212BD5DDB600CD54B4 /* Profile Creation */,
 				361170DC2BD24DCF00BBB3B2 /* Search */,
 				363E41972BCDDD7600A7EB88 /* LogoLandingPage */,
+				36862E3C2C1A3D7700A3AC33 /* Loading */,
 				36920C5E2BC9461200CA9D8F /* Inbox */,
 				36236A492BC66D2D00580B29 /* Explore */,
 				36F767092BBFCF96008D8968 /* NPA Content */,
@@ -833,6 +862,7 @@
 				36FBA1A72C17907B004879DF /* CategoryGroupView.swift in Sources */,
 				3679F2B72BAE184E00DAC43E /* FilterView.swift in Sources */,
 				3679F2952BAA1E2600DAC43E /* CommentVM.swift in Sources */,
+				36F3DB972C1ABF7000BF25A3 /* AwardsView.swift in Sources */,
 				36F767122BC26B8C008D8968 /* Podcast.swift in Sources */,
 				3679F2BE2BAFBB1A00DAC43E /* NavBar.swift in Sources */,
 				361ACDC72C07C1B2002D4BA5 /* ExploreHomeView.swift in Sources */,
@@ -855,6 +885,7 @@
 				360C880A2C09AFAD00D952D2 /* NetworkContentView.swift in Sources */,
 				3615F6352BE31D0000214E10 /* EditProfileView.swift in Sources */,
 				36236A442BC2957100580B29 /* Blog.swift in Sources */,
+				36F3DB952C1ABD0100BF25A3 /* SponsorPopup.swift in Sources */,
 				36F0D7472BB12B880044C3B1 /* AthleteNavBar.swift in Sources */,
 				3610AE232BD5DDE400CD54B4 /* HomePageView.swift in Sources */,
 				367179212BC90E4E004E380C /* CustomTabBarContainerView.swift in Sources */,
@@ -894,8 +925,10 @@
 				3679F2B22BAD49C800DAC43E /* DiscoverView.swift in Sources */,
 				363A290F2BD6131000BA33FF /* iosCheckboxToggleStyle.swift in Sources */,
 				36F0D74B2BBCC0E90044C3B1 /* AthleteHeadline.swift in Sources */,
+				36F3DB8F2C1A920900BF25A3 /* RecoveryContentView.swift in Sources */,
 				36236A462BC295A400580B29 /* BlogVM.swift in Sources */,
 				E55B36402A61852C00CB859B /* PostCardBody.swift in Sources */,
+				36862E3E2C1A3D8400A3AC33 /* LoadingView.swift in Sources */,
 				36F0D7452BB12AF50044C3B1 /* AthleteProfileView.swift in Sources */,
 				360C88062C09A8BC00D952D2 /* TicketFilterScrollView.swift in Sources */,
 				36F767162BC27452008D8968 /* PodcastView.swift in Sources */,
@@ -906,6 +939,7 @@
 				36E27D7F2C19035E006B8786 /* RecruitmentContentView.swift in Sources */,
 				36920C552BC92EEE00CA9D8F /* ShopScrollView.swift in Sources */,
 				3679F2A52BAA455000DAC43E /* FeedView.swift in Sources */,
+				36F3DB932C1AA84300BF25A3 /* AthleteFiltersScrollView.swift in Sources */,
 				36DC850D2BFBBB7D00FCC7E2 /* TeamsDiscoverView.swift in Sources */,
 				36BE40D82BFD480D0028A2AE /* NotificationsView.swift in Sources */,
 				3649F3612BDCF71E003DBEBD /* EventTypeView.swift in Sources */,
@@ -943,9 +977,11 @@
 				36BE40DD2BFD84660028A2AE /* FeedFilterView.swift in Sources */,
 				3615F6372BE4AD9000214E10 /* StatsView.swift in Sources */,
 				36D565422C167B81000136C4 /* HighlightScrollableView.swift in Sources */,
+				36862E402C1A50D500A3AC33 /* CategoryTabView.swift in Sources */,
 				3679F29F2BAA20DE00DAC43E /* PostVM.swift in Sources */,
 				3649F35D2BDCE769003DBEBD /* CategoriesView.swift in Sources */,
 				36920C572BC92EF900CA9D8F /* ItemCard.swift in Sources */,
+				36F3DB912C1AA56E00BF25A3 /* SponsorNotification.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

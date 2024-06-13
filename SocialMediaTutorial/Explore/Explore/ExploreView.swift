@@ -30,12 +30,14 @@ struct ExploreView: View {
      
     var body: some View {
         NavigationStack{
+            Spacer()
+                .frame(height: 5)
             ScrollView{
                 VStack(alignment: .leading, spacing: 0){
 
                     VStack(alignment: .leading, spacing: 0){
                         Spacer()
-                            .frame(height: 45)
+                            .frame(height: 20)
                         HStack(spacing: 0){
                             
                             Image(systemName: "tennisball.fill")

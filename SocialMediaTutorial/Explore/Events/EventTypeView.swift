@@ -17,7 +17,7 @@ struct EventTypeView: View {
             Image(image_name)
                 .resizable()
                 .cornerRadius(10)
-                .frame(width: 5/9 * deviceWidth, height:130)
+                .frame(width: 5/8 * deviceWidth, height:130)
 
                 .scaledToFill()
                 //.opacity(0.8)
@@ -38,11 +38,11 @@ struct EventTypeView: View {
                             .shadow(color: .black, radius: 3)
                             .padding(.bottom, 10)
                     }
-                    .padding(.leading, 10)
+                    .padding(.leading, 5)
                     Spacer()
                 }
                 //.offset(x: -50)
-                .frame(width: 5/9 * deviceWidth)
+                .frame(width: 5/8 * deviceWidth)
 //                .background{
 //                    Color.gray
 //                        .opacity(0.3)
@@ -52,7 +52,7 @@ struct EventTypeView: View {
                 
                 
             }
-            .frame(width: 5/9 * deviceWidth)
+            .frame(width: 5/8 * deviceWidth)
                 
 
         }//.frame(width: 1/2 * deviceWidth, height: 200)

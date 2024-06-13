@@ -15,51 +15,66 @@ struct EventTabContentView: View {
         "https://ymcagbw.org/sites/default/files/2019-03/by_thank_you_reception_cover_shot.jpg"
     
     ]
+    let tabs = [
+        "Camps",
+        "Games",
+        "Showcases",
+    ]
+    @State var selected = "Camps"
     var body: some View {
-        Spacer()
-            .frame(height: 20)
+        CustomNavBar(title: "Events")
 
-        ScrollView(.vertical , showsIndicators: false){
-
-            HStack{
-                Text("For You")
-                    .bold()
-                    .font(.title)
-                    .padding(.horizontal, 15)
-                Spacer()
-                HStack{
-                    Image(systemName: "list.bullet")
-                        .font(.system(size: 22))
-                    
-                }
-                .padding(8)
-                .background{
-                    RoundedRectangle(cornerRadius: 10)
-                        .fill(Color.gray.opacity(0.3))
-                }
-                .padding(.trailing, 30)
-            }
-            Spacer()
-                .frame(height: 20)
-            EventFilterScrollView()
-                .offset(x: 5)
-            Spacer()
-                .frame(height: 20)
+        VStack{
             
-            VStack {
+            ScrollView(.vertical , showsIndicators: false){
                 Spacer()
-                    .frame(width: 20)
-                ForEach(urls.indices, id: \.self) { index in
-                    EventCardVertical(event_url: urls[index])
-                        //.padding(10)
+                    .frame(height: 15)
+                CategoryTabView(selection: $selected, categories: tabs)
+                Divider()
+                    .padding(.top, 5)
+                Spacer()
+                    .frame(height: 20)
+                HStack{
+                    Text("Camps For You")
+                        .bold()
+                        .font(.title2)
+                        .padding(.leading, 15)
                     Spacer()
-                        .frame(height: 20)
+                    HStack{
+                        HStack{
+                            
+                            Image(systemName: "paperplane.fill")
+                                .foregroundStyle(.gray.opacity(0.7))
+                            Text("1.5 mi")
+                                .foregroundStyle(.gray.opacity(0.8))
+                            Image(systemName: "chevron.down")
+                                .foregroundStyle(.gray.opacity(0.7))
 
+                        }
+                        .padding(8)
+                        .background{
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(.gray.opacity(0.2))
+                        }
+                    }
+                    .padding(.trailing, 20)
                 }
+                Spacer()
+                    .frame(height: 15)
+                
+                VStack {
+                    ForEach(urls.indices, id: \.self) { index in
+                        EventCardVertical(event_url: urls[index])
+                        //.padding(10)
+                        Spacer()
+                            .frame(height: 20)
+                        
+                    }
+                }
+                .offset(x: -5)
             }
-            .offset(x: -5)
-        }.frame(height: 3/4 * deviceHeight)
-        
+            
+        }
     }
 }
 

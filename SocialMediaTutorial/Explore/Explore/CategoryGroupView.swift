@@ -32,9 +32,9 @@ struct CategoryGroupView: View {
                     }
                     
                     NavigationLink{
-                        SupplementsScrollView()
+                        RecoveryContentView()
                     }label: {
-                        ExploreCategoryView(imageName: "supplements_icon", textName: "Supplements")
+                        ExploreCategoryView(imageName: "supplements_icon", textName: "Recovery")
                     }
                     NavigationLink{
                         MentalContentView()

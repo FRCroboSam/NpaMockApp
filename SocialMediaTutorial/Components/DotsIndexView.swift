@@ -14,8 +14,8 @@ struct Fancy3DotsIndexView: View {
   private let circleSize: CGFloat = 8
   private let circleSpacing: CGFloat = 6
   
-  private let primaryColor = Color.gray
-  private let secondaryColor = Color.gray.opacity(0.6)
+    private let primaryColor = Color.white//Color.gray
+    private let secondaryColor = Color.white//Color.gray.opacity(0.6)
   
   private let smallScale: CGFloat = 0.6
   
@@ -31,7 +31,7 @@ struct Fancy3DotsIndexView: View {
                   ? primaryColor : secondaryColor) // 2
             .scaleEffect(((currentIndex + 1) % numberOfPages) == index + 1 || currentIndex == index
                          ? 1 : smallScale)
-            
+            .shadow(radius: 1)
             .frame(width: circleSize, height: circleSize)
        
             .transition(AnyTransition.opacity.combined(with: .scale)) // 3

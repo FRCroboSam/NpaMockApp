@@ -15,23 +15,20 @@ struct AthleteCardView: View {
             Image(athlete.profile_img)
                 .resizable()
                 .scaledToFill()
-                .frame(width: 130, height: 150)
+                .frame(width: 100, height: 100)
             
                 .clipped()
-                .clipShape(Rectangle())
-                .roundedCorner(5, corners: .topRight)
-                .roundedCorner(5, corners: .topLeft)
+                .clipShape(Circle())
+//                .roundedCorner(5, corners: .topRight)
+//                .roundedCorner(5, corners: .topLeft)
 
                 .overlay(alignment: .bottomTrailing) {
-                    Image(systemName: "basketball")
+                    Image(systemName: "checkmark.seal.fill")
                         .font(.title)
-                        .background{
-                            Color.orange
-                        }
+                        .foregroundStyle(.blue)
                         .clipped()
-                        .clipShape(Circle())
-
                         .offset(x: 10, y: 5)
+
                 }
             Text(athlete.first_name + " " + athlete.last_name)
                 .font(.system(size: 15))
@@ -55,30 +52,31 @@ struct AthleteCardView: View {
             }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: .blue, padding: 20 ))
         }
         .frame(width: 130)
+        .padding(.top, 10)
         .background{
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 20)
                 .strokeBorder(Color(UIColor.systemGray5))
                 .padding(.bottom, -10)
         }
-        .overlay(alignment: .topLeading) {
-            if(fireValue != 0){
-                HStack(spacing: 0){
-                    Image(systemName: "flame.fill")
-                        .foregroundStyle(Color(hex: "0A66C2"))
-                    
-                   
-                }
-                
-                .background{
-                    Circle()
-                        .foregroundStyle(Color(UIColor.white))
-                        .padding(-10)
-                        .shadow(radius: 3)
-                    
-                }
-                .offset(x: -10, y: -10)
-            }
-        }
+//        .overlay(alignment: .topLeading) {
+//            if(fireValue != 0){
+//                HStack(spacing: 0){
+//                    Image(systemName: "flame.fill")
+//                        .foregroundStyle(Color(hex: "0A66C2"))
+//                    
+//                   
+//                }
+//                
+//                .background{
+//                    Circle()
+//                        .foregroundStyle(Color(UIColor.white))
+//                        .padding(-10)
+//                        .shadow(radius: 3)
+//                    
+//                }
+//                .offset(x: -10, y: -10)
+//            }
+//        }
 
     }
 }

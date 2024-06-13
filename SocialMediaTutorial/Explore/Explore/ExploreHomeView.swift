@@ -17,11 +17,18 @@ struct ExploreHomeView: View {
                     VStack(alignment: .leading){
                         Spacer()
                             .frame(height: 15)
-                        Text("Welcome, Bobby")
-                            .lineLimit(1)
-                            .bold()
-                            .font(.title)
-                            .padding(.leading, 15)
+                        HStack{
+                            Text("Welcome, ")
+                                .lineLimit(1)
+                                .bold()
+                                .font(.title)
+                                .padding(.leading, 15)
+                            Text("Bobby")
+                                .foregroundStyle(Color(hex: "0A66C2"))
+                                .lineLimit(1)
+                                .bold()
+                                .font(.title)
+                        }
                         
                         Spacer()
                             .frame(height: 10)
@@ -61,6 +68,7 @@ struct ExploreHomeView: View {
 //
                 Spacer()
                     .frame(height: 10)
+
                 HStack(spacing: 0){
                     HStack{
                         Text("NPA+" )
@@ -123,7 +131,7 @@ struct ExploreHomeView: View {
                 Spacer()
                     .frame(height: 10)
                 EventTypeScrollView()
-                    .offset(x: -5)
+                    .offset(x: 20)
                 
                 
                 Spacer()
@@ -156,6 +164,7 @@ struct ExploreHomeView: View {
                 Spacer()
                     .frame(height: 10)
                 ShopCategoriesScrollView()
+                    .padding(.leading, 5)
                 Spacer()
                     .frame(height: 20)
                 HStack{
@@ -163,6 +172,7 @@ struct ExploreHomeView: View {
                         .font(.title2)
                         .bold()
                         .padding(.leading, 20)
+                        .padding(.bottom, 10)
                     Spacer()
                     Button{
                         
@@ -180,11 +190,17 @@ struct ExploreHomeView: View {
                     .padding(.trailing, 10)
                     
                 }
+                .padding(.bottom, 15)
                 
                 ShopScrollView()
                 Spacer()
                     .frame(height: 10)
-
+                Text("Your Favorite Athletes")
+                    .font(.title2)
+                    .bold()
+                    .padding(.leading, 20)
+                    .padding(.bottom, 5)
+                    .padding(.top, 10)
                 BioScrollView()
                 
                 

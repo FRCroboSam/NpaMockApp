@@ -27,7 +27,8 @@ struct CustomVideoPlayer: View {
         YouTubePlayerView(
             player,
             placeholderOverlay: {
-                ProgressView()
+                
+                LoadingView(width: deviceWidth, height: 400)
             }
         )
         
@@ -60,7 +61,7 @@ struct VideoPlayer2: View {
                 source: .url(url)
             ),
             placeholderOverlay: {
-                    ProgressView()
+                LoadingView(width: width, height: height)
                 }
             )
         

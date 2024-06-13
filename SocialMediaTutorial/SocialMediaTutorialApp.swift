@@ -70,9 +70,17 @@ struct SocialMediaTutorialApp: App {
                 print("VIDEOS HAVE LAODED")
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     withAnimation(.easeIn){
+                        print("VIDEO IS PLAYING: " + String(feedVM.youtubePlayers[0].isPlaying))
                         opacity = 0.0
                         if(feedVM.loggedIn){
                             readyToShow = true
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                            if(!feedVM.youtubePlayers[0].isPlaying){
+                                feedVM.youtubePlayers[0].play()
+                            }
+                            print("VIDEO IS PLAYING: " + String(feedVM.youtubePlayers[0].isPlaying))
+
                         }
                     }
                 }

@@ -37,7 +37,7 @@ struct TeamHeadline: View {
                     
                 },
                 placeholder: {
-                    ProgressView()
+                    LoadingView(width: 40, height: 40)
                 }
             )
 

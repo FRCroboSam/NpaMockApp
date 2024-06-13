@@ -13,14 +13,12 @@ struct FeaturedAthletes: View {
 
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) { // Horizontal scroll view for displaying story cards
-            Spacer()
-                .frame(height: 5)
             HStack(spacing: 0) {
-                Spacer().frame(width: 10)
+                Spacer().frame(width: 5)
                 ForEach(Array(athleteData.athletes.enumerated()), id: \.1.id) { index, athlete in
-                    Spacer().frame(width: 10)
+                    Spacer().frame(width: 0)
                     AthleteCardView(athlete: athlete, fireValue: 1)
-                                                .padding(10)
+                                                .padding(5)
                                                 .padding(.vertical, 10)
                     
 //                    if(index < 3){

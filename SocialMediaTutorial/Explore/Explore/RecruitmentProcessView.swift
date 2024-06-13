@@ -15,7 +15,7 @@ struct RecruitmentProcessView: View {
         "Post Your Clips",
         "Chat With Coaches",
         "Receive Offer Letters",
-        "Sign with a College"
+        "Sign with a Team"
     ]
     let images = [
         "step1",

@@ -21,20 +21,24 @@ struct TabbarView: View {
     @State var selected2 = 1
     @State var filterViewOffset = 600.0
     @State var filterFeed = false
-    
-    @State var slidingTabOffset = 50.0
-    let tabOffsets = [50.0, 130.0, 205, 285.0, 156.0 + 1/2 * deviceWidth]
+    @State var slidingTabOffset = (deviceWidth - 250) / 6 + 25
+    let tabOffsets = [(deviceWidth - 250) / 6 * 1 + 25,
+                      (deviceWidth - 250) / 6 * 2 + 75,
+                      (deviceWidth - 250) / 6 * 3 + 125,
+                      (deviceWidth - 250) / 6 * 4 + 175,
+                      (deviceWidth - 250) / 6 * 5 + 225,
+                      ]
     @State private var startSlidingDown = false
     var body: some View {
         
         ZStack{
             if(!vm.showCommentSection){
-                VStack{
+                VStack(alignment: .leading){
                     
                     Rectangle()
                         .fill(Color(hex: "0A66C2"))
                         .frame(width: 40, height: 2.0)
-                        .offset(x: slidingTabOffset - 1/2 * deviceWidth, y: -5)
+                        .offset(x: slidingTabOffset - 20, y: -5)
                         .animation(.easeIn, value: slidingTabOffset)
                     HStack {
                         Spacer()
@@ -121,6 +125,7 @@ struct TabbarView: View {
                                 .font(.caption)
                                 .foregroundStyle(self.selected == 3 ? Color(hex: "0A66C2") : .gray)
                         }
+
                         .frame(width: 50)
 
                         Spacer()
@@ -146,6 +151,7 @@ struct TabbarView: View {
                                 .font(.caption)
                                 .foregroundStyle(self.selected == 4 ? Color(hex: "0A66C2") : .gray)
                         }
+
                         .frame(width: 50)
 
                         Spacer()

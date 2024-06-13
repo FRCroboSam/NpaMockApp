@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DiscoverView: View {
     @EnvironmentObject var athleteVM: AthleteVM
-    @State private var searchTeacher = ""
+    @State private var searchText = ""
     @State private var selected_athlete: Athlete?
     @State private var goToAthleteProfile = false
     @State private var filterViewOffset = 0.0
@@ -17,6 +17,7 @@ struct DiscoverView: View {
     @State private var showTeams = false
     var body: some View{
         NavigationStack{
+            CustomNavBar(title: "Athletes", backButtonHidden: false)
             VStack(alignment: .leading){
                 Spacer()
                     .frame(height: 30)
@@ -29,19 +30,32 @@ struct DiscoverView: View {
                         HStack{
                             Spacer()
                                 .frame(width: 10)
-                            HStack{
-                                Image(systemName: "magnifyingglass")
-                                    .foregroundColor(.black)
-                                TextField("Discover, sponsor your favorite athletes!", text: $searchTeacher)
-                                    .foregroundColor(.black)
-                                    .textContentType(.newPassword)
-                                    .keyboardType(.asciiCapable)
-                                    .autocorrectionDisabled()
-                                    .listRowSeparator(.hidden)
-                            }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.925))
-                                .ignoresSafeArea(.keyboard)
-//                                .padding(.top, 10)
-//                                .offset(y: 20)
+                            VStack(alignment: .leading){
+                                HStack{
+                                    Image(systemName: "magnifyingglass")
+                                        .foregroundColor(.black.opacity(0.6))
+                                    
+                                    
+                                    TextField("Discover, sponsor athletes", text: $searchText)
+                                        .font(.headline)
+                                        .foregroundStyle(.gray.opacity(0.6))
+                                    
+                                    Spacer()
+                                    
+                                }
+                                Rectangle()
+                                    
+                                    .fill(Color.gray.opacity(0.3))
+                                    .frame(width: 3/4 * deviceWidth, height: 2)
+                            }
+                            
+                            .frame(width: 3/4 * deviceWidth)
+                            .padding(.vertical, 15)
+                            .padding(.horizontal, 10)
+                            .background{
+                                RoundedRectangle(cornerRadius: 30)
+                                    .fill(Color(UIColor.clear))
+                            }
                             Button{
                                 filterViewOffset = 500
                                 if(athleteVM.showingFilters){
@@ -57,16 +71,16 @@ struct DiscoverView: View {
                                 
                             } label: {
                                 HStack{
-                                    Image(systemName: "line.3.horizontal.decrease")
+                                    Image(systemName: "slider.horizontal.3")
                                         //.resizable()
                                         .font(.system(size: 20))
-                                        .foregroundStyle(.white)
+                                        .foregroundStyle(.gray.opacity(0.8))
                                         .frame(width: 50, height: 50)
 
-                                        .background{
-                                            Color(UIColor.gray)
-                                                .clipShape(.circle)
-                                        }
+//                                        .background{
+//                                            Color(UIColor.gray).opacity(0.6)
+//                                                .clipShape(.circle)
+//                                        }
 //                                    Text("Filter")
                                 }
                                 .padding(.trailing, 10)
@@ -76,177 +90,16 @@ struct DiscoverView: View {
                         //                        .frame(height: 30)
                         Spacer()
                             .frame(height: 10)
-                        ScrollView(.horizontal){
-                            HStack(spacing: 15){
-                                //                            Text("Sponsor and interact with your favorite athletes!")
-                                //                                .bold()
-                                //                                .font(.subheadline)
-                                Spacer()
-                                    .frame(width: 2)
-                                Text("League")
-                                    .foregroundStyle(Color(UIColor.systemGray2))
-                                    .padding(.horizontal, 14)
-                                    .padding(.vertical, 7)
-                                    .background{
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .strokeBorder(Color(UIColor.systemGray4))
-                                            .cornerRadius(15)
-                                    }
-                                Text("Sport")
-                                    .foregroundStyle(Color(UIColor.systemGray2))
-                                    .padding(.horizontal, 14)
-                                    .padding(.vertical, 7)
-                                    .background{
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .strokeBorder(Color(UIColor.systemGray4))
-                                            .cornerRadius(15)
-                                    }
-                                Text("Gender")
-                                    .foregroundStyle(Color(UIColor.systemGray2))
-                                    .padding(.horizontal, 14)
-                                    .padding(.vertical, 7)
-                                    .background{
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .strokeBorder(Color(UIColor.systemGray4))
-                                            .cornerRadius(15)
-                                    }
-                                Text("State")
-                                    .foregroundStyle(Color(UIColor.systemGray2))
-                                    .padding(.horizontal, 14)
-                                    .padding(.vertical, 7)
-                                    .background{
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .strokeBorder(Color(UIColor.systemGray4))
-                                            .cornerRadius(15)
-                                    }
-
-                                Text("Men's")
-                                    .foregroundStyle(Color.blue)
-                                    .padding(.horizontal, 14)
-                                    .padding(.vertical, 7)
-                                    .background{
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .strokeBorder(Color.blue, lineWidth: 2)
-                                            .cornerRadius(15)
-                                    }
-
-
-
-                                Text("Basketball")
-                                    .foregroundStyle(Color.orange)
-                                    .padding(.horizontal, 14)
-                                    .padding(.vertical, 7)
-                                    .background{
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .strokeBorder(.orange)
-                                            .cornerRadius(15)
-                                    }
-
-                                Text("JUCO")
-                                    .foregroundStyle(Color.teal)
-                                    .padding(.horizontal, 14)
-                                    .padding(.vertical, 7)
-                                    .background{
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .strokeBorder(.teal)
-                                            .cornerRadius(15)
-                                    }
-                                
-                                
-                                
-                                
-                            }
-                        }.scrollIndicators(.hidden)
-                        Spacer()
-                            .frame(height: 15)
                         
-                        ScrollView(.horizontal){
-                            Spacer()
-                                .frame(height: 5)
-//                            HStack(spacing: 15){
-//                                Spacer()
-//                                    .frame(width: 2)
-//                                Text("Add Filters +")
-//                                    .foregroundStyle(Color(UIColor.systemGray2))
-//                                    .padding(.horizontal, 14)
-//                                    .padding(.vertical, 7)
-//                                    .background{
-//                                        RoundedRectangle(cornerRadius: 20)
-//                                            .strokeBorder(Color(UIColor.systemGray4))
-//                                            .cornerRadius(15)
-//                                    }
-//                                Text("Men's")
-//                                    .foregroundStyle(Color.blue)
-//                                    .padding(.horizontal, 14)
-//                                    .padding(.vertical, 7)
-//                                    .background{
-//                                        RoundedRectangle(cornerRadius: 20)
-//                                            .strokeBorder(Color.blue, lineWidth: 2)
-//                                            .cornerRadius(15)
-//                                    }
-//                                    .overlay(alignment: .topTrailing){
-//                                        Image(systemName: "x.circle.fill")
-//                                            .foregroundStyle(.red)
-//                                            .offset(x: 5, y: -5)
-//                                    }
-//
-//
-//
-//                                Text("Basketball")
-//                                    .foregroundStyle(Color.orange)
-//                                    .padding(.horizontal, 14)
-//                                    .padding(.vertical, 7)
-//                                    .background{
-//                                        RoundedRectangle(cornerRadius: 20)
-//                                            .strokeBorder(.orange)
-//                                            .cornerRadius(15)
-//                                    }
-//
-//                                Text("JUCO")
-//                                    .foregroundStyle(Color.teal)
-//                                    .padding(.horizontal, 14)
-//                                    .padding(.vertical, 7)
-//                                    .background{
-//                                        RoundedRectangle(cornerRadius: 20)
-//                                            .strokeBorder(.teal)
-//                                            .cornerRadius(15)
-//                                    }
-//                                
-//                                
-//                                
-//                                
-//                                
-//                            }
-                        }.scrollIndicators(.hidden)
-//                        Spacer()
-//                            .frame(height: 15)
-                        Divider()
-                        VStack{
-                            Spacer()
-                                .frame(height: 15)
+                        AthleteFiltersScrollView()
+                            .padding(.bottom, 5)
                             
-                            HStack{
-                                Text("48 results")
-                                    .foregroundStyle(.gray)
-                                    .padding(.leading, 15)
-                                Spacer()
-                                Text("Most Relevant")
-                                    .foregroundStyle(Color(hex: "#2E8BC0"))
-                                Image(systemName: "chevron.down")
-                                    .font(.subheadline)
-                                    .foregroundStyle(Color(hex: "#2E8BC0"))
-                                Spacer()
-                                    .frame(width: 15)
 
-                            }
-                            Spacer()
-                                .frame(height: 15)
 
-                        }
-                        Divider()
                         ZStack{
                             if(!showTeams){
-                                AthleteDiscoverView(showTeams: $showTeams)
+                                AthleteDiscoverView(searchText: $searchText, showTeams: $showTeams
+                                )
                                     .onAppear{
                                         goToAthleteProfile = false
                                         print(String(

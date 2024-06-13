@@ -9,42 +9,59 @@ import Foundation
 import SwiftUI
 
 
-struct DiscoverNavBar: View{
-    @State var text: String = "Discover"
+struct CustomNavBar: View{
+    @Environment(\.dismiss) var dismiss
+
+    let title: String?
+    @State var backButtonHidden = true
     var body: some View{
         VStack{
-            Spacer()
-                .frame(height: UIApplication.shared.windows.first?.safeAreaInsets.top)
-            HStack{
+            HStack(spacing: 10){
                 Spacer()
-                Image("star_logo")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 50, height: 50)
-                Text(text)
-                    .foregroundStyle(Color.white)
+                    
+                Text(title ?? "Discover")
+                    .foregroundStyle(Color.black)
                     .bold()
-                    .font(.title)
-                Spacer()
-                Image(systemName: "bell.fill")
-                    .padding(.trailing, 30)
+                    .font(.subheadline)
+                HStack{
+                    Spacer()
+                    Image(systemName: "plus")
+                        .foregroundStyle(Color.black)
+                        .font(.title2)
+                    Image(systemName: "calendar")
+                        .font(.title2)
+                        .foregroundStyle(Color.black)
+                    Image(systemName: "magnifyingglass")
+                        .foregroundStyle(Color.black)
+                        .font(.title2)
+                        .padding(.trailing, 30)
+                }
+                .frame(width: 3/7 * deviceWidth)
             }
         }
-        .offset(y: -10)
-        .background{
-            Color(hex: "0A66C2")
-                .zIndex(30)
-        }
+        .modifier(HideBackButton(dismiss: _dismiss, hideBackButton: backButtonHidden))
+        
+
 
 
     }
     
 }
-#Preview {
-    return
-    VStack{
-        DiscoverNavBar()
+//#Preview {
+//    return
+//    VStack{
+//        DiscoverNavBar()
+//    }
+//
+//}
+
+struct EmptyModifier: ViewModifier {
+
+    var deviceWidth: CGFloat {
+        UIScreen.main.bounds.width
     }
-
+    
+    func body(content: Content) -> some View {
+        content
+    }
 }
-

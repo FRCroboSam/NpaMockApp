@@ -21,18 +21,17 @@ struct CustomTabBarButton: View{
                     .font(.title2)
                     .foregroundStyle(current == text ? Color(hex: "0A66C2") : Color.black.opacity(0.3))
                     .frame(height: 35)
+                    .padding(.horizontal, 20)
                 if current == text{
                     Rectangle()
                         .fill(Color(hex: "0A66C2"))
-                        .frame(height: 8)
-                        .padding(.horizontal, 10)
+                        .frame(width: 40, height: 3)
                         .matchedGeometryEffect(id: "Tab", in: animation)
                 }
                 else{
                     Rectangle()
                         .fill(.clear)
-                        .frame(height: 8)
-                        .padding(.horizontal, 10)
+                        .frame(width: 40, height: 3)
                 }
 //                ZStack{
 //                    VStack(spacing: 0){

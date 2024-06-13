@@ -51,6 +51,7 @@ struct HighlightScrollView: View {
             Spacer()
                 .frame(height: 10)
             Fancy3DotsIndexView(numberOfPages: podcastVM.podcasts.count, currentIndex: currentIndex)
+                .offset(y: -24)
 
         }
 

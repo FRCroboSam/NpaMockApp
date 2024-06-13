@@ -13,17 +13,19 @@ struct VerificationView: View {
     @State var fill: CGFloat = 0
     
     var body: some View {
+        CustomNavBar(title: "Verification", backButtonHidden: true)
         ScrollView(.vertical){
             VStack(alignment: .leading, spacing: 20){
                 HStack{
                     Text("Verification Tasks")
-                        .font(.title)
-                        .bold()
-                        .padding(.leading, 15)
+                        .font(.title2)
+                        .bold()         
+                        .padding(10)
                     Image(systemName: "checkmark.seal.fill")
                         .foregroundStyle(.blue)
                         .font(.title)
                         .padding(.trailing, 20)
+                    Spacer()
                 }
                 Text("Upload Academic Transcript")
                     .font(.title2)
@@ -80,6 +82,12 @@ struct VerificationView: View {
                                     Image(systemName: "x.circle.fill")
                                         .font(.title)
                                         .foregroundStyle(.red)
+                                        .offset(x: -8, y: -10)
+                                        .background{
+                                            Color.white
+                                        .clipShape(Circle())
+                                        }
+
                                 }
                             
                         }

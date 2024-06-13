@@ -36,34 +36,24 @@ struct CategoryView: View {
                     
                 },
                 placeholder: {
-                    ProgressView()
+                    LoadingView(width: 140, height: 175)
                 }
             )
-//            Text("Featured")
-//                .font(.caption)
-//                .opacity(0.5)
-//                .padding(.leading, 5)
+
             .overlay(alignment: .bottomTrailing){
                 VStack{
                     Text(text.uppercased())
                         .bold()
-
-                    //                .padding(.bottom, 20)
                         .font(.headline)
                         .foregroundStyle(.white)
                         .padding(5)
+                        .background{
+                            Color.blue.opacity(0.5)
+                                .blur(radius: 5)
+                                .offset(x: -5)
+                        }
                     Spacer()
                         .frame(height: 10)
-//                    Text("• " + amount + " " + text + " •")
-//                        .foregroundStyle(.white)
-//                        .font(.footnote)
-//                        .foregroundStyle(.gray)
-//                        .padding(.leading, 7)
-//                        .padding(.bottom, 10)
-                }
-                .background{
-                    Color.blue.opacity(0.5)
-                        .blur(radius: 5)
                 }
             }
             

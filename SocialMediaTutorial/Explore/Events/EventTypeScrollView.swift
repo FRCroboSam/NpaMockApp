@@ -50,20 +50,25 @@ struct EventTypeScrollView: View {
             HStack(spacing: 10) {
 //                        Spacer()
 //                            .frame(width: 20)
+                ScrollView(.horizontal){
+                    HStack{
                         ForEach(urls.indices, id: \.self) { index in
                             EventTypeView(image_name: urls[index], text: titles[index])
                                 .id(index)
+                        }
+                    }
+                                
 
                             
                             
                             //
-                        }
+                    }
                         
 
                         
                         
-                    }.modifier(ScrollingHStackModifier(items: urls.count, itemWidth: 5/9 * deviceWidth, itemSpacing: 10))
-                .frame(width: 7/8 * deviceWidth)
+                    }//.modifier(ScrollingHStackModifier(items: urls.count, itemWidth: 5/9 * deviceWidth, itemSpacing: 10))
+                .frame(width: deviceWidth)
                     
 
 //                }

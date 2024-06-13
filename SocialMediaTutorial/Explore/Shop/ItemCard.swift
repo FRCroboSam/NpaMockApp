@@ -15,12 +15,8 @@ struct ItemCard: View {
     var body: some View {
             VStack(alignment: .leading){
                 VStack{
-                    HStack{
-                        
-                        Spacer()
-                    }
                     Spacer()
-                        .frame(height: 40)
+                        .frame(height: 20)
                     HStack{
                         Spacer()
                         AsyncImage(
@@ -29,7 +25,7 @@ struct ItemCard: View {
                                 image.resizable()
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: width ?? 120, height: height ?? 70)
+                                    .frame(width: width ?? 70, height: height ?? 90)
                                     .clipped()
                                 //.roundedCorner(8, corners: .allCorners)
                                 
@@ -37,20 +33,21 @@ struct ItemCard: View {
                                 
                             },
                             placeholder: {
-                                ProgressView()
+                                LoadingView(width: width ?? 70, height: height ?? 90)
+                                    .opacity(0.2)
                             }
                         )//.padding(.trailing, 20)
                         Spacer()
                         
                     }
                     
-                    
-                    Spacer()
-                        .frame(height: 20)
-                }.overlay{
+                }
+                .frame(width: (width ?? 120) + 30, height: (height ?? 120) + 30)
+                .overlay{
                     Color.gray
                         .opacity(0.2)
                 }
+                
                 .overlay(alignment: .topLeading){
                     Image(systemName: "cart.badge.plus")
                         .font(.system(size: 18))
@@ -74,11 +71,14 @@ struct ItemCard: View {
                     
                 }
                 Spacer()
-                    .frame(height: 10)
+                    .frame(height: 15)
                 VStack(alignment: .leading){
-                    Text(itemName ?? "Nike Superfly 9")
-                        .font(.subheadline)
-                        .bold()
+                    HStack{
+                        Text(itemName ?? "Nike Superfly 9")
+                            .font(.subheadline)
+                            .bold()
+                        Spacer()
+                    }
                     Spacer()
                         .frame(height: 5)
                     Text("$852")
@@ -87,14 +87,16 @@ struct ItemCard: View {
                     
 
                 }//.padding(.leading, 15)
+                .frame(width: (width ?? 120) + 30, height: 20)
+                .padding(.bottom, 10)
                 
                 
                 
                 
                 
             }
-            .frame(width: (width ?? 120) + 60, height: (height ?? 120) + 120)
-            .padding(20)
+
+
 
 //            .background{
 //                RoundedRectangle(cornerRadius: 20)

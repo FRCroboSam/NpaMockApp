@@ -25,7 +25,8 @@ struct ShopTypes: View {
                 ForEach(shopTypes.indices, id: \.self) { index in
                     HStack{
                         Text(shopTypes[index])
-                            .foregroundStyle(selectedIndex == index ? .blue : .black
+                            .underline(selectedIndex == index)
+                            .foregroundStyle(selectedIndex == index ? .gray : .gray.opacity(0.5)
                             )
                             .onTapGesture {
                                 withAnimation(.easeIn){
@@ -38,7 +39,7 @@ struct ShopTypes: View {
                         .background{
                             if(selectedIndex == index){
                                 RoundedRectangle(cornerRadius: 15)
-                                    .fill(Color.blue.opacity(0.2))
+                                    .fill(Color.gray.opacity(0.2))
                             }
                         }
                     

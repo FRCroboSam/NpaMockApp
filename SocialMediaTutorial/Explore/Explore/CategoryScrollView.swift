@@ -21,7 +21,7 @@ struct CategoryScrollView: View {
     @State private var titles = [
         "Athlete Bios",
         "Recruitment",
-        "Mental Skill",
+        "Fitness",
         "Agents"
     ]
     @State private var amounts = [

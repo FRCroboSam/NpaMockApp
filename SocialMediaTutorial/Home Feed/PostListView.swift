@@ -96,6 +96,13 @@ struct PostListView: View {
                                     print(feedVM.youtubePlayers[0].isPlaying)
                                     print(feedVM.youtubePlayers[0].state)
                                     feedVM.youtubePlayers[0].play()
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                                        if(!feedVM.youtubePlayers[0].isPlaying){
+                                            feedVM.youtubePlayers[0].play()
+                                            feedVM.youtubePlayers[0].play()
+
+                                        }
+                                    }
   
                                     self.feedVM.videosHaveLoaded = true
                                 }

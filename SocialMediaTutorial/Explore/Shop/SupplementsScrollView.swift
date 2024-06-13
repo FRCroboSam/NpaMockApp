@@ -57,13 +57,14 @@ struct SupplementsScrollView: View {
                 HStack {
                     ItemCard(item_url: item_urls[index], 
                              itemName: itemNames[index], width: 90, height: 100)
-                        .padding(.leading, 15)
+                    .padding( 10)
 
                     if index + 1 < item_urls.count {
 
                         ItemCard(item_url: item_urls[index],
                                  itemName: itemNames[index], width: 80, height: 100)
-                            .padding(.leading, 10)
+                            .padding( 10)
+                        
                     }
                     Spacer()
                 }

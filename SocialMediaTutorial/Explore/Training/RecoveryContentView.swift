@@ -7,16 +7,15 @@
 
 import SwiftUI
 
-struct TrainingContentView: View {
-    let workoutTypes = [
-        "All",
-        "HIIT",
-        "Yoga",
-        "Build Muscle",
-        "Beginner",
-        "Trending"
+struct RecoveryContentView: View {
+    let recipeTypes = [
+        "Trending",
+        "Gluten-Free",
+        "Vegan",
+        "Protein-Heavy",
+        "Low Carb",
     ]
-    @State var selectedWorkout = "All"
+    @State var selectedRecipe = "Trending"
     let workoutNames = [
         "Full Body Gauntlet",
         "Strength and Conditioning Circuit",
@@ -32,16 +31,16 @@ struct TrainingContentView: View {
         "https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?cs=srgb&dl=pexels-pixabay-416778.jpg&fm=jpg"
     ]
     @State var categories = [
-        "Workouts",
-        "Personal Training",
-        "Endurance",
-        "Explosiveness",
+        "Nutrition",
+        "Recovery",
+        "Physical Therapy",
+        "Injury Recovery"
         
     ]
-    @State var selectedCategory = "Workouts"
+    @State var selectedCategory = "Nutrition"
     
     var body: some View {
-        CustomNavBar(title: "Fitness")
+        CustomNavBar(title: "Recovery")
             
 
         ScrollView(){
@@ -54,12 +53,13 @@ struct TrainingContentView: View {
                 .padding(.top, 5)
 
             Spacer()
-                .frame(height: 10)
+                .frame(height: 20)
             let filters = [
                 "Length",
                 "Level",
                 "Type"
             ]
+            
             HStack{
                 Image(systemName: "slider.horizontal.3")
                     .font(.title2)
@@ -71,11 +71,11 @@ struct TrainingContentView: View {
                     }
                     .padding(.leading, 20)
                     .padding(.trailing, -15)
-                CategoryTabView( selection: $selectedWorkout, categories: workoutTypes, fillMode: false, horizontalPadding: 5)
+                CategoryTabView( selection: $selectedRecipe, categories: recipeTypes, fillMode: false, horizontalPadding: 5)
             }
             Spacer()
                 .frame(height: 15)
-            ForEach(workoutAppImages.indices, id: \.self) { index in
+            ForEach(recipeTypes.indices, id: \.self) { index in
                 let event_url = workoutAppImages[index]
                 AsyncImage(
                     url: URL(string: event_url),
@@ -181,34 +181,3 @@ struct TrainingContentView: View {
     TrainingContentView()
 }
 
-struct HideBackButton: ViewModifier {
-    @Environment(\.dismiss) var dismiss
-    @State var hideBackButton = true
-    @State var color = Color.gray.opacity(0.8)
-    var deviceWidth: CGFloat {
-        UIScreen.main.bounds.width
-    }
-    
-    func body(content: Content) -> some View {
-        HStack{
-            if(hideBackButton){
-                Image(systemName: "chevron.backward")
-                    .font(.title2)
-                    .bold()
-                    .foregroundStyle(color)
-                    .padding(.leading, 25)
-                    .onTapGesture {
-                        dismiss()
-                    }
-            }
-            else{
-                Spacer()
-                    .frame(width: 50)
-            }
-            Spacer()
-            content
-                .navigationBarBackButtonHidden(true)
-
-        }
-    }
-}

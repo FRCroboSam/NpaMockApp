@@ -41,6 +41,7 @@ struct VerificationNotification: View {
 
                 Text("Verification Tasks")
                     .bold()
+                    .foregroundStyle(.black)
                     .font(.title3)
                 Spacer()
                     .frame(height: 5)
@@ -51,10 +52,13 @@ struct VerificationNotification: View {
                                 .bold()
                                 .foregroundColor(.green)
                             Text("Verify Email")
+                                .foregroundStyle(.green)
+
                         }
                         HStack{
                             Image(systemName: "xmark")
-                            Text("Submit Grade Reports")
+                            Text("Upload Transcript")
+                                .lineLimit(1)
                         }
                         .foregroundStyle(.gray)
 

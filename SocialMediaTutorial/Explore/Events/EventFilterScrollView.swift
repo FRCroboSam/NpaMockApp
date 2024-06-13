@@ -26,9 +26,11 @@ struct EventFilterScrollView: View {
                     .font(.title2)
                     .padding(10)
                     .background{
-                        RoundedRectangle(cornerRadius: 5)
+                        Circle()
                             .fill(Color.gray.opacity(0.3))
                     }
+                Spacer()
+                    .frame(width: 5)
 
                 ForEach(filters.indices, id: \.self) { index in
                     HStack{
@@ -40,8 +42,8 @@ struct EventFilterScrollView: View {
                     }
                         .padding(10)
                         .background{
-                            RoundedRectangle(cornerRadius: 5)
-                                .fill(Color.gray.opacity(0.3))
+                            RoundedRectangle(cornerRadius: 15)
+                                .fill(Color.gray.opacity(0.15))
                         }
                     
                 }

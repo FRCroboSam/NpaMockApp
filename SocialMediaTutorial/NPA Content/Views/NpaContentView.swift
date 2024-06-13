@@ -8,60 +8,74 @@
 import SwiftUI
 
 struct NpaContentView: View {
+    let contentTypes = [
+        "All",
+        "Videos",
+        "Blogs",
+        "Podcasts",
+    ]
+    
+    let sports = [
+        "NBA",
+        "HS Football",
+        "Collegiate Football",
+        "NFL",
+        "MLB",
+        "JUCO Football",
+        "Soccer"
+    ]
+    @State var selected = "All"
+    
+    @State var selectedSport = "NBA"
+
+    
     @EnvironmentObject var podcastVM: PodcastVM
     @EnvironmentObject var blogVM: BlogVM
     @State private var currentIndex = 0
     @State private var query = ""
     @State private var maxPodcastViewHeight: CGFloat = 380
+    
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
-//            DiscoverNavBar(text: "NPA Content")
+            CustomNavBar(title: "NPA+ Content", backButtonHidden: false)
+                .offset(x: 10)
             Spacer()
-                .frame(height: 60)
+                .frame(height: 15)
+            CategoryTabView(selection: $selected, categories: contentTypes)
+                .padding(.bottom, 8)
+            Divider()
+            HStack{
+                Image(systemName: "slider.horizontal.3")
+                    .font(.title2)
+                    .padding(10)
+                    .foregroundStyle(.gray.opacity(0.9))
+//                    .background{
+//                        Circle()
+//                            .fill(Color.gray.opacity(0.3))
+//                    }
+                    .padding(.leading, 15)
+                    .padding(.trailing, -20)
+                CategoryTabView( selection: $selectedSport, categories: sports, fillMode: false, horizontalPadding: 3)
+            }
+            Spacer()
+                .frame(height: 10)
             ScrollView(){
-                HStack{
-                    Text("World of Sports")
-                        .font(.title)
-                        .bold()
-                        .foregroundStyle(Color(hex: "0A66C2"))
-                        .padding(.leading, 15)
-                    Spacer()
-                }
-                HStack{
-                    Image(systemName: "magnifyingglass")
-                        .foregroundColor(.black)
-                    TextField("Search news and broadcasts! ", text: $query)
-                        .foregroundColor(.black)
-                        .textContentType(.newPassword)
-                        .keyboardType(.asciiCapable)
-                        .autocorrectionDisabled()
-                        .listRowSeparator(.hidden)
-                }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.92))
-
                 VStack(alignment: .center, spacing: 0){
-                    Spacer()
-                        .frame(height: 15)
                     TabView(selection: $currentIndex.animation()) {
                         ForEach(podcastVM.podcasts.indices, id: \.self) { index in
                             let podcast = podcastVM.podcasts[index]
                             PodcastView(podcast: podcast)
-                                .background(
-                                    GeometryReader { innerGeometry in
-                                        Color.clear.onAppear {
-                                            maxPodcastViewHeight = 280
-                                            
-                                        }
-                                    }
-                                )
                         }
                     }
-                    .frame(height: maxPodcastViewHeight)
+                    .frame(height: 200)
                     .tabViewStyle(.page(indexDisplayMode: .never))
-                    Spacer()
-                        .frame(height: 5)
                     Fancy3DotsIndexView(numberOfPages: podcastVM.podcasts.count, currentIndex: currentIndex)
+                        .padding(.top, -15)
+                        
                 }
-                Spacer().frame(height: 15)
+                Spacer()
+                    .frame(height: 20)
+
                 VStack(alignment: .center){
                     ForEach(blogVM.blogs){ blog in
                         

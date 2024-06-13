@@ -33,13 +33,13 @@ struct AthleteBannerView: View {
                 VStack(alignment: .leading){
                     Text(athlete.first_name.uppercased())
                         .font(.subheadline)
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(.black)
                     Text(athlete.last_name.uppercased())
                         .font(.headline)
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(.black)
                     
                     Text(athlete.city + ", " + athlete.state)
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(.gray.opacity(0.9))
                     
                 }
                 Spacer()

@@ -39,21 +39,21 @@ struct highlightview: View {
                         
                     },
                     placeholder: {
-                        ProgressView()
+                        LoadingView(width: width ?? 5/6 * deviceWidth, height: height ?? 150)
                     }
                 )
             }
 
             VStack(alignment: .leading){
                 Spacer()
-                    .frame(height: 60)
+                    .frame(height: 55)
                 VStack(alignment: .leading){
                     Text("Featured")
                         .foregroundStyle(.white)
                         .bold()
                         .shadow(color: .black, radius: 3)
                         .foregroundStyle(.white)
-                        .padding(.leading, 20)
+                        .padding(.leading, 15)
                     if(text.isEmpty){
                         HStack{
                             VStack(alignment: .leading){
@@ -68,7 +68,7 @@ struct highlightview: View {
                                     .shadow(color: .black, radius: 3)
                                     .padding(.bottom, 20)
                             }
-                            .padding(.leading, 20)
+                            .padding(.leading, 15)
 
                             Spacer()
                         }
@@ -86,7 +86,7 @@ struct highlightview: View {
                                     .shadow(color: .black, radius: 3)
                                     .padding(.bottom, 20)
                             }
-                            .padding(.leading, 20)
+                            .padding(.leading, 15)
 
                             Spacer()
                         }

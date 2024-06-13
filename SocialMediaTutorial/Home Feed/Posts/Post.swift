@@ -33,4 +33,9 @@ struct Post: Codable, Identifiable, Hashable{
     static func postFromVideo(url: String, profile_name: String, title: String) -> Post{
         return Post(id: UUID(), image_or_video: url, like_count: 0, comment_count: 0, view_count: 0, description: "", profile_img: "male_athlete1", profile_name: profile_name, profile_id: "123", post_id: UUID().uuidString, title: title)
     }
+    static func postFromAthlete(athlete: Athlete) -> Post{
+        let name = athlete.first_name + " " + athlete.last_name
+        return Post(id: UUID(), image_or_video: athlete.profile_img, like_count: 0, comment_count: 0, view_count: 0, description: "", profile_img: athlete.profile_img, profile_name: name, profile_id: "123", post_id: UUID().uuidString, title: "SDF")
+
+    }
 }

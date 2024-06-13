@@ -10,71 +10,41 @@ import SwiftUI
 
 struct MentalContentView: View {
     @State var selection = "Modules"
+    
+    let tabs = [
+        "Modules",
+        "Coaching",
+    ]
+    @State var selected = "Modules"
     var body: some View{
-        Spacer()
-            .frame(height: 10)
+        CustomNavBar(title: "Mental Mastery")
+
         ScrollView(.vertical){
             VStack(alignment: .leading){
-                Text("Discover Mental Mastery.")
-                    .bold()
-                    .font(.title)
-                    .frame(width: 3/4 * deviceWidth)
-                    .lineLimit(2)
-                    .padding(.leading, -10)
+
                 Spacer()
                     .frame(height: 25)
                     .font(.subheadline)
-                HStack{
-                    Spacer()
-                    VStack{
-                        
-                        Text("Modules")
-                            .foregroundStyle(selection == "Modules" ? Color.blue.opacity(0.8) : Color.gray.opacity(0.5))
-                            .font(.title3)
-                        
-                            .onTapGesture {
-                                withAnimation(.easeIn){
-                                    selection = "Modules"
-                                }
-                            }
-                            .padding(10)
-                        Rectangle()
-                            .fill(selection == "Modules" ? Color.blue : Color.clear)
+                CategoryTabView(selection: $selection, categories: tabs)
+                Divider()
+                    .padding(.top, 5)
 
-                            .frame(width: 50, height: 3)
-                    }
-                    .padding(10)
-                    .background{
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(selection == "Modules" ?  Color.blue.opacity(0.1) : Color.clear)
-                    }
-                    Spacer()
-                    VStack{
-                        Text("Coaching")
-                            .foregroundStyle(selection != "Modules" ? Color.blue.opacity(0.8) : Color.gray.opacity(0.5))
-                            .font(.title3)
-                            .onTapGesture {
-                                withAnimation(.easeIn){
-                                    selection = "Coaching"
-                                }
-                            }
-                            .padding(10)
-                            
-                        Rectangle()
-                            .fill(selection == "Coaching" ? Color.blue : Color.clear)
-                            .frame(width: 50, height: 3)
-                    }
-                    .padding(10)
-                    .background{
-                        RoundedRectangle(cornerRadius: 15)
-                            .fill(selection == "Coaching" ?  Color.blue.opacity(0.1) : Color.clear)
-                    }
-                    Spacer()
-                }
-                .frame(width: deviceWidth)
                 Spacer()
                     .frame(height: 10)
                 VStack{
+                    HStack{
+                        Text("NPA+")
+                            .foregroundStyle(.blue)
+                            .bold()
+                            .font(.title2)
+                            .lineLimit(2)
+                        Text("Modules")
+                            .bold()
+                            .font(.title2)
+                    }
+                    .padding(.leading, 10)
+                    Spacer()
+                        .frame(height: 10)
                         HStack(alignment: .center){
                             Image(systemName: "wind")
                                 .font(.title)
@@ -98,7 +68,7 @@ struct MentalContentView: View {
 
                         }
                         .padding(10)
-                        .frame(width: 3/4 * deviceWidth, height: 120)
+                        .frame(width: 7/8 * deviceWidth, height: 120)
                         .background{
                             RoundedRectangle(cornerRadius: 15)
                                 .fill(Color.white)
@@ -129,7 +99,7 @@ struct MentalContentView: View {
 
                         }
                         .padding(10)
-                        .frame(width: 3/4 * deviceWidth, height: 120)
+                        .frame(width: 7/8 * deviceWidth, height: 120)
                         
                         .background{
                             RoundedRectangle(cornerRadius: 15)
@@ -160,7 +130,7 @@ struct MentalContentView: View {
                                 .padding(.trailing, 10)
                         }
                         .padding(10)
-                        .frame(width: 3/4 * deviceWidth, height: 120)
+                        .frame(width: 7/8 * deviceWidth, height: 120)
 
                         .background{
                             RoundedRectangle(cornerRadius: 15)

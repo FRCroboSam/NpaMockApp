@@ -40,7 +40,7 @@ struct EventCardVertical: View {
                             
                         },
                         placeholder: {
-                            ProgressView()
+                            LoadingView(width: 7/8 * deviceWidth, height:160)
                         }
                     )//.padding(.trailing, 20)
                     VStack(alignment: .leading, spacing: 0){

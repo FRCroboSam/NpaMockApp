@@ -30,10 +30,11 @@ struct RecruitmentContentView: View {
                 "https://www.youtube.com/watch?v=8-f9eR9VJ9g"
             ]
             VStack{
-                HStack{
-                    Text("Recruiting With ")
+                VStack{
+                    Text("Recruiting To the Pro's With ")
                         .bold()
                         .font(.title)
+                        .lineLimit(2)
                         .padding(.leading, 25)
                     Text("NPA+")
                         .foregroundStyle(Color(hex: "0A66C2"))

@@ -4,12 +4,13 @@ import UIKit
 struct CustomTabBarView: View {
     @State private var scrollPosition: CGPoint = .zero
 
-    let tabs: [TabBarItem]
-    @Binding var selection: TabBarItem
+    let tabs: [String]
+    let images: [String]
+    @Binding var selection: String
     
     //@Binding var goToNearestTab: Bool
     @Namespace private var namespace
-    @State var localSelection: TabBarItem
+    @State var localSelection: String
     
     @State var tabAtIndexShouldExtend = false ;
     @State var selectedIndex = 0
@@ -45,28 +46,28 @@ struct CustomTabBarView: View {
 }
 extension CustomTabBarView {
     
-    private func tabView(tab: TabBarItem) -> some View {
+    private func tabView(image: String, name: String) -> some View {
         VStack {
-            Image(systemName: tab.iconName)
+            Image(image)
                 .font(.subheadline)
-            Text(tab.title)
+            Text(name)
                 .font(.system(size: 10, weight: .semibold, design: .rounded))
 
         }
-        .foregroundColor(localSelection == tab ? tab.color : Color.gray)
+        .foregroundColor(localSelection == name ? Color(hex: "0A66C2") : Color.gray)
         .padding(.vertical, 8)
         .frame(maxWidth: .infinity)
-        .background(localSelection == tab ? tab.color.opacity(0.2) : Color.clear)
+        .background(localSelection == name ? Color(hex: "0A66C2").opacity(0.2) : Color.clear)
         .cornerRadius(10)
     }
     
     private var tabBarVersion1: some View {
         ScrollView(.horizontal){
             HStack {
-                ForEach(tabs, id: \.self) { tab in
-                    tabView(tab: tab)
+                ForEach(tabs.indices, id: \.self) { index in
+                    tabView(image: images[index], name: tabs[index])
                         .onTapGesture {
-                            switchToTab(tab: tab, index: 0)
+                            switchToTab(tab: tabs[index], index: index)
                         }
                 }
             }
@@ -75,7 +76,7 @@ extension CustomTabBarView {
         }.scrollIndicators(.hidden)
     }
     
-    private func switchToTab(tab: TabBarItem, index: Int) {
+    private func switchToTab(tab: String, index: Int) {
         localSelection = tab
         
         opacities = [Double](repeating: 0.0, count: 12)
@@ -88,20 +89,20 @@ extension CustomTabBarView {
 
 extension CustomTabBarView {
 
-    private func tabView2(tab: TabBarItem) -> some View {
+    private func tabView2(image: String, name: String) -> some View {
         
         VStack {
             
                 VStack{
-                    Image(systemName: tab.iconName)
+                    Image(image)
                         .font(.system(size: 25))
-                        .foregroundStyle(localSelection == tab ? Color.blue : Color.gray)
+                        .foregroundStyle(localSelection == name ? Color(hex: "0A66C2") : Color.gray)
                         .frame(height: 25)
                     
-                    Text(tab.title)
+                    Text(name)
                     //.font(.system(size: 15, weight: .semibold, design: .rounded))
                         .scaledToFill()
-                        .foregroundStyle(localSelection == tab ? Color.blue : Color.gray)
+                        .foregroundStyle(localSelection == name ? Color(hex: "0A66C2") : Color.gray)
                         .minimumScaleFactor(0.5)
                 }
                 .frame(width: 40, height: 50)
@@ -135,7 +136,7 @@ extension CustomTabBarView {
                         ForEach(tabs.indices, id: \.self) { index in
                             VStack{
                                 let tab = tabs[index]
-                                tabView2(tab: tab)
+                                tabView2(image: images[index], name: tabs[index])
                                     .opacity(opacities[index] + 0.8)
                                     .animation(.easeInOut(duration: 0.3), value: opacities[index])
                                     .id(index)
