@@ -27,12 +27,12 @@ struct LoadingView: View{
                        endPoint: endPoint)
         .frame(width: width ?? 300, height: height ?? 180)
         .roundedCorner(15, corners: .allCorners)
-        .onAppear{
-            withAnimation(.easeInOut(duration: 0.8).repeatForever(autoreverses: false)){
-                startPoint = .init(x: 1.5, y: 2.5)
-                    endPoint = .init(x: 2.3, y: 2.5)
-                }
-        }
+//        .onAppear{
+//            withAnimation(.easeInOut(duration: 10.0 ).repeatForever(autoreverses: false)){
+//                startPoint = .init(x: 1.5, y: 2.5)
+//                    endPoint = .init(x: 2.3, y: 2.5)
+//                }
+//        }
     }
 }
 

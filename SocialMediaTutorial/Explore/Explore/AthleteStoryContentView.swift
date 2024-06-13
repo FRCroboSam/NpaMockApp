@@ -6,8 +6,10 @@
 //
 
 import SwiftUI
+import YouTubePlayerKit
 
 struct AthleteStoryContentView: View {
+    @EnvironmentObject var feedVM: FeedVM
     var body: some View {
         ScrollView(.vertical)
         {
@@ -69,8 +71,15 @@ struct AthleteStoryContentView: View {
             ScrollView(.horizontal){
                 HStack{
                     ForEach(videoURLS.indices, id: \.self) {index in
-                        VideoPlayer2(url: videoURLS[index], width: 3/4 * deviceWidth, height: 220)
-                            .padding(10)
+                        YouTubePlayerView(
+                            feedVM.athlete_clip_players[index],
+                            placeholderOverlay: {
+                                LoadingView(width: deviceWidth, height: 200)
+                            }
+                        )
+                        
+                        .frame(width: 7/8 * deviceWidth, height: 200)
+                        .roundedCorner(10, corners: .allCorners)
                     }
                 }
                 .padding(20)

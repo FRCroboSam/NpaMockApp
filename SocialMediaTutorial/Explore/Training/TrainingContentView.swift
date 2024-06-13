@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import NukeUI
 struct TrainingContentView: View {
     let workoutTypes = [
         "All",
@@ -77,21 +77,21 @@ struct TrainingContentView: View {
                 .frame(height: 15)
             ForEach(workoutAppImages.indices, id: \.self) { index in
                 let event_url = workoutAppImages[index]
-                AsyncImage(
-                    url: URL(string: event_url),
-                    content: { image in
+                LazyImage(url: URL(string: event_url)) { phase in
+                    if let image = phase.image {
+                        image // Displays the loaded image.
                         image.resizable()
                             .resizable()
                             .scaledToFill()
                             .frame(width:  7/8 * deviceWidth, height:200)
                             .clipped()
                             .brightness(-0.2)
-
+                        
                             .roundedCorner(12, corners: .topLeft)
                             .roundedCorner(12, corners: .topRight)
                             .roundedCorner(12, corners: .bottomLeft)
                             .roundedCorner(12, corners: .bottomRight)
-
+                        
                             .overlay(alignment: .topTrailing) {
                                 HStack{
                                     HStack{
@@ -100,13 +100,13 @@ struct TrainingContentView: View {
                                             .bold()
                                             .foregroundStyle(Color.white)
                                     }
-                                        .background{
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .foregroundStyle(Color.gray.opacity(0.8))
-                                                .padding(-10)
-                                                .shadow(radius: 3)
-                                        }
-                                        .offset(x: -15, y: 15)
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .foregroundStyle(Color.gray.opacity(0.8))
+                                            .padding(-10)
+                                            .shadow(radius: 3)
+                                    }
+                                    .offset(x: -15, y: 15)
                                     Spacer()
                                         .frame(width: 30)
                                     Text("Intermediate")
@@ -131,8 +131,8 @@ struct TrainingContentView: View {
                                         .font(.title2)
                                         .padding(10)
                                     
-//                                        .background(Color.orange.opacity(0.5))
-//                                        .roundedCorner(15, corners: .allCorners)
+                                    //                                        .background(Color.orange.opacity(0.5))
+                                    //                                        .roundedCorner(15, corners: .allCorners)
                                         .padding(.leading, 0)
                                     Spacer()
                                     HStack{
@@ -141,15 +141,15 @@ struct TrainingContentView: View {
                                             .bold()
                                             .foregroundStyle(Color.white)
                                     }
-                                        .background{
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .foregroundStyle(Color.red.opacity(0.8))
-                                                .padding(-10)
-                                                .shadow(radius: 3)
-                                        }
-                                        .padding(.trailing, 15)
-                                        .padding(.bottom, 15)
-
+                                    .background{
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .foregroundStyle(Color.red.opacity(0.8))
+                                            .padding(-10)
+                                            .shadow(radius: 3)
+                                    }
+                                    .padding(.trailing, 15)
+                                    .padding(.bottom, 15)
+                                    
                                     
                                 }
                                 
@@ -157,12 +157,13 @@ struct TrainingContentView: View {
                                 
                             }
                         
-                    },
-                    placeholder: {
-                        LoadingView(width:  7/8 * deviceWidth, height:200)
-
                     }
-                )
+                    else{
+                        LoadingView(width:  7/8 * deviceWidth, height:200)
+                    }
+                }
+
+                
                 .offset(x: -5)
                 .padding(.bottom, 10)
                 Spacer()

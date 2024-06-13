@@ -8,6 +8,7 @@
 
 import Foundation
 import YouTubePlayerKit
+import SwiftUI
 
 // FeedVM is the model for collecting all of the posts
 class FeedVM: ObservableObject {
@@ -17,7 +18,15 @@ class FeedVM: ObservableObject {
     @Published var youtubePlayers = [YouTubePlayer]()
     @Published var postYoutubePlayers = [YouTubePlayer]()
     @Published var youtubeFeedYoutubePlayers = [YouTubePlayer]()
-
+    let athleteClips = [
+        "https://www.youtube.com/watch?v=scoeJXP8dw0",
+        "https://www.youtube.com/watch?v=hqXl8zr__tM",
+        "https://www.youtube.com/watch?v=_fMmaD8ViL4",
+        "https://www.youtube.com/watch?v=WCBP9272z68",
+        "https://www.youtube.com/watch?v=8-f9eR9VJ9g"
+    ]
+    
+    @Published var athlete_clip_players = [YouTubePlayer]()
     
     @Published var post_with_videos = [String]()
     
@@ -68,8 +77,13 @@ class FeedVM: ObservableObject {
     }
     
     func loadData() {
-        copyFileFromBundleToDocumentsFolder(sourceFile: "posts.json") //-> when you need to reset posts
+        //copyFileFromBundleToDocumentsFolder(sourceFile: "posts.json") //-> when you need to reset posts
+        for clip in self.athleteClips{
+            var youtubePlayer = YouTubePlayer(source: .url(clip))
 
+            athlete_clip_players.append(youtubePlayer)
+            
+        }
         if(!calledLoadData){
             calledLoadData = true
             print("LOADING DATA")
@@ -98,12 +112,12 @@ class FeedVM: ObservableObject {
 //                        if(index == 0){
 //                            print("LOADING TEH FIRST VIDEO:  " + post.profile_name)
 //
-////                            youtubePlayer.load(source: .url(post.image_or_video)) { _ in
-////                                print("STATE")
-////                                print(youtubePlayer.state)
-////                                print("PAUSING THE FIRST VIDEO")
-////                                self.videosHaveLoaded = true
-////                            }
+//                            youtubePlayer.load(source: .url(post.image_or_video)) { _ in
+//                                print("STATE")
+//                                print(youtubePlayer.state)
+//                                print("PAUSING THE FIRST VIDEO")
+//                                self.videosHaveLoaded = true
+//                            }
 //                        }
                         youtubePlayer.mute()
                         postYoutubePlayers.append(youtubePlayer)

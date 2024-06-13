@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "nuke",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kean/Nuke",
+      "state" : {
+        "revision" : "084076db4f9b9ee4db51177ef5a4879689c1aa09",
+        "version" : "12.7.2"
+      }
+    },
+    {
       "identity" : "youtubeplayerkit",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/SvenTiigi/YouTubePlayerKit.git",

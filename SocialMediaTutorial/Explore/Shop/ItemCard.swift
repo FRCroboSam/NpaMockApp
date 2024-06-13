@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct ItemCard: View {
     let item_url: String
@@ -19,24 +20,25 @@ struct ItemCard: View {
                         .frame(height: 20)
                     HStack{
                         Spacer()
-                        AsyncImage(
-                            url: URL(string: item_url),
-                            content: { image in
+                        LazyImage(url: URL(string:item_url)) { phase in
+                            if let image = phase.image {
+                                
                                 image.resizable()
                                     .resizable()
+                                    .opacity(0.8)
                                     .scaledToFit()
                                     .frame(width: width ?? 70, height: height ?? 90)
                                     .clipped()
                                 //.roundedCorner(8, corners: .allCorners)
                                 
-                                    .tint(Color.gray)
-                                
-                            },
-                            placeholder: {
-                                LoadingView(width: width ?? 70, height: height ?? 90)
-                                    .opacity(0.2)
+                                    .tint(Color.gray
+                                    .opacity(0.2))
+                                    
                             }
-                        )//.padding(.trailing, 20)
+                            else{
+                                LoadingView(width: width ?? 70, height: height ?? 90)
+                            }
+                        }
                         Spacer()
                         
                     }

@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-
+import NukeUI
 struct CategoryView: View {
     let item_url: String
     let text: String
@@ -16,29 +16,25 @@ struct CategoryView: View {
         VStack(alignment: .leading){
 //            Spacer()
 //                .frame(height: 10)
-            AsyncImage(
-                url: URL(string: item_url),
-                content: { image in
-                    image.resizable()
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: 140, height: 175)
-                        .clipped()
-                        .roundedCorner(8, corners: .topLeft)
-                        .roundedCorner(8, corners: .topRight)
-                        .roundedCorner(8, corners: .bottomLeft)
-                        .roundedCorner(8, corners: .bottomRight)
-                    
-                    
-                        .background{
-                            Color(UIColor.systemGray6)
-                        }
-                    
-                },
-                placeholder: {
-                    LoadingView(width: 140, height: 175)
-                }
-            )
+            
+            LazyImage(url: URL(string:item_url)) { phase in
+              if let image = phase.image {
+                image // Displays the loaded image.
+                      .resizable()
+                      .scaledToFill()
+                      .frame(width: 140, height: 175)
+                      .clipped()
+                      .roundedCorner(8, corners: .topLeft)
+                      .roundedCorner(8, corners: .topRight)
+                      .roundedCorner(8, corners: .bottomLeft)
+                      .roundedCorner(8, corners: .bottomRight)
+                      
+                  
+              } else {
+                  LoadingView(width: 140, height: 175)
+              }
+               
+            }
 
             .overlay(alignment: .bottomTrailing){
                 VStack{
