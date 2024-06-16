@@ -244,12 +244,12 @@ struct FeedView: View {
                                         //                                                .overlay(Color.gray.opacity(0.8)
                                         //                                                    .frame(width: 0.2)
                                         //                                                )
-                                        Text("Basketball")
-                                            .foregroundStyle(selectedFeed == "Basketball" ? .white.opacity(1.0) :  Color(UIColor.systemGray2))
+                                        Text("Tennis")
+                                            .foregroundStyle(selectedFeed == "Tennis" ? .white.opacity(1.0) :  Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 12)
                                             .background{
-                                                if(selectedFeed == "Basketball"){
+                                                if(selectedFeed == "Tennis"){
                                                     RoundedRectangle(cornerRadius: 15)
                                                         .fill(Color(hex: "0A66C2")).opacity(1.0)
                                                 }
@@ -262,11 +262,11 @@ struct FeedView: View {
                                             }
                                             .onTapGesture {
                                                 withAnimation(.easeIn){
-                                                    selectedFeed = "Basketball"
+                                                    selectedFeed = "Tennis"
                                                     vm.switchFeeds()
                                                 }
                                             }
-                                        Text("Soccer")
+                                        Text("Basketball")
                                             .foregroundStyle(Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 12)
@@ -408,7 +408,7 @@ struct FeedView: View {
                         //                .navigationTitle("NPA") // Set the navigation title
                         //                .navigationBarItems(trailing: Image(systemName: "bell.badge.fill")) // Add leading and trailing navigation bar items
                         .brightness(vm.showCommentSection ? -0.3 : 0.0)
-                        .scrollDisabled(vm.showCommentSection)
+                        .scrollDisabled(vm.showCommentSection || !vm.canScroll)
                         .zIndex(0)
                         if(true){
                             //let x = print("Should be showing comment section ")
@@ -533,6 +533,8 @@ struct FeedView: View {
             
             .tag(1)
         }
+
+
 
     }
         

@@ -110,7 +110,7 @@ struct ChooseSportView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "figure.run")
+                            Image(systemName: "basketball.fill")
                                 .font(.system(size: 30))
                                 .scaledToFill()
                                 .clipShape(Circle())
@@ -120,7 +120,7 @@ struct ChooseSportView: View {
                                 }
                             Spacer()
                                 .frame(width: 20)
-                            Text("Coach")
+                            Text("Basketball")
                                 .font(.title)
                                 .bold()
                                 .foregroundStyle(Color(UIColor.systemGray4))
@@ -164,7 +164,7 @@ struct ChooseSportView: View {
                                 }
                             Spacer()
                                 .frame(width: 20)
-                            Text("Fans")
+                            Text("Track & Field")
                                 .font(.title)
                                 .bold()
                                 .foregroundStyle(Color(UIColor.systemGray4))
@@ -199,7 +199,7 @@ struct ChooseSportView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "figure.run")
+                            Image(systemName: "tennisball.fill")
                                 .font(.system(size: 30))
                                 .scaledToFill()
                                 .clipShape(Circle())
@@ -209,7 +209,7 @@ struct ChooseSportView: View {
                                 }
                             Spacer()
                                 .frame(width: 20)
-                            Text("Business")
+                            Text("Tennis")
                                 .font(.title)
                                 .bold()
                                 .foregroundStyle(Color(UIColor.systemGray4))
@@ -233,10 +233,10 @@ struct ChooseSportView: View {
                     .frame(height: 40)
                 HStack{
                     Spacer()
-                    Button{
-                        let defaults = UserDefaults.standard
-                        defaults.set("Athlete", forKey: "User Type")
-                        feedVM.loggedIn = true
+                    NavigationLink{
+                        
+                        UseNPAFor()//ProfileInfoView()
+                        
                     }label:{
                         Text("Next")
                             .font(.system(.title2, design: .rounded))
@@ -250,6 +250,11 @@ struct ChooseSportView: View {
                             }
                         
                     }
+                    .simultaneousGesture(TapGesture().onEnded {
+                        let defaults = UserDefaults.standard
+                        defaults.set("Athlete", forKey: "User Type")
+                        print("Hello world!")
+                    })
                     Spacer()
                 }
                 Spacer()
@@ -257,16 +262,8 @@ struct ChooseSportView: View {
             }
             .frame(width: deviceWidth, height: deviceHeight)
             .background{
-                LinearGradient(gradient:Gradient(colors:[
-                    Color(hex: "00008b"),
-                    Color(hex: "0A66C2"),
-                    //                Color(hex: "ADD8E6"),
-                    
-                    
-                    
-                ]),
-                               startPoint:.top,endPoint:.bottom)
-                
+                Image("background")
+                    .blur(radius: 20)
             }
             .ignoresSafeArea(.all, edges: .top)
             

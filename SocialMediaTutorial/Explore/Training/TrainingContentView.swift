@@ -79,7 +79,6 @@ struct TrainingContentView: View {
                 let event_url = workoutAppImages[index]
                 LazyImage(url: URL(string: event_url)) { phase in
                     if let image = phase.image {
-                        image // Displays the loaded image.
                         image.resizable()
                             .resizable()
                             .scaledToFill()

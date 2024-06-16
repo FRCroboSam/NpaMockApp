@@ -46,7 +46,7 @@ struct HomePageView: View {
                     .padding(.bottom, 50)
                     
                     NavigationLink{
-                        
+                        LoginPage()
                     }label:{
                         Text("Sign In")
                             .font(.system(.title2, design: .rounded))

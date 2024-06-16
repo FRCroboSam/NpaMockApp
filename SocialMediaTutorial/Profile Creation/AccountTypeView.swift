@@ -20,18 +20,7 @@ struct AccountTypeView: View {
                 Spacer()
                     .frame(height: 70)
                 ZStack{
-                    HStack{
-                        Spacer()
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(UIColor.darkGray))
-                            .frame(width: 3/4 * deviceWidth, height: 10)
-                            .overlay(alignment: .leading){
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color(UIColor.white))
-                                    .frame(width: 1/4 * deviceWidth, height: 10)
-                            }
-                        Spacer()
-                    }
+
 
                     
                 }

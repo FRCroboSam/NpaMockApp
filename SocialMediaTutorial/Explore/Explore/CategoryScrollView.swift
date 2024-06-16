@@ -11,24 +11,39 @@ struct CategoryScrollView: View {
     @EnvironmentObject var podcastVM: PodcastVM
     @State private var currentIndex = 0
     @State private var maxPodcastViewHeight: CGFloat = 380
-    
+    let filters = [
+        "Sport",
+        "League",
+        "Location",
+        "Ages",
+        "Private-Only",
+        "Group"
+    ]
     @State private var urls = [
         "https://thehill.com/wp-content/uploads/sites/2/2023/10/williamsjada_111822ap_high-school-athletes-nil.jpg?strip=1",
         "https://online.jwu.edu/wp-content/uploads/2023/06/sports20agent.jpg",
         "https://d3on3ztz3vi4v9.cloudfront.net/uploads/2013/06/25155356/Concentration-629x419-1.jpg",
         "https://www.shape.com/thmb/Hcvt02WmCFLvv3A6o2CGhYOPWLI=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Heavy-vs-Light-Weights-GettyImages-946365998-4cabfff802b145c09c9d0dcc6d655267.jpg",
     ]
+
     @State private var titles = [
         "Athlete Bios",
         "Recruitment",
-        "Fitness",
-        "Agents"
+        "Coaching",
+        "Fitness"
     ]
     @State private var amounts = [
         "34.3K",
         "1.2K",
         "567",
         "4.2K"
+    ]
+    
+    let athleteFilters = [
+        "All",
+        "Private Lessons",
+        "Group Lessons",
+        "Clubs"
     ]
     
     var body: some View {
@@ -47,7 +62,7 @@ struct CategoryScrollView: View {
                             RecruitmentContentView()
                         }
                         else if(index == 2){
-                            MentalContentView()
+                            CoachingContentView()
                         }
                     }label: {CategoryView(item_url: urls[index], text: titles[index], amount: amounts[index])
                             .padding(.vertical, 10)

@@ -9,46 +9,40 @@ import SwiftUI
 
 struct SponsorPopup: View {
     var body: some View {
-        VStack(alignment: .leading){
+        VStack(alignment: .center){
             Text("Support Methods")
-                .font(.title3)
+                .font(.title2)
                 .bold()
             Spacer()
                 .frame(height: 10)
-            Divider()
             HStack{
-                Image(systemName: "square.and.pencil")
-                    .font(.title)
-
-                Text("Apple Pay")
-                    .font(.title3)
-                    .bold()
+                Image("ApplePay")
+                    .resizable()
+                    .scaledToFill()
+                    .padding(.leading, -15)
+                    .frame(width: 120, height: 60)
+                Image("GooglePay")
+                     .resizable()
+                     .scaledToFill()
+                     .frame(width: 80, height: 40)
             }
             Spacer()
                 .frame(height: 10)
-            Divider()
             HStack{
-                Image(systemName: "video.circle.fill")
-                    .font(.title)
-
-                Text("Credit/Venmo")
-                    .font(.title3)
-
-                    .bold()
-            }
-            Spacer()
-                .frame(height: 10)
-            Divider()
-            HStack{
-                Image(systemName: "book.fill")
-                    .font(.title)
-                Text("Crypto through Topper by Uphold")
-                    .font(.title3)
-                    .bold()
+                Image("CreditPay")
+                    .resizable()
+                    .scaledToFill()
+                    .padding(.leading, -15)
+                    .frame(width: 80, height: 40)
+                Image("TopperPay")
+                     .resizable()
+                     .scaledToFill()
+                     .frame(width: 80, height: 40)
             }
         }
-        .padding(10)
+        .padding(30)
         .frame(width: 2/3 * deviceWidth)
+        
         .background{
             RoundedRectangle(cornerRadius: 20)
                 .fill(Color.white)

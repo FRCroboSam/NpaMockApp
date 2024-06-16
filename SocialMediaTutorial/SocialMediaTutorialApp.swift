@@ -50,7 +50,11 @@ struct SocialMediaTutorialApp: App {
 
             }
             .toolbar(.hidden, for: .navigationBar)
-
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
+                    feedVM.videosHaveLoaded = true
+                }
+            }
 
             .environmentObject(feedVM)
             .environmentObject(athleteVM)
@@ -75,6 +79,8 @@ struct SocialMediaTutorialApp: App {
                         if(feedVM.loggedIn){
                             readyToShow = true
                         }
+                        print("PLAYER STATE")
+                        print(feedVM.youtubePlayers[0].state)
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
                             if(!feedVM.youtubePlayers[0].isPlaying){
                                 feedVM.youtubePlayers[0].play()
@@ -98,8 +104,8 @@ struct SocialMediaTutorialApp: App {
                 
                 feedVM.loggedIn = false
                 feedVM.loadData()
-                feedVM.loggedIn = true //placeholder
-                //TODO: STore these ids in user defaults or something 
+                feedVM.loggedIn = false //placeholder
+                //TODO: STore these ids in user defaults or something
 //                feedVM.fetchVideoIds()
                 if(feedVM.loggedIn){
                     homeOpacity = 0.0

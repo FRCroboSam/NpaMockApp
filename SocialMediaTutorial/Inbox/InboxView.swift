@@ -22,6 +22,7 @@ struct InboxView: View {
         "James Hayes",
         "Alexander Rodriguez"
     ]
+
     @State var coachMessages = [
         "Do you want to hop on a call?",
         "I like your skills video.",

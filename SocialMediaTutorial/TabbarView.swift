@@ -9,6 +9,7 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct TabbarView: View {
+    
     @EnvironmentObject var athleteVM: AthleteVM
 
     @EnvironmentObject var vm: FeedVM
@@ -218,12 +219,15 @@ struct TabbarView: View {
 //                        }
 //                    }
                     CreatePostView().tag(0)
-                    
+
                     FeedView().tag(1)
+
                     InboxView(athletes: athleteVM.athletes).tag(2)
                     EmptyView().tag(4)
+                    
                     //NotificationsView().tag(-1)
                 }
+                
                 .onAppear{
                     UIScrollView.appearance().alwaysBounceHorizontal = false
                 }

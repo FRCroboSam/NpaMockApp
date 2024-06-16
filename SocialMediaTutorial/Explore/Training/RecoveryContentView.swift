@@ -16,19 +16,19 @@ struct RecoveryContentView: View {
         "Low Carb",
     ]
     @State var selectedRecipe = "Trending"
-    let workoutNames = [
-        "Full Body Gauntlet",
-        "Strength and Conditioning Circuit",
-        "Bodyweight Master",
-        "High Intensity Interval Training",
-        "Cardiovascular Endurance"
+    let recipeNames = [
+        "Sweet Potato Mac and Cheese",
+        "Almand Flour Banana Muffins",
+        "Fruit and Oat Protein Bars",
+        "Baked Plantain Chips",
+        "Sweet Potato Toasts"
     ]
-    let workoutAppImages = [
-        "https://media.istockphoto.com/id/1464035806/photo/black-sportswoman-doing-chest-exercises-on-machine-while-working-out-in-gym.jpg?s=612x612&w=0&k=20&c=QC6pNijzOzDbvgZUeKzSEsFXM4OThz10LA3My98fjDA=",
-        "https://img.freepik.com/premium-photo/young-woman-workout-exercises-machine-fitness-gym_171337-71060.jpg",
-        "https://hauteintexas.com/wp-content/uploads/2023/12/Untitled-design-25-1024x576.png",
-        "https://phantom-marca.unidadeditorial.es/47d16b4c50d24d2010d04fa45a0966bb/resize/828/f/jpg/assets/multimedia/imagenes/2022/02/08/16443258478254.jpg",
-        "https://images.pexels.com/photos/416778/pexels-photo-416778.jpeg?cs=srgb&dl=pexels-pixabay-416778.jpg&fm=jpg"
+    let recipeImages = [
+        "https://www.bucketlisttummy.com/wp-content/uploads/2019/06/Veggie-Pasta-Bake2_resize.jpg",
+        "https://www.bucketlisttummy.com/wp-content/uploads/2019/06/Almond-Flour-Banana-Muffins-in-bowl.jpg",
+        "https://www.bucketlisttummy.com/wp-content/uploads/2019/06/Healthy-Fruit-Oatmeal-bars.jpg",
+        "https://www.bucketlisttummy.com/wp-content/uploads/2019/06/almond-butter-stuffed-dates-3.jpg",
+        "https://www.bucketlisttummy.com/wp-content/uploads/2019/06/ProteinOats.jpg"
     ]
     @State var categories = [
         "Nutrition",
@@ -76,7 +76,7 @@ struct RecoveryContentView: View {
             Spacer()
                 .frame(height: 15)
             ForEach(recipeTypes.indices, id: \.self) { index in
-                let event_url = workoutAppImages[index]
+                let event_url = recipeImages[index]
                 AsyncImage(
                     url: URL(string: event_url),
                     content: { image in
@@ -96,7 +96,7 @@ struct RecoveryContentView: View {
                                 HStack{
                                     HStack{
                                         Image(systemName: "timer")
-                                        Text("15 min")
+                                        Text("45 min")
                                             .bold()
                                             .foregroundStyle(Color.white)
                                     }
@@ -109,7 +109,7 @@ struct RecoveryContentView: View {
                                         .offset(x: -15, y: 15)
                                     Spacer()
                                         .frame(width: 30)
-                                    Text("Intermediate")
+                                    Text("Beginner-Friendly")
                                         .bold()
                                         .foregroundStyle(Color.white)
                                         .background{
@@ -124,7 +124,7 @@ struct RecoveryContentView: View {
                             }
                             .overlay(alignment: .bottomLeading) {
                                 HStack(alignment: .bottom){
-                                    Text(workoutNames[index])
+                                    Text(recipeNames[index])
                                         .bold()
                                         .foregroundStyle(.white)
                                         .shadow(color: .blue, radius: 10)

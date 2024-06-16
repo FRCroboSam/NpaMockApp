@@ -10,6 +10,15 @@ import YouTubePlayerKit
 
 struct AthleteStoryContentView: View {
     @EnvironmentObject var feedVM: FeedVM
+    let sports = [
+        "All",
+        "Bios",
+        "Clips",
+        "Suggested",
+    ]
+    @State var selected = "All"
+    
+    @State var selectedSport = "All"
     var body: some View {
         ScrollView(.vertical)
         {
@@ -31,72 +40,129 @@ struct AthleteStoryContentView: View {
                 "https://www.youtube.com/watch?v=WCBP9272z68",
                 "https://www.youtube.com/watch?v=8-f9eR9VJ9g"
             ]
+                CustomNavBar(title: "Athlete Stories")
+                //            .background{
+                //                LinearGradient(gradient:Gradient(colors:[
+                //                    Color.white,
+                //                    Color.white,
+                //                    Color.blue.opacity(0.15),
+                //                    Color.blue.opacity(0.25),
+                //                ]),
+                //                               startPoint:.top,endPoint:.bottom)
+                //                .frame(width: deviceWidth, height: 220)
+                //            }
+                CategoryTabView( selection: $selected, categories: sports)
+                    .padding(.top, 10)
             VStack{
-                HStack{
-                    Text("Athlete Stories")
-                        .bold()
-                        .font(.title)
-                        .padding(.leading, 25)
-                    Spacer()
-                }
+                Divider()
+                    .padding(.bottom, 10)
                 
+                
+                
+                
+                highlightview(url: "https://resources.finalsite.net/images/f_auto,q_auto/v1574257985/gdsorg/jwixqhshrrkgbllcuwfw/20190419_HighSchoolAthleticHighlights_1.jpg", text: "Explore Athlete Bios",
+                              width: 9/10 * deviceWidth, height: 175
+                )
             }
             .background{
                 LinearGradient(gradient:Gradient(colors:[
                     Color.white,
-                    Color.white,
                     Color.blue.opacity(0.15),
                     Color.blue.opacity(0.25),
+
                 ]),
                                startPoint:.top,endPoint:.bottom)
-                .frame(width: deviceWidth, height: 220)
+                .frame(width: deviceWidth, height: 1/10 * deviceHeight )
             }
-            highlightview(url: "https://resources.finalsite.net/images/f_auto,q_auto/v1574257985/gdsorg/jwixqhshrrkgbllcuwfw/20190419_HighSchoolAthleticHighlights_1.jpg", text: "Explore Athlete Bios",
-                          height: 180
-            )
-            
-            FilterScrollView()
-            
+//            
+//            EventFilterScrollView(filters: filters)
+//                .padding(.bottom, 10)
 
-            BioScrollView()
-            HStack{
-                Text("Watch Your Favorite Athlete Clips")
-                    .font(.title2)
-                    .bold()
-                    .padding(.leading, 20)
+            
+            
+            VStack(alignment: .leading){
                 Spacer()
-                
-            }
-            .padding(.bottom, -5)
-            ScrollView(.horizontal){
+                    .frame(height: 25)
                 HStack{
-                    ForEach(videoURLS.indices, id: \.self) {index in
-                        YouTubePlayerView(
-                            feedVM.athlete_clip_players[index],
-                            placeholderOverlay: {
-                                LoadingView(width: deviceWidth, height: 200)
-                            }
-                        )
+                    Text("Athlete Bios")
+                        .bold()
+                        .padding(.leading, 20)
+                        .font(.title2)
+                        .padding(.bottom, 3)
+                    Spacer()
+                    Button{
                         
-                        .frame(width: 7/8 * deviceWidth, height: 200)
-                        .roundedCorner(10, corners: .allCorners)
+                    }label:{
+                        Text("View More")
+                            .font(.system(size: 15))
+                            .padding(10)
+                            .background{
+                                RoundedRectangle(cornerRadius: 10)
+                                    .fill(Color.blue).opacity(0.1)
+                            }
+                            .padding(.bottom, 5)
+                        
                     }
+                    .padding(.trailing, 10)
                 }
-                .padding(20)
-            }
-            
-            HStack{
-                Text("Discover Similar Athletes Near You")
-                    .font(.title2)
-                    .bold()
-                    .padding(.leading, 20)
-                Spacer()
+                Text("Read about your favorite athletes in a short bio.")
+                    .padding(.trailing, 15)
+                    .padding(.leading, 22)
+                    .foregroundStyle(.gray.opacity(0.9))
+                    .padding(.bottom, -15)
 
-                
+                BioScrollView()
+                    .padding(.leading, 0)
+                    .padding(.bottom, -15)
+                Divider()
+                    .padding(.bottom, 10)
+                HStack{
+                    
+                    Text("Watch Your Favorite Athlete Clips")
+                        .font(.title2)
+                        .bold()
+                        .padding(.leading, 15)
+                        .padding(.top, -10)
+                    Spacer()
+                    
+                }
+                .padding(.bottom, -5)
+                ScrollView(.horizontal){
+                    HStack{
+                        ForEach(videoURLS.indices, id: \.self) {index in
+                            YouTubePlayerView(
+                                feedVM.athlete_clip_players[index],
+                                placeholderOverlay: {
+                                    LoadingView(width: deviceWidth, height: 200)
+                                }
+                            )
+                            
+                            .frame(width: 7/8 * deviceWidth, height: 200)
+                            .roundedCorner(10, corners: .allCorners)
+                        }
+                    }
+                    .padding(20)
+                }.scrollIndicators(.hidden)
+                    .padding(.leading, 10)
+                Divider()
+
+                Spacer()
+                    .frame(height: 10)
+                HStack{
+                    Text("Discover Similar Athletes Near You")
+                        .font(.title2)
+                        .bold()
+                        .padding(.leading, 15)
+                    Spacer()
+                    
+                    
+                }
+                FeaturedAthletes()
+                    .padding(.leading, 20)
+                    .padding(.top, -10)
+                Spacer()
+                    .frame(height: 55)
             }
-            FeaturedAthletes()
-            Spacer()
-                .frame(height: 40)
 
 
         }

@@ -37,4 +37,16 @@ struct Athlete: Codable, Identifiable {
     static func defaultAthlete() -> Athlete{
         return Athlete(first_name: "Bobby", last_name: "Williams", gender: "male", sport: "Basketball", height: "6'9", year: "Class of '25", city: "Omaha", state: "Nebraska", age: 12, weight: 110, GPA: 3.8, ACT_OR_SAT: 1400, about: "Passionate Player", profile_img: "male_athlete3")
     }
+    static func generateAthlete(name: String, location: String, profile_img: String) -> Athlete{
+        let components = location.components(separatedBy: ",")
+        let state = components.last
+        let city = components.first
+        
+        let components2 = name.components(separatedBy: " ")
+        let first_name = components2.first
+        let last_name = components2.last
+        
+        return Athlete(first_name: first_name ?? "Bobby", last_name: last_name ?? "Williams", gender: "male", sport: "Basketball", height: "6'9", year: "Class of '25", city: "Omaha", state: "Nebraska", age: 12, weight: 110, GPA: 3.8, ACT_OR_SAT: 1400, about: "Passionate Player", profile_img: profile_img)
+
+    }
 }

@@ -31,7 +31,7 @@ struct MentalContentView: View {
 
                 Spacer()
                     .frame(height: 10)
-                VStack{
+                VStack(alignment: .leading){
                     HStack{
                         Text("NPA+")
                             .foregroundStyle(.blue)
@@ -41,6 +41,7 @@ struct MentalContentView: View {
                         Text("Modules")
                             .bold()
                             .font(.title2)
+                        Spacer()
                     }
                     .padding(.leading, 10)
                     Spacer()

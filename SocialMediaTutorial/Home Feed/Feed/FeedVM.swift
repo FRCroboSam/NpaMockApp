@@ -40,6 +40,8 @@ class FeedVM: ObservableObject {
     
     @Published var videoIds = []
     
+    @Published var canScroll = false 
+    
     @Published var searchedVideoPosts = [Post]()
     
     init() {
