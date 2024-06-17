@@ -20,22 +20,6 @@ struct ChooseSportView: View {
             VStack(alignment: .leading){
                 Spacer()
                     .frame(height: 70)
-                ZStack{
-                    HStack{
-                        Spacer()
-                        RoundedRectangle(cornerRadius: 10)
-                            .fill(Color(UIColor.darkGray))
-                            .frame(width: 3/4 * deviceWidth, height: 10)
-                            .overlay(alignment: .leading){
-                                RoundedRectangle(cornerRadius: 10)
-                                    .fill(Color(UIColor.white))
-                                    .frame(width: 1/4 * deviceWidth, height: 10)
-                            }
-                        Spacer()
-                    }
-
-                    
-                }
                 Spacer()
                     .frame(height: 40)
 
@@ -79,7 +63,7 @@ struct ChooseSportView: View {
                                 .foregroundStyle(Color(UIColor.systemGray4))
                             Spacer()
                             
-                            iosCheckboxToggleStyle(checked: $athleteIsChecked, color: Color(UIColor.lightGray))
+                            iosCheckboxToggleStyle(checked: $athleteIsChecked, color: Color(UIColor.white))
                         }
                         .padding(.horizontal, 20)
                         .padding(.trailing, 20)
@@ -126,7 +110,7 @@ struct ChooseSportView: View {
                                 .foregroundStyle(Color(UIColor.systemGray4))
                             Spacer()
                             
-                            iosCheckboxToggleStyle(checked: $coachIsChecked, color: Color(UIColor.lightGray))
+                            iosCheckboxToggleStyle(checked: $coachIsChecked, color: Color(UIColor.white))
                         }
                         .padding(.horizontal, 20)
                         .padding(.trailing, 20)
@@ -170,7 +154,7 @@ struct ChooseSportView: View {
                                 .foregroundStyle(Color(UIColor.systemGray4))
                             Spacer()
                             
-                            iosCheckboxToggleStyle(checked: $fanIsChecked, color: Color(UIColor.lightGray))
+                            iosCheckboxToggleStyle(checked: $fanIsChecked, color: Color(UIColor.white))
                         }
                         .padding(.horizontal, 20)
                         .padding(.trailing, 20)
@@ -215,7 +199,7 @@ struct ChooseSportView: View {
                                 .foregroundStyle(Color(UIColor.systemGray4))
                             Spacer()
                             
-                            iosCheckboxToggleStyle(checked: $businessIsChecked, color: Color(UIColor.lightGray))
+                            iosCheckboxToggleStyle(checked: $businessIsChecked, color: Color(UIColor.white))
                         }
                         .padding(.horizontal, 20)
                         .padding(.trailing, 20)
@@ -239,6 +223,7 @@ struct ChooseSportView: View {
                         
                     }label:{
                         Text("Next")
+                            .foregroundStyle(Color(hex: "0A66C2"))
                             .font(.system(.title2, design: .rounded))
                             .bold()
                             .background{
@@ -269,6 +254,9 @@ struct ChooseSportView: View {
             
             
         }.navigationBarBackButtonHidden()
+            .onAppear{
+                feedVM.signupProgress = 0.5
+            }
     }
 }
 

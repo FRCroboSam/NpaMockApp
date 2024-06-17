@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct AccountTypeView: View {
+    @Environment(\.dismiss) var dismiss
+
+
+    @EnvironmentObject var feedVM: FeedVM
     @State var athleteIsChecked = false
     @State var coachIsChecked = false
 
@@ -18,14 +22,8 @@ struct AccountTypeView: View {
         NavigationStack{
             VStack(alignment: .leading){
                 Spacer()
-                    .frame(height: 70)
-                ZStack{
-
-
-                    
-                }
-                Spacer()
-                    .frame(height: 40)
+                    .frame(height: 60)
+                EmptyNavBar()
 
                 Text("Select your account type")
                     .multilineTextAlignment(.leading)
@@ -67,7 +65,7 @@ struct AccountTypeView: View {
                                 .foregroundStyle(Color(UIColor.systemGray4))
                             Spacer()
                             
-                            iosCheckboxToggleStyle(checked: $athleteIsChecked, color: Color(UIColor.lightGray))
+                            iosCheckboxToggleStyle(checked: $athleteIsChecked, color: Color(UIColor.white))
                         }
                         .padding(.horizontal, 20)
                         .padding(.trailing, 20)
@@ -114,7 +112,7 @@ struct AccountTypeView: View {
                                 .foregroundStyle(Color(UIColor.systemGray4))
                             Spacer()
                             
-                            iosCheckboxToggleStyle(checked: $coachIsChecked, color: Color(UIColor.lightGray))
+                            iosCheckboxToggleStyle(checked: $coachIsChecked, color: Color(UIColor.white))
                         }
                         .padding(.horizontal, 20)
                         .padding(.trailing, 20)
@@ -158,7 +156,7 @@ struct AccountTypeView: View {
                                 .foregroundStyle(Color(UIColor.systemGray4))
                             Spacer()
                             
-                            iosCheckboxToggleStyle(checked: $fanIsChecked, color: Color(UIColor.lightGray))
+                            iosCheckboxToggleStyle(checked: $fanIsChecked, color: Color(UIColor.white))
                         }
                         .padding(.horizontal, 20)
                         .padding(.trailing, 20)
@@ -203,7 +201,7 @@ struct AccountTypeView: View {
                                 .foregroundStyle(Color(UIColor.systemGray4))
                             Spacer()
                             
-                            iosCheckboxToggleStyle(checked: $businessIsChecked, color: Color(UIColor.lightGray))
+                            iosCheckboxToggleStyle(checked: $businessIsChecked, color: Color(UIColor.white))
                         }
                         .padding(.horizontal, 20)
                         .padding(.trailing, 20)
@@ -231,6 +229,7 @@ struct AccountTypeView: View {
 
                     }label:{
                         Text("Next")
+                            .foregroundStyle(Color(hex: "0A66C2"))
                             .font(.system(.title2, design: .rounded))
                             .bold()
                             .background{
@@ -246,6 +245,9 @@ struct AccountTypeView: View {
                 }
                 Spacer()
                 
+            }
+            .onAppear{
+                feedVM.isSigningUp = true
             }
             .frame(width: deviceWidth, height: deviceHeight)
             .background{
@@ -266,7 +268,8 @@ struct AccountTypeView: View {
             .ignoresSafeArea(.all, edges: .top)
             
             
-        }.navigationBarBackButtonHidden()
+        }//.navigationBarBackButtonHidden()
+
     }
 }
 

@@ -26,6 +26,10 @@ class FeedVM: ObservableObject {
         "https://www.youtube.com/watch?v=8-f9eR9VJ9g"
     ]
     
+    @Published var isSigningUp = false
+    @Published var signupProgress = 0.25
+    
+    
     @Published var athlete_clip_players = [YouTubePlayer]()
     
     @Published var post_with_videos = [String]()

@@ -24,16 +24,29 @@ struct SocialMediaTutorialApp: App {
             Group{
 //                EditProfileView(athlete: Athlete.defaultAthlete())
                 ZStack{
+                    
                     HomePageView()
                         .opacity(homeOpacity)
                         .animation(.easeInOut(duration: 0.3), value: homeOpacity)
 
-                        .zIndex(4)
-
+                    .zIndex(4)
                     LandingPageView()
-                        .opacity(opacity)
-                        .animation(.easeInOut(duration: 0.3), value: opacity)
-                        .zIndex(3)
+                            .opacity(opacity)
+                            .animation(.easeInOut(duration: 0.3), value: opacity)
+                            .zIndex(3)
+                    if(feedVM.isSigningUp){
+                        VStack{
+                            SignupIndicatorView()
+                            Spacer()
+                                .frame(height: 4/5 * deviceHeight)
+                        }
+                        .zIndex(10000)
+
+                        
+                    }
+
+                        
+                    
                     if(readyToShow){
                         ContentView()
                             .toolbar(.hidden, for: .navigationBar)

@@ -9,16 +9,27 @@ import Foundation
 import SwiftUI
 
 struct SignupIndicatorView: View{
+    @Environment(\.dismiss) var dismiss
+
+    @EnvironmentObject var feedVM: FeedVM
     var body: some View {
         HStack{
+//            Button{
+//                dismiss()
+//            }label: {
+//                Image(systemName: "chevron.backward")
+//                    .foregroundStyle(.white)
+//                    .font(.title)
+//            }
             Spacer()
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color(UIColor.darkGray))
-                .frame(width: 3/4 * deviceWidth, height: 10)
+                .frame(width: 9/10 * deviceWidth, height: 10)
                 .overlay(alignment: .leading){
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color(UIColor.white))
-                        .frame(width: 1/4 * deviceWidth, height: 10)
+                        .frame(width: feedVM.signupProgress * 0.6 * deviceWidth, height: 10)
+                        .animation(.easeIn, value: feedVM.signupProgress)
                 }
             Spacer()
         }

@@ -14,7 +14,6 @@ struct ProfileInfoView: View {
     
     @State var athleteIsChecked = false
     @State var coachIsChecked = false
-
     @State var fanIsChecked = false
     @State var businessIsChecked = false
     @EnvironmentObject var feedVM: FeedVM
@@ -28,24 +27,16 @@ struct ProfileInfoView: View {
             VStack(alignment: .leading){
                 Spacer()
                     .frame(height: 70)
-                ZStack{
-                    SignupIndicatorView()
-
-                    
-                }
                 Spacer()
                     .frame(height: 40)
 
-                Text("Enter Your Information")
-                    .multilineTextAlignment(.leading)
-                    .font(.system(size: 40))
-                    .font(.system(.largeTitle, design: .rounded))
+                Text("Enter Your Personal Information")
+                    .font(.system(.title, design: .rounded))
                     .bold()
                     .foregroundStyle(.white)
-                //.frame(width: 7/8 * deviceWidth)
-                    .padding(.horizontal, 20)
-                
-                Text("Personal Information")
+                    .padding(.leading, 10)
+                Spacer()
+                    .frame(height: 20)
                 HStack {
                     TextField("First Name", text: $firstName)
                         .foregroundColor(.black)
@@ -54,6 +45,8 @@ struct ProfileInfoView: View {
                         .autocorrectionDisabled()
                         .listRowSeparator(.hidden)
                 }.modifier(customViewModifier(roundedCornes: 15, startColor: Color(UIColor.white), endColor: Color(UIColor.white), textColor: .black, ratio: 0.9))
+                    .padding(.leading, 10)
+
                 
                 HStack {
                     SecureField("Last Name", text: $lastName)
@@ -63,15 +56,29 @@ struct ProfileInfoView: View {
                         .autocorrectionDisabled()
                         .listRowSeparator(.hidden)
                 }.modifier(customViewModifier(roundedCornes: 15, startColor: Color(UIColor.white), endColor: Color(UIColor.white), textColor: .black, ratio: 0.9))
+                    .padding(.leading, 10)
 
+                Spacer()
+                    .frame(height: 20)
                 DatePicker(selection: $date, in: ...Date.now, displayedComponents: .date) {
                     Text("Select your birthday")
+                        .font(.title2)
+                        .bold()
                 }
                 .colorInvert()
                 .colorMultiply(.white)
+                .padding(.leading, 10)
+                
+                Spacer()
+                    .frame(height: 20)
+
                 Text("Enter your Location")
                     .font(.title2)
                     .foregroundStyle(.white)
+                    .bold()
+                    .padding(.leading, 10)
+                Spacer()
+                    .frame(height: 20)
                 HStack {
                     TextField("ie. 'Seattle, WA' ", text: $location)
                         .foregroundColor(.black)
@@ -80,53 +87,71 @@ struct ProfileInfoView: View {
                         .autocorrectionDisabled()
                         .listRowSeparator(.hidden)
                 }.modifier(customViewModifier(roundedCornes: 15, startColor: Color(UIColor.white), endColor: Color(UIColor.white), textColor: .black, ratio: 0.9))
+                    .padding(.leading, 10)
+                Spacer()
+                    .frame(height: 20)
                 
                 Text("Login Information")
+                    .font(.title2)
+                    .bold()
+                    .foregroundStyle(.white)
+                    .padding(.leading, 10)
                 
                 HStack {
                     Image(systemName: "envelope")
                         .foregroundColor(.black)
-                    TextField("Enter your email", text: $email)
+                    TextField("Enter an email", text: $email)
                         .foregroundColor(.black)
                         .textContentType(.newPassword)
                         .keyboardType(.asciiCapable)
                         .autocorrectionDisabled()
                         .listRowSeparator(.hidden)
                 }.modifier(customViewModifier(roundedCornes: 15, startColor: Color(UIColor.white), endColor: Color(UIColor.white), textColor: .black, ratio: 0.9))
+                    .padding(.leading, 10)
                 
                 HStack {
                     Image(systemName: "lock")
                         .foregroundColor(.black)
-                    SecureField("Enter your Password", text: $password)
+                    SecureField("Enter a Password", text: $password)
                         .foregroundColor(.black)
                         .textContentType(.newPassword)
                         .keyboardType(.asciiCapable)
                         .autocorrectionDisabled()
                         .listRowSeparator(.hidden)
                 }.modifier(customViewModifier(roundedCornes: 15, startColor: Color(UIColor.white), endColor: Color(UIColor.white), textColor: .black, ratio: 0.9))
+                    .padding(.leading, 10)
                 
                 
                 
                 
                 
                 Spacer()
-                    .frame(height: 40)
+                    .frame(height: 30)
+                
+                Text("By selecting Agree and Finish, you agree to NPA terms and conditions outlined h̲e̲r̲e̲")
+                    .padding(.leading, 10)
+                    .font(.headline)
+                    .foregroundStyle(.white)
+                Spacer()
+                    .frame(height: 15)
                 HStack{
                     Spacer()
                     Button{
                         let defaults = UserDefaults.standard
                         defaults.set("Athlete", forKey: "User Type")
                         feedVM.loggedIn = true
+                        feedVM.isSigningUp = false
                     }label:{
-                        Text("Finish")
+                        Text("Agree and Finish")
+                            .foregroundStyle(Color(hex: "0A66C2"))
                             .font(.system(.title2, design: .rounded))
                             .bold()
+                            .padding(.horizontal, 20)
+                            .padding(.vertical, 10)
+
                             .background{
                                 RoundedRectangle(cornerRadius: 35)
                                     .fill(.white)
-                                    .padding(.horizontal, -20)
-                                    .padding(.vertical, -15)
-                                
                             }
                         
                     }
@@ -144,6 +169,9 @@ struct ProfileInfoView: View {
             
             
         }.navigationBarBackButtonHidden()
+        .onAppear{
+            feedVM.signupProgress = 1.0
+        }
     }
 }
 

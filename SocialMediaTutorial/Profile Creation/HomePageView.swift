@@ -32,6 +32,7 @@ struct HomePageView: View {
                         AccountTypeView()
                     }label:{
                         Text("Join Us")
+                            .foregroundStyle(Color(hex: "0A66C2"))
                             .font(.system(.title2, design: .rounded))
                             .bold()
                         //.foregroundStyle(.black)
