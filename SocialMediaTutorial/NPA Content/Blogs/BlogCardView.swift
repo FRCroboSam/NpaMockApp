@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 struct BlogCardView: View {
     let blog: Blog
     @State var height: CGFloat = 350
@@ -55,21 +56,40 @@ struct BlogCardView: View {
 
                     }
                     Spacer()
-                    AsyncImage(
-                        url: URL(string: blog.image),
-                        content: { image in
-                            image.resizable()
+//                    AsyncImage(
+//                        url: URL(string: blog.image),
+//                        content: { image in
+//                            image.resizable()
+//                                .resizable()
+//                                .scaledToFill()
+//                                .frame(width: 100, height: 100)
+//
+//                                 .roundedCorner(8, corners: .allCorners)
+//
+//                        },
+//                        placeholder: {
+//                           LoadingView(width: 100, height: 100)
+//                        }
+//                    )
+                    LazyImage(url: URL(string: blog.image)){ phase in
+                        if let image = phase.image {
+                            image
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 100, height: 100)
-
-                                 .roundedCorner(8, corners: .allCorners)
-
-                        },
-                        placeholder: {
-                           LoadingView(width: 100, height: 100)
+                                .roundedCorner(8, corners: .allCorners)
+                            
                         }
-                    ).padding(.trailing, 20)
+                        else{
+                           LoadingView(width: 100, height: 100)
+
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    .padding(.trailing, 20)
                 }
                 Spacer()
                     .frame(height: 10)

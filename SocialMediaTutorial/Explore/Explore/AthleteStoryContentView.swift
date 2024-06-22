@@ -20,6 +20,8 @@ struct AthleteStoryContentView: View {
     
     @State var selectedSport = "All"
     var body: some View {
+        CustomNavBar(title: "Athlete Stories")
+
         ScrollView(.vertical)
         {
             let filters = [
@@ -40,7 +42,6 @@ struct AthleteStoryContentView: View {
                 "https://www.youtube.com/watch?v=WCBP9272z68",
                 "https://www.youtube.com/watch?v=8-f9eR9VJ9g"
             ]
-                CustomNavBar(title: "Athlete Stories")
                 //            .background{
                 //                LinearGradient(gradient:Gradient(colors:[
                 //                    Color.white,

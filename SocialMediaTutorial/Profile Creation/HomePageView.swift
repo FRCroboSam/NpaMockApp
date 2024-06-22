@@ -44,7 +44,7 @@ struct HomePageView: View {
                                 
                             }
                     }
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 35)
                     
                     NavigationLink{
                         LoginPage()

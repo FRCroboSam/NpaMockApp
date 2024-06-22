@@ -540,6 +540,7 @@
 		3679F2912BAA1DB200DAC43E /* Comments */ = {
 			isa = PBXGroup;
 			children = (
+				3679F2922BAA1DC600DAC43E /* CommentView.swift */,
 				3679F2942BAA1E2600DAC43E /* CommentVM.swift */,
 				3679F2A22BAA27D500DAC43E /* CommentSectionView.swift */,
 				36CD28792BBF26D000B02588 /* ScrollableCommentSectionView.swift */,
@@ -562,7 +563,6 @@
 			children = (
 				3679F29E2BAA20DE00DAC43E /* PostVM.swift */,
 				3679F2A02BAA211200DAC43E /* Post.swift */,
-				3679F2922BAA1DC600DAC43E /* CommentView.swift */,
 			);
 			path = Posts;
 			sourceTree = "<group>";

@@ -38,7 +38,7 @@ struct SocialMediaTutorialApp: App {
                         VStack{
                             SignupIndicatorView()
                             Spacer()
-                                .frame(height: 4/5 * deviceHeight)
+                                .frame(height: 8/9 * deviceHeight)
                         }
                         .zIndex(10000)
 
@@ -117,9 +117,13 @@ struct SocialMediaTutorialApp: App {
                 
                 feedVM.loggedIn = false
                 feedVM.loadData()
-                feedVM.loggedIn = false //placeholder
+                //feedVM.loggedIn = false //placeholder
                 //TODO: STore these ids in user defaults or something
 //                feedVM.fetchVideoIds()
+                let defaults = UserDefaults.standard
+
+                feedVM.loggedIn = defaults.value(forKey: "User Type") != nil
+
                 if(feedVM.loggedIn){
                     homeOpacity = 0.0
                 }
@@ -127,10 +131,8 @@ struct SocialMediaTutorialApp: App {
                     homeOpacity = 1.0
                 }
                 //CODE FOR DETECTING IF WE ALREADY CREATED USER SO WE SHOULD GO TO FEED VIEW
-                let defaults = UserDefaults.standard
                 print(defaults.value(forKey: "User Type"))
                 feedVM.loadVideoIds()
-//                loggedIn = defaults.value(forKey: "User Type") != nil
             }
             
 //            .onAppear{

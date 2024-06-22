@@ -47,14 +47,10 @@ struct ChooseSportView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "football.fill")
-                                .font(.system(size: 30))
+                            Image("football_icon")
+                                .resizable()
                                 .scaledToFill()
-                                .clipShape(Circle())
                                 .frame(width: 60, height: 60)
-                                .background{
-                                    Circle().fill(.white)
-                                }
                             Spacer()
                                 .frame(width: 20)
                             Text("Football")
@@ -94,8 +90,8 @@ struct ChooseSportView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "basketball.fill")
-                                .font(.system(size: 30))
+                            Image("basketball_icon")
+                                .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
                                 .frame(width: 60, height: 60)
@@ -138,8 +134,8 @@ struct ChooseSportView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "figure.run")
-                                .font(.system(size: 30))
+                            Image("soccer_icon")
+                                .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
                                 .frame(width: 60, height: 60)
@@ -148,7 +144,7 @@ struct ChooseSportView: View {
                                 }
                             Spacer()
                                 .frame(width: 20)
-                            Text("Track & Field")
+                            Text("Soccer")
                                 .font(.title)
                                 .bold()
                                 .foregroundStyle(Color(UIColor.systemGray4))
@@ -183,8 +179,8 @@ struct ChooseSportView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "tennisball.fill")
-                                .font(.system(size: 30))
+                            Image("swimming_icon")
+                                .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
                                 .frame(width: 60, height: 60)
@@ -193,7 +189,7 @@ struct ChooseSportView: View {
                                 }
                             Spacer()
                                 .frame(width: 20)
-                            Text("Tennis")
+                            Text("Swimming")
                                 .font(.title)
                                 .bold()
                                 .foregroundStyle(Color(UIColor.systemGray4))
@@ -213,8 +209,21 @@ struct ChooseSportView: View {
                             .padding(.horizontal, 20)
                     }
                 }.frame(height: 100)
+                HStack{
+                    Spacer()
+                    Button{
+                        
+                    }label: {
+                        Text("Show More Sports")
+                            .foregroundStyle(.white)
+                            .font(.title2)
+                            .padding(.vertical, 10)
+                    }
+                    Spacer()
+                }
                 Spacer()
                     .frame(height: 40)
+                
                 HStack{
                     Spacer()
                     NavigationLink{
@@ -229,7 +238,7 @@ struct ChooseSportView: View {
                             .background{
                                 RoundedRectangle(cornerRadius: 35)
                                     .fill(.white)
-                                    .padding(.horizontal, -20)
+                                    .padding(.horizontal, -35)
                                     .padding(.vertical, -15)
                                 
                             }

@@ -22,9 +22,7 @@ struct AccountTypeView: View {
         NavigationStack{
             VStack(alignment: .leading){
                 Spacer()
-                    .frame(height: 60)
-                EmptyNavBar()
-
+                    .frame(height: 100)
                 Text("Select your account type")
                     .multilineTextAlignment(.leading)
                     .font(.system(size: 40))
@@ -49,8 +47,8 @@ struct AccountTypeView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "figure.run")
-                                .font(.system(size: 30))
+                            Image("athletes_icon")
+                                .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
                                 .frame(width: 60, height: 60)
@@ -96,8 +94,8 @@ struct AccountTypeView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "figure.run")
-                                .font(.system(size: 30))
+                            Image("coaching_icon")
+                                .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
                                 .frame(width: 60, height: 60)
@@ -140,8 +138,8 @@ struct AccountTypeView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "figure.run")
-                                .font(.system(size: 30))
+                            Image("fan_icon")
+                                .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
                                 .frame(width: 60, height: 60)
@@ -185,8 +183,8 @@ struct AccountTypeView: View {
                         }
                     VStack{
                         HStack{
-                            Image(systemName: "figure.run")
-                                .font(.system(size: 30))
+                            Image("agent_icon")
+                                .resizable()
                                 .scaledToFill()
                                 .clipShape(Circle())
                                 .frame(width: 60, height: 60)
@@ -195,7 +193,7 @@ struct AccountTypeView: View {
                                 }
                             Spacer()
                                 .frame(width: 20)
-                            Text("Business")
+                            Text("Agents")
                                 .font(.title)
                                 .bold()
                                 .foregroundStyle(Color(UIColor.systemGray4))
@@ -235,7 +233,7 @@ struct AccountTypeView: View {
                             .background{
                                 RoundedRectangle(cornerRadius: 35)
                                     .fill(.white)
-                                    .padding(.horizontal, -20)
+                                    .padding(.horizontal, -35)
                                     .padding(.vertical, -15)
                                 
                             }
@@ -268,7 +266,7 @@ struct AccountTypeView: View {
             .ignoresSafeArea(.all, edges: .top)
             
             
-        }//.navigationBarBackButtonHidden()
+        }.navigationBarBackButtonHidden()
 
     }
 }

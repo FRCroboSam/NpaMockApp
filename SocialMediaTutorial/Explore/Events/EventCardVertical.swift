@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EventCardVertical: View {
+    @State var width = 3/4 * deviceWidth
     let event_url: String
     @State var showAges = true
     @State var event_name: String?
@@ -22,7 +23,7 @@ struct EventCardVertical: View {
                             image.resizable()
                                 .resizable()
                                 .scaledToFill()
-                                .frame(width:  3/4 * deviceWidth, height:130)
+                                .frame(width:  width, height:130)
                                 .clipped()
                                 .roundedCorner(8, corners: .topLeft)
                                 .roundedCorner(8, corners: .topRight)
@@ -45,7 +46,7 @@ struct EventCardVertical: View {
                             
                         },
                         placeholder: {
-                            LoadingView(width: 3/4 * deviceWidth, height:160)
+                            LoadingView(width: width, height:160)
                         }
                     )//.padding(.trailing, 20)
                     VStack(alignment: .leading, spacing: 0){
@@ -96,7 +97,7 @@ struct EventCardVertical: View {
                             }.buttonStyle(BigButtonStyle(height: 30, cornerRadius: 9, color: Color(UIColor.systemGray3),textColor: .black, padding: 60))
                                 .padding(.leading, 10)
 
-                        }.frame(width: 3/4 * deviceWidth)
+                        }.frame(width: width)
                             .padding(.bottom, 10)
 
 
@@ -105,7 +106,7 @@ struct EventCardVertical: View {
                 }
                 
             }//.padding(.leading, 20)
-            .frame(width: 3/4 * deviceWidth)
+            .frame(width:width)
             .background{
                 RoundedRectangle(cornerRadius: 10)
                     .fill(Color.white)

@@ -23,8 +23,10 @@ struct UseNPAFor: View{
     var body: some View{
         NavigationStack{
             VStack(alignment: .leading){
+                Spacer()
+                    .frame(height: 100)
                 Text("What do you want to use NPA for?")
-                    .font(.title)
+                    .font(.largeTitle)
                     .foregroundStyle(.white)
                     .padding(.leading, 10)
                     .bold()
@@ -33,7 +35,7 @@ struct UseNPAFor: View{
                     .frame(height: 20)
                 
                 Text("This will help us customize your feed, recommendations, and more!")
-                    .font(.subheadline)
+                    .font(.title3)
                     .foregroundStyle(.white)
                     .padding(.leading, 10)
                 Spacer()
@@ -112,19 +114,20 @@ struct UseNPAFor: View{
                             .font(.system(.title2, design: .rounded))
                             .bold()
                             .background{
-                                RoundedRectangle(cornerRadius: 20)
+                                RoundedRectangle(cornerRadius: 35)
                                     .fill(.white)
-                                    .padding(.horizontal, -30)
-                                    .padding(.vertical, -10)
+                                    .padding(.horizontal, -35)
+                                    .padding(.vertical, -15)
                                 
                             }
                         
                     }
                     Spacer()
                 }
+                Spacer()
             }
         }.navigationBarBackButtonHidden(true)
-            .modifier(HideBackButton(dismiss: _dismiss, color: .white))
+            //.modifier(HideBackButton(dismiss: _dismiss, color: .white))
         .onAppear{
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
                 withAnimation(.easeIn){

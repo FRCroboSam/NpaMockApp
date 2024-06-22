@@ -13,11 +13,15 @@ struct CommentSectionView: View {
     @FocusState var isCommentFocused: Bool
     @State private var keyboardHeight: CGFloat = 0
 
-    @State var replyingToId: String = ""
+    @State var replyingToName: String = ""
     @State var replyingToPost: Bool = true // replying to the post by default
     var deviceWidth: CGFloat {
         UIScreen.main.bounds.width
     }
+    @State var showReply = false
+    
+    @State var shouldUpdate = false
+    
     var body: some View {
         VStack(spacing: 0){
             ScrollView {
@@ -27,8 +31,15 @@ struct CommentSectionView: View {
                     LoadingView(width: 180, height: 200)
                 } else {
                     LazyVStack(spacing:0){
-                        ForEach(vm.commentSection, id: \.id){ comment in
-                            CommentView(postVM: vm, vm: comment)
+                        ForEach(vm.commentSection.indices, id: \.self){ index in
+                            CommentView(postVM: vm, vm: vm.commentSection[index], index: calculateIndex(vm: vm.commentSection[index]), IsReplyingName: $replyingToName, shouldUpdate: $shouldUpdate)
+                                .frame(width: deviceWidth)
+                                .onChange(of: shouldUpdate){value in
+                                    print("SHOW REPLY IS CHANGING")
+                                    
+                                }
+
+
 
 
                         }
@@ -39,9 +50,9 @@ struct CommentSectionView: View {
             }.listStyle(PlainListStyle())
 
                 .frame(width: deviceWidth)
-                //.background(Color.white)
 //                .padding(.leading, 40)
-                .offset(x: 20)
+                .zIndex(10000)
+                .scrollIndicators(.hidden)
 
             
 
@@ -49,18 +60,29 @@ struct CommentSectionView: View {
             
             VStack(spacing: 0){
                 Divider()
-                if vm.currentParentReply != nil {
+                if !replyingToName.isEmpty {
                     HStack{
-                        Text("Replying to: " + vm.currentParentReply!.comment.displayName)
+                        Text("Replying to: " + replyingToName)
+                            .foregroundStyle(.gray.opacity(0.4))
                         Spacer()
                         Button(action: {
-                            withAnimation{self.vm.currentParentReply = nil}
+                            withAnimation{
+                                self.vm.currentParentReply = nil
+                                replyingToName = ""
+                                print("Setting to nil")
+                                
+                            }
                         }){
                             Image(systemName: "xmark.circle.fill")
                         }
                     }.padding(.horizontal, 5)
                         .padding()
                         .font(.footnote)
+
+                }
+
+                else{
+                    EmptyView()
                 }
                 HStack {
                     //TODO: ADD Dismiss keyboard when the user sends it
@@ -71,10 +93,12 @@ struct CommentSectionView: View {
                             .focused($isCommentFocused)
                         //Text(comment).opacity(0).padding()
                         Button(action: {
+                            replyingToName = ""
                             withAnimation(.easeIn){
                                 self.dismissKeyboard()
                             }
                             if(self.vm.currentParentReply != nil ){
+                                print("IS REPLYING TO COMMENT")
                                 self.vm.replyToComment(commentText: comment, parentId: (self.vm.currentParentReply?.comment.commentId)!)
                                 self.comment = ""
                                 self.vm.currentParentReply = nil
@@ -102,8 +126,9 @@ struct CommentSectionView: View {
 //                        self.comment = ""
 //                    }
                 }.padding()
+                    .padding(.bottom, 20)
                 .offset(x: 20)
-                .frame(width: deviceWidth + 50)
+                .frame(width: deviceWidth * 2)
                 .background(Color.white)
                 .zIndex(500)
                     .onAppear{
@@ -126,8 +151,14 @@ struct CommentSectionView: View {
             }
             
         }
-
-
+        .onChange(of: self.vm.currentParentReply == nil) { value in
+            print("REPLY IS CHANGING: " + String(value))
+        }
+//        .background{
+//            Color.white
+//                .animation(.easeIn)
+//
+//        }
         .onReceive(Publishers.keyboardHeight) { self.keyboardHeight = $0 }
 
         .navigationBarTitleDisplayMode(.inline)
@@ -136,6 +167,20 @@ struct CommentSectionView: View {
     
     private func dismissKeyboard() {
       UIApplication.shared.dismissKeyboard()
+    }
+    private func calculateIndex(vm: CommentVM) -> Int{
+        let digits = vm.comment.commentId.compactMap { $0.isNumber ? Int(String($0)) : nil }
+
+//                    // Get the last two digits
+        if(digits.count >= 2){
+            let lastTwoDigits = digits[0] + digits[1] * 10
+            print(lastTwoDigits % 13)
+            return lastTwoDigits % 13
+
+        }
+        else{
+           return 0
+        }
     }
     
     

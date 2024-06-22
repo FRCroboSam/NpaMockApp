@@ -50,6 +50,14 @@ class PostVM: ObservableObject {
             }
         }
     }
+    
+    func insertTestComment(){
+        let test: CommentVM = CommentVM(comment: Comment(commentId: "root", parentId: "", content: "TEST COMMENT", displayName: "", created: "", likes: 0))
+        withAnimation{commentSection.insert(test, at: 0)}
+
+
+    }
+    
     func fetchComments(postId: String) {
         //TODO: fetch comments using post id
         
@@ -102,24 +110,28 @@ class PostVM: ObservableObject {
         writeToComments(comment: comment_obj )
         withAnimation{ self.currentParentReply = nil }
     }
-    
+
     public func replyToComment(commentText: String, parentId: String ){
         let comment_obj = Comment(commentId: UUID().uuidString, parentId: parentId, content: commentText, displayName: "Admin", created: Date().ISO8601Format().description, likes: 0)
         let comment = CommentVM(comment: comment_obj)
         
         //It's a reply
         if let parent = self.currentParentReply {
+            print("SHOULD BE ADDING THE COMMENT")
+            print("REPLYING TO THE COMMENT: " + parent.comment.content)
             // set depth
             // TODO: duplicated code, remove and use addChild(...)
             comment.comment.parentId = parent.comment.commentId //remove when using Api
             comment.depth = parent.depth! + 1
             comment.padding = parent.padding + 1
+            self.currentParentReply!.children.append(comment)
+            writeToReplies(comment: comment_obj )
             
-            if let index = parent.getCommentIndex(from: commentSection, comment: parent) {
-                withAnimation{commentSection.insert(comment, at: index+1)}
+            self.currentParentReply!.fetchReplies(vm: self){
+//                withAnimation{commentSection.insert(comment, at: index+1)}
+
             }
         }
-        writeToReplies(comment: comment_obj )
         withAnimation{ self.currentParentReply = nil }
 
     }

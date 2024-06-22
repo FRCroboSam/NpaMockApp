@@ -20,11 +20,13 @@ struct LoginPage: View {
                 HStack{
                     Text("Login ")
                         .font(.title)
-                        .padding(.leading, 15)
+                        .padding(.leading, 20)
                         .bold()
                         .foregroundStyle(.white)
                     Spacer()
                 }
+                Spacer()
+                    .frame(height: 10)
                 
                 HStack {
                     Image(systemName: "envelope")
@@ -48,7 +50,7 @@ struct LoginPage: View {
                         .listRowSeparator(.hidden)
                 }.modifier(customViewModifier(roundedCornes: 15, startColor: Color(UIColor.white), endColor: Color(UIColor.white), textColor: .black, ratio: 0.9))
                 Spacer()
-                    .frame(height: 15)
+                    .frame(height: 25)
                 Button{
                     self.dismissKeyboard()
 
@@ -73,7 +75,7 @@ struct LoginPage: View {
                     .font(.headline)
                     .foregroundStyle(.white)
                 Spacer()
-                    .frame(height: 20)
+                    .frame(height: 35)
                 HStack{
                     Rectangle()
                         .foregroundStyle(.white)
@@ -91,7 +93,7 @@ struct LoginPage: View {
 
                 }
                 Spacer()
-                    .frame(height: 10)
+                    .frame(height: 20)
                 HStack{
                     Spacer()
                         .frame(width: 20)
@@ -134,7 +136,7 @@ struct LoginPage: View {
 
                 }
                 Spacer()
-            }
+            }.navigationBarBackButtonHidden()
             
             .background{
                 Image("background")

@@ -460,16 +460,16 @@ struct FeedView: View {
                                             
                                             
                                             CommentSectionView(vm: $vm.selected_post_vm)
+                                                .transaction{ $0.disablesAnimations = true}
                                                 .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
                                                 .zIndex(12)
-                                            //                                                        .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
-                                            //                                                        .background{
-                                            //                                                            Color.white
-                                            //                                                                .frame(width: 2 * deviceWidth)
-                                            //                                                                .animation(.easeIn.speed(1.1), value: self.lastTranslation.height)
-                                            //
-                                            //                                                        }
-                                                .transaction{ $0.disablesAnimations = true}
+                                                .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
+                                                .background{
+                                                    Color.white
+                                                        .frame(width: 2 * deviceWidth)
+                                                        .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
+
+                                                }
                                             
                                             
                                         }

@@ -71,7 +71,7 @@ struct EventTabContentView: View {
                 
                 VStack {
                     ForEach(urls.indices, id: \.self) { index in
-                        EventCardVertical(event_url: urls[index], event_name: campNames[index])
+                        EventCardVertical(width: 7/8 * deviceWidth, event_url: urls[index], event_name: campNames[index])
                         //.padding(10)
                         Spacer()
                             .frame(height: 20)

@@ -18,8 +18,8 @@ struct VerificationView: View {
             VStack(alignment: .leading, spacing: 20){
                 HStack{
                     Text("Verification Tasks")
-                        .font(.title2)
-                        .bold()         
+                        .font(.title)
+                        .bold()
                         .padding(10)
                     Image(systemName: "checkmark.seal.fill")
                         .foregroundStyle(.blue)
@@ -27,6 +27,7 @@ struct VerificationView: View {
                         .padding(.trailing, 20)
                     Spacer()
                 }
+                .padding(.bottom, -10)
                 Text("Upload Academic Transcript")
                     .font(.title2)
                     .bold()

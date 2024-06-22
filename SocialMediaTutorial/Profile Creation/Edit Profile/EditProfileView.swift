@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-
 struct EditProfileView: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var feedVM: FeedVM
@@ -39,15 +38,16 @@ struct EditProfileView: View {
     
     var body: some View {
         NavigationStack{
-            VStack{
+
+            VStack(spacing: 0){
+                Color(UIColor.systemGray6).opacity(0.5)
+                    .frame(height: 10)
                 ScrollView{
-                    Spacer()
-                        .frame(height: 10)
                     VStack(spacing: 5){
                         
                         Group{
                             Spacer()
-                                .frame(height: 40)
+                                .frame(height: 20)
                             Text(athlete.first_name + " "  + athlete.last_name)
                                 .bold()
                                 .font(.title)
@@ -296,7 +296,7 @@ struct EditProfileView: View {
                     
                 }
                 .scrollIndicators(.hidden)
-                .frame(width: deviceWidth, height: deviceHeight - 20)
+                .frame(width: deviceWidth)
                 
                 .background{
                     Color(UIColor.systemGray6).opacity(0.5)
@@ -304,6 +304,11 @@ struct EditProfileView: View {
                     
                 }
             }
+        }
+        .background{
+            Color(UIColor.systemGray6).opacity(0.5)
+            // .ignoresSafeArea(.all, edges: .bottom)
+            
         }
     }
 }

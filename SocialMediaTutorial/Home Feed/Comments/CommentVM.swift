@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Comment: Codable {
+struct Comment: Codable, Equatable {
     var commentId: String
     var parentId: String
     var content: String
@@ -28,7 +28,6 @@ class CommentVM: ObservableObject, Identifiable {
     public weak var parent: CommentVM?
     public var depth: Int?
     private var replies: [CommentVM] = []
-
     @Published var comment: Comment
     @Published public var children: [CommentVM] = []
     @Published public var areChildrenShown: Bool = false
@@ -43,8 +42,8 @@ class CommentVM: ObservableObject, Identifiable {
             self.depth = 0
         }
     }
-    
-    func fetchReplies(vm: PostVM) {
+
+    func fetchReplies(vm: PostVM, completion: @escaping () -> Void) {
         self.loading = true
         //Todo: provide parent id to fetch replies
         let documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
@@ -59,14 +58,18 @@ class CommentVM: ObservableObject, Identifiable {
                 if let replies = try? Data(contentsOf: fileURL) {
                     let replies2 = try! JSONDecoder().decode([Comment].self, from: replies)
                     let filteredReplies = replies2.filter { $0.parentId == self.comment.commentId && $0.commentId != self.comment.commentId }
-                    print(self.comment.commentId)
+                    print("COMMENT FOR REPLY: " + self.comment.commentId)
+                    children.removeAll()
                     addAllChildren(children: filteredReplies.map{CommentVM(comment: $0)})
                     if let index = self.getCommentIndex(from: vm.commentSection, comment: self) {
                         withAnimation{vm.commentSection.insert(contentsOf: self.children, at: index+1)}
                     }
+//                    vm.ixnsertTestComment()
                     self.areChildrenShown = true
+                    completion()
                     self.loading = false
                 } else {
+                    completion()
                 }
             }
         }
@@ -110,6 +113,32 @@ class CommentVM: ObservableObject, Identifiable {
     public func addAllChildren(children: [CommentVM]) {
         children.forEach{addChild($0)}
     }
+    public func hideReplies(vm: PostVM){
+        //TODO: do the equivalent of the opposite of this:
+
+        var indicesToRemove: [Int] = []
+
+        for comment in children{
+            if let index = self.getCommentIndex(from: vm.commentSection, comment: comment) {
+                indicesToRemove.append(index)
+            }
+        }
+
+        // Remove items outside ForEach loop
+        for index in indicesToRemove.sorted(by: >) { // Sort indices in descending order to avoid reindexing issues
+            vm.commentSection.remove(at: index)
+        }
+
+        
+
+
+//        let test: CommentVM = CommentVM(comment: Comment(commentId: "root", parentId: "", content: "TEST COMMENT", displayName: "", created: "", likes: 0))
+//        print(children.count)
+//        children.insert(test, at: 0)
+//        //children.removeFirst()
+//        print(children.count)
+    }
+
     
     public static func preorder(_ node: CommentVM) -> [CommentVM] {
         var list = [CommentVM]()

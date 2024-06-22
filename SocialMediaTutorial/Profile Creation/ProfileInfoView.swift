@@ -34,7 +34,7 @@ struct ProfileInfoView: View {
                     .font(.system(.title, design: .rounded))
                     .bold()
                     .foregroundStyle(.white)
-                    .padding(.leading, 10)
+                    .padding(.leading, 15)
                 Spacer()
                     .frame(height: 20)
                 HStack {
@@ -67,8 +67,8 @@ struct ProfileInfoView: View {
                 }
                 .colorInvert()
                 .colorMultiply(.white)
-                .padding(.leading, 10)
-                
+                .padding(.leading, 15)
+
                 Spacer()
                     .frame(height: 20)
 
@@ -76,7 +76,7 @@ struct ProfileInfoView: View {
                     .font(.title2)
                     .foregroundStyle(.white)
                     .bold()
-                    .padding(.leading, 10)
+                    .padding(.leading, 15)
                 Spacer()
                     .frame(height: 20)
                 HStack {
@@ -95,8 +95,8 @@ struct ProfileInfoView: View {
                     .font(.title2)
                     .bold()
                     .foregroundStyle(.white)
-                    .padding(.leading, 10)
-                
+                    .padding(.leading, 15)
+
                 HStack {
                     Image(systemName: "envelope")
                         .foregroundColor(.black)
@@ -127,11 +127,14 @@ struct ProfileInfoView: View {
                 
                 Spacer()
                     .frame(height: 30)
-                
-                Text("By selecting Agree and Finish, you agree to NPA terms and conditions outlined h̲e̲r̲e̲")
-                    .padding(.leading, 10)
-                    .font(.headline)
-                    .foregroundStyle(.white)
+                HStack{
+                    Spacer()
+                    Text("By selecting Agree and Finish, you agree to NPA terms and conditions outlined h̲e̲r̲e̲")
+                        .padding(.horizontal, 10)
+                        .font(.headline)
+                        .foregroundStyle(.white)
+                    Spacer()
+                }
                 Spacer()
                     .frame(height: 15)
                 HStack{
@@ -146,7 +149,7 @@ struct ProfileInfoView: View {
                             .foregroundStyle(Color(hex: "0A66C2"))
                             .font(.system(.title2, design: .rounded))
                             .bold()
-                            .padding(.horizontal, 20)
+                            .padding(.horizontal, 25)
                             .padding(.vertical, 10)
 
                             .background{

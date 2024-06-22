@@ -86,6 +86,7 @@ struct ExploreHomeView: View {
                         
                     }label:{
                         Text("View More")
+                            .foregroundStyle(Color(hex: "0A66C2"))
                             .font(.system(size: 15))
                             .padding(10)
                             .background{
@@ -115,6 +116,7 @@ struct ExploreHomeView: View {
                         
                     }label:{
                         Text("View More")
+                            .foregroundStyle(Color(hex: "0A66C2"))
                             .font(.system(size: 15))
                             .padding(10)
                             .background{
@@ -148,6 +150,7 @@ struct ExploreHomeView: View {
                         
                     }label:{
                         Text("View More")
+                            .foregroundStyle(Color(hex: "0A66C2"))
                             .font(.system(size: 15))
                             .padding(10)
                             .background{
@@ -178,6 +181,7 @@ struct ExploreHomeView: View {
                         
                     }label:{
                         Text("View More")
+                            .foregroundStyle(Color(hex: "0A66C2"))
                             .font(.system(size: 15))
                             .padding(10)
                             .background{

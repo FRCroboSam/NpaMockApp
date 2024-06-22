@@ -36,8 +36,7 @@ struct ExploreView: View {
                 VStack(alignment: .leading, spacing: 0){
 
                     VStack(alignment: .leading, spacing: 0){
-                        Spacer()
-                            .frame(height: 20)
+   
                         HStack(spacing: 0){
                             
                             Image(systemName: "tennisball.fill")

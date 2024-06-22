@@ -8,40 +8,43 @@
 import SwiftUI
 
 struct SponsorPopup: View {
+    let images = ["ApplePay", "GooglePay", "CreditPay", "TopperPay"]
+    let text = ["Apple Pay", "Google Pay", "Credit Card", "Topper (Crypto)"]
     var body: some View {
         VStack(alignment: .center){
-            Text("Support Methods")
+            Text("Choose a Support Method")
                 .font(.title2)
                 .bold()
-            Spacer()
-                .frame(height: 10)
-            HStack{
-                Image("ApplePay")
-                    .resizable()
-                    .scaledToFill()
-                    .padding(.leading, -15)
-                    .frame(width: 120, height: 60)
-                Image("GooglePay")
-                     .resizable()
-                     .scaledToFill()
-                     .frame(width: 80, height: 40)
-            }
-            Spacer()
-                .frame(height: 10)
-            HStack{
-                Image("CreditPay")
-                    .resizable()
-                    .scaledToFill()
-                    .padding(.leading, -15)
-                    .frame(width: 80, height: 40)
-                Image("TopperPay")
-                     .resizable()
-                     .scaledToFill()
-                     .frame(width: 80, height: 40)
+                .padding(.bottom, 10)
+            ForEach(images.indices, id: \.self){ index in
+                HStack{
+                    Image(images[index])
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                        .padding(.leading, 10)
+
+                    Text(text[index])
+                        .font(.title3)
+                    Spacer()
+                    Image(systemName: "arrow.right")
+                        .font(.title)
+                        .bold()
+                        .foregroundStyle(.black)
+                        .padding(.trailing, 15)
+                }
+                .frame(width: 7/8 * deviceWidth, height: 95)
+                .background{
+                    RoundedRectangle(cornerRadius: 20)
+                        .fill(Color.white)
+                        .shadow(radius: 1)
+                }
+                .padding(.bottom, 10)
+
             }
         }
-        .padding(30)
-        .frame(width: 2/3 * deviceWidth)
+        .padding(20)
+        .frame(width: deviceWidth)
         
         .background{
             RoundedRectangle(cornerRadius: 20)

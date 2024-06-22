@@ -35,8 +35,12 @@ struct FilterView: View {
                 Image(systemName: "flame")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
+                    .frame(width: 35, height: 35)
+                    .bold()
                 Text("Trending")
+                    .font(.title3)
+                    .bold()
+
             
             }
             Spacer()
@@ -45,17 +49,25 @@ struct FilterView: View {
                 Image(systemName: "seal")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
+                    .foregroundStyle(.gray.opacity(0.6))
+                    .frame(width: 35, height: 35)
                 Text("Top")
+                    .font(.title3)
+                    .foregroundStyle(.gray.opacity(0.6))
+
             }
             Spacer()
                 .frame(height: 10)
             HStack{
                 Image(systemName: "basketball")
                     .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
+                    .foregroundStyle(.gray.opacity(0.6))
+                    .frame(width: 35, height: 35)
                 Text("Points Per Game")
+                    .font(.title3)
+                    .foregroundStyle(.gray.opacity(0.6))
+
+
             }
             Spacer()
                 .frame(height: 10)
@@ -63,8 +75,12 @@ struct FilterView: View {
                 Image(systemName: "trophy")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 25, height: 25)
+                    .frame(width: 35, height: 35)
+                    .foregroundStyle(.gray.opacity(0.6))
                 Text("Wins")
+                    .font(.title3)
+                    .foregroundStyle(.gray.opacity(0.6))
+
             }
             Spacer()
                 .frame(height: 10)
@@ -110,13 +126,15 @@ struct FilterView: View {
 //                .background(Color(UIColor.lightGray))
 //                .cornerRadius(15)
 //                Spacer()
+            Spacer()
+                .frame(height: 85)
                 
             }
-        .padding(10)
-        .frame(width: 15/16 * deviceWidth)
+        .padding(15)
+        .frame(width: deviceWidth)
         //.frame(width: 7/8 * deviceWidth, height: 300)///3/4 * deviceWidth, height: 300)
         .background(
-            RoundedRectangle(cornerRadius: 10)
+            RoundedRectangle(cornerRadius: 20)
                 .fill(Color(UIColor.white))
                 .shadow(radius: 1)// Fill the RoundedRectangle with gray color
         )

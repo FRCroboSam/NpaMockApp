@@ -260,6 +260,7 @@ struct AthleteProfileView: View {
                 SponsorPopup()
                     .animation(.easeIn, value: popupScale)
                     .scaleEffect(popupScale)
+                    .padding(.bottom, -160)
             }
         }
 

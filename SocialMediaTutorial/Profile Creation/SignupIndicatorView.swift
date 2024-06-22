@@ -24,11 +24,11 @@ struct SignupIndicatorView: View{
             Spacer()
             RoundedRectangle(cornerRadius: 10)
                 .fill(Color(UIColor.darkGray))
-                .frame(width: 9/10 * deviceWidth, height: 10)
+                .frame(width: 2/3 * deviceWidth, height: 10)
                 .overlay(alignment: .leading){
                     RoundedRectangle(cornerRadius: 10)
                         .fill(Color(UIColor.white))
-                        .frame(width: feedVM.signupProgress * 0.6 * deviceWidth, height: 10)
+                        .frame(width: feedVM.signupProgress * 2/3 * deviceWidth, height: 10)
                         .animation(.easeIn, value: feedVM.signupProgress)
                 }
             Spacer()

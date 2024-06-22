@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "football_icon.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "TopperPay@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
