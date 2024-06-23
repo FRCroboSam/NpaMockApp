@@ -10,7 +10,6 @@ import SwiftUI
 struct NotificationsView: View {
     @EnvironmentObject var athleteVM: AthleteVM
     @State var query: String = ""
-    @State var athletes: [Athlete]
     var body: some View {
 
         ScrollView{
@@ -30,6 +29,7 @@ struct NotificationsView: View {
                         .font(.title2)
                         .foregroundStyle(.gray)
                         .rotationEffect(.init(degrees: -270))
+                        .padding(.leading, 10)
                 }
                 
                 Text("Notifications")
@@ -38,30 +38,38 @@ struct NotificationsView: View {
                     .padding(.leading, 10)
                 Spacer()
             }
-            StoryListView()
-            HStack{
-                Image(systemName: "magnifyingglass")
-                    .foregroundColor(.black)
-                TextField("Search messages ", text: $query)
-                    .foregroundColor(.black)
-                    .textContentType(.newPassword)
-                    .keyboardType(.asciiCapable)
-                    .autocorrectionDisabled()
-                    .listRowSeparator(.hidden)
-            }.modifier(customViewModifier(roundedCornes: 30, startColor: Color(UIColor.systemGray5), endColor: Color(UIColor.systemGray5), textColor: .black, ratio: 0.92))
-                .padding(.leading, 10)
             VStack(spacing: 0){
-                ForEach(athletes){ athlete in
-                    
-//                    NavigationLink{
-//                        AthleteProfileView(athlete: athlete)
-//                    }label: {
-//                        ChatListItemView(athlete: athlete)
-//                            .listRowInsets(.init(top: 0, leading: 0, bottom: 0, trailing: 0))
-//                        
-//                        
-//                        
-//                    }
+                ForEach(athleteVM.athletes.indices, id: \.self){ index in
+                    if(index == 0){
+                        HStack{
+                            Text("NEW")
+                                .foregroundStyle(.blue.opacity(0.7))
+                                .font(.headline)
+                                .bold()
+                                .padding(.horizontal, 10)
+                                .padding(.vertical, 5)
+                                .background{
+                                    Color.blue.opacity(0.2)
+                                        .roundedCorner(5, corners: .allCorners)
+                                }
+                                .padding(.leading, 35)
+                            Spacer()
+                        }
+                    }
+                    else if(index == 1){
+                        HStack{
+                            Text("Older")
+                                .font(.headline)
+                                .bold()
+                                .padding(.leading, 35)
+                            Spacer()
+                        }
+                    }
+                    let athlete = athleteVM.athletes[index]
+                    let name = athlete.first_name + " " + athlete.last_name
+                    NotificationView(profile_img: athlete.profile_img, text: "is now a fan of you!", name: name)
+                        .padding(.leading, 20)
+                        .padding(.trailing, 10)
                 }
                 Spacer()
                     .frame(height: 50)

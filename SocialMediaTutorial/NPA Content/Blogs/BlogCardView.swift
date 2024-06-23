@@ -45,6 +45,9 @@ struct BlogCardView: View {
                     VStack(alignment: .leading){
                         Text(blog.title)
                             .padding(.leading, 10)
+                            .foregroundStyle(.black)
+                            .multilineTextAlignment(.leading)
+                        
                         Spacer()
                             .frame(height: 10)
                         Text(articleText)
@@ -53,6 +56,7 @@ struct BlogCardView: View {
                             .lineLimit(3)
                             .foregroundStyle(Color(UIColor.systemGray2))
                             .frame(width: 1/2 * deviceWidth)
+                            .multilineTextAlignment(.leading)
 
                     }
                     Spacer()
@@ -113,7 +117,8 @@ struct BlogCardView: View {
                 RoundedRectangle(cornerSize: CGSize(width: 10, height: 10))
                     .strokeBorder(Color(UIColor.systemGray4))
             }
-            Spacer() //TODO: remove this
+            .padding(.leading, 15)
+
         }
 }
 

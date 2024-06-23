@@ -62,6 +62,13 @@ struct CommentView: View {
 
                         }
                         Text(vm.comment.content)
+                            .onChange(of: vm.comment.content){_ in
+                                print("INDEX IS: " + String(index))
+                                index = calculateIndex(vm: vm)
+                                print("NEW INDEX IS: " + String(index))
+
+                            }
+
                         Spacer()
                             .frame(height:10)
                         Button(action: {
@@ -83,19 +90,19 @@ struct CommentView: View {
                                     if(!showReply){
                                         self.vm.fetchReplies(vm: postVM){
                                             print("DONE FETCHING THE REPLIES")
-                                            withAnimation(.easeIn){
+//                                            withAnimation(.easeIn){
                                                 showReply = true
                                                 shouldUpdate = !shouldUpdate
-                                            }
+//                                            }
                                         }
                                     }
                                     else{
                                         print("HIDING REPLIES")
                                         self.vm.hideReplies(vm: postVM)
-                                        withAnimation(.easeIn){
+//                                        withAnimation(.easeIn){
                                             showReply = false
                                             shouldUpdate = !shouldUpdate
-                                        }
+//                                        }
                                         
                                     }
                                 }
@@ -135,6 +142,20 @@ struct CommentView: View {
 //
 //        }
     }
+   private func calculateIndex(vm: CommentVM) -> Int{
+           let digits = vm.comment.commentId.compactMap { $0.isNumber ? Int(String($0)) : nil }
+
+   //                    // Get the last two digits
+           if(digits.count >= 2){
+               let lastTwoDigits = digits[0] + digits[1] * 10
+               print("CALCULATED INDEX: " + String(lastTwoDigits % 13))
+               return lastTwoDigits % 13
+
+           }
+           else{
+              return 0
+           }
+       }
 }
 
 //struct CommentView_Previews: PreviewProvider {

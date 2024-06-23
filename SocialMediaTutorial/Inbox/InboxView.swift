@@ -37,7 +37,7 @@ struct InboxView: View {
     var body: some View {
         VStack{
             if(athleteVM.isNotifications){
-                NotificationsView(athletes: athleteVM.athletes)
+                NotificationsView()
             }
             else{
                 ScrollView{

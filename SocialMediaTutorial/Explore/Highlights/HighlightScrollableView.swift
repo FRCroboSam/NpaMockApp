@@ -13,9 +13,9 @@ struct HighlightScrollableView: View {
     @State private var maxPodcastViewHeight: CGFloat = 380
     @State var imageURLS = [
         "",
-        "https://wgcoaching.com/wp-content/uploads/2010/07/Coach-with-Women1.jpg",
-        "https://www.shutterstock.com/image-photo/sport-clothes-store-shopping-mall-600nw-1179384757.jpg",
-        "https://cdn.bleacherreport.net/images_root/slides/photos/000/373/668/90426815_original.jpg?1283400570"
+        "https://res.cloudinary.com/treiner/image/upload/c_fill,f_auto,g_face,h_300,q_auto:best,w_900/q6upvlzfcgu7eu0wvmvl",
+        "https://res.cloudinary.com/treiner/image/upload/c_fill,f_auto,g_face,h_300,q_auto:best,w_900/q6upvlzfcgu7eu0wvmvl",
+        "https://www.signiant.com/wp-content/uploads/2020/08/NBA_Basketball_Court-1024x683.png"
     ]
     @State var text = [
         "",

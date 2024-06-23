@@ -12,6 +12,11 @@ import SwiftUI
 
 // FeedVM is the model for collecting all of the posts
 class FeedVM: ObservableObject {
+    @Published var addCartNotification = false
+    @Published var cartImageLink = ""
+    
+    @Published var showNotifications = true 
+    
     @Published var videoPosts = [VideoPost]()
     @Published var posts = [Post]() // Array of posts
     @Published var videosHaveLoaded = false
@@ -78,6 +83,16 @@ class FeedVM: ObservableObject {
                 print("\(sourceFile) was copied successfully.")
             } catch (let error) {
                 print(error)
+            }
+        }
+    }
+    
+    func performCartAddNotification(itemURL: String){
+        if(!addCartNotification){
+            cartImageLink = itemURL
+            print("ADDING NOTIFICATION")
+            withAnimation(.easeIn){
+                addCartNotification = true
             }
         }
     }

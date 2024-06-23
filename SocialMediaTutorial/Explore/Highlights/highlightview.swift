@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NukeUI
 
 struct highlightview: View {
     @State var url = ""
@@ -18,30 +19,30 @@ struct highlightview: View {
                 Image("top10plays")
                     .resizable()
                     .cornerRadius(10)
+                    .scaledToFill()
                     .frame(width: width ?? 5/6 * deviceWidth, height: height ?? 150)
                 
-                    .scaledToFill()
                 //.opacity(0.8)
                     .brightness(-0.1)
             }
             else{
-                AsyncImage(
-                    url: URL(string: url),
-                    content: { image in
-                        image.resizable()
-                            .resizable()
-                            .cornerRadius(10)
-                            .frame(width: width ?? 5/6 * deviceWidth, height: height ?? 150)
-                        
-                            .scaledToFill()
-                        //.opacity(0.8)
-                            .brightness(-0.1)
-                        
-                    },
-                    placeholder: {
-                        LoadingView(width: width ?? 5/6 * deviceWidth, height: height ?? 150)
+                LazyImage(
+                    url: URL(string: url)){phase in
+                        if let image = phase.image{
+                            image.resizable()
+                                .resizable()
+                                .cornerRadius(10)
+                                .frame(width: width ?? 5/6 * deviceWidth, height: height ?? 150)
+                            
+                                .scaledToFill()
+                            //.opacity(0.8)
+                                .brightness(-0.1)
+                            
+                        }
+                        else{
+                            LoadingView(width: width ?? 5/6 * deviceWidth, height: height ?? 150)
+                        }
                     }
-                )
             }
 
             VStack(alignment: .leading){

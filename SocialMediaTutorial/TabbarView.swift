@@ -9,7 +9,8 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct TabbarView: View {
-    
+    @State var shouldUpdate = false
+    @State var addCartOpacity = 1.0
     @EnvironmentObject var athleteVM: AthleteVM
 
     @EnvironmentObject var vm: FeedVM
@@ -274,38 +275,46 @@ struct TabbarView: View {
                         FilterView()
                     }
                 }
-                    .tag(1)
-                    .zIndex(40)
+                .tag(1)
+                .zIndex(40)
                 
-                    .offset(y: filterViewOffset)
-                    .animation(.easeIn, value: filterViewOffset)
-                    .onAppear{
-                        print("SHOULD BE APPEARING")
-                        filterViewOffset = 500
+                .offset(y: filterViewOffset)
+                .animation(.easeIn, value: filterViewOffset)
+                .onAppear{
+                    print("SHOULD BE APPEARING")
+                    filterViewOffset = 500
+                    withAnimation(.easeIn.speed(3.5)){
+                        let y = print("SHOWING COMMENT SECTION")
+                        filterViewOffset = 300
+                        filterFeed = true
+                    }
+                    
+                }
+                
+                .onChange(of: athleteVM.startSlidingDown) { value in
+                    if(value == true){
                         withAnimation(.easeIn.speed(3.5)){
-                            let y = print("SHOWING COMMENT SECTION")
-                            filterViewOffset = 300
-                            filterFeed = true
+                            filterViewOffset = 500
                         }
-                        
-                    }
-
-                    .onChange(of: athleteVM.startSlidingDown) { value in
-                        if(value == true){
-                            withAnimation(.easeIn.speed(3.5)){
-                                filterViewOffset = 500
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
-                                athleteVM.animatingFilters = false
-                                athleteVM.startSlidingDown = false
-                                athleteVM.showingFilters = false
-                                filterFeed = false
-                                
-                            }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.3){
+                            athleteVM.animatingFilters = false
+                            athleteVM.startSlidingDown = false
+                            athleteVM.showingFilters = false
+                            filterFeed = false
+                            
                         }
                     }
-                
+                }
             }
+            if(vm.addCartNotification){
+                AddCartNotification(itemURL: $vm.cartImageLink, shouldUpdate: $shouldUpdate)
+                    .opacity(addCartOpacity)
+                    .offset(y: 1/2 * deviceHeight - 130)
+                    .zIndex(100000)
+                    
+
+            }
+            
 
 //            TabView(selection: $selected) {
 //                FeedView()
@@ -377,6 +386,26 @@ struct TabbarView: View {
             // tab-items cover - do anything needed, height, position, alignment, etc.
 
             }
+        .onChange(of: vm.addCartNotification){ _ in
+            if(vm.addCartNotification == true){
+                shouldUpdate.toggle()
+                print("SHOULD STOP SHOWING SOON")
+                addCartOpacity = 1.0
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
+                    withAnimation(.easeOut.speed(0.5)){
+                        addCartOpacity = 0.0
+                    }
+                }
+                DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
+                    withAnimation(.easeOut.speed(0.5)){
+                        print("SHOULD STOP SHOWING")
+                        vm.addCartNotification = false
+                    }
+                }
+
+            }
+        }
 
 
             .toolbar(.hidden, for: .navigationBar)

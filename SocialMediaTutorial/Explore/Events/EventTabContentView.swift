@@ -41,44 +41,49 @@ struct EventTabContentView: View {
                     .padding(.top, 5)
                 Spacer()
                     .frame(height: 20)
-                HStack{
-                    Text("Camps For You")
-                        .bold()
-                        .font(.title2)
-                        .padding(.leading, 15)
-                    Spacer()
+                if(selected == "Camps"){
                     HStack{
-                        HStack{
-                            
-                            Image(systemName: "paperplane.fill")
-                                .foregroundStyle(.gray.opacity(0.7))
-                            Text("1.5 mi")
-                                .foregroundStyle(.gray.opacity(0.8))
-                            Image(systemName: "chevron.down")
-                                .foregroundStyle(.gray.opacity(0.7))
-
-                        }
-                        .padding(8)
-                        .background{
-                            RoundedRectangle(cornerRadius: 15)
-                                .fill(.gray.opacity(0.2))
-                        }
-                    }
-                    .padding(.trailing, 20)
-                }
-                Spacer()
-                    .frame(height: 15)
-                
-                VStack {
-                    ForEach(urls.indices, id: \.self) { index in
-                        EventCardVertical(width: 7/8 * deviceWidth, event_url: urls[index], event_name: campNames[index])
-                        //.padding(10)
+                        Text("Camps For You")
+                            .bold()
+                            .font(.title2)
+                            .padding(.leading, 15)
                         Spacer()
-                            .frame(height: 20)
-                        
+                        HStack{
+                            HStack{
+                                
+                                Image(systemName: "paperplane.fill")
+                                    .foregroundStyle(.gray.opacity(0.7))
+                                Text("1.5 mi")
+                                    .foregroundStyle(.gray.opacity(0.8))
+                                Image(systemName: "chevron.down")
+                                    .foregroundStyle(.gray.opacity(0.7))
+                                
+                            }
+                            .padding(8)
+                            .background{
+                                RoundedRectangle(cornerRadius: 15)
+                                    .fill(.gray.opacity(0.2))
+                            }
+                        }
+                        .padding(.trailing, 20)
                     }
+                    Spacer()
+                        .frame(height: 15)
+                    
+                    VStack {
+                        ForEach(urls.indices, id: \.self) { index in
+                            EventCardVertical(width: 7/8 * deviceWidth, event_url: urls[index], event_name: campNames[index])
+                            //.padding(10)
+                            Spacer()
+                                .frame(height: 20)
+                            
+                        }
+                    }
+                    .offset(x: -5)
                 }
-                .offset(x: -5)
+                else if(selected == "Showcases"){
+                    ShowcasesContentView()
+                }
             }
             
         }

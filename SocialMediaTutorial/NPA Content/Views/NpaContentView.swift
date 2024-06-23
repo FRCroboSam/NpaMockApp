@@ -14,7 +14,16 @@ struct NpaContentView: View {
         "Blogs",
         "Podcasts",
     ]
+    let blogURLS = [
+        "https://www.espn.com/womens-college-basketball/story/_/id/39897108/caitlin-clark-iowa-career-ends-national-championship-game-loss-no-regrets",
+        "https://www.foxsports.com/stories/college-basketball/2024-mens-national-championship-game-everything-to-know-about-uconn-purdue",
+        "https://broadband.espn.go.com/video/videopage_ray?videoId=39896395&categoryId=2459788&n8pe6c=3",
+        "https://npasports.org/blogs/a-brand-new-year"
+        
+        
     
+    
+    ]
     let sports = [
         "NBA",
         "HS Football",
@@ -77,13 +86,17 @@ struct NpaContentView: View {
                     .frame(height: 20)
 
                 VStack(alignment: .center){
-                    ForEach(blogVM.blogs){ blog in
-                        
-                        BlogCardView(blog: blog)
-//                            .padding(.leading, 20)
+                    ForEach(blogVM.blogs.indices, id: \.self){ index in
+                        let blog = blogVM.blogs[index]
+                        Link(destination: URL(string: blogURLS[index])!){
+                            BlogCardView(blog: blog)
+                            //                            .padding(.leading, 20)
+                        }
                         Spacer()
                             .frame(height: 10)
                     }
+                    Spacer()
+                        .frame(height: 50)
                     
                 }
                 

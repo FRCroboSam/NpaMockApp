@@ -9,6 +9,7 @@ import SwiftUI
 import NukeUI
 
 struct ItemCard: View {
+    @EnvironmentObject var feedVM: FeedVM
     let item_url: String
     @State var itemName: String?
     @State var width: Double?
@@ -60,6 +61,9 @@ struct ItemCard: View {
                                 .fill(Color.black.opacity(0.5))
                         }
                         .offset(x: 5, y: 5)
+                        .onTapGesture{
+                            feedVM.performCartAddNotification(itemURL: item_url)
+                        }
                     
                 }
                 .overlay(alignment: .topTrailing){

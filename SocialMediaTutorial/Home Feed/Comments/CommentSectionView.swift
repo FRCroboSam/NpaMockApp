@@ -34,8 +34,8 @@ struct CommentSectionView: View {
                         ForEach(vm.commentSection.indices, id: \.self){ index in
                             CommentView(postVM: vm, vm: vm.commentSection[index], index: calculateIndex(vm: vm.commentSection[index]), IsReplyingName: $replyingToName, shouldUpdate: $shouldUpdate)
                                 .frame(width: deviceWidth)
-                                .onChange(of: shouldUpdate){value in
-                                    print("SHOW REPLY IS CHANGING")
+                                .onAppear{
+                                    print("INDEX IS: " + String(calculateIndex(vm: vm.commentSection[index])))
                                     
                                 }
 
@@ -174,7 +174,7 @@ struct CommentSectionView: View {
 //                    // Get the last two digits
         if(digits.count >= 2){
             let lastTwoDigits = digits[0] + digits[1] * 10
-            print(lastTwoDigits % 13)
+            print("CALCULATED INDEX: " + String(lastTwoDigits % 13))
             return lastTwoDigits % 13
 
         }

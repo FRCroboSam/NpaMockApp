@@ -113,6 +113,8 @@
 		36D5653E2C166B82000136C4 /* VerificationReminder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D5653D2C166B82000136C4 /* VerificationReminder.swift */; };
 		36D565402C167647000136C4 /* FilterScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D5653F2C167647000136C4 /* FilterScrollView.swift */; };
 		36D565422C167B81000136C4 /* HighlightScrollableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D565412C167B81000136C4 /* HighlightScrollableView.swift */; };
+		36D7C0702C2811A4009F6CF4 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D7C06F2C2811A4009F6CF4 /* NotificationView.swift */; };
+		36D7C0722C285CDC009F6CF4 /* AddCartNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D7C0712C285CDC009F6CF4 /* AddCartNotification.swift */; };
 		36D9D31C2C16B91E00E2E035 /* BioCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36D9D31B2C16B91E00E2E035 /* BioCard.swift */; };
 		36DC850B2BFBB8AE00FCC7E2 /* AthleteDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DC850A2BFBB8AE00FCC7E2 /* AthleteDiscoverView.swift */; };
 		36DC850D2BFBBB7D00FCC7E2 /* TeamsDiscoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DC850C2BFBBB7D00FCC7E2 /* TeamsDiscoverView.swift */; };
@@ -257,6 +259,8 @@
 		36D5653D2C166B82000136C4 /* VerificationReminder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationReminder.swift; sourceTree = "<group>"; };
 		36D5653F2C167647000136C4 /* FilterScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterScrollView.swift; sourceTree = "<group>"; };
 		36D565412C167B81000136C4 /* HighlightScrollableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightScrollableView.swift; sourceTree = "<group>"; };
+		36D7C06F2C2811A4009F6CF4 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		36D7C0712C285CDC009F6CF4 /* AddCartNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddCartNotification.swift; sourceTree = "<group>"; };
 		36D9D31B2C16B91E00E2E035 /* BioCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BioCard.swift; sourceTree = "<group>"; };
 		36DC850A2BFBB8AE00FCC7E2 /* AthleteDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AthleteDiscoverView.swift; sourceTree = "<group>"; };
 		36DC850C2BFBBB7D00FCC7E2 /* TeamsDiscoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeamsDiscoverView.swift; sourceTree = "<group>"; };
@@ -343,6 +347,7 @@
 				36AFCD2B2C099FFF00FCBD2F /* ShopTypes.swift */,
 				36AFCD272C09651500FCBD2F /* ShopContentView.swift */,
 				36E27D7A2C18E509006B8786 /* SupplementsScrollView.swift */,
+				36D7C0712C285CDC009F6CF4 /* AddCartNotification.swift */,
 			);
 			path = Shop;
 			sourceTree = "<group>";
@@ -642,6 +647,7 @@
 				36920C5F2BC9463800CA9D8F /* InboxView.swift */,
 				36920C612BC946A300CA9D8F /* ChatListItemView.swift */,
 				36BE40D72BFD480D0028A2AE /* NotificationsView.swift */,
+				36D7C06F2C2811A4009F6CF4 /* NotificationView.swift */,
 			);
 			path = Inbox;
 			sourceTree = "<group>";
@@ -921,6 +927,7 @@
 				3615F63D2BE4EDDB00214E10 /* AthleteDocs.swift in Sources */,
 				361170DE2BD24DF900BBB3B2 /* SearchView.swift in Sources */,
 				3649F35F2BDCE9B5003DBEBD /* CategoryScrollView.swift in Sources */,
+				36D7C0722C285CDC009F6CF4 /* AddCartNotification.swift in Sources */,
 				3671791B2BC90CF1004E380C /* CustomTabBarView.swift in Sources */,
 				360C880A2C09AFAD00D952D2 /* NetworkContentView.swift in Sources */,
 				3615F6352BE31D0000214E10 /* EditProfileView.swift in Sources */,
@@ -988,6 +995,7 @@
 				3649F3612BDCF71E003DBEBD /* EventTypeView.swift in Sources */,
 				36CA856D2BED54FB0044A66C /* ScrollableView.swift in Sources */,
 				3679F2AF2BAD47A500DAC43E /* AthleteVM.swift in Sources */,
+				36D7C0702C2811A4009F6CF4 /* NotificationView.swift in Sources */,
 				363A290C2BD60C9900BA33FF /* AccountTypeView.swift in Sources */,
 				3671791F2BC90D59004E380C /* TabBarItemsPreferenceKey.swift in Sources */,
 				36D9D31C2C16B91E00E2E035 /* BioCard.swift in Sources */,

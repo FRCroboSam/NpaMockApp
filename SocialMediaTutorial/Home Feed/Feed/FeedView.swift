@@ -104,10 +104,12 @@ struct FeedView: View {
                         }
                         Button {
                             //                        print("SHOW NOTIFICATIONS")
+                            
                             athleteVM.feedOrCommentSection = 1
                             withAnimation(.easeIn){
                                 athleteVM.feedOrCommentSection = 2
                                 athleteVM.isNotifications = true
+                                vm.showNotifications = false 
                             }
                         } label: {
                             HStack{
@@ -115,7 +117,7 @@ struct FeedView: View {
                                     .foregroundColor(.black)
                                     .font(.title)
                                     .overlay(alignment: .topTrailing){
-                                        if(notificationCount > 0){
+                                        if(notificationCount > 0 && vm.showNotifications){
                                             Text(String(notificationCount))
                                                 .font(.caption)
                                                 .bold()
@@ -292,42 +294,44 @@ struct FeedView: View {
                                                 //.shadow(radius: 1)
                                                 
                                             }
-                                        
-                                        Text("Men's")
-                                            .foregroundStyle(Color.blue)
+                                        Text("Soccer")
+                                            .foregroundStyle(Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
-                                            .padding(.vertical, 7)
+                                            .padding(.vertical, 12)
                                             .background{
-                                                RoundedRectangle(cornerRadius: 20)
-                                                    .fill(Color.white)
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .fill(Color.gray.opacity(0.15))
                                                 
-                                                //.strokeBorder(Color.blue, lineWidth: 2)
-                                                    .cornerRadius(15)
-                                            }
-                                        
-                                        
-                                        
-                                        Text("Basketball")
-                                            .foregroundStyle(Color.orange)
-                                            .padding(.horizontal, 14)
-                                            .padding(.vertical, 7)
-                                            .background{
-                                                RoundedRectangle(cornerRadius: 20)
-                                                    .fill(Color.white)
+                                                //.strokeBorder(Color(UIColor.systemGray4))
+                                                //.cornerRadius(15)
+                                                //.shadow(radius: 1)
                                                 
-                                                //.strokeBorder(.orange)
-                                                    .cornerRadius(15)
                                             }
-                                        
-                                        Text("JUCO")
-                                            .foregroundStyle(Color.teal)
+                                        Text("Swimming")
+                                            .foregroundStyle(Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
-                                            .padding(.vertical, 7)
+                                            .padding(.vertical, 12)
                                             .background{
-                                                RoundedRectangle(cornerRadius: 20)
-                                                    .fill(Color.white)
-                                                //.strokeBorder(.teal)
-                                                    .cornerRadius(15)
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .fill(Color.gray.opacity(0.15))
+                                                
+                                                //.strokeBorder(Color(UIColor.systemGray4))
+                                                //.cornerRadius(15)
+                                                //.shadow(radius: 1)
+                                                
+                                            }
+                                        Text("Spikeball")
+                                            .foregroundStyle(Color(UIColor.systemGray2))
+                                            .padding(.horizontal, 14)
+                                            .padding(.vertical, 12)
+                                            .background{
+                                                RoundedRectangle(cornerRadius: 10)
+                                                    .fill(Color.gray.opacity(0.15))
+                                                
+                                                //.strokeBorder(Color(UIColor.systemGray4))
+                                                //.cornerRadius(15)
+                                                //.shadow(radius: 1)
+                                                
                                             }
                                         
                                         
