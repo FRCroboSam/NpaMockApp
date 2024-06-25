@@ -49,7 +49,7 @@ struct NotificationsView: View {
                                 .padding(.horizontal, 10)
                                 .padding(.vertical, 5)
                                 .background{
-                                    Color.blue.opacity(0.2)
+                                    Color.blue.opacity(0.1)
                                         .roundedCorner(5, corners: .allCorners)
                                 }
                                 .padding(.leading, 35)

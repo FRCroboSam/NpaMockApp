@@ -9,7 +9,7 @@ import SwiftUI
 
 struct StoryListView: View {
     @EnvironmentObject var postData: FeedVM // Observed object for reading JSON data
-    
+    @EnvironmentObject var athleteData: AthleteVM
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) { // Horizontal scroll view for displaying story cards
             Spacer()
@@ -23,10 +23,10 @@ struct StoryListView: View {
                 
                     
                 
-                ForEach(postData.posts) { post in // Iterate over each post in the data
+                ForEach(athleteData.athletes) { athlete in // Iterate over each post in the data
                     Spacer()
                         .frame(width: 15)
-                    StoryCard(post: post)
+                    StoryCardWithAthlete(athlete: athlete)
                         //.frame(width: 120, height: 85)// Display a story card with the post's profile image
 //                        .background{
 //                            Color.orange

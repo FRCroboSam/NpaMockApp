@@ -13,8 +13,9 @@ struct HighlightScrollView: View {
     @State private var maxPodcastViewHeight: CGFloat = 380
     @State var imageURLS = [
         "",
-        "https://res.cloudinary.com/treiner/image/upload/c_fill,f_auto,g_face,h_300,q_auto:best,w_900/q6upvlzfcgu7eu0wvmvl",
-        "https://www.shutterstock.com/image-photo/sport-clothes-store-shopping-mall-600nw-1179384757.jpg",        "https://www.signiant.com/wp-content/uploads/2020/08/NBA_Basketball_Court-1024x683.png"
+        "https://acpe.edu.au/uploads/2023/01/iStock-1306763779_sport-coaching_male-with-young-players.jpg",
+        "https://www.shutterstock.com/image-photo/sport-clothes-store-shopping-mall-600nw-1179384757.jpg",
+        "https://www.signiant.com/wp-content/uploads/2020/08/NBA_Basketball_Court-1024x683.png"
     ]
     @State var text = [
         "",
@@ -33,7 +34,8 @@ struct HighlightScrollView: View {
                         .tag(index)
                         
                 }
-                highlightview(url: imageURLS.first!, text: text.first!, height: 180)
+                highlightview(url: imageURLS.first!, text: text.first!, width: 11/12 * deviceWidth,
+                              height: 180)
                     .tag(imageURLS.count)
                     
 

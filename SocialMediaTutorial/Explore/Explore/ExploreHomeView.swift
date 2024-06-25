@@ -197,15 +197,17 @@ struct ExploreHomeView: View {
                 .padding(.bottom, 15)
                 
                 ShopScrollView()
+                    .padding(.leading, 5)
                 Spacer()
-                    .frame(height: 10)
+                    .frame(height: 15)
                 Text("Your Favorite Athletes")
                     .font(.title2)
                     .bold()
                     .padding(.leading, 20)
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 2)
                     .padding(.top, 10)
                 BioScrollView()
+                    .padding(.leading, 2)
                 
                 
                 Spacer()

@@ -189,23 +189,23 @@ struct FeedView: View {
                                         //                                .font(.subheadline)
                                         
                                         HStack(spacing: 0){
-                                            Image(systemName: "flame")
+                                            Image(systemName: "slider.horizontal.3")
                                             //                        .bold()
                                                 .font(.title2)
-                                                .foregroundStyle(Color(hex: "0077B6").opacity(1.0))
+                                                .foregroundStyle(Color(.gray).opacity(1.0))
                                             
                                             
-                                            DropdownPicker(value: $sortType, text: "Select a sport: ", color: .white.opacity(0.2), textColor: Color(hex: "0077B6"), items: sort)
+                                            DropdownPicker(value: $sortType, text: "Select a sport: ", color: .white.opacity(0.2), textColor: Color(.gray), items: sort)
                                         }
                                         
                                         .padding(.vertical, 4)
                                         .padding(.leading, 8)
                                         .padding(.trailing, 5)
                                         .background{
-                                            RoundedRectangle(cornerRadius: 15)
-                                            //.strokeBorder(Color(hex: "0A66C2"))
-                                                .fill(
-                                                    Color.blue.opacity(0.15))
+                                            RoundedRectangle(cornerRadius: 10)
+                                                .strokeBorder(Color.gray)
+//                                                .fill(
+//                                                    Color.blue.opacity(0.15))
                                             //.padding(.leading, 15)
                                             
                                             
@@ -219,13 +219,13 @@ struct FeedView: View {
                                             .padding(.vertical, 12)
                                             .background{
                                                 if(selectedFeed == "All"){
-                                                    RoundedRectangle(cornerRadius: 15)
+                                                    RoundedRectangle(cornerRadius: 10)
                                                         .fill(Color(hex: "0A66C2")).opacity(1.0)
                                                 }
                                                 else{
-                                                    RoundedRectangle(cornerRadius: 15)
-                                                        .fill(Color.gray.opacity(0.15))
-                                                    
+                                                    RoundedRectangle(cornerRadius: 10)
+                                                        .stroke(Color.gray)
+
                                                 }
                                                 
                                                 //.strokeBorder(Color(UIColor.systemGray4))
@@ -239,6 +239,9 @@ struct FeedView: View {
                                                 withAnimation(.easeIn){
                                                     
                                                     selectedFeed = "All"
+                                                    
+                                                }
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
                                                     vm.switchToDefault()
                                                 }
                                             }
@@ -246,87 +249,114 @@ struct FeedView: View {
                                         //                                                .overlay(Color.gray.opacity(0.8)
                                         //                                                    .frame(width: 0.2)
                                         //                                                )
-                                        Text("Tennis")
+                                        HStack{
+                                            Text("Tennis")
+                                            Image(systemName: "tennisball.fill")
+                                                .foregroundStyle(.yellow)
+                                        }
                                             .foregroundStyle(selectedFeed == "Tennis" ? .white.opacity(1.0) :  Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 12)
                                             .background{
                                                 if(selectedFeed == "Tennis"){
-                                                    RoundedRectangle(cornerRadius: 15)
+                                                    RoundedRectangle(cornerRadius: 10)
                                                         .fill(Color(hex: "0A66C2")).opacity(1.0)
                                                 }
                                                 else{
-                                                    RoundedRectangle(cornerRadius: 15)
-                                                        .fill(Color.gray.opacity(0.15))
-                                                    
+                                                    RoundedRectangle(cornerRadius: 10)
+                                                        .stroke(Color.gray)
+
                                                 }
                                                 
                                             }
                                             .onTapGesture {
                                                 withAnimation(.easeIn){
                                                     selectedFeed = "Tennis"
+                                                }
+                                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.4){
                                                     vm.switchFeeds()
                                                 }
                                             }
-                                        Text("Basketball")
+                                        HStack{
+                                            Text("Basketball")
+                                            Image(systemName: "basketball.fill")
+                                                .foregroundStyle(.orange)
+                                        }
                                             .foregroundStyle(Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .fill(Color.gray.opacity(0.15))
-                                                
+                                                    .stroke(Color.gray)
+
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)
                                                 //.shadow(radius: 1)
                                                 
                                             }
-                                        Text("Baseball")
+                                        HStack{
+                                            Text("Baseball")
+                                            Image(systemName: "baseball.fill")
+                                                .foregroundStyle(.brown)
+                                                
+                                        }
                                             .foregroundStyle(Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .fill(Color.gray.opacity(0.15))
-                                                
+                                                    .stroke(Color.gray)
+
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)
                                                 //.shadow(radius: 1)
                                                 
                                             }
-                                        Text("Soccer")
+                                        HStack{
+                                            Text("Soccer")
+                                            Image(systemName: "soccerball.inverse")
+                                                .foregroundStyle(.black)
+                                        }
                                             .foregroundStyle(Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .fill(Color.gray.opacity(0.15))
-                                                
+                                                    .stroke(Color.gray)
+
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)
                                                 //.shadow(radius: 1)
                                                 
                                             }
-                                        Text("Swimming")
+                                        HStack{
+                                            Text("Swimming")
+                                            Image(systemName: "figure.pool.swim")
+                                                .foregroundStyle(.blue)
+                                        }
                                             .foregroundStyle(Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .fill(Color.gray.opacity(0.15))
-                                                
+                                                    .stroke(Color.gray)
+
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)
                                                 //.shadow(radius: 1)
                                                 
                                             }
-                                        Text("Spikeball")
+                                        HStack{
+                                            Text("Football")
+                                            Image(systemName: "football")
+                                                .foregroundStyle(.orange)
+                                        }
                                             .foregroundStyle(Color(UIColor.systemGray2))
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .fill(Color.gray.opacity(0.15))
+                                                    .stroke(Color.gray)
                                                 
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)

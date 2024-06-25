@@ -59,6 +59,8 @@ struct CoachingContentView: View {
     ]
     @State var selectedSport = "All"
     var body: some View {
+        CustomNavBar(title: "Coaching")
+
         ScrollView(.vertical)
         {
 
@@ -97,7 +99,6 @@ struct CoachingContentView: View {
                 "https://www.youtube.com/watch?v=WCBP9272z68",
                 "https://www.youtube.com/watch?v=8-f9eR9VJ9g"
             ]
-            CustomNavBar(title: "Coaching")
 //            .background{
 //                LinearGradient(gradient:Gradient(colors:[
 //                    Color.white,
@@ -136,7 +137,7 @@ struct CoachingContentView: View {
             
             VStack(alignment: .leading){
                 Spacer()
-                    .frame(height: 20)
+                    .frame(height: 15)
                 HStack{
                     Text("Private Coaches nearby")
                         .bold()
@@ -223,6 +224,7 @@ struct CoachingContentView: View {
                         
                     }label:{
                         Text("View More")
+                            .foregroundStyle(.blue)
                             .font(.system(size: 15))
                             .padding(10)
                             .background{
@@ -252,7 +254,6 @@ struct CoachingContentView: View {
                         }
                     }
                 }.scrollIndicators(.hidden)
-                .frame(height: 320)
             }
                 
 

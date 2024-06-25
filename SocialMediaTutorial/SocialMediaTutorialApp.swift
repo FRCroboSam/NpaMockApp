@@ -126,6 +126,9 @@ struct SocialMediaTutorialApp: App {
 
                 if(feedVM.loggedIn){
                     homeOpacity = 0.0
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.5){
+                        feedVM.videosHaveLoaded = true
+                    }
                 }
                 else{
                     homeOpacity = 1.0
@@ -159,6 +162,7 @@ struct SocialMediaTutorialApp: App {
 //                }
                     
             }
+
         
    }
 }

@@ -16,7 +16,7 @@ struct AddCartNotification: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0){
             HStack{
-                Text("Added 1 item to cart")
+                Text("Adding 1 item to cart")
                     .foregroundStyle(.black.opacity(0.6))
                     .font(.title3)
                 Spacer()

@@ -32,12 +32,10 @@ struct CommentSectionView: View {
                 } else {
                     LazyVStack(spacing:0){
                         ForEach(vm.commentSection.indices, id: \.self){ index in
-                            CommentView(postVM: vm, vm: vm.commentSection[index], index: calculateIndex(vm: vm.commentSection[index]), IsReplyingName: $replyingToName, shouldUpdate: $shouldUpdate)
+                            CommentView(isUser: vm.isUserIndex == index, postVM: vm, vm: vm.commentSection[index], index: calculateIndex(vm: vm.commentSection[index]), IsReplyingName: $replyingToName, shouldUpdate: $shouldUpdate)
+                            
                                 .frame(width: deviceWidth)
-                                .onAppear{
-                                    print("INDEX IS: " + String(calculateIndex(vm: vm.commentSection[index])))
-                                    
-                                }
+
 
 
 
@@ -64,6 +62,7 @@ struct CommentSectionView: View {
                     HStack{
                         Text("Replying to: " + replyingToName)
                             .foregroundStyle(.gray.opacity(0.4))
+                            .padding(.leading, 15)
                         Spacer()
                         Button(action: {
                             withAnimation{
@@ -73,11 +72,16 @@ struct CommentSectionView: View {
                                 
                             }
                         }){
-                            Image(systemName: "xmark.circle.fill")
+                            Image(systemName: "xmark")
+                                .foregroundStyle(.gray)
                         }
                     }.padding(.horizontal, 5)
                         .padding()
                         .font(.footnote)
+                        .frame(width: deviceWidth + 10)
+                        .background{
+                            Color.gray.opacity(0.1)
+                        }
 
                 }
 
@@ -146,6 +150,14 @@ struct CommentSectionView: View {
                     .background(Color.white)
                         
                 }
+
+                
+            }
+            .background{
+                Rectangle()
+                    .fill(Color.white)
+                    .roundedCorner(15, corners: .topLeft)
+                    .roundedCorner(15, corners: .topRight)
 
                 
             }

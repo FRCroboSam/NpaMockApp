@@ -12,7 +12,7 @@ import SwiftUI
 
 // PostVM is the viewmodel for the
 class PostVM: ObservableObject {
-    
+    @State var isUserIndex = -12
     @Published var comments: [Comment] = []
     @Published var post: Post
     @Published var loading: Bool
@@ -102,17 +102,18 @@ class PostVM: ObservableObject {
     }
     
     public func replyToPost(commentText: String, postId: String){
-        let comment_obj = Comment(commentId: UUID().uuidString, parentId: postId, content: commentText, displayName: "Admin", created: Date().ISO8601Format().description, likes: 0)
+        let comment_obj = Comment(commentId: UUID().uuidString, parentId: postId, content: commentText, displayName: "You", created: Date().ISO8601Format().description, likes: 0)
         let comment = CommentVM(comment: comment_obj)
         comment.depth = 1
         comment.padding = 1
+        isUserIndex = 0
         withAnimation{commentSection.insert(comment, at: 0)}
         writeToComments(comment: comment_obj )
         withAnimation{ self.currentParentReply = nil }
     }
 
     public func replyToComment(commentText: String, parentId: String ){
-        let comment_obj = Comment(commentId: UUID().uuidString, parentId: parentId, content: commentText, displayName: "Admin", created: Date().ISO8601Format().description, likes: 0)
+        let comment_obj = Comment(commentId: UUID().uuidString, parentId: parentId, content: commentText, displayName: "You", created: Date().ISO8601Format().description, likes: 0)
         let comment = CommentVM(comment: comment_obj)
         
         //It's a reply
@@ -148,6 +149,7 @@ class PostVM: ObservableObject {
                     // Find the index of the last occurrence of '}'
                     if let lastIndex = commentsData.lastIndex(of: UInt8(ascii: "}")) {
                         commentsData.insert(contentsOf: ",".data(using: .utf8)!, at: lastIndex + 1)
+                        isUserIndex = lastIndex + 1
                         if let newLastIndex = commentsData.lastIndex(of: UInt8(ascii: ",")){
                             if let commentData = try? JSONEncoder().encode(comment) {
                                 // Insert the new comment data right after the last '}'

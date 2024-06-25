@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct CommentView: View {
+    @State var isUser = false
     @ObservedObject var postVM : PostVM
     @ObservedObject var vm: CommentVM
     @State var index = 0
@@ -21,6 +22,28 @@ struct CommentView: View {
     var deviceWidth: CGFloat {
         UIScreen.main.bounds.width
     }
+    let athleteNames = [
+        "Charlie Anderson",
+        "Ronald Wilkes",
+        "Sophia Johnson",
+        "James Mitchell",
+        "Ava Roberts",
+        "Liam Thompson",
+        "Emily Davis",
+        "Mason Wright",
+        "Olivia Clark",
+        "Lucas Martinez",
+        "Amelia Lewis",
+        "Ethan Walker",
+        "Harper Young",
+        "Benjamin King",
+        "Ella Hill",
+        "Alexander Scott",
+        "Mia Green",
+        "Michael Adams",
+        "Chloe Baker",
+        "Daniel Harris"
+    ]
     let profile_images = [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxbvCckw60lhqRT08xuiWyg4w0DRz3bSc3dQLn-LbawdH6h_SpHRrGZpb91CuryQjY818&usqp=CAU",
         "https://media.licdn.com/dms/image/C5603AQGCJhoQ4_J6sQ/profile-displayphoto-shrink_200_200/0/1654188688869?e=2147483647&v=beta&t=-a4luF1D8vx9QQhukcOi0tSftSY6oEN1Kgsillo0r1A",
@@ -53,7 +76,12 @@ struct CommentView: View {
             
             VStack {
                 HStack(alignment: .top ) {
-                    CircularWebProfile(url: profile_images[min(index, profile_images.count)])
+                    if(!isUser){
+                        CircularWebProfile(url: profile_images[min(index, profile_images.count)])
+                    }
+                    else{
+                        CircularProfileImage(size: 30, name: postVM.post.profile_img)
+                    }
                     VStack(alignment: .leading) {
                         HStack{
                             Text(vm.comment.displayName)
@@ -124,7 +152,7 @@ struct CommentView: View {
                 .onAppear{
                     // Extract all characters that are digits
                     print(vm.comment.commentId)
-
+                    
                     
                 }
 
@@ -134,6 +162,11 @@ struct CommentView: View {
             }
             .padding(.vertical)
             
+        }
+        .onAppear{
+            if(vm.comment.displayName == "Admin"){
+                vm.comment.displayName = athleteNames.randomElement()!
+            }
         }
 //        .background{
 //            Color.orange
