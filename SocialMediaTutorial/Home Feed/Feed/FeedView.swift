@@ -214,7 +214,7 @@ struct FeedView: View {
                                         
                                         
                                         Text("All")
-                                            .foregroundStyle(selectedFeed == "All" ? .white.opacity(1.0) :  Color(UIColor.systemGray2))
+                                            .foregroundStyle(selectedFeed == "All" ? .white.opacity(1.0) :  Color.black)
                                             .padding(.horizontal, 16)
                                             .padding(.vertical, 12)
                                             .background{
@@ -224,7 +224,7 @@ struct FeedView: View {
                                                 }
                                                 else{
                                                     RoundedRectangle(cornerRadius: 10)
-                                                        .stroke(Color.gray)
+                                                        .stroke(Color.gray.opacity(0.6))
 
                                                 }
                                                 
@@ -254,7 +254,7 @@ struct FeedView: View {
                                             Image(systemName: "tennisball.fill")
                                                 .foregroundStyle(.yellow)
                                         }
-                                            .foregroundStyle(selectedFeed == "Tennis" ? .white.opacity(1.0) :  Color(UIColor.systemGray2))
+                                        .foregroundStyle(selectedFeed == "Tennis" ? .white.opacity(1.0) :  Color.black)
                                             .padding(.horizontal, 14)
                                             .padding(.vertical, 12)
                                             .background{
@@ -264,8 +264,7 @@ struct FeedView: View {
                                                 }
                                                 else{
                                                     RoundedRectangle(cornerRadius: 10)
-                                                        .stroke(Color.gray)
-
+                                                        .stroke(Color.gray.opacity(0.6))
                                                 }
                                                 
                                             }
@@ -279,6 +278,8 @@ struct FeedView: View {
                                             }
                                         HStack{
                                             Text("Basketball")
+                                                .foregroundStyle(.black)
+
                                             Image(systemName: "basketball.fill")
                                                 .foregroundStyle(.orange)
                                         }
@@ -287,8 +288,7 @@ struct FeedView: View {
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray)
-
+                                                    .stroke(Color.gray.opacity(0.6))
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)
                                                 //.shadow(radius: 1)
@@ -296,6 +296,8 @@ struct FeedView: View {
                                             }
                                         HStack{
                                             Text("Baseball")
+                                                .foregroundStyle(.black)
+
                                             Image(systemName: "baseball.fill")
                                                 .foregroundStyle(.brown)
                                                 
@@ -305,8 +307,7 @@ struct FeedView: View {
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray)
-
+                                                    .stroke(Color.gray.opacity(0.6))
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)
                                                 //.shadow(radius: 1)
@@ -314,6 +315,8 @@ struct FeedView: View {
                                             }
                                         HStack{
                                             Text("Soccer")
+                                                .foregroundStyle(.black)
+
                                             Image(systemName: "soccerball.inverse")
                                                 .foregroundStyle(.black)
                                         }
@@ -322,15 +325,15 @@ struct FeedView: View {
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray)
-
+                                                    .stroke(Color.gray.opacity(0.6))
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)
                                                 //.shadow(radius: 1)
                                                 
                                             }
                                         HStack{
-                                            Text("Swimming")
+                                            Text("Swimming")                                                .foregroundStyle(.black)
+
                                             Image(systemName: "figure.pool.swim")
                                                 .foregroundStyle(.blue)
                                         }
@@ -339,8 +342,7 @@ struct FeedView: View {
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray)
-
+                                                    .stroke(Color.gray.opacity(0.6))
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)
                                                 //.shadow(radius: 1)
@@ -348,6 +350,7 @@ struct FeedView: View {
                                             }
                                         HStack{
                                             Text("Football")
+                                                .foregroundStyle(.black)
                                             Image(systemName: "football")
                                                 .foregroundStyle(.orange)
                                         }
@@ -356,8 +359,7 @@ struct FeedView: View {
                                             .padding(.vertical, 12)
                                             .background{
                                                 RoundedRectangle(cornerRadius: 10)
-                                                    .stroke(Color.gray)
-                                                
+                                                    .stroke(Color.gray.opacity(0.6))
                                                 //.strokeBorder(Color(UIColor.systemGray4))
                                                 //.cornerRadius(15)
                                                 //.shadow(radius: 1)
