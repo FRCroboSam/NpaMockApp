@@ -17,7 +17,7 @@ struct SocialMediaTutorialApp: App {
     @State var readyToShow =  false;
     @State var opacity = 1.0
     
-    @State var homeOpacity = 0.0
+    @State var homeOpacity = 1.0
     var body: some Scene {
         
         WindowGroup {
@@ -33,7 +33,7 @@ struct SocialMediaTutorialApp: App {
                     LandingPageView()
                             .opacity(opacity)
                             .animation(.easeInOut(duration: 0.3), value: opacity)
-                            .zIndex(3)
+                            .zIndex(5)
                     if(feedVM.isSigningUp){
                         VStack{
                             SignupIndicatorView()
@@ -132,6 +132,7 @@ struct SocialMediaTutorialApp: App {
                 }
                 else{
                     homeOpacity = 1.0
+                    opacity = 0.0
                 }
                 //CODE FOR DETECTING IF WE ALREADY CREATED USER SO WE SHOULD GO TO FEED VIEW
                 print(defaults.value(forKey: "User Type"))

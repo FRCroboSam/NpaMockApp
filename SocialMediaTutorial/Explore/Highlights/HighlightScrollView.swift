@@ -25,12 +25,12 @@ struct HighlightScrollView: View {
     ]
 
     var body: some View {
-        let timer = Timer.publish(every: 2.5, on: .main, in: .common).autoconnect()
+        let timer = Timer.publish(every: 7.0, on: .main, in: .common).autoconnect()
         VStack(alignment: .center, spacing: 0){
             TabView(selection: $currentIndex.animation()) {
                 ForEach(imageURLS.indices, id: \.self) { index in
 
-                    highlightview(url: imageURLS[index], text: text[index], height: 180)
+                    highlightview(url: imageURLS[index], text: text[index], width: 11/12 * deviceWidth, height: 180)
                         .tag(index)
                         
                 }

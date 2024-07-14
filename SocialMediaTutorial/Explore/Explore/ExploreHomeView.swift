@@ -36,7 +36,7 @@ struct ExploreHomeView: View {
                             .font(.system(size: 16))
                             .zIndex(10)
                             .lineLimit(2)
-                            .padding(.leading, 20)
+                            .padding(.leading, 15)
                         Spacer()
                             .frame(height: 20)
                     }
@@ -100,10 +100,13 @@ struct ExploreHomeView: View {
                     
                     
                 }
-//                
+
+//
                 CategoryScrollView()
                 Spacer()
                     .frame(height: 15)
+
+
                 HStack(spacing: 0){
                     
                     Text("Events For You" )
@@ -132,12 +135,13 @@ struct ExploreHomeView: View {
                 }
                 Spacer()
                     .frame(height: 10)
+                
                 EventTypeScrollView()
                     .offset(x: 20)
-                
-                
+
                 Spacer()
                     .frame(height: 20)
+
                 HStack(spacing: 0){
                     
                     Text("Shop Categories" )
@@ -170,6 +174,9 @@ struct ExploreHomeView: View {
                     .padding(.leading, 5)
                 Spacer()
                     .frame(height: 20)
+                CareerScrollView()
+                Spacer()
+                    .frame(height: 15)
                 HStack{
                     Text("Popular")
                         .font(.title2)

@@ -7,7 +7,56 @@
 
 import SwiftUI
 import YouTubePlayerKit
+extension View {
 
+    /// Calls the completion handler whenever an animation on the given value completes.
+    /// - Parameters:
+    ///   - value: The value to observe for animations.
+    ///   - completion: The completion callback to call once the animation completes.
+    /// - Returns: A modified View instance with the observer attached.
+    func onAnimationCompleted<Value: VectorArithmetic>(for value: Value, completion: @escaping () -> Void) -> ModifiedContent<Self, AnimationCompletionObserverModifier<Value>> {
+        return modifier(AnimationCompletionObserverModifier(observedValue: value, completion: completion))
+    }
+}
+
+/// An animatable modifier that is used for observing animations for a given animatable value.
+struct AnimationCompletionObserverModifier<Value>: AnimatableModifier where Value: VectorArithmetic {
+
+    /// While animating, SwiftUI changes the old input value to the new target value using this property. This value is set to the old value until the animation completes.
+    var animatableData: Value {
+        didSet {
+            notifyCompletionIfFinished()
+        }
+    }
+
+    /// The target value for which we're observing. This value is directly set once the animation starts. During animation, animatableData will hold the oldValue and is only updated to the target value once the animation completes.
+    private var targetValue: Value
+
+    /// The completion callback which is called once the animation completes.
+    private var completion: () -> Void
+
+    init(observedValue: Value, completion: @escaping () -> Void) {
+        self.completion = completion
+        self.animatableData = observedValue
+        targetValue = observedValue
+    }
+
+    /// Verifies whether the current animation is finished and calls the completion callback if true.
+    private func notifyCompletionIfFinished() {
+        guard animatableData == targetValue else { return }
+
+        /// Dispatching is needed to take the next runloop for the completion callback.
+        /// This prevents errors like "Modifying state during view update, this will cause undefined behavior."
+        DispatchQueue.main.async {
+            self.completion()
+        }
+    }
+
+    func body(content: Content) -> some View {
+        /// We're not really modifying the view so we can directly return the original input value.
+        return content
+    }
+}
 struct TabbarView: View {
     @State var shouldUpdate = false
     @State var addCartOpacity = 1.0
@@ -21,6 +70,8 @@ struct TabbarView: View {
     }
     var urls = ["1", "2"]
     @State var selected2 = 1
+    
+    @State var displayView = 1
     @State var filterViewOffset = 600.0
     @State var filterFeed = false
     @State var slidingTabOffset = (deviceWidth - 250) / 6 + 25
@@ -42,6 +93,14 @@ struct TabbarView: View {
                         .frame(width: 40, height: 2.0)
                         .offset(x: slidingTabOffset - 20, y: -5)
                         .animation(.easeIn, value: slidingTabOffset)
+                        .onAnimationCompleted(for: slidingTabOffset) {
+                            print("DONE WITH ANIMATION")
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2){
+                                withAnimation(.easeIn){
+                                    displayView = selected
+                                }
+                            }
+                        }
                     HStack {
                         Spacer()
                         VStack{
@@ -159,7 +218,7 @@ struct TabbarView: View {
                         Spacer()
 
                         VStack{
-                            Button(action: {                                 withAnimation(.easeOut(duration: 0.1)){
+                            Button(action: {                                 withAnimation(.easeIn){
                                 self.selected = 5
                                 slidingTabOffset = tabOffsets[self.selected - 1]
 
@@ -209,7 +268,7 @@ struct TabbarView: View {
                     }
                     
                 }
-            if(selected == 1){
+            if(displayView == 1){
                 TabView(selection: $selected2){ //$athleteVM.feedOrCommentSection.animation()){
 //                    ForEach(urls.indices, id: \.self) { index in
 //                        if(urls[index] == "1"){
@@ -236,12 +295,12 @@ struct TabbarView: View {
                 
                 .tabViewStyle(.page(indexDisplayMode: .never))
             }
-            else if(selected == 2){
+            else if(displayView == 2){
                 ExploreView()
                 //MainExploreView()
 
             }
-            else if(selected == 3){
+            else if(displayView == 3){
                 
                 DiscoverView()
                     .ignoresSafeArea(.keyboard)
@@ -251,10 +310,10 @@ struct TabbarView: View {
 //                        selected = 1
                     }
             }
-            else if(selected == 4){
+            else if(displayView == 4){
                 NpaContentView()
             }
-            else if(selected == 5){
+            else if(displayView == 5){
                 EditProfileView(athlete: Athlete.defaultAthlete())
             }
             else{
@@ -386,6 +445,15 @@ struct TabbarView: View {
             // tab-items cover - do anything needed, height, position, alignment, etc.
 
             }
+//        .onChange(of: selected){_ in
+//            print("CHANGING DISPLAY")
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+//                withAnimation(.easeIn){
+//                    displayView = selected
+//                }
+//            }
+//
+//        }
         .onChange(of: vm.addCartNotification){ _ in
             if(vm.addCartNotification == true){
                 shouldUpdate.toggle()

@@ -44,7 +44,7 @@ struct DropdownPicker: View {
                     }
                     //.frame(width: 1/4 * 3/4 * deviceWidth)
                     .padding(.horizontal, 6)
-                    .padding(.vertical, 10)
+                    .padding(.vertical, 8)
 //                    .background(Color.white)
 //                    .clipShape(
 //                        .rect(

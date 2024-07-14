@@ -16,10 +16,8 @@ struct LandingPageView: View {
                     .resizable()
                     .scaledToFill()
                     .frame(width: deviceWidth, height: 400)
-                
+                    .padding(.top, 150)
                 Spacer()
-                    .frame(height: 100)
-                
                 
             }
             

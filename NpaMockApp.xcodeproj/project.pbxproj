@@ -95,6 +95,11 @@
 		36920C602BC9463800CA9D8F /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C5F2BC9463800CA9D8F /* InboxView.swift */; };
 		36920C622BC946A300CA9D8F /* ChatListItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36920C612BC946A300CA9D8F /* ChatListItemView.swift */; };
 		36922ECD2C2B28510009DB1B /* VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36922ECC2C2B28510009DB1B /* VC.swift */; };
+		36922ECF2C2C0CED0009DB1B /* FeedTypeScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36922ECE2C2C0CED0009DB1B /* FeedTypeScrollView.swift */; };
+		36922ED22C3A75C20009DB1B /* CareerScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36922ED12C3A75C20009DB1B /* CareerScrollView.swift */; };
+		36922ED42C3A877B0009DB1B /* CareerCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36922ED32C3A877B0009DB1B /* CareerCategoryView.swift */; };
+		36922ED62C3B963F0009DB1B /* CareerContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36922ED52C3B963F0009DB1B /* CareerContentView.swift */; };
+		36922ED82C3BF0660009DB1B /* JobPostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36922ED72C3BF0660009DB1B /* JobPostView.swift */; };
 		369F06CA2BEA258F00490B8C /* SampleSnappingListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */; };
 		369F06CD2BEA2C5D00490B8C /* SnapToScroll in Frameworks */ = {isa = PBXBuildFile; productRef = 369F06CC2BEA2C5D00490B8C /* SnapToScroll */; };
 		36A6BDBE2C16481700CF9670 /* MainExploreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6BDBD2C16481700CF9670 /* MainExploreView.swift */; };
@@ -243,6 +248,11 @@
 		36920C5F2BC9463800CA9D8F /* InboxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InboxView.swift; sourceTree = "<group>"; };
 		36920C612BC946A300CA9D8F /* ChatListItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListItemView.swift; sourceTree = "<group>"; };
 		36922ECC2C2B28510009DB1B /* VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VC.swift; sourceTree = "<group>"; };
+		36922ECE2C2C0CED0009DB1B /* FeedTypeScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTypeScrollView.swift; sourceTree = "<group>"; };
+		36922ED12C3A75C20009DB1B /* CareerScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerScrollView.swift; sourceTree = "<group>"; };
+		36922ED32C3A877B0009DB1B /* CareerCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerCategoryView.swift; sourceTree = "<group>"; };
+		36922ED52C3B963F0009DB1B /* CareerContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CareerContentView.swift; sourceTree = "<group>"; };
+		36922ED72C3BF0660009DB1B /* JobPostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobPostView.swift; sourceTree = "<group>"; };
 		369F06C82BE84E5100490B8C /* NpaMockApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "NpaMockApp-Info.plist"; sourceTree = "<group>"; };
 		369F06C92BEA258F00490B8C /* SampleSnappingListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleSnappingListView.swift; sourceTree = "<group>"; };
 		36A6BDBD2C16481700CF9670 /* MainExploreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainExploreView.swift; sourceTree = "<group>"; };
@@ -435,7 +445,6 @@
 			children = (
 				3615F6332BE31CB200214E10 /* Edit Profile */,
 				363A290D2BD6130200BA33FF /* Components */,
-				3610AE222BD5DDE400CD54B4 /* HomePageView.swift */,
 				367839CE2C1F16B40020C9D8 /* SignupIndicatorView.swift */,
 				363A290B2BD60C9900BA33FF /* AccountTypeView.swift */,
 				3649F3542BD6E04D003DBEBD /* ChooseSportView.swift */,
@@ -506,6 +515,7 @@
 		36236A492BC66D2D00580B29 /* Explore */ = {
 			isa = PBXGroup;
 			children = (
+				36922ED02C3A75A50009DB1B /* Career */,
 				36CE332A2C18075B00476157 /* Mental */,
 				360C88142C0A366600D952D2 /* Training */,
 				360C88132C0A365C00D952D2 /* Showcases */,
@@ -533,6 +543,7 @@
 		363E41972BCDDD7600A7EB88 /* LogoLandingPage */ = {
 			isa = PBXGroup;
 			children = (
+				3610AE222BD5DDE400CD54B4 /* HomePageView.swift */,
 				363E41982BCDDD8F00A7EB88 /* LandingPageView.swift */,
 			);
 			path = LogoLandingPage;
@@ -563,6 +574,7 @@
 				3679F29A2BAA205900DAC43E /* FeedVM.swift */,
 				3679F2A42BAA455000DAC43E /* FeedView.swift */,
 				36BE40DC2BFD84660028A2AE /* FeedFilterView.swift */,
+				36922ECE2C2C0CED0009DB1B /* FeedTypeScrollView.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -654,6 +666,17 @@
 				36D7C06F2C2811A4009F6CF4 /* NotificationView.swift */,
 			);
 			path = Inbox;
+			sourceTree = "<group>";
+		};
+		36922ED02C3A75A50009DB1B /* Career */ = {
+			isa = PBXGroup;
+			children = (
+				36922ED12C3A75C20009DB1B /* CareerScrollView.swift */,
+				36922ED32C3A877B0009DB1B /* CareerCategoryView.swift */,
+				36922ED52C3B963F0009DB1B /* CareerContentView.swift */,
+				36922ED72C3BF0660009DB1B /* JobPostView.swift */,
+			);
+			path = Career;
 			sourceTree = "<group>";
 		};
 		36BE40D92BFD7CB30028A2AE /* User Content */ = {
@@ -916,6 +939,7 @@
 				36F3DB972C1ABF7000BF25A3 /* AwardsView.swift in Sources */,
 				36F767122BC26B8C008D8968 /* Podcast.swift in Sources */,
 				3679F2BE2BAFBB1A00DAC43E /* NavBar.swift in Sources */,
+				36922ED22C3A75C20009DB1B /* CareerScrollView.swift in Sources */,
 				361ACDC72C07C1B2002D4BA5 /* ExploreHomeView.swift in Sources */,
 				3649F3632BDCF9E0003DBEBD /* EventTypeScrollView.swift in Sources */,
 				36DC85112BFBBC2000FCC7E2 /* TeamHeadline.swift in Sources */,
@@ -933,6 +957,7 @@
 				3679F2932BAA1DC600DAC43E /* CommentView.swift in Sources */,
 				3615F63D2BE4EDDB00214E10 /* AthleteDocs.swift in Sources */,
 				361170DE2BD24DF900BBB3B2 /* SearchView.swift in Sources */,
+				36922ED42C3A877B0009DB1B /* CareerCategoryView.swift in Sources */,
 				3649F35F2BDCE9B5003DBEBD /* CategoryScrollView.swift in Sources */,
 				36D7C0722C285CDC009F6CF4 /* AddCartNotification.swift in Sources */,
 				3671791B2BC90CF1004E380C /* CustomTabBarView.swift in Sources */,
@@ -974,6 +999,7 @@
 				3649F3592BDCD29D003DBEBD /* highlightview.swift in Sources */,
 				36F7670C2BBFCFE6008D8968 /* NpaContentView.swift in Sources */,
 				36920C5D2BC93BC200CA9D8F /* EventCardVertical.swift in Sources */,
+				36922ED82C3BF0660009DB1B /* JobPostView.swift in Sources */,
 				E55B363D2A61851A00CB859B /* PostCardHeader.swift in Sources */,
 				36A6BDBE2C16481700CF9670 /* MainExploreView.swift in Sources */,
 				36920C592BC935C100CA9D8F /* EventCardHorizontal.swift in Sources */,
@@ -991,6 +1017,7 @@
 				36F767162BC27452008D8968 /* PodcastView.swift in Sources */,
 				3679F2A32BAA27D500DAC43E /* CommentSectionView.swift in Sources */,
 				36920C532BC928A700CA9D8F /* FeaturedAthletes.swift in Sources */,
+				36922ECF2C2C0CED0009DB1B /* FeedTypeScrollView.swift in Sources */,
 				E55B36232A6181EC00CB859B /* ContentView.swift in Sources */,
 				36E27D812C1905D5006B8786 /* RecruitmentProcessView.swift in Sources */,
 				36E27D7F2C19035E006B8786 /* RecruitmentContentView.swift in Sources */,
@@ -1037,6 +1064,7 @@
 				36BE40DD2BFD84660028A2AE /* FeedFilterView.swift in Sources */,
 				3615F6372BE4AD9000214E10 /* StatsView.swift in Sources */,
 				36922ECD2C2B28510009DB1B /* VC.swift in Sources */,
+				36922ED62C3B963F0009DB1B /* CareerContentView.swift in Sources */,
 				36D565422C167B81000136C4 /* HighlightScrollableView.swift in Sources */,
 				36862E402C1A50D500A3AC33 /* CategoryTabView.swift in Sources */,
 				3679F29F2BAA20DE00DAC43E /* PostVM.swift in Sources */,

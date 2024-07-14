@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ExploreView: View {
+    @State var canShow = false
     @EnvironmentObject var athleteVM: AthleteVM
     let sports = ["Tennis", "Baseball", "Football", "Lacrosse", "Badminton", "Soccer", "Rugby",
                   "Basketball", "Pickleball", "Cross Country", "Track and Field"]
@@ -134,6 +135,14 @@ struct ExploreView: View {
             .ignoresSafeArea(.all, edges: .top)
 
         }.tint(.gray.opacity(0.7))
+            .onAppear{
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.6){
+                    canShow = true
+                }
+            }
+            .onDisappear{
+                canShow = false 
+            }
 
     }
     
