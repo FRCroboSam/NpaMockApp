@@ -58,12 +58,14 @@ struct PostListView: View {
                             feedVM.canScroll = true
                             print("POST POSITIONS 0")
                             print(postPositions[0]);
-                            if(postPositions[0] > 200 && postPositions[0] < 700 && feedVM.youtubePlayers[0].state != nil){
-                                // if(!feedVM.youtubePlayers[0].isPlaying){
-                                print("TRYING TO PLAY")
-                                print(feedVM.youtubePlayers[0].isPlaying)
-                                feedVM.youtubePlayers[0].play()
-                                //s}
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                                if(postPositions[0] > 200 && postPositions[0] < 700 && feedVM.youtubePlayers[0].state != nil){
+                                    // if(!feedVM.youtubePlayers[0].isPlaying){
+                                    print("TRYING TO PLAY")
+                                    print(feedVM.youtubePlayers[0].isPlaying)
+                                    feedVM.youtubePlayers[0].play()
+                                    //s}
+                                }
                             }
                             
                             
@@ -80,9 +82,7 @@ struct PostListView: View {
                             }
                         }
                         .onBecomingVisible{ avgY in
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.5){
-                                self.feedVM.videosHaveLoaded = true
-                            }
+
                             print("POST POSITIONS FOR INDEX: " + String(index2 + 1))
                             print("POST IS VISIBLE: "  + String(avgY > 200 && avgY < 600))
                             postPositions[index2] = avgY
@@ -97,25 +97,27 @@ struct PostListView: View {
                                 var player = index != nil ? feedVM.youtubePlayers[index ?? 0] : nil
                                 print(index2)
                                 print(player == nil)
-                                player?.play(){ completed in
-                                    print("STARTING THE PLAYER DONE: ")
-                                    
-                                    if(index2 == 0 && self.feedVM.videosHaveLoaded == false ){
-                                        print(feedVM.youtubePlayers[0].isPlaying)
-                                        print(feedVM.youtubePlayers[0].state)
-                                        feedVM.youtubePlayers[0].play()
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
-                                            if(!feedVM.youtubePlayers[0].isPlaying){
-                                                feedVM.youtubePlayers[0].play()
-                                                feedVM.youtubePlayers[0].play()
-                                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                                    player?.play(){ completed in
+                                        print("STARTING THE PLAYER DONE: ")
+                                        
+                                        if(index2 == 0 && self.feedVM.videosHaveLoaded == false ){
+                                            print(feedVM.youtubePlayers[0].isPlaying)
+                                            print(feedVM.youtubePlayers[0].state)
+                                            feedVM.youtubePlayers[0].play()
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+                                                if(!feedVM.youtubePlayers[0].isPlaying){
+                                                    feedVM.youtubePlayers[0].play()
+                                                    feedVM.youtubePlayers[0].play()
+                                                    
+                                                }
                                             }
+                                            
+                                            self.feedVM.videosHaveLoaded = true
                                         }
                                         
-                                        self.feedVM.videosHaveLoaded = true
+                                        
                                     }
-                                    
-                                    
                                 }
                                 
                                 //}
@@ -166,6 +168,7 @@ struct PostListView: View {
 
     private func stopChecking() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+            print("YOUTUBE PLAYER NOT NIL")
             showPosts = true
         }
         timer?.invalidate()

@@ -27,12 +27,12 @@ struct SocialMediaTutorialApp: App {
                     
                     HomePageView()
                         .opacity(homeOpacity)
-                        .animation(.easeInOut(duration: 0.3), value: homeOpacity)
+                        .animation(.easeInOut(duration: 0.6), value: homeOpacity)
 
                     .zIndex(4)
                     LandingPageView()
                             .opacity(opacity)
-                            .animation(.easeInOut(duration: 0.3), value: opacity)
+                            .animation(.easeInOut(duration: 0.6), value: opacity)
                             .zIndex(5)
                     if(feedVM.isSigningUp){
                         VStack{
@@ -63,11 +63,11 @@ struct SocialMediaTutorialApp: App {
 
             }
             .toolbar(.hidden, for: .navigationBar)
-            .onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
-                    feedVM.videosHaveLoaded = true
-                }
-            }
+//            .onAppear{
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 4.5) {
+//                    feedVM.videosHaveLoaded = true
+//                }
+//            }
 
             .environmentObject(feedVM)
             .environmentObject(athleteVM)
@@ -91,10 +91,13 @@ struct SocialMediaTutorialApp: App {
                         opacity = 0.0
                         if(feedVM.loggedIn){
                             readyToShow = true
+                            feedVM.youtubePlayers[0].pause()
+                            print("ACTUALLY PAUSING")
+
                         }
                         print("PLAYER STATE")
                         print(feedVM.youtubePlayers[0].state)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
                             if(!feedVM.youtubePlayers[0].isPlaying){
                                 feedVM.youtubePlayers[0].play()
                             }
@@ -126,9 +129,9 @@ struct SocialMediaTutorialApp: App {
 
                 if(feedVM.loggedIn){
                     homeOpacity = 0.0
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 4.5){
-                        feedVM.videosHaveLoaded = true
-                    }
+//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
+//                        feedVM.videosHaveLoaded = true
+//                    }
                 }
                 else{
                     homeOpacity = 1.0
