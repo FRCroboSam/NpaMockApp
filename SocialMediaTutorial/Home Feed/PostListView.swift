@@ -17,6 +17,8 @@ struct PostListView: View {
     @State var postPositions: [CGFloat] = Array(repeating: 0, count: 10)
     @State var showPosts = false
     @State private var timer: Timer?
+    
+    @State var isLoading : Bool = false
 
     var body: some View {
         ScrollView{
@@ -140,7 +142,32 @@ struct PostListView: View {
                     }
                 }
                 else{
-                    LoadingFeedView()
+                    VStack{
+                        Spacer()
+                            .frame(height: 50)
+                        ZStack {
+                            Circle()
+                                .stroke(Color(UIColor.systemGray5),
+                                        style: StrokeStyle(lineWidth: 10,
+                                                           lineCap: .round)
+                                )
+                                .frame(width: 100, height: 100)
+                            Circle()
+                                .trim(from: 0, to: 0.37)
+                                .stroke(Color(hex: "0A66C2"),
+                                        style: StrokeStyle(lineWidth: 10,
+                                                           lineCap: .round)
+                                )
+                                .frame(width: 100, height: 100, alignment: .center)
+                                .rotationEffect(Angle(degrees: isLoading ? 0 : 360))
+                                .onAppear() {
+                                    withAnimation(Animation.linear(duration: 1.0).repeatForever(autoreverses: false)) {
+                                        isLoading.toggle()
+                                    }
+                                }
+                        }
+                        .padding(20)
+                    }
                 }
             }
         }
@@ -161,13 +188,13 @@ struct PostListView: View {
         .padding() // Apply padding to the VStack
     }
     private func startChecking() {
-        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+        timer = Timer.scheduledTimer(withTimeInterval: 0.2, repeats: true) { _ in
             checkYoutubePlayerState()
         }
     }
 
     private func stopChecking() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5){
+        DispatchQueue.main.asyncAfter(deadline: .now()){
             print("YOUTUBE PLAYER NOT NIL")
             showPosts = true
         }

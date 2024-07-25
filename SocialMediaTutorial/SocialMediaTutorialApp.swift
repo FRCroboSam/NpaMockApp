@@ -88,7 +88,6 @@ struct SocialMediaTutorialApp: App {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     withAnimation(.easeIn){
                         print("VIDEO IS PLAYING: " + String(feedVM.youtubePlayers[0].isPlaying))
-                        opacity = 0.0
                         if(feedVM.loggedIn){
                             readyToShow = true
                             feedVM.youtubePlayers[0].pause()
@@ -117,7 +116,11 @@ struct SocialMediaTutorialApp: App {
             }
             )
             .onAppear{
-                
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                    print("SHOULD BE SHOWING")
+                    opacity = 0.0
+                    readyToShow = true
+                }
                 feedVM.loggedIn = false
                 feedVM.loadData()
                 //feedVM.loggedIn = false //placeholder
