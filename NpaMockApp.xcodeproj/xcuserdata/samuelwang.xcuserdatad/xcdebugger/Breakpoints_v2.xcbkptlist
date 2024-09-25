@@ -34,38 +34,6 @@
             endingLineNumber = "90"
             landmarkName = "scrollViewDidScroll(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "964EBD0E-D932-4485-B407-754AF93B6ED1 - 6adeca7575ad4433"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "NpaMockApp.ScrollableView.Coordinator.scrollViewDidScroll(__C.UIScrollView) -&gt; ()"
-                  moduleName = "NpaMockApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/samuelwang/Desktop/NpaMockApp/SocialMediaTutorial/Explore/ScrollableView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "1848">
-               </Location>
-               <Location
-                  uuid = "964EBD0E-D932-4485-B407-754AF93B6ED1 - e932a14216238acb"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 @Swift.MainActor () -&gt; () in NpaMockApp.ScrollableView.Coordinator.scrollViewDidScroll(__C.UIScrollView) -&gt; ()"
-                  moduleName = "NpaMockApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/samuelwang/Desktop/NpaMockApp/SocialMediaTutorial/Explore/ScrollableView.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "69"
-                  endingLineNumber = "69"
-                  offsetFromSymbolStart = "172">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

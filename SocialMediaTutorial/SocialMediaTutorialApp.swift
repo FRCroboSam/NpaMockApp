@@ -15,25 +15,24 @@ struct SocialMediaTutorialApp: App {
     @StateObject private var blogVM = BlogVM()
     
     @State var readyToShow =  false;
-    @State var opacity = 1.0
+    @State var opacity = 0.0
     
-    @State var homeOpacity = 1.0
+    @State var homeOpacity = 0.0
     var body: some Scene {
         
         WindowGroup {
             Group{
 //                EditProfileView(athlete: Athlete.defaultAthlete())
                 ZStack{
-                    
-                    HomePageView()
+                    HomePageView() //this is the thing with the buttons
                         .opacity(homeOpacity)
-                        .animation(.easeInOut(duration: 0.6), value: homeOpacity)
+                        .animation(readyToShow ? .easeInOut(duration: 0.6) : nil, value: homeOpacity)
+                        .zIndex(3)
 
-                    .zIndex(4)
-                    LandingPageView()
-                            .opacity(opacity)
-                            .animation(.easeInOut(duration: 0.6), value: opacity)
-                            .zIndex(5)
+                    LandingPageView() // landing page when logged in
+                        .opacity(opacity)
+                        .animation(readyToShow ? .easeInOut(duration: 0.6) : nil, value: opacity)
+                        .zIndex(4)
                     if(feedVM.isSigningUp){
                         VStack{
                             SignupIndicatorView()
@@ -77,6 +76,7 @@ struct SocialMediaTutorialApp: App {
                 if(value == true){
                     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                         withAnimation(.easeIn){
+                            print("CHANGING")
                             homeOpacity = 0.0
                             readyToShow = true
                         }
@@ -85,18 +85,19 @@ struct SocialMediaTutorialApp: App {
             })
             .onChange(of: feedVM.videosHaveLoaded, perform: { value in
                 print("VIDEOS HAVE LAODED")
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                DispatchQueue.main.asyncAfter(deadline: .now()) {
                     withAnimation(.easeIn){
                         print("VIDEO IS PLAYING: " + String(feedVM.youtubePlayers[0].isPlaying))
+                        opacity = 0.0
+                        readyToShow = true
                         if(feedVM.loggedIn){
-                            readyToShow = true
                             feedVM.youtubePlayers[0].pause()
                             print("ACTUALLY PAUSING")
 
                         }
                         print("PLAYER STATE")
                         print(feedVM.youtubePlayers[0].state)
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8){
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5){
                             if(!feedVM.youtubePlayers[0].isPlaying){
                                 feedVM.youtubePlayers[0].play()
                             }
@@ -116,14 +117,14 @@ struct SocialMediaTutorialApp: App {
             }
             )
             .onAppear{
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-                    print("SHOULD BE SHOWING")
-                    opacity = 0.0
-                    readyToShow = true
+                DispatchQueue.main.asyncAfter(deadline: .now() + 6.5){
+                    if feedVM.loggedIn{
+                        opacity = 0.0
+                        readyToShow = true
+                    }
                 }
                 feedVM.loggedIn = false
                 feedVM.loadData()
-                //feedVM.loggedIn = false //placeholder
                 //TODO: STore these ids in user defaults or something
 //                feedVM.fetchVideoIds()
                 let defaults = UserDefaults.standard
@@ -131,43 +132,18 @@ struct SocialMediaTutorialApp: App {
                 feedVM.loggedIn = defaults.value(forKey: "User Type") != nil
 
                 if(feedVM.loggedIn){
-                    homeOpacity = 0.0
+                    opacity = 1.0
 //                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.5){
 //                        feedVM.videosHaveLoaded = true
 //                    }
                 }
                 else{
                     homeOpacity = 1.0
-                    opacity = 0.0
                 }
                 //CODE FOR DETECTING IF WE ALREADY CREATED USER SO WE SHOULD GO TO FEED VIEW
                 print(defaults.value(forKey: "User Type"))
                 feedVM.loadVideoIds()
             }
-            
-//            .onAppear{
-//                withAnimation{
-//                    opacity = 1.0
-//
-//                }
-//                //feedVM.loadData()
-//                    
-//                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-//                        withAnimation{
-//                            print("TRYING TO PLAY")
-//                            opacity = 0.1
-//                            //feedVM.youtubePlayers[0].play()
-//                        }
-//                            
-//                    }
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 2.5) {
-//                        withAnimation{
-//                            opacity = 0
-//                        }
-//                            
-//                    }
-//                }
-                    
             }
 
         

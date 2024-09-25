@@ -19,6 +19,8 @@ struct PostListView: View {
     @State private var timer: Timer?
     
     @State var isLoading : Bool = false
+    
+    @State var stopShowLoader: Bool = false
 
     var body: some View {
         ScrollView{
@@ -115,7 +117,7 @@ struct PostListView: View {
                                                 }
                                             }
                                             
-                                            self.feedVM.videosHaveLoaded = true
+//                                            self.feedVM.videosHaveLoaded = true
                                         }
                                         
                                         
@@ -140,34 +142,46 @@ struct PostListView: View {
                         //                })
                         .padding(.top)
                     }
-                }
-                else{
-                    VStack{
-                        Spacer()
-                            .frame(height: 50)
-                        ZStack {
-                            Circle()
-                                .stroke(Color(UIColor.systemGray5),
-                                        style: StrokeStyle(lineWidth: 10,
-                                                           lineCap: .round)
-                                )
-                                .frame(width: 100, height: 100)
-                            Circle()
-                                .trim(from: 0, to: 0.37)
-                                .stroke(Color(hex: "0A66C2"),
-                                        style: StrokeStyle(lineWidth: 10,
-                                                           lineCap: .round)
-                                )
-                                .frame(width: 100, height: 100, alignment: .center)
-                                .rotationEffect(Angle(degrees: isLoading ? 0 : 360))
-                                .onAppear() {
-                                    withAnimation(Animation.linear(duration: 1.0).repeatForever(autoreverses: false)) {
-                                        isLoading.toggle()
-                                    }
-                                }
-                        }
-                        .padding(20)
+                    .onAppear{
+                        print("SHOW POSTS IS: " + String(showPosts))
                     }
+
+                }
+
+
+                else{
+                    if(!stopShowLoader){
+                        VStack{
+                            Spacer()
+                                .frame(height: 50)
+                            ZStack {
+                                Circle()
+                                    .stroke(Color(UIColor.systemGray5),
+                                            style: StrokeStyle(lineWidth: 10,
+                                                               lineCap: .round)
+                                    )
+                                    .frame(width: 100, height: 100)
+                                Circle()
+                                    .trim(from: 0, to: 0.37)
+                                    .stroke(Color(hex: "0A66C2"),
+                                            style: StrokeStyle(lineWidth: 10,
+                                                               lineCap: .round)
+                                    )
+                                    .frame(width: 100, height: 100, alignment: .center)
+                                    .rotationEffect(Angle(degrees: isLoading ? 0 : 360))
+                                    .onAppear() {
+                                        withAnimation(Animation.linear(duration: 1.0).repeatForever(autoreverses: false)) {
+                                            isLoading.toggle()
+                                        }
+                                    }
+                            }
+                            .padding(20)
+                        }
+                        .onDisappear{
+                            print("DISAPPEARING")
+                        }
+                    }
+
                 }
             }
         }
@@ -194,10 +208,16 @@ struct PostListView: View {
     }
 
     private func stopChecking() {
-        DispatchQueue.main.asyncAfter(deadline: .now()){
-            print("YOUTUBE PLAYER NOT NIL")
-            showPosts = true
-        }
+//        withAnimation(.easeOut(duration: 0.1)) {
+            print("Stop Spinning")
+            stopShowLoader = true
+//        }
+//        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0){
+//            withAnimation(.easeIn.speed(0.5)){
+////                print("SHOW POSTS 2 IS TRUE")
+//                showPosts = true
+//            }
+//        }
         timer?.invalidate()
         timer = nil
     }
@@ -206,6 +226,8 @@ struct PostListView: View {
             return false
         }
         if(feedVM.youtubePlayers[0].state != nil){
+            print("FINISHED LOADING")
+            feedVM.videosHaveLoaded = true
             stopChecking()
         }
         return feedVM.youtubePlayers[0].state == nil
