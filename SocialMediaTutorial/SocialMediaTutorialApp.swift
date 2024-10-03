@@ -15,7 +15,7 @@ struct SocialMediaTutorialApp: App {
     @StateObject private var blogVM = BlogVM()
     
     @State var readyToShow =  false;
-    @State var opacity = 0.0
+    @State var opacity = 1.0
     
     @State var homeOpacity = 0.0
     var body: some Scene {
@@ -138,6 +138,7 @@ struct SocialMediaTutorialApp: App {
 //                    }
                 }
                 else{
+                    opacity = 0.0
                     homeOpacity = 1.0
                 }
                 //CODE FOR DETECTING IF WE ALREADY CREATED USER SO WE SHOULD GO TO FEED VIEW
