@@ -1,6 +1,9 @@
-#NPA is an app built for the startup Next Professional Athlete
+# NEXT PROFESSIONAL ATHLETE
+
+NPA is an app built by Samuel Wang for the startup Next Professional Athlete.
 
 The app features a resource hub, shops for athletes, and social media feed populated with App clips. 
+This app serves as a mock app demo for investors. 
 
 ## Backend:
 Built with UIKit, SwiftData (Database) for storing user chats, currently working on MongoDB Integration for posts,
