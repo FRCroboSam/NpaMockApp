@@ -1,6 +1,6 @@
 # NEXT PROFESSIONAL ATHLETE
-[![NPA Mock App Demo](https://img.youtube.com/vi/M_cJ-2Zr7mI/0.jpg)](https://www.youtube.com/watch?v=M_cJ-2Zr7mI)
-_Video Demo of the app. 
+https://github.com/user-attachments/assets/dfdb043c-6551-4ec9-b81a-be62d431a173
+
 
 NPA is an app built by Samuel Wang for the startup Next Professional Athlete.
 The app features a resource hub, shops for athletes, and social media feed populated with App clips. 
