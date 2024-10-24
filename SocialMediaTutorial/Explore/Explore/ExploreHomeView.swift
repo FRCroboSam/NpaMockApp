@@ -36,7 +36,7 @@ struct ExploreHomeView: View {
                             .font(.system(size: 16))
                             .zIndex(10)
                             .lineLimit(2)
-                            .padding(.leading, 15)
+                            .padding(.leading, 17)
                         Spacer()
                             .frame(height: 20)
                     }

@@ -303,7 +303,7 @@ struct TabbarView: View {
             else if(displayView == 3){
                 
                 DiscoverView()
-                    .ignoresSafeArea(.keyboard)
+//                    .ignoresSafeArea(.keyboard)
 
                     .onAppear{
                         print("DISCOVER APPEARS")

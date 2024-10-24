@@ -275,7 +275,6 @@ struct FeedView: View {
                                     PostListView(feedVM: _vm, showCommentSection: false, onCommentTapped: {
                                         print("EXECUTING")
                                         withAnimation(.default){
-                                            
                                             vm.showCommentSection = true
                                             lastTranslation.height = 0
                                             
@@ -307,6 +306,7 @@ struct FeedView: View {
                                                 RoundedRectangle(cornerRadius: 10)
                                                     .frame(width: 50, height: 7)
                                                     .foregroundStyle(Color(UIColor.systemGray4))
+                                                    .shadow(radius:2)
                                                 Spacer()
                                                     .frame(height: 20)
                                                 Text("Comments")
@@ -336,7 +336,7 @@ struct FeedView: View {
                                             .offset(
                                                 y: lastTranslation.height
                                             )
-                                            .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
+                                            .animation(.easeIn.speed(0.5), value: self.lastTranslation.height)
                                             
                                             
                                             VStack {
@@ -347,11 +347,11 @@ struct FeedView: View {
                                                         .transaction{ $0.disablesAnimations = true}
                                                         .frame(width: deviceWidth, height: scrollViewHeight(for: geometry))
                                                         .zIndex(12)
-                                                        .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
+                                                        .animation(.easeIn.speed(0.5), value: self.lastTranslation.height)
                                                         .background{
                                                             Color.white
                                                                 .frame(width: 2 * deviceWidth)
-                                                                .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
+                                                                .animation(.easeIn.speed(0.5), value: self.lastTranslation.height)
                                                             
                                                         }
                                                     
@@ -362,7 +362,7 @@ struct FeedView: View {
                                             .background{
                                                 Color.white
                                                     .frame(width: 2 * deviceWidth)
-                                                    .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
+                                                    .animation(.easeIn.speed(0.5), value: self.lastTranslation.height)
                                                 
                                                 
                                             }
@@ -373,7 +373,7 @@ struct FeedView: View {
                                             //                                                                self.lastTranslation.height :
                                             //                                                            self.lastTranslation.height + 100)
                                             //                                        }
-                                            .animation(.easeIn.speed(0.8), value: self.lastTranslation.height)
+                                            .animation(.easeIn.speed(0.5), value: self.lastTranslation.height)
                                             .offset(y: self.lastTranslation.height)
                                             
                                             
